@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     [Header("Player Components")]
     [SerializeField] Rigidbody2D rb;
 
@@ -45,9 +47,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Transform cursorTransform;
     [SerializeField] float dashForce;
     private Vector2 dashDirection;
-    private bool shouldDash;
+    public bool shouldDash;
     private float dashScalar;
+    public float dashMod;    
     private float timeSinceGameStart;
+    public int maxDashes;
+    public int dashCount = 1;
+
+    private void Start()
+    {
+        instance = this;
+    }
 
     /// <summary>
     /// Determine the player's state and inputs once per frame
@@ -70,6 +80,13 @@ public class PlayerController : MonoBehaviour
 
         // Determine dash inputs
         Dash();
+
+        //Reset DashCount (current) on grounded
+        if (dashCount < maxDashes && isGrounded)
+        {
+            //set your current alloted dashes to your maximum dashes
+            dashCount = maxDashes;
+        }
     }
 
     /// <summary>
@@ -105,7 +122,8 @@ public class PlayerController : MonoBehaviour
         WallJumpLaunch();
 
         // Apply the dash force
-        ApplyDash();
+        if (dashCount > 0)
+            ApplyDash();
     }
 
     /// <summary>
@@ -271,12 +289,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Dash()
     {
+        
         // Calculate the time since start timer
         timeSinceGameStart += Time.deltaTime;
 
         // Determine if the player wants to dash
-        if (Input.GetKeyDown(KeyCode.Mouse0) && !shouldDash)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !shouldDash && dashCount > 0)
         {
+            
             shouldDash = true;
 
             // Calculate the dash direction
@@ -297,9 +317,20 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void ApplyDash()
     {
+       
         if (shouldDash)
         {
-            rb.AddForce(dashDirection * dashForce * dashScalar, ForceMode2D.Impulse);
+
+            if (BeatTracker.instance.onBeat)
+            {
+                dashMod = 2;
+            }
+            else
+            {
+                dashMod = 1;
+            }
+            rb.AddForce(dashDirection * dashForce * dashMod, ForceMode2D.Impulse);
+            dashCount--;
             shouldDash = false;
         }
     }
