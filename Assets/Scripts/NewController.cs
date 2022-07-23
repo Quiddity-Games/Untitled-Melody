@@ -49,7 +49,15 @@ public class NewController : MonoBehaviour
 
         // Calculate the time since start timer
         timeSinceGameStart += Time.deltaTime;
-
+        //change cursor color on beat
+        if (BeatTracker.instance.onBeat)
+        {
+            cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+            cursorTransform.localScale += Vector3.one * .005f;
+        } else {
+            cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            cursorTransform.localScale = Vector3.one;
+        }
         // Determine if the player wants to dash
         if (Input.GetKeyDown(KeyCode.Mouse0) && !shouldDash && dashCount > 0)
         {
@@ -62,11 +70,11 @@ public class NewController : MonoBehaviour
         }
 
         // Calculate the dash scalar
-        dashScalar = Mathf.Pow(Mathf.Sin(timeSinceGameStart * 0.75f * Mathf.PI), 2);
+        dashScalar = Mathf.Pow(Mathf.Sin(timeSinceGameStart * 2.75f * Mathf.PI), 2);
 
         // Track the cursor and give a visual representation of the timings
         cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
-        cursorTransform.localScale = Vector3.one * dashScalar;
+        //cursorTransform.localScale = Vector3.one * dashScalar;
     }
 
     /// <summary>

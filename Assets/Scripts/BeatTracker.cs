@@ -11,35 +11,60 @@ public class BeatTracker : MonoBehaviour
     public float beatRange;
     public bool onBeat;
     public GameObject beatVisual;
-
+    AudioSource songPlayer;
+    bool startedLevel;
     // Start is called before the first frame update
     void Start()
     {
+        songPlayer = GetComponent<AudioSource>();
+        songPlayer.Stop();
         instance = this;
         beatLength = beat;
+        beat -= .29411765f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        timeTracker += Time.deltaTime;
-        if (timeTracker > (beat - beatRange) && timeTracker < (beat + beatRange))
+        if (startedLevel)
         {
-            onBeat = true;
-        } else
-        {
-            onBeat = false;
-        }
-        if (onBeat)
-        {
-            beatVisual.SetActive(true);
-        } else
-        {
-            beatVisual.SetActive(false);
-        }
+            timeTracker += Time.deltaTime;
+            if (timeTracker > (beat - beatRange) && timeTracker < (beat + beatRange))
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Debug.Log("Hit");
+                }
+                onBeat = true;
+            }
+            else
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Debug.Log("Miss");
+                }
+                onBeat = false;
+            }
+            if (onBeat)
+            {
+                // beatVisual.SetActive(true);
+            }
+            else
+            {//
+                beatVisual.SetActive(false);
+            }
 
-        if (timeTracker > beat+beatRange) {
-            beat += beatLength;
+            if (timeTracker > beat + beatRange)
+            {
+                beat += beatLength;
+            }
+        } else
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                songPlayer.Play();
+                startedLevel = true;
+            }
         }
         
     }
