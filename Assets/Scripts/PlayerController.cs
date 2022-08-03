@@ -54,9 +54,18 @@ public class PlayerController : MonoBehaviour
     public int maxDashes;
     public int dashCount = 1;
 
+    //New Dash
+    private bool canDash = true;
+    private bool isDashing;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    private float dashingCooldown = 1f;
+    float originalGravity;
+
     private void Start()
     {
         instance = this;
+        originalGravity = rb.gravityScale;
     }
 
     /// <summary>
@@ -64,11 +73,31 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        // Check horizontal input
+        if (isGrounded)
+        {
+            rb.gravityScale = 0f;
+        } else if (!isDashing)
+        {
+            rb.gravityScale = originalGravity;
+        }
+            // Check horizontal input
         horizontalInput = GetInput().x;
 
+
         // Check jump input
-        isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 0.6f, worldObjects);
+        if (!isDashing)
+        {
+            if (Physics2D.Raycast(transform.position - new Vector3(gameObject.transform.localScale.x / 2, 0, 0), Vector2.down, 0.6f, worldObjects) ||
+             (Physics2D.Raycast(transform.position + new Vector3(gameObject.transform.localScale.x / 2, 0, 0), Vector2.down, 0.6f, worldObjects)))
+            {
+                isGrounded = true;
+            }
+            else
+            {
+                isGrounded = false;
+            }
+           
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpRequest = true;
@@ -79,10 +108,10 @@ public class PlayerController : MonoBehaviour
         WallJump();
 
         // Determine dash inputs
-        Dash();
+        DashCheck();
 
         //Reset DashCount (current) on grounded
-        if (dashCount < maxDashes && isGrounded)
+        if (dashCount < maxDashes && (isGrounded || isTouchingWall))
         {
             //set your current alloted dashes to your maximum dashes
             dashCount = maxDashes;
@@ -94,36 +123,39 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        // Horizontal Movement physics
-        HorizontalMovement();
-
-        // Linear Drag
-        if (isGrounded)
+        if (!isDashing)
         {
-            ApplyGroundLinearDrag();
-        }
-        else
-        {
-            ApplyAirLinearDrag();
-        }
+            // Horizontal Movement physics
+            HorizontalMovement();
 
-        // Handle jumping physics
-        if (jumpRequest)
-        {
-            Jump();
-            jumpRequest = false;
+            // Linear Drag
+            if (isGrounded)
+            {
+                ApplyGroundLinearDrag();
+            }
+            else
+            {
+                ApplyAirLinearDrag();
+            }
+
+            // Handle jumping physics
+            if (jumpRequest)
+            {
+                Jump();
+                jumpRequest = false;
+            }
+            //EnhanceJump();
+
+            // Slow player's vertical velocity on wall slides
+            SlowWallSlide();
+
+            // Launch the player off of a wall
+            WallJumpLaunch();
         }
-        EnhanceJump();
-
-        // Slow player's vertical velocity on wall slides
-        SlowWallSlide();
-
-        // Launch the player off of a wall
-        WallJumpLaunch();
 
         // Apply the dash force
-        if (dashCount > 0)
-            ApplyDash();
+       // if (dashCount > 0)
+          //  ApplyDash();
     }
 
     /// <summary>
@@ -208,7 +240,7 @@ public class PlayerController : MonoBehaviour
     void WallSlide()
     {
         // Determine if the player is wall sliding to the right
-        isTouchingWall = Physics2D.Raycast(transform.position, Vector2.right, 0.6f, worldObjects);
+        isTouchingWall = Physics2D.Raycast(transform.position, Vector2.right, 0.5125f, worldObjects);
 
         if (isTouchingWall && !isGrounded && rb.velocity.y <= 0)
         {
@@ -223,7 +255,7 @@ public class PlayerController : MonoBehaviour
         // Determine if the player is wall sliding to the left
         if (!isTouchingWall)
         {
-            isTouchingWall = Physics2D.Raycast(transform.position, Vector2.left, 0.6f, worldObjects);
+            isTouchingWall = Physics2D.Raycast(transform.position, Vector2.left, 0.5125f, worldObjects);
 
             if (isTouchingWall && !isGrounded && rb.velocity.y <= 0)
             {
@@ -272,7 +304,7 @@ public class PlayerController : MonoBehaviour
     {
         if (wallJumping)
         {
-            rb.AddForce(new Vector2(xWallForce * wallDirectionScalar, yWallForce));
+            rb.AddForce(new Vector2(xWallForce * wallDirectionScalar, yWallForce), ForceMode2D.Impulse);
         }
     }
 
@@ -287,7 +319,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Determine if the player should dash
     /// </summary>
-    void Dash()
+    /*void Dash()
     {
         
         // Calculate the time since start timer
@@ -310,12 +342,12 @@ public class PlayerController : MonoBehaviour
         // Track the cursor and give a visual representation of the timings
         cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
         cursorTransform.localScale = Vector3.one * dashScalar;
-    }
+    } */
 
     /// <summary>
     /// Apply the force for the dash to the player
     /// </summary>
-    void ApplyDash()
+   /* void ApplyDash()
     {
        
         if (shouldDash)
@@ -333,5 +365,61 @@ public class PlayerController : MonoBehaviour
             dashCount--;
             shouldDash = false;
         }
+    }*/
+
+    public void DashCheck()
+    {
+        //change cursor color on beat
+        if (dashCount > 0)
+        {
+            if (BeatTracker.instance.onBeat)
+            {
+                cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                cursorTransform.localScale += Vector3.one * .005f/2;
+            }
+            else
+            {
+                cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                cursorTransform.localScale = Vector3.one;
+            }
+        } else
+        {
+            cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            cursorTransform.localScale = Vector3.one;
+        }
+        // Determine if the player wants to dash
+        if (Input.GetKeyDown(KeyCode.Mouse0) && !shouldDash && dashCount > 0)
+        {
+            dashCount--;
+            StartCoroutine(Dash());
+        }
+        // Track the cursor and give a visual representation of the timings
+        cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        //Dash Direction
+        dashDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        dashDirection = dashDirection.normalized;
+        //Apply Force
+        if (BeatTracker.instance.onBeat)
+        {
+            rb.velocity = new Vector2(dashDirection.x * dashingPower, dashDirection.y * dashingPower);
+        } else
+        {
+            rb.velocity = new Vector2((dashDirection.x * dashingPower)/2, (dashDirection.y * dashingPower)/2);
+        }
+        yield return new WaitForSeconds(dashingTime);
+        rb.velocity = Vector2.zero;
+        isDashing = false;
+        yield return new WaitForSeconds(.3f);
+        rb.gravityScale = originalGravity;
+        //yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
