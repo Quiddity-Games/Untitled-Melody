@@ -76,7 +76,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             rb.gravityScale = 0f;
-        } else if (!isDashing)
+        } else if (canDash)
         {
             rb.gravityScale = originalGravity;
         }
@@ -403,6 +403,9 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
+        groundLinearDrag = 2.5f;
+        airLinearDrag = 2.5f;
+        rb.drag = 2.5f;
         //Dash Direction
         dashDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dashDirection = dashDirection.normalized;
@@ -412,13 +415,15 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(dashDirection.x * dashingPower, dashDirection.y * dashingPower);
         } else
         {
-            rb.velocity = new Vector2((dashDirection.x * dashingPower)/2, (dashDirection.y * dashingPower)/2);
+            rb.velocity = new Vector2((dashDirection.x * dashingPower)/1.75f, (dashDirection.y * dashingPower)/1.75f);
         }
         yield return new WaitForSeconds(dashingTime);
         rb.velocity = Vector2.zero;
         isDashing = false;
-        yield return new WaitForSeconds(.3f);
+        yield return new WaitForSeconds(.2f);
         rb.gravityScale = originalGravity;
+        groundLinearDrag = 10;
+        airLinearDrag = 2.5f;
         //yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
