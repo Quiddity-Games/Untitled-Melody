@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+//using UnityEngine.UIElements;
 using Ink.Runtime;
 using TMPro;
 
@@ -13,8 +14,9 @@ public class Inkle : MonoBehaviour
     public Sprite receiversprite;
     public Sprite sendersprite;
     public GameObject scrollviewcontent;
-    public GameObject vertscrollbar;
+    public Scrollbar vertscrollbar;
     public GameObject textbubbleprefab;
+    public ScrollRect scrollview;
     TextGenerator textgen;
     public GameObject[] dialogueresponses = new GameObject[4];
     Story inkstory;
@@ -24,6 +26,7 @@ public class Inkle : MonoBehaviour
     float phoneheight;
     float vertscrollbarwidth;
     float horzscrollbarheight;
+    int count = 0;
     GameObject cellphone;
 
     //vert./horiz. offset distance of textbubbles from sides of screen or each other 
@@ -47,20 +50,27 @@ public class Inkle : MonoBehaviour
         RectTransform cellphonerect = cellphone.GetComponent(typeof(RectTransform)) as RectTransform;
         phonewidth = cellphonerect.rect.width;
         phoneheight = cellphonerect.rect.height;
-        RectTransform cellphonerecthorizontal = cellphone.transform.GetChild(1).gameObject.GetComponent(typeof(RectTransform)) as RectTransform;
-        RectTransform cellphonerectvertical = cellphone.transform.GetChild(2).gameObject.GetComponent(typeof(RectTransform)) as RectTransform;
-        horzscrollbarheight = cellphonerecthorizontal.rect.height;
+        //RectTransform cellphonerecthorizontal = cellphone.transform.GetChild(1).gameObject.GetComponent(typeof(RectTransform)) as RectTransform;
+        RectTransform cellphonerectvertical = cellphone.transform.GetChild(1).gameObject.GetComponent(typeof(RectTransform)) as RectTransform;
+       //horzscrollbarheight = cellphonerecthorizontal.rect.height;
         vertscrollbarwidth = cellphonerectvertical.rect.width;
 }
 
     // Update is called once per frame
     void Update()
     {
+        if (count > 0) //this is here because unity doesn't resize the content rect until after this update is called on this frame, it puts the scrollbar at the bottom after the resizing took place
+        {
+            count--;
+            vertscrollbar.value = 0.0f;
+        }
         //dialogue running
         //resize content rect, instantiate text bubble prefab with sized speech bubbles 
         if (Input.GetMouseButtonDown(0) && !dialogueresponses[0].activeSelf)
         {
             continueDialogue();
+            vertscrollbar.value = 0.0f;
+            count += 1;
         }
     }
 
@@ -98,8 +108,6 @@ public class Inkle : MonoBehaviour
                 Debug.Log("sadadsdsa");
             }
             bubbleimagerect.sizeDelta = new Vector2(textwidth, textheight);
-            Debug.Log(textheight);
-            //Debug.Log("height: " + (string) textheight);
             float halfhorztextdistance = textwidth / 2.0f;
             float halfverttextdistance = textheight / 2.0f;
             //float textrectwidth = phonewidth - vertscrollbarwidth - (horztextbubbleoffset * 2.0f)) - (horztextoffsetinsidebubble * 2.0f);
@@ -107,7 +115,7 @@ public class Inkle : MonoBehaviour
 
             if (receiverspeaking) //speechbubble color/location determined by if receiver or sender is speaking
             {
-                newtextbubble.transform.localPosition = new Vector3(horztextbubbleoffset + 27.5f, -currentdialoguelength - halfverttextdistance - verttextbubbleoffset, 0.0f);
+                newtextbubble.transform.localPosition = new Vector3(horztextbubbleoffset + 55.0f, -currentdialoguelength - halfverttextdistance - verttextbubbleoffset, 0.0f);
                 SpriteRenderer profilepicture = newtextbubble.transform.GetChild(1).GetChild(0).gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
                 profilepicture.sprite = receiversprite;
                 //newtextbubble.GetComponent<Image>().color = new Vector4(0.0f, 0.05f, 1.0f, 1.0f);
@@ -121,7 +129,7 @@ public class Inkle : MonoBehaviour
             else
             {
                 //newtextbubble.transform.localPosition = new Vector3((phonewidth - vertscrollbarwidth - horztextbubbleoffset) - halfhorztextdistance, -currentdialoguelength - halfverttextdistance - verttextbubbleoffset, 0.0f);
-                newtextbubble.transform.localPosition = new Vector3((phonewidth - vertscrollbarwidth - horztextbubbleoffset) - 27.5f, -currentdialoguelength - halfverttextdistance - verttextbubbleoffset, 0.0f);
+                newtextbubble.transform.localPosition = new Vector3((phonewidth - vertscrollbarwidth - horztextbubbleoffset) - 40.0f, -currentdialoguelength - halfverttextdistance - verttextbubbleoffset, 0.0f);
                 SpriteRenderer profilepicture = newtextbubble.transform.GetChild(1).GetChild(0).gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
                 profilepicture.sprite = sendersprite;
                 //newtextbubble.GetComponent<Image>().color = new Vector4(195.0f, 195.0f, 195.0f, 255.0f);
@@ -137,7 +145,7 @@ public class Inkle : MonoBehaviour
             { //resize scrollview content rect if number of messages exceeds size of "phone screen"
                 scrollviewcontent.GetComponent<RectTransform>().sizeDelta = new Vector2(scrollviewcontent.GetComponent<RectTransform>().sizeDelta.x, currentdialoguelength + 20.0f);
             }
-            
+            //Debug.Log(scrollview.scrollOffset);
         }
         else
         //if encountered a choice, show choice options on screen
