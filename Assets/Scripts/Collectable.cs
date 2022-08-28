@@ -8,10 +8,13 @@ public class Collectible : MonoBehaviour
 {
     public static TMP_Text collectibleText;
     public static int numCollected;
+    public static int numCollectables;
     // Start is called before the first frame update
     void Start()
     {
+        numCollectables++;
         collectibleText = GameObject.Find("CollectibleText").GetComponent<TMP_Text>();
+        collectibleText.text = "" + numCollected + " / " + numCollectables;
     }
 
     // Update is called once per frame
@@ -22,7 +25,7 @@ public class Collectible : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         numCollected++;
-        collectibleText.text = "" + numCollected + " / 6";
+        collectibleText.text = "" + numCollected + " / "+ numCollectables;
         Destroy(gameObject);
     }
 }

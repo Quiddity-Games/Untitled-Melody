@@ -54,6 +54,8 @@ public class PlayerController : MonoBehaviour
     public int maxDashes;
     public int dashCount = 1;
 
+    public GameObject beatCursor;
+
     //New Dash
     private bool canDash = true;
     private bool isDashing;
@@ -376,11 +378,13 @@ public class PlayerController : MonoBehaviour
             {
                 cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                 cursorTransform.localScale += Vector3.one * .005f/2;
+                //beatCursor.transform.localScale += Vector3.one * .005f / 4;
             }
             else
             {
                 cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
                 cursorTransform.localScale = Vector3.one;
+               // beatCursor.transform.localScale = Vector3.one;
             }
         } else
         {
@@ -422,7 +426,7 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(.2f);
         rb.gravityScale = originalGravity;
-        groundLinearDrag = 10;
+        groundLinearDrag = 10f;
         airLinearDrag = 2.5f;
         //yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
