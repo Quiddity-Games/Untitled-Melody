@@ -26,6 +26,7 @@ public class Collectible : MonoBehaviour
     {
         numCollected++;
         collectibleText.text = "" + numCollected + " / "+ numCollectables;
+        PlayerController.instance.dashCount++;
         Destroy(gameObject);
     }
 }

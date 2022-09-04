@@ -27,7 +27,7 @@ public class BeatTracker : MonoBehaviour
 
     public GameObject note;
     public AnimationCurve linearCurve;
-    private GameObject myCanvas;
+    private GameObject playerCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,7 @@ public class BeatTracker : MonoBehaviour
         beat -= .29411765f;
         //beat -= .147058825f;
         clockTime = (int)songPlayer.clip.length;
-        myCanvas = GameObject.Find("Canvas");
+        playerCanvas = GameObject.Find("PlayerCanvas");
     }
 
     // Update is called once per frame
@@ -48,6 +48,10 @@ public class BeatTracker : MonoBehaviour
         //after starting the song by jumping, start clock and beat tracking
         if (startedLevel)
         {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                clockTime = songPlayer.clip.length-12;
+            }
             clockTime = songPlayer.clip.length - Time.time;
             clock.text = "" + clockTime;
             clockBar.fillAmount = clockTime/songPlayer.clip.length ;
@@ -84,8 +88,8 @@ public class BeatTracker : MonoBehaviour
             if (beatFull)
             {
                 //Debug.Log("gdsf");
-                StartCoroutine(MetronomeNoteVisual(new Vector3(-405, -190, 0)));
-                StartCoroutine(MetronomeNoteVisual(new Vector3(405, -190, 0)));
+                StartCoroutine(MetronomeNoteVisual(new Vector3(-4f, 2, 0)));
+                StartCoroutine(MetronomeNoteVisual(new Vector3(4f, 2, 0)));
             }
 
             //set next beat
@@ -122,7 +126,7 @@ public class BeatTracker : MonoBehaviour
     IEnumerator MetronomeNoteVisual(Vector3 startPos)
     {
         GameObject newNote = Instantiate(note, startPos, Quaternion.identity);
-        newNote.GetComponent<RectTransform>().SetParent(myCanvas.transform, false);
+        newNote.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
         newNote.GetComponent<RectTransform>().anchoredPosition = startPos;
         Vector3 endPos = new Vector3(0, startPos.y,0);
         float t = 0;

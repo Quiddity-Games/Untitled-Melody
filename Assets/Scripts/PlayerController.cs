@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
-            rb.gravityScale = 0f;
+           // rb.gravityScale = 0f;
         } else if (canDash)
         {
             rb.gravityScale = originalGravity;
@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         DashCheck();
 
         //Reset DashCount (current) on grounded
-        if (dashCount < maxDashes && (isGrounded || isTouchingWall))
+        if (dashCount < maxDashes && (isGrounded))
         {
             //set your current alloted dashes to your maximum dashes
             dashCount = maxDashes;
@@ -307,6 +307,7 @@ public class PlayerController : MonoBehaviour
         if (wallJumping)
         {
             rb.AddForce(new Vector2(xWallForce * wallDirectionScalar, yWallForce), ForceMode2D.Impulse);
+            dashCount = maxDashes;
         }
     }
 
@@ -426,7 +427,7 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(.2f);
         rb.gravityScale = originalGravity;
-        groundLinearDrag = 10f;
+        groundLinearDrag = 0f;
         airLinearDrag = 2.5f;
         //yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
