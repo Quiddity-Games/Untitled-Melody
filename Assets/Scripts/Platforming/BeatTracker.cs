@@ -24,6 +24,7 @@ public class BeatTracker : MonoBehaviour
     private float beatInterval, beatTimer;
     public static bool beatFull;
     public static int beatCountFull;
+    float startTime;
 
     public GameObject note;
     public AnimationCurve linearCurve;
@@ -32,6 +33,7 @@ public class BeatTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        startTime = Time.time;
         songPlayer = GetComponent<AudioSource>();
         songPlayer.Stop();
         instance = this;
@@ -50,9 +52,10 @@ public class BeatTracker : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-                clockTime = songPlayer.clip.length-12;
+                clockTime = songPlayer.clip.length;
             }
-            clockTime = songPlayer.clip.length - Time.time;
+            clockTime = startTime + songPlayer.clip.length -  Time.time;
+            Debug.Log(clockTime);
             clock.text = "" + clockTime;
             clockBar.fillAmount = clockTime/songPlayer.clip.length ;
             timeTracker += Time.deltaTime;
