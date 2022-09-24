@@ -55,7 +55,7 @@ public class BeatTracker : MonoBehaviour
                 clockTime = songPlayer.clip.length;
             }
             clockTime = startTime + songPlayer.clip.length -  Time.time;
-            Debug.Log(clockTime);
+            //Debug.Log(clockTime);
             clock.text = "" + clockTime;
             clockBar.fillAmount = clockTime/songPlayer.clip.length ;
             timeTracker += Time.deltaTime;
