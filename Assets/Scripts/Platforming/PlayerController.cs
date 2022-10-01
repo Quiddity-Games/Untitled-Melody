@@ -32,6 +32,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] SpriteRenderer playerSprite;
     [SerializeField] float wallSlidingSpeed;
     private bool isTouchingWall;
+    private bool fellOffWall;
+    private bool onRWall;
     private bool wallSlidingLeft;
     private bool wallSlidingRight;
     private int wallDirectionScalar;
@@ -248,10 +250,18 @@ public class PlayerController : MonoBehaviour
         {
             wallSlidingRight = true;
             wallDirectionScalar = -1;
+            fellOffWall = false;
+            onRWall = true;
         }
         else
         {
             wallSlidingRight = false;
+            if (!fellOffWall && onRWall)
+            {
+                onRWall = false;
+                fellOffWall = true;
+                dashCount = maxDashes;
+            }
         }
 
         // Determine if the player is wall sliding to the left
@@ -263,10 +273,16 @@ public class PlayerController : MonoBehaviour
             {
                 wallSlidingLeft = true;
                 wallDirectionScalar = 1;
+                fellOffWall = false;
             }
             else
             {
                 wallSlidingLeft = false;
+                if (!fellOffWall)
+                {
+                    fellOffWall = true;
+                    dashCount = maxDashes;
+                }
             }
         }
     }
@@ -418,6 +434,9 @@ public class PlayerController : MonoBehaviour
         if (BeatTracker.instance.onBeat)
         {
             rb.velocity = new Vector2(dashDirection.x * dashingPower, dashDirection.y * dashingPower);
+            //New Trail on Dash
+            gameObject.GetComponent<TrailRenderer>().startColor = Color.yellow;
+            gameObject.GetComponent<TrailRenderer>().endColor = Color.yellow;
         } else
         {
             rb.velocity = new Vector2((dashDirection.x * dashingPower)/1.75f, (dashDirection.y * dashingPower)/1.75f);
@@ -427,6 +446,8 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(.2f);
         rb.gravityScale = originalGravity;
+        gameObject.GetComponent<TrailRenderer>().startColor = Color.green;
+        gameObject.GetComponent<TrailRenderer>().endColor = Color.green;
         groundLinearDrag = 0f;
         airLinearDrag = 2.5f;
         //yield return new WaitForSeconds(dashingCooldown);
