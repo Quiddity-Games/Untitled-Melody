@@ -102,14 +102,20 @@ public class PlayerController : MonoBehaviour
             }
            
         }
+        
+        //Cutting space-to-jump
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpRequest = true;
         }
+        */
 
         // Wall slide inputs
         WallSlide();
-        WallJump();
+       
+        //Cutting walljumping
+        //WallJump();
 
         // Determine dash inputs
         DashCheck();
@@ -437,10 +443,16 @@ public class PlayerController : MonoBehaviour
             //New Trail on Dash
             gameObject.GetComponent<TrailRenderer>().startColor = Color.yellow;
             gameObject.GetComponent<TrailRenderer>().endColor = Color.yellow;
-        } else
+        } 
+        
+        //Cutting ability to dash without being on-beat
+        /*
+        else
         {
             rb.velocity = new Vector2((dashDirection.x * dashingPower)/1.75f, (dashDirection.y * dashingPower)/1.75f);
         }
+        */
+
         yield return new WaitForSeconds(dashingTime);
         rb.velocity = Vector2.zero;
         isDashing = false;
