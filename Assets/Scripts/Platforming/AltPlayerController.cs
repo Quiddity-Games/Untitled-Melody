@@ -55,15 +55,23 @@ public class AltPlayerController : MonoBehaviour
         //Apply Force
         if(BeatTracker.instance.onBeat)
         {
+            //Temporarily cuts gravity to prevent dash from being "softened" by gravity pulling you downward
+            float gravity = this.GetComponent<Rigidbody2D>().gravityScale;
+            this.GetComponent<Rigidbody2D>().gravityScale = 0f;
+
+            //Applies dash
             this.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashForce);
 
             //Changes player's trail color on dash
             gameObject.GetComponent<TrailRenderer>().startColor = Color.yellow;
             gameObject.GetComponent<TrailRenderer>().endColor = Color.yellow;
-        }
 
-        //Pause while the dash is underway
-        yield return new WaitForSeconds(dashingTime);
+            //Pause while the dash is underway
+            yield return new WaitForSeconds(dashingTime);
+
+            //Resets gravity to full when dash is done
+            this.GetComponent<Rigidbody2D>().gravityScale = gravity;
+        }
 
         //Resets player's trail color
         gameObject.GetComponent<TrailRenderer>().startColor = Color.green;
