@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class Collectible : MonoBehaviour
+public class Collectable : MonoBehaviour
 {
     public static TMP_Text collectibleText;
     public static int numCollected;
@@ -26,7 +26,7 @@ public class Collectible : MonoBehaviour
     {
         numCollected++;
         collectibleText.text = "" + numCollected + " / "+ numCollectables;
-        PlayerController.instance.dashCount++;
+        //PlayerController.instance.dashCount++;
         Destroy(gameObject);
     }
 }

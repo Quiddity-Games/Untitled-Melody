@@ -18,7 +18,7 @@ public class BeatTracker : MonoBehaviour
     public TMP_Text clock;
     public float clockTime;
     public Image clockBar;
-
+    public bool canClick;   //Determines if the player has "spent" their attempt to click/dash for the beat they're on
 
     public float bpm;
     private float beatInterval, beatTimer;
@@ -42,6 +42,7 @@ public class BeatTracker : MonoBehaviour
         //beat -= .147058825f;
         clockTime = (int)songPlayer.clip.length;
         playerCanvas = GameObject.Find("PlayerCanvas");
+        canClick = true;
     }
 
     // Update is called once per frame
@@ -99,6 +100,7 @@ public class BeatTracker : MonoBehaviour
             if (timeTracker > beat + beatRange)
             {
                 beat += beatLength;
+                canClick = true;    //Refreshes the player's attempt to click/dash
             }
         } else
         {

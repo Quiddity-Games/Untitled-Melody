@@ -17,7 +17,7 @@ public class MySceneManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R) && !Menus.paused)
         {
-            Collectible.numCollectables = 0;
+            Collectable.numCollectables = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

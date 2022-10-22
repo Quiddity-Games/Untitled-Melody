@@ -6,38 +6,76 @@ public class AltPlayerController : MonoBehaviour
 {
     public Transform cursorTransform;
     private Vector2 dashDirection;
+    bool isDashing;
+    //bool canClick;  //Used to determine if the player has "spent" their one click (dash attempt) they have for each beat
+
     public float dashForce;
     public float dashingTime;
 
+    float horizontalInput;
+
+    [SerializeField] Rigidbody2D rb;
+
+    [SerializeField] float acceleration;
+    [SerializeField] float maxMoveSpeed;
+
     // Start is called before the first frame update
     void Start()
-    {
-
+    {   
+        //canClick = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(!isDashing)
+        {
+
+            // Check horizontal input
+            horizontalInput = GetInput().x;
+
+            // Horizontal Movement physics
+            HorizontalMovement();
+        }
+        
         //Moves in-game cursor to the location of the player's computer cursor
         cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
 
-        //Changes the cursor's color on-beat
-        if(BeatTracker.instance.onBeat)
+        //Changes the cursor's color depending on the game state
+        if(BeatTracker.instance.canClick)
         {
-            cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
-            cursorTransform.localScale += Vector3.one * .005f / 2;
-            //beatCursor.transform.localScale += Vector3.one * .005f / 4;
+            //Changes the cursor's color on-beat
+            if(BeatTracker.instance.onBeat)
+            {
+                cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                cursorTransform.localScale += Vector3.one * .005f / 2;
+                //beatCursor.transform.localScale += Vector3.one * .005f / 4;
+            }
+            else
+            {
+                cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+                cursorTransform.localScale = Vector3.one;
+                // beatCursor.transform.localScale = Vector3.one;
+            }
         }
         else
         {
-            cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
+            cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             cursorTransform.localScale = Vector3.one;
-            // beatCursor.transform.localScale = Vector3.one;
         }
 
-        // Determine if the player wants to dash
-        if(Input.GetKeyDown(KeyCode.Mouse0))
+        /*
+        // Resets the player's click
+        if(BeatTracker.instance.onBeat)
         {
+            canClick = true;
+        }
+        */
+        
+        // Determine if the player wants to dash
+        if(Input.GetKeyDown(KeyCode.Mouse0) && BeatTracker.instance.canClick)
+        {
+            BeatTracker.instance.canClick = false;   //Player's click is "spent" until the next beat
             StartCoroutine(ForceDash());
         }
     }
@@ -55,6 +93,8 @@ public class AltPlayerController : MonoBehaviour
         //Apply Force
         if(BeatTracker.instance.onBeat)
         {
+            isDashing = true;
+            
             //Temporarily cuts gravity to prevent dash from being "softened" by gravity pulling you downward
             float gravity = this.GetComponent<Rigidbody2D>().gravityScale;
             this.GetComponent<Rigidbody2D>().gravityScale = 0f;
@@ -71,10 +111,35 @@ public class AltPlayerController : MonoBehaviour
 
             //Resets gravity to full when dash is done
             this.GetComponent<Rigidbody2D>().gravityScale = gravity;
+
+            isDashing = false;
         }
 
         //Resets player's trail color
         gameObject.GetComponent<TrailRenderer>().startColor = Color.green;
         gameObject.GetComponent<TrailRenderer>().endColor = Color.green;
+    }
+
+    /// <summary>
+    /// Get the player's input
+    /// </summary>
+    /// <returns>Returns a vector 2 of the player input</returns>
+    Vector2 GetInput()
+    {
+        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+    }
+
+    /// <summary>
+    /// Modify the player's horizontal velocity depending on key inputs
+    /// </summary>
+    void HorizontalMovement()
+    {
+
+        rb.AddForce(new Vector2(horizontalInput, 0f) * acceleration);
+
+        if(Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
+        {
+            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxMoveSpeed, rb.velocity.y);
+        }
     }
 }
