@@ -38,7 +38,9 @@ public class BeatTracker : MonoBehaviour
         songPlayer.Stop();
         instance = this;
         beatLength = beat;
-        beat -= .29411765f;
+        beat += beatLength / 4f;    //Added to have the "beat" land on the second and fourth beats of each measure
+        //beatTimer += beatLength / 4f;
+        //beat -= .29411765f;
         //beat -= .147058825f;
         clockTime = (int)songPlayer.clip.length;
         playerCanvas = GameObject.Find("PlayerCanvas");
