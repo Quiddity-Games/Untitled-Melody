@@ -2369,7 +2369,7 @@ Transform:
   m_GameObject: {fileID: 1181374286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 5.0179715, y: 5.0179715, z: 5.0179715}
+  m_LocalScale: {x: 13.850265, y: 13.850265, z: 13.850265}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2024642544}
@@ -2387,7 +2387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9421b77a68a2ea469ddd87004f94735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
 --- !u!212 &1181374289
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4461,7 +4461,6 @@ GameObject:
   - component: {fileID: 2024642542}
   - component: {fileID: 2024642541}
   - component: {fileID: 2024642545}
-  - component: {fileID: 2024642546}
   m_Layer: 0
   m_Name: Piranha
   m_TagString: Untagged
@@ -4546,7 +4545,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2024642540}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed5a64aa37759fd4b908ad02edba79c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 05512419c19ca4043ba9707f04abe8f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2024642544
@@ -4586,18 +4585,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2024642546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2024642540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed5a64aa37759fd4b908ad02edba79c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2068618509
 GameObject:
   m_ObjectHideFlags: 0

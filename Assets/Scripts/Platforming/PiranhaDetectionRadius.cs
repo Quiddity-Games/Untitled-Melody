@@ -22,7 +22,7 @@ public class PiranhaDetectionRadius : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")
         {
@@ -30,10 +30,6 @@ public class PiranhaDetectionRadius : MonoBehaviour
             parentGameObjectTransform.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 165, 0);
         }
 
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
         if(player != null)
         {
             playerPos = player.GetComponent<Transform>().position;
