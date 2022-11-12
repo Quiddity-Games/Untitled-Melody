@@ -24,9 +24,12 @@ public class Collectable : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        numCollected++;
-        collectibleText.text = "" + numCollected + " / "+ numCollectables;
-        //PlayerController.instance.dashCount++;
-        Destroy(gameObject);
+        if(collision.gameObject.tag == "Player")
+        {
+            numCollected++;
+            collectibleText.text = "" + numCollected + " / " + numCollectables;
+            //PlayerController.instance.dashCount++;
+            Destroy(gameObject);
+        }
     }
 }
