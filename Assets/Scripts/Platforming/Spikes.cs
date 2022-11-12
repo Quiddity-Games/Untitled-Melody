@@ -17,6 +17,7 @@ public class Spikes : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.position = Checkpoint.currentCheckpoint.transform.position;

@@ -93,9 +93,10 @@ public class BeatTracker : MonoBehaviour
             //Send Note on exact beat time
             if (beatFull)
             {
-                //Debug.Log("gdsf");
-                StartCoroutine(MetronomeNoteVisual(new Vector3(-4f, 2, 0)));
-                StartCoroutine(MetronomeNoteVisual(new Vector3(4f, 2, 0)));
+                //Disabled for now until the meter is fixed to be more in-synch with the rhythm
+
+                //StartCoroutine(MetronomeNoteVisual(new Vector3(-4f, 2, 0)));
+                //StartCoroutine(MetronomeNoteVisual(new Vector3(4f, 2, 0)));
             }
 
             //set next beat

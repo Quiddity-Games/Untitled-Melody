@@ -4,22 +4,21 @@ using UnityEngine;
 
 public class PiranhaDetectionRadius : MonoBehaviour
 {
-    public float speed;
-
-    private Transform parentGameObjectTransform;
+    //public float speed;
+    private GameObject piranhaCore;
     private GameObject player;
-    private Vector2 playerPos;
+    public Vector3 playerPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        parentGameObjectTransform = this.gameObject.GetComponent<Transform>().parent;
+        piranhaCore = this.transform.parent.gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        this.GetComponent<Transform>().position = new Vector3 (piranhaCore.GetComponent<Transform>().position.x, piranhaCore.GetComponent<Transform>().position.y, this.GetComponent<Transform>().position.z);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -27,22 +26,20 @@ public class PiranhaDetectionRadius : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;
-            parentGameObjectTransform.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 165, 0);
+            piranhaCore.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 165, 0);
         }
 
         if(player != null)
         {
-            playerPos = player.GetComponent<Transform>().position;
-            parentGameObjectTransform.position = Vector2.MoveTowards(parentGameObjectTransform.position, playerPos, speed * Time.deltaTime);
-        }
+            playerPos = new Vector3(player.GetComponent<Transform>().position.x, player.GetComponent<Transform>().position.y, this.gameObject.GetComponent<Transform>().position.z);
 
+            piranhaCore.GetComponent<PiranhaCore>().MovePiranhaCore(playerPos);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         player = null;
-        parentGameObjectTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-
-
+        piranhaCore.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
