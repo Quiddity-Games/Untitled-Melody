@@ -28,6 +28,8 @@ public class AltPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        /*
         if(!isDashing)
         {
 
@@ -37,6 +39,7 @@ public class AltPlayerController : MonoBehaviour
             // Horizontal Movement physics
             HorizontalMovement();
         }
+        */
         
         //Moves in-game cursor to the location of the player's computer cursor
         cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
