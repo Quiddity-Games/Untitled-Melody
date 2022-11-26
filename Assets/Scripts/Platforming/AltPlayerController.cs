@@ -29,6 +29,7 @@ public class AltPlayerController : MonoBehaviour
     void Update()
     {
 
+        //Cut  keyboard/horizontal movement for now
         /*
         if(!isDashing)
         {
