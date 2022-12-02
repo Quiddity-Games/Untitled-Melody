@@ -25,6 +25,8 @@ public class BeatTracker : MonoBehaviour
     public static bool beatFull;
     public static int beatCountFull;
     float startTime;
+    public float beatTimerOffset;   //Specifies how long in seconds after the song begins that the first beat should take place
+    public float beatTimerOffsetModifier;   //Adds a bit of extra time to the above value so that the notes (or "timer bars") colliding looks more accurate/"crisp"
 
     public GameObject note;
     public AnimationCurve linearCurve;
@@ -45,6 +47,8 @@ public class BeatTracker : MonoBehaviour
         clockTime = (int)songPlayer.clip.length;
         playerCanvas = GameObject.Find("PlayerCanvas");
         canClick = true;
+
+        //beatTimer += beatTimerOffset;
     }
 
     // Update is called once per frame
@@ -93,10 +97,8 @@ public class BeatTracker : MonoBehaviour
             //Send Note on exact beat time
             if (beatFull)
             {
-                //Disabled for now until the meter is fixed to be more in-synch with the rhythm
-
-                //StartCoroutine(MetronomeNoteVisual(new Vector3(-4f, 2, 0)));
-                //StartCoroutine(MetronomeNoteVisual(new Vector3(4f, 2, 0)));
+                StartCoroutine(MetronomeNoteVisual(new Vector3(-4f, 2, 0)));
+                StartCoroutine(MetronomeNoteVisual(new Vector3(4f, 2, 0)));
             }
 
             //set next beat
@@ -121,9 +123,9 @@ public class BeatTracker : MonoBehaviour
     void BeatDetection()
     {
         beatFull = false;
-        beatInterval = 60 / bpm;
+        beatInterval = 60 / bpm;    //Space between each beat in seconds
         beatTimer += Time.deltaTime;
-        if (beatTimer >= beatInterval)
+        if (beatTimer >= beatInterval - (beatTimerOffset + beatTimerOffsetModifier))
         {
             beatTimer -= beatInterval;
             beatFull = true;

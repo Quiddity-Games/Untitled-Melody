@@ -5967,6 +5967,8 @@ MonoBehaviour:
   clockBar: {fileID: 393577220}
   canClick: 0
   bpm: 51
+  beatTimerOffset: 0.5882353
+  beatTimerOffsetModifier: 0.075
   note: {fileID: 5381223311931561768, guid: 87912d258528a8142935f37f8f8c9b9c, type: 3}
   linearCurve:
     serializedVersion: 2
