@@ -14,7 +14,7 @@ public class BeatTracker : MonoBehaviour
     public bool onBeat;
     public GameObject beatVisual;
     public AudioSource songPlayer;
-    bool startedLevel;
+    public bool startedLevel;
     public TMP_Text clock;
     public float clockTime;
     public Image clockBar;
@@ -26,7 +26,6 @@ public class BeatTracker : MonoBehaviour
     public static int beatCountFull;
     float startTime;
     public float beatTimerOffset;   //Specifies how long in seconds after the song begins that the first beat should take place (based on which "beats" of each measure -- 1, 2, 3, etc. -- the beat should land on)
-    public float beatTimerOffsetModifier;   //Adds a bit of extra time to the above value so that the notes (or "timer bars") colliding looks more accurate/"crisp" (separate from beatTimerOffsetModifier, b/c this value is for general "feel" tweaking rather than setting where in a measure a beat should land)
 
     public GameObject note;
     public AnimationCurve linearCurve;
@@ -35,16 +34,18 @@ public class BeatTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.time;
+        //startTime = Time.time;
         songPlayer = GetComponent<AudioSource>();
         songPlayer.Stop();
+        songPlayer.volume = .5f;
         instance = this;
         beatLength = beat;
         beat += beatLength / 4f;    //Added to have the "beat" land on the second and fourth beats of each measure
+        beatTimer = 0f - (beatTimerOffset) - 1f;
         //beatTimer += beatLength / 4f;
         //beat -= .29411765f;
         //beat -= .147058825f;
-        clockTime = (int)songPlayer.clip.length;
+        clockTime = songPlayer.clip.length;
         playerCanvas = GameObject.Find("PlayerCanvas");
         canClick = true;
     }
@@ -59,13 +60,15 @@ public class BeatTracker : MonoBehaviour
             {
                 clockTime = songPlayer.clip.length;
             }
-            clockTime = startTime + songPlayer.clip.length -  Time.time;
+            clockTime = songPlayer.clip.length - (Time.time - startTime);
             //Debug.Log(clockTime);
             clock.text = "" + clockTime;
             clockBar.fillAmount = clockTime/songPlayer.clip.length ;
             timeTracker += Time.deltaTime;
+
            // Check exact beats
             BeatDetection();
+
             //check if you click on beat within the beat range
             if (timeTracker > (beat - beatRange) && timeTracker < (beat + beatRange))
             {
@@ -105,13 +108,14 @@ public class BeatTracker : MonoBehaviour
                 beat += beatLength;
                 canClick = true;    //Refreshes the player's attempt to click/dash
             }
+
         } else
         {
             //Start Song
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 songPlayer.Play();
-                songPlayer.volume = .5f;
+                startTime = Time.time;
                 startedLevel = true;
             }
         }
@@ -123,7 +127,8 @@ public class BeatTracker : MonoBehaviour
         beatFull = false;
         beatInterval = 60 / bpm;    //Space between each beat in seconds
         beatTimer += Time.deltaTime;
-        if (beatTimer >= beatInterval - (beatTimerOffset + beatTimerOffsetModifier))
+        //if(beatTimer >= beatInterval - (beatTimerOffset + beatTimerOffsetModifier))
+        if(beatTimer >= beatInterval)
         {
             beatTimer -= beatInterval;
             beatFull = true;
@@ -142,6 +147,7 @@ public class BeatTracker : MonoBehaviour
         {
             newNote.GetComponent<RectTransform>().anchoredPosition = Vector3.LerpUnclamped(startPos, endPos, linearCurve.Evaluate(t));
             t += Time.deltaTime * beatInterval;
+            //t += Time.deltaTime / beatInterval;
             yield return 0;
         }
         Destroy(newNote);

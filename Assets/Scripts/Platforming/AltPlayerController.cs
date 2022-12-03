@@ -51,9 +51,12 @@ public class AltPlayerController : MonoBehaviour
             //Changes the cursor's color on-beat
             if(BeatTracker.instance.onBeat)
             {
+                //Temporarily disabling cursor from pulsing to the beat, so we can test using only the "beat bars"
+                /*
                 cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
                 cursorTransform.localScale += Vector3.one * .005f / 2;
                 //beatCursor.transform.localScale += Vector3.one * .005f / 4;
+                */
             }
             else
             {

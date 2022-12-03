@@ -5962,6 +5962,7 @@ MonoBehaviour:
   onBeat: 0
   beatVisual: {fileID: 0}
   songPlayer: {fileID: 0}
+  startedLevel: 0
   clock: {fileID: 720015670}
   clockTime: 0
   clockBar: {fileID: 393577220}

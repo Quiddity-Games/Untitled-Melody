@@ -25,9 +25,13 @@ public class Menus : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.Escape) && paused) 
         {
             paused = false;
-            Time.timeScale = 1;
-            BeatTracker.instance.songPlayer.Play();
             pauseMenu.SetActive(false);
+            Time.timeScale = 1;
+
+            if(BeatTracker.instance.startedLevel == true)
+            {
+                BeatTracker.instance.songPlayer.Play();
+            }
         }
     }
 
