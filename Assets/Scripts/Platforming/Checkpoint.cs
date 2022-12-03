@@ -26,7 +26,8 @@ public class Checkpoint : MonoBehaviour
             currentCheckpoint = gameObject;
             checkPointBurst.Emit(20);
 
-            Collectable.tempNumCollected = 0;
+            GameManager.instance.tempNumCollected = 0;
+            GameManager.instance.tempCollectableList.Clear();
         }
     }
 }

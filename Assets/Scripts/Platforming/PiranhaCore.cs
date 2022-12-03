@@ -33,19 +33,18 @@ public class PiranhaCore : MonoBehaviour
         float velocityYComponent = Mathf.Sin(Mathf.Asin(yDistance / hypotenuseDistance));
 
         //Blocks the piranha from moving for one frame if the player is respawning on that frame (prevents the piranha from drifting in the player's direction even after they have just killed them)
-        if(RespawnManager.instance.stopHazardsMove == false)
+        if(GameManager.instance.stopHazardsMove == false)
         {
             rb.velocity = new Vector2(velocityXComponent * speed * Time.deltaTime, velocityYComponent * speed * Time.deltaTime);
         } else
         {
-            RespawnManager.instance.stopHazardsMove = false;
+            GameManager.instance.stopHazardsMove = false;
         }
-
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        RespawnManager.instance.OnDeath();
+        GameManager.instance.OnDeath();
 
         //Removed for now, b/c death functionality is being migrated to RespawnManager.cs
         /*

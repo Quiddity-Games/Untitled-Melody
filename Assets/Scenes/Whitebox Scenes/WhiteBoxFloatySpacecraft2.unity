@@ -997,7 +997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2169,7 +2169,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5968,7 +5968,7 @@ MonoBehaviour:
   canClick: 0
   bpm: 51
   beatTimerOffset: 0.5882353
-  beatTimerOffsetModifier: 0.075
+  beatTimerOffsetModifier: 0
   note: {fileID: 5381223311931561768, guid: 87912d258528a8142935f37f8f8c9b9c, type: 3}
   linearCurve:
     serializedVersion: 2
@@ -11978,7 +11978,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12289,7 +12289,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12556,7 +12556,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalRotation.w
@@ -13946,7 +13946,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1986917900}
         m_TargetAssemblyTypeName: Menus, Assembly-CSharp
         m_MethodName: IncreaseVolume
         m_Mode: 1
@@ -14102,7 +14102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290ad026bd40d1747898e553fd3380ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 248786533}
 --- !u!4 &1986917901
 Transform:
   m_ObjectHideFlags: 0
@@ -14132,6 +14132,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stopHazardsMove: 0
   collectable: {fileID: 5224013006852190124, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+  collectibleText: {fileID: 0}
+  numCollectables: 0
+  numCollected: 0
+  tempNumCollected: 0
+  tempCollectableList: []
 --- !u!4 &1988249261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4666577848638702177, guid: f16f5cd6b90a45a4385efc51bd33c9ba, type: 3}
@@ -14718,7 +14723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalRotation.w
@@ -14965,7 +14970,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1986917900}
         m_TargetAssemblyTypeName: Menus, Assembly-CSharp
         m_MethodName: DecreaseVolume
         m_Mode: 1
@@ -15098,7 +15103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1245791507681450224, guid: 96a754b16bf7c3741b0ac260c6eae136, type: 3}
       propertyPath: m_LocalRotation.w

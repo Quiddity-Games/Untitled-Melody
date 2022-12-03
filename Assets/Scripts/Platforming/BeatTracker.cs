@@ -25,8 +25,8 @@ public class BeatTracker : MonoBehaviour
     public static bool beatFull;
     public static int beatCountFull;
     float startTime;
-    public float beatTimerOffset;   //Specifies how long in seconds after the song begins that the first beat should take place
-    public float beatTimerOffsetModifier;   //Adds a bit of extra time to the above value so that the notes (or "timer bars") colliding looks more accurate/"crisp"
+    public float beatTimerOffset;   //Specifies how long in seconds after the song begins that the first beat should take place (based on which "beats" of each measure -- 1, 2, 3, etc. -- the beat should land on)
+    public float beatTimerOffsetModifier;   //Adds a bit of extra time to the above value so that the notes (or "timer bars") colliding looks more accurate/"crisp" (separate from beatTimerOffsetModifier, b/c this value is for general "feel" tweaking rather than setting where in a measure a beat should land)
 
     public GameObject note;
     public AnimationCurve linearCurve;
@@ -47,8 +47,6 @@ public class BeatTracker : MonoBehaviour
         clockTime = (int)songPlayer.clip.length;
         playerCanvas = GameObject.Find("PlayerCanvas");
         canClick = true;
-
-        //beatTimer += beatTimerOffset;
     }
 
     // Update is called once per frame
