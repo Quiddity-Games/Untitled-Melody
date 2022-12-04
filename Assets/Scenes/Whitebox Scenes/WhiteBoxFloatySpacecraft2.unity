@@ -5958,7 +5958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeTracker: 0
   beat: 1.1764708
-  beatRange: 0.2
+  beatRange: 0.4
   onBeat: 0
   beatVisual: {fileID: 0}
   songPlayer: {fileID: 0}
@@ -5969,7 +5969,6 @@ MonoBehaviour:
   canClick: 0
   bpm: 51
   beatTimerOffset: 0.5882353
-  beatTimerOffsetModifier: 0
   note: {fileID: 5381223311931561768, guid: 87912d258528a8142935f37f8f8c9b9c, type: 3}
   linearCurve:
     serializedVersion: 2
@@ -5995,6 +5994,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  noteDebugMode: 0
 --- !u!4 &1020232041
 Transform:
   m_ObjectHideFlags: 0

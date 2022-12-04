@@ -31,6 +31,9 @@ public class BeatTracker : MonoBehaviour
     public AnimationCurve linearCurve;
     private GameObject playerCanvas;
 
+    public bool noteDebugMode;  //A debug tool to help the developer test the rhythm "forgiveness" value and see whether a pair of notes will count as a hit or not before clicking
+    private Color noteColor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +80,9 @@ public class BeatTracker : MonoBehaviour
                     Debug.Log("Hit");
                 }
                 onBeat = true;
+
+                //Sets what color the note will be if the player clicks on this frame
+                noteColor = Color.yellow;
             }
             else
             {
@@ -85,6 +91,8 @@ public class BeatTracker : MonoBehaviour
                     Debug.Log("Miss");
                 }
                 onBeat = false;
+
+                noteColor = Color.red;
             }
             if (onBeat)
             {
@@ -142,15 +150,51 @@ public class BeatTracker : MonoBehaviour
         newNote.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
         newNote.GetComponent<RectTransform>().anchoredPosition = startPos;
         Vector3 endPos = new Vector3(0, startPos.y,0);
+        bool instaDestroyNote = true;   //Used to determine whether/not a note should be instantly destroyed, or allowed to fade away in place for a moment (based on if player has clicked or not)
         float t = 0;
         while (t < 1)
         {
             newNote.GetComponent<RectTransform>().anchoredPosition = Vector3.LerpUnclamped(startPos, endPos, linearCurve.Evaluate(t));
             t += Time.deltaTime * beatInterval;
             //t += Time.deltaTime / beatInterval;
+
+            //Changes note color _before_ player clicks, but only if debug mode is on
+            if(noteDebugMode == true)
+            {
+                newNote.GetComponent<Image>().color = noteColor;
+            }
+
+            if(Input.GetMouseButtonDown(0))
+            {
+                newNote.GetComponent<Image>().color = noteColor;    //Changes the note's color after the player has clicked, so they can see whether/not they hit it
+                t = 1;
+
+                instaDestroyNote = false;
+            }
+
             yield return 0;
         }
-        Destroy(newNote);
+
+        //Either destroys the note, or causes it to fade away _then_ destroy, depending on whether or not the player "hits" it before it disappears
+        if(instaDestroyNote == true)
+        {
+            Destroy(newNote);
+
+        } else
+        {
+            float alpha = newNote.GetComponent<Image>().color.a;
+
+            while(alpha >= 0)
+            {
+                newNote.GetComponent<Image>().color = new Color(newNote.GetComponent<Image>().color.r, newNote.GetComponent<Image>().color.g, newNote.GetComponent<Image>().color.b, alpha);
+                alpha -= 0.02f; //Note to Self: Maybe for faster rhythms/songs, the alpha should fade faster, b/c more notes are coming in faster?
+
+                yield return 0;
+            }
+
+            Destroy(newNote);
+        }
+
         yield return 0;
     }
 }
