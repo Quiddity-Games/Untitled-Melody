@@ -101,7 +101,13 @@ public class AltPlayerController : MonoBehaviour
         if(BeatTracker.instance.onBeat)
         {
             isDashing = true;
-            
+
+            //Drops an "afterimage" of the cursor wherever the player just clicked
+            GameObject lastClickLocation = Instantiate(cursorTransform.gameObject);
+            lastClickLocation.GetComponent<Transform>().localScale = new Vector3(2.5f, 2.5f, 0);
+            lastClickLocation.GetComponent<Transform>().position = cursorTransform.position;
+            StartCoroutine(VanishClickAfterImage(lastClickLocation));
+
             //Temporarily cuts gravity to prevent dash from being "softened" by gravity pulling you downward
             float gravity = this.GetComponent<Rigidbody2D>().gravityScale;
             this.GetComponent<Rigidbody2D>().gravityScale = 0f;
@@ -125,6 +131,28 @@ public class AltPlayerController : MonoBehaviour
         //Resets player's trail color
         gameObject.GetComponent<TrailRenderer>().startColor = Color.green;
         gameObject.GetComponent<TrailRenderer>().endColor = Color.green;
+    }
+
+    /// <summary>
+    /// Causes the gameObject showing where the player last clicked to fade away.
+    /// </summary>
+    /// <param name="click"></param>
+    /// <returns></returns>
+    private IEnumerator VanishClickAfterImage(GameObject click)
+    {
+        float alpha = click.GetComponent<SpriteRenderer>().color.a;
+
+        while(alpha >= 0)
+        {
+            click.GetComponent<SpriteRenderer>().color = new Vector4(click.GetComponent<SpriteRenderer>().color.r, click.GetComponent<SpriteRenderer>().color.g, click.GetComponent<SpriteRenderer>().color.b, alpha);
+            alpha -= 0.02f;
+
+            yield return 0;
+        }
+
+        Destroy(click);
+
+        yield return 0;
     }
 
     /// <summary>
