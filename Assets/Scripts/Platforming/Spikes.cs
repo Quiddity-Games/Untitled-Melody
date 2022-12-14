@@ -17,9 +17,14 @@ public class Spikes : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        GameManager.instance.OnDeath();
+        
+        //Removed for now, b/c death functionality is being migrated to RespawnManager.cs
+        /*
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.transform.position = Checkpoint.currentCheckpoint.transform.position;
         }
+        */
     }
 }

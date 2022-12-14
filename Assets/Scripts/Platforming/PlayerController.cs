@@ -102,14 +102,20 @@ public class PlayerController : MonoBehaviour
             }
            
         }
+        
+        //Cutting space-to-jump
+        /*
         if (Input.GetKeyDown(KeyCode.Space))
         {
             jumpRequest = true;
         }
+        */
 
         // Wall slide inputs
         WallSlide();
-        WallJump();
+       
+        //Cutting walljumping
+        //WallJump();
 
         // Determine dash inputs
         DashCheck();
@@ -423,26 +429,43 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         isDashing = true;
         float originalGravity = rb.gravityScale;
+
+        //Removed as part of "force" overhaul
+        /*
         rb.gravityScale = 0f;
         groundLinearDrag = 2.5f;
         airLinearDrag = 2.5f;
         rb.drag = 2.5f;
+        */
+
         //Dash Direction
         dashDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dashDirection = dashDirection.normalized;
         //Apply Force
         if (BeatTracker.instance.onBeat)
         {
-            rb.velocity = new Vector2(dashDirection.x * dashingPower, dashDirection.y * dashingPower);
+            //Experimenting with using forces instead
+            //rb.velocity = new Vector2(dashDirection.x * dashingPower, dashDirection.y * dashingPower);
+            rb.AddForce(dashDirection * 200f);
+
             //New Trail on Dash
             gameObject.GetComponent<TrailRenderer>().startColor = Color.yellow;
             gameObject.GetComponent<TrailRenderer>().endColor = Color.yellow;
-        } else
+        } 
+        
+        //Cutting ability to dash without being on-beat
+        /*
+        else
         {
             rb.velocity = new Vector2((dashDirection.x * dashingPower)/1.75f, (dashDirection.y * dashingPower)/1.75f);
         }
+        */
+
         yield return new WaitForSeconds(dashingTime);
-        rb.velocity = Vector2.zero;
+
+        //Removed as part of "force" overhaul
+        //rb.velocity = Vector2.zero;
+
         isDashing = false;
         yield return new WaitForSeconds(.2f);
         rb.gravityScale = originalGravity;
