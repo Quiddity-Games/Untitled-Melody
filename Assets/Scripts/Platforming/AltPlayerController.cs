@@ -9,7 +9,8 @@ public class AltPlayerController : MonoBehaviour
     bool isDashing;
     //bool canClick;  //Used to determine if the player has "spent" their one click (dash attempt) they have for each beat
 
-    public float dashForce;
+    float dashForce;
+    public float dashForceMultiplier;
     public float dashingTime;
 
     float horizontalInput;
@@ -28,7 +29,6 @@ public class AltPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Cut  keyboard/horizontal movement for now
         /*
         if(!isDashing)
@@ -41,7 +41,7 @@ public class AltPlayerController : MonoBehaviour
             HorizontalMovement();
         }
         */
-        
+
         //Moves in-game cursor to the location of the player's computer cursor
         cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
 
@@ -85,6 +85,7 @@ public class AltPlayerController : MonoBehaviour
             BeatTracker.instance.canClick = false;   //Player's click is "spent" until the next beat
             StartCoroutine(ForceDash());
         }
+
     }
 
     /// <summary>
@@ -96,6 +97,9 @@ public class AltPlayerController : MonoBehaviour
         //Determines the dash's direction by calculating the mouse's position relative to the player
         dashDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dashDirection = dashDirection.normalized;
+
+        //Adjusts the player's dash distance based on how far away the cursor is from the player
+        dashForce = dashForceMultiplier * Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position);
 
         //Apply Force
         if(BeatTracker.instance.onBeat)
@@ -111,6 +115,9 @@ public class AltPlayerController : MonoBehaviour
             //Temporarily cuts gravity to prevent dash from being "softened" by gravity pulling you downward
             float gravity = this.GetComponent<Rigidbody2D>().gravityScale;
             this.GetComponent<Rigidbody2D>().gravityScale = 0f;
+
+            //Zeroes out the player's current velocity so that they can have more precise control over their dash direction
+            this.GetComponent<Rigidbody2D>().velocity = new Vector2(0f,0f);
 
             //Applies dash
             this.GetComponent<Rigidbody2D>().AddForce(dashDirection * dashForce);

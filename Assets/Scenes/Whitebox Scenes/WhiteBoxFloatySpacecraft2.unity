@@ -8508,7 +8508,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.1
-  m_LinearDrag: 1.75
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 922cc61b89c83fc4cb290fd39889e1f1, type: 2}
@@ -8687,7 +8687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorTransform: {fileID: 891368925}
-  dashForce: 300
+  dashForceMultiplier: 25
   dashingTime: 0.65
   rb: {fileID: 1400610322}
   acceleration: 25
