@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -938,7 +938,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d6b0b72a364417549b82eccf0c5acba0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ccb47a7b0269e7143ad4d7abcec5f769, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -986,15 +986,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 956966736}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0eb89165c892214b850003c9e2922e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c2aa45fcf03f5f4586c26afcee17de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inktext: {fileID: 4900000, guid: c165cac97e7826d4788fd263b47b3e19, type: 3}
-  receiversprite: {fileID: 21300000, guid: 362d3e86c0d4f47428314d1e282e0702, type: 3}
-  sendersprite: {fileID: 21300000, guid: 0391116f9e5254844b69e0f667f6a112, type: 3}
+  receiversprite: {fileID: 21300000, guid: def843b0677e6fd43bf0803bd6704c91, type: 3}
+  sendersprite: {fileID: 21300000, guid: b209a8e9fac3a2544aab437016d969ce, type: 3}
   scrollviewcontent: {fileID: 1872596783}
   vertscrollbar: {fileID: 782675732}
-  textbubbleprefab: {fileID: 3968320940576767325, guid: 0af5ea1238aacb14bba2f45e7657678a, type: 3}
+  textbubbleprefab: {fileID: 3968320940576767325, guid: aa7ca2575de3d384bafcdc6e10c02c0f, type: 3}
   scrollview: {fileID: 2127398561}
   dialogueresponses:
   - {fileID: 1901934425}
@@ -1894,7 +1894,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e08915f4d4f0ac34997b0e2960a85b3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 08f7dcbc504d0db4c8e21a95e3821867, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
