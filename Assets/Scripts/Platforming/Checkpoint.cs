@@ -28,6 +28,8 @@ public class Checkpoint : MonoBehaviour
 
             GameManager.instance.tempNumCollected = 0;
             GameManager.instance.tempCollectableList.Clear();
+
+            GameManager.instance.tempScore = 0;
         }
     }
 }

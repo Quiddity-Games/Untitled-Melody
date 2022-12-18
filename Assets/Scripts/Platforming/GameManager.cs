@@ -19,6 +19,14 @@ public class GameManager : MonoBehaviour
     public int tempNumCollected;
     public List<Vector3> tempCollectableList;
 
+    public int score;
+    public int tempScore;
+    public GameObject scoreCounter;
+    public int scoreDeathPenalty;
+
+    public int dashCombos;
+    public GameObject comboTracker;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +50,28 @@ public class GameManager : MonoBehaviour
         collectibleText.text = "" + numCollected + " / " + numCollectables;
 
         tempCollectableList = new List<Vector3>();
+
+        score = 0;
+
+        dashCombos = 0;
+    }
+
+    void Update()
+    {
+        if (score < 0)
+        {
+            score = 0;
+        }
+
+        scoreCounter.GetComponent<TMP_Text>().text = score.ToString();
+
+        if (dashCombos > 0)
+        {
+            comboTracker.GetComponent<TMP_Text>().text = "x" + dashCombos.ToString();
+        } else
+        {
+            comboTracker.GetComponent<TMP_Text>().text = "";
+        }
     }
 
     /// <summary>
@@ -63,6 +93,9 @@ public class GameManager : MonoBehaviour
         numCollected -= tempNumCollected;
         tempNumCollected = 0;
 
+        score -= (tempScore + scoreDeathPenalty);   //Subtracts the point value of all the fragments the player collected between now and their last spawn, as well as an extra penalty for dying
+        tempScore = 0;
+
         for(int i = 0; i < tempCollectableList.Count; i++)
         {
             Instantiate(collectable, tempCollectableList[i], Quaternion.identity);
@@ -72,5 +105,7 @@ public class GameManager : MonoBehaviour
 
         tempNumCollected = 0;
         tempCollectableList.Clear();
+
+        dashCombos = 0; //Resets player's combos on death
     }
 }

@@ -133,6 +133,7 @@ public class AltPlayerController : MonoBehaviour
             this.GetComponent<Rigidbody2D>().gravityScale = gravity;
 
             isDashing = false;
+
         }
 
         //Resets player's trail color

@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
+using TMPro;
 
 public class BeatTracker : MonoBehaviour
 {
@@ -34,6 +34,8 @@ public class BeatTracker : MonoBehaviour
     public bool noteDebugMode;  //A debug tool to help the developer test the rhythm "forgiveness" value and see whether a pair of notes will count as a hit or not before clicking
     private Color noteColor;
 
+    bool playerDashedThisBeat;  //States whether/not the player successfully dashed on the previous beat
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,15 +61,17 @@ public class BeatTracker : MonoBehaviour
         //after starting the song by jumping, start clock and beat tracking
         if (startedLevel)
         {
+            //Resets the level if the player presses the "R" key. (This can also be done by clicking/tapping a button on the game screen)
             if (Input.GetKeyDown(KeyCode.R))
             {
-                clockTime = songPlayer.clip.length;
+                ResetLevel();
             }
-            clockTime = songPlayer.clip.length - (Time.time - startTime);
-            //Debug.Log(clockTime);
-            clock.text = "" + clockTime;
-            clockBar.fillAmount = clockTime/songPlayer.clip.length ;
-            timeTracker += Time.deltaTime;
+
+           clockTime = songPlayer.clip.length - (Time.time - startTime);
+           //Debug.Log(clockTime);
+           clock.text = "" + clockTime;
+           clockBar.fillAmount = clockTime / songPlayer.clip.length;
+           timeTracker += Time.deltaTime;
 
            // Check exact beats
             BeatDetection();
@@ -75,10 +79,15 @@ public class BeatTracker : MonoBehaviour
             //check if you click on beat within the beat range
             if (timeTracker > (beat - beatRange) && timeTracker < (beat + beatRange))
             {
-                if (Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButtonDown(0))
                 {
                     Debug.Log("Hit");
+
+                    GameManager.instance.dashCombos++;  //Increments the player's combo number
+
+                    playerDashedThisBeat = true;    //Saved to look at next beat and determine if the player's combo value should be reset
                 }
+
                 onBeat = true;
 
                 //Sets what color the note will be if the player clicks on this frame
@@ -88,8 +97,12 @@ public class BeatTracker : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+
+                    GameManager.instance.dashCombos = 0;    //Resets the player's combo number
+
                     Debug.Log("Miss");
                 }
+
                 onBeat = false;
 
                 noteColor = Color.red;
@@ -103,9 +116,10 @@ public class BeatTracker : MonoBehaviour
                 //beatVisual.SetActive(false);
             }
 
-            //Send Note on exact beat time
+            //Triggered on the frame that occurs right as the beat hits
             if (beatFull)
             {
+                //Send Note on exact beat time
                 StartCoroutine(MetronomeNoteVisual(new Vector3(-4f, 2, 0)));
                 StartCoroutine(MetronomeNoteVisual(new Vector3(4f, 2, 0)));
             }
@@ -120,7 +134,7 @@ public class BeatTracker : MonoBehaviour
         } else
         {
             //Start Song
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetMouseButtonDown(0))
             {
                 songPlayer.Play();
                 startTime = Time.time;
@@ -141,6 +155,14 @@ public class BeatTracker : MonoBehaviour
             beatTimer -= beatInterval;
             beatFull = true;
             beatCountFull++;
+
+            if(playerDashedThisBeat == false)
+            {
+                GameManager.instance.dashCombos = 0;
+            } else
+            {
+                playerDashedThisBeat = false;
+            }
         }
     }
 
@@ -196,5 +218,14 @@ public class BeatTracker : MonoBehaviour
         }
 
         yield return 0;
+    }
+
+    /// <summary>
+    /// Resets the level.
+    /// </summary>
+    public void ResetLevel()
+    {
+        Debug.Log("Restart triggered!");
+        clockTime = songPlayer.clip.length;
     }
 }
