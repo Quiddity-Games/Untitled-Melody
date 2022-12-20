@@ -9,6 +9,7 @@ public class CollectableScoreDrop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.GetComponent<TMP_Text>().text = Mathf.RoundToInt(Mathf.Pow(10, 1 + ((GameManager.instance.dashCombos - 1f) / 20f))).ToString() + "pts";
         StartCoroutine(ScoreDropFadeAndDestroy());
     }
 

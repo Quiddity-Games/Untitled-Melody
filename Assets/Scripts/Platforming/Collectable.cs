@@ -22,8 +22,8 @@ public class Collectable : MonoBehaviour
             GameManager.instance.tempNumCollected++;
             GameManager.instance.tempCollectableList.Add(this.gameObject.GetComponent<Transform>().position);
 
-            GameManager.instance.score += 10;
-            GameManager.instance.tempScore += 10;
+            GameManager.instance.score += Mathf.RoundToInt(Mathf.Pow(10, 1 + ((GameManager.instance.dashCombos - 1f) / 20f)));
+            GameManager.instance.tempScore += Mathf.RoundToInt(Mathf.Pow(10, 1 + ((GameManager.instance.dashCombos - 1f) / 20f)));
 
             GameManager.instance.collectibleText.text = "" + GameManager.instance.numCollected + " / " + GameManager.instance.numCollectables;
 

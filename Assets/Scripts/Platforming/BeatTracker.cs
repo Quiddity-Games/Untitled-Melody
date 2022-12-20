@@ -6,6 +6,8 @@ using TMPro;
 
 public class BeatTracker : MonoBehaviour
 {
+    public GameObject welcomeMessage;
+
     public static BeatTracker instance;
     public float timeTracker;
     public float beat;
@@ -136,6 +138,7 @@ public class BeatTracker : MonoBehaviour
             //Start Song
             if (Input.GetMouseButtonDown(0))
             {
+                welcomeMessage.SetActive(false);
                 songPlayer.Play();
                 startTime = Time.time;
                 startedLevel = true;
