@@ -22,6 +22,8 @@ public class AltPlayerController : MonoBehaviour
     [SerializeField] float acceleration;
     [SerializeField] float maxMoveSpeed;
 
+    public GameObject gameCamera;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -98,6 +100,8 @@ public class AltPlayerController : MonoBehaviour
     /// </summary>
     private IEnumerator ForceDash()
     {
+        gameCamera.GetComponent<CameraFollow>().smoothSpeed = gameCamera.GetComponent<CameraFollow>().dashingSmoothSpeed;  //Reincreases the smooth speed when the player dashes
+
         //Determines the dash's direction by calculating the mouse's position relative to the player
         dashDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         dashDirection = dashDirection.normalized;

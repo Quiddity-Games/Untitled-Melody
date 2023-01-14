@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public int dashCombos;
     public GameObject comboTracker;
 
+    public GameObject gameCamera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -112,5 +114,7 @@ public class GameManager : MonoBehaviour
 
         //Disabling combo functionality for now
         //dashCombos = 0; //Resets player's combos on death
+
+        gameCamera.GetComponent<CameraFollow>().smoothSpeed = gameCamera.GetComponent<CameraFollow>().checkpointSmoothSpeed;   //Slows down camera smooth speed so that the move back to the checkpoint isn't as visually jarring
     }
 }

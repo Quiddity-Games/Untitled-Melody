@@ -2571,6 +2571,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1400610321}
   smoothSpeed: 10
+  dashingSmoothSpeed: 10
+  checkpointSmoothSpeed: 2
   offset: {x: 0, y: 2, z: -1}
 --- !u!20 &519420031
 Camera:
@@ -7523,6 +7525,7 @@ MonoBehaviour:
   rb: {fileID: 1400610322}
   acceleration: 25
   maxMoveSpeed: 6
+  gameCamera: {fileID: 519420028}
 --- !u!1001 &1402044811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12290,6 +12293,7 @@ MonoBehaviour:
   scoreDeathPenalty: 30
   dashCombos: 0
   comboTracker: {fileID: 109695611}
+  gameCamera: {fileID: 519420028}
 --- !u!4 &1988249261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4666577848638702177, guid: f16f5cd6b90a45a4385efc51bd33c9ba, type: 3}
