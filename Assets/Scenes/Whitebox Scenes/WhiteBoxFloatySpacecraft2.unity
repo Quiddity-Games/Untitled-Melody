@@ -7519,6 +7519,7 @@ MonoBehaviour:
   cursorTransform: {fileID: 891368925}
   dashForceMultiplier: 30
   dashingTime: 0.65
+  maxDashDistanceMultiplier: 22
   rb: {fileID: 1400610322}
   acceleration: 25
   maxMoveSpeed: 6

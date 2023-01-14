@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Mathematics;
 
 public class AltPlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class AltPlayerController : MonoBehaviour
     float dashForce;
     public float dashForceMultiplier;
     public float dashingTime;
+    public float maxDashDistanceMultiplier; //Used to limit the distance of the dash to a certain max radius
 
     float horizontalInput;
 
@@ -29,6 +31,8 @@ public class AltPlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("Cursor Distance is: " + Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position).ToString());
+
         //Cut  keyboard/horizontal movement for now
         /*
         if(!isDashing)
@@ -99,7 +103,14 @@ public class AltPlayerController : MonoBehaviour
         dashDirection = dashDirection.normalized;
 
         //Adjusts the player's dash distance based on how far away the cursor is from the player
-        dashForce = dashForceMultiplier * Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position);
+        if(Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)
+        {
+            dashForce = dashForceMultiplier * Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position);
+        } else
+        {
+            //Restricts the dash distance to the max radius when necessary
+            dashForce = dashForceMultiplier * maxDashDistanceMultiplier;
+        }
 
         //Apply Force
         if(BeatTracker.instance.onBeat)
@@ -109,7 +120,22 @@ public class AltPlayerController : MonoBehaviour
             //Drops an "afterimage" of the cursor wherever the player just clicked
             GameObject lastClickLocation = Instantiate(cursorTransform.gameObject);
             lastClickLocation.GetComponent<Transform>().localScale = new Vector3(2.5f, 2.5f, 0);
-            lastClickLocation.GetComponent<Transform>().position = cursorTransform.position;
+
+            //Changes where this afterimage appears, based on whether the player clicked within the max dash distance or not
+            if(Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)
+            {
+                lastClickLocation.GetComponent<Transform>().position = cursorTransform.position;
+            } else
+            {
+                float angleX = Mathf.Acos((cursorTransform.position.x - this.GetComponent<Transform>().position.x) / Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position));
+                float angleY = Mathf.Asin((cursorTransform.position.y - this.GetComponent<Transform>().position.y) / Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position));
+                float actualXDist = Mathf.Cos(angleX) * maxDashDistanceMultiplier;
+                float actualYDist = Mathf.Sin(angleY) * maxDashDistanceMultiplier;
+
+                lastClickLocation.GetComponent<Transform>().position = new Vector3(this.GetComponent<Transform>().position.x + actualXDist, this.GetComponent<Transform>().position.y + actualYDist, this.GetComponent<Transform>().position.z);
+            }
+
+            //Afterimage begins to fade
             StartCoroutine(VanishClickAfterImage(lastClickLocation));
 
             //Temporarily cuts gravity to prevent dash from being "softened" by gravity pulling you downward
