@@ -53,7 +53,8 @@ public class GameManager : MonoBehaviour
 
         score = 0;
 
-        dashCombos = 0;
+        //Disabling combo functionality for now
+        //dashCombos = 0;
     }
 
     void Update()
@@ -65,13 +66,16 @@ public class GameManager : MonoBehaviour
 
         scoreCounter.GetComponent<TMP_Text>().text = score.ToString();
 
-        if (dashCombos > 0)
+        //Disabling combo functionality for now
+        /*
+        if(dashCombos > 0)
         {
             comboTracker.GetComponent<TMP_Text>().text = "x" + dashCombos.ToString();
         } else
         {
             comboTracker.GetComponent<TMP_Text>().text = "";
         }
+        */
     }
 
     /// <summary>
@@ -106,6 +110,7 @@ public class GameManager : MonoBehaviour
         tempNumCollected = 0;
         tempCollectableList.Clear();
 
-        dashCombos = 0; //Resets player's combos on death
+        //Disabling combo functionality for now
+        //dashCombos = 0; //Resets player's combos on death
     }
 }

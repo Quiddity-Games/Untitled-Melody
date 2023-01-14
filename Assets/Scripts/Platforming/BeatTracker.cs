@@ -87,7 +87,8 @@ public class BeatTracker : MonoBehaviour
 
                     GameManager.instance.dashCombos++;  //Increments the player's combo number
 
-                    playerDashedThisBeat = true;    //Saved to look at next beat and determine if the player's combo value should be reset
+                    //Disabling combo functionality for now
+                    //playerDashedThisBeat = true;    //Saved to look at next beat and determine if the player's combo value should be reset
                 }
 
                 onBeat = true;
@@ -99,8 +100,8 @@ public class BeatTracker : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-
-                    GameManager.instance.dashCombos = 0;    //Resets the player's combo number
+                    //Disabling combo functionality for now
+                    //GameManager.instance.dashCombos = 0;    //Resets the player's combo number
 
                     Debug.Log("Miss");
                 }
@@ -159,6 +160,8 @@ public class BeatTracker : MonoBehaviour
             beatFull = true;
             beatCountFull++;
 
+            //Disabling combo functionality for now
+            /*
             if(playerDashedThisBeat == false)
             {
                 GameManager.instance.dashCombos = 0;
@@ -166,6 +169,7 @@ public class BeatTracker : MonoBehaviour
             {
                 playerDashedThisBeat = false;
             }
+            */
         }
     }
 

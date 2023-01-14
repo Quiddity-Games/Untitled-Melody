@@ -22,13 +22,16 @@ public class Collectable : MonoBehaviour
             GameManager.instance.tempNumCollected++;
             GameManager.instance.tempCollectableList.Add(this.gameObject.GetComponent<Transform>().position);
 
+            //Disabling scoring functionality for now
+            /*
             GameManager.instance.score += Mathf.RoundToInt(Mathf.Pow(10, 1 + ((GameManager.instance.dashCombos - 1f) / 20f)));
             GameManager.instance.tempScore += Mathf.RoundToInt(Mathf.Pow(10, 1 + ((GameManager.instance.dashCombos - 1f) / 20f)));
+            */
 
             GameManager.instance.collectibleText.text = "" + GameManager.instance.numCollected + " / " + GameManager.instance.numCollectables;
 
-
-            Instantiate(collectableScoreDrop, this.GetComponent<Transform>().position, Quaternion.identity, canvas.GetComponent<Transform>());
+            //Disabling scoring functionality for now
+            //Instantiate(collectableScoreDrop, this.GetComponent<Transform>().position, Quaternion.identity, canvas.GetComponent<Transform>());
 
             //PlayerController.instance.dashCount++;
 
