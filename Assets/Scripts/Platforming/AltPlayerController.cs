@@ -123,7 +123,7 @@ public class AltPlayerController : MonoBehaviour
 
             //Drops an "afterimage" of the cursor wherever the player just clicked
             GameObject lastClickLocation = Instantiate(cursorTransform.gameObject);
-            lastClickLocation.GetComponent<Transform>().localScale = new Vector3(2.5f, 2.5f, 0);
+            lastClickLocation.GetComponent<Transform>().localScale = new Vector3(5f, 5f, 0);
 
             //Changes where this afterimage appears, based on whether the player clicked within the max dash distance or not
             if(Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)

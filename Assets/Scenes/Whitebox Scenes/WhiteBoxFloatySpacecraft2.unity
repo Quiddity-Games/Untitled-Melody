@@ -5301,8 +5301,8 @@ Transform:
   m_Children:
   - {fileID: 1714009295}
   - {fileID: 1717188439}
-  - {fileID: 11607676}
   - {fileID: 1304105772}
+  - {fileID: 11607676}
   - {fileID: 1542797879}
   - {fileID: 248264418}
   - {fileID: 1149730515}
@@ -5319,11 +5319,12 @@ Transform:
   - {fileID: 484751472}
   - {fileID: 1208589980}
   - {fileID: 698130209}
+  - {fileID: 1316813149}
   - {fileID: 765182144}
   - {fileID: 745150167}
   - {fileID: 250951341}
   - {fileID: 2052561584}
-  - {fileID: 1316813149}
+  - {fileID: 1845567692}
   - {fileID: 1353333589}
   - {fileID: 1691933884}
   - {fileID: 704361902}
@@ -5349,7 +5350,6 @@ Transform:
   - {fileID: 812509239}
   - {fileID: 87891721}
   - {fileID: 953573049}
-  - {fileID: 1845567692}
   - {fileID: 1691479122}
   - {fileID: 833076175}
   - {fileID: 1523849654}
@@ -6567,7 +6567,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1126596391}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1304105773
 BoxCollider2D:
@@ -6735,7 +6735,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1126596391}
-  m_RootOrder: 24
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.09}
 --- !u!61 &1316813150
 BoxCollider2D:
@@ -7513,8 +7513,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400610318}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.67, y: -3.47, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -27.67, y: -2.56, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 891368925}
@@ -7622,7 +7622,7 @@ TrailRenderer:
   m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -11549,7 +11549,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1126596391}
-  m_RootOrder: 50
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1845567693
 BoxCollider2D:
