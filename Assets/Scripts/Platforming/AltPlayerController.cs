@@ -32,8 +32,8 @@ public class AltPlayerController : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        Debug.Log("Cursor Distance is: " + Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position).ToString()); //Used for testing what the maximum dash distance should be
+    {        
+        //Debug.Log("Cursor Distance is: " + Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position).ToString()); //Used for testing what the maximum dash distance should be
 
         //Cut  keyboard/horizontal movement for now
         /*

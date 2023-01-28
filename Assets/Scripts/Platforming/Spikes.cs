@@ -17,7 +17,10 @@ public class Spikes : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameManager.instance.OnDeath();
+        if(collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.OnDeath(this.gameObject.name);
+        }
         
         //Removed for now, b/c death functionality is being migrated to RespawnManager.cs
         /*

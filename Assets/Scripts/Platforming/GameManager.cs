@@ -83,8 +83,11 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Causes various things to happen when the player is "killed," or force to respawn
     /// </summary>
-    public void OnDeath()
+    public void OnDeath(string thisObjectCalledMe)
     {
+
+        Debug.Log("OnDeath() has been called by " + thisObjectCalledMe);
+
         stopHazardsMove = true;
 
         player.transform.position = new Vector2(Checkpoint.currentCheckpoint.transform.position.x, Checkpoint.currentCheckpoint.transform.position.y);    //Respawns the player at their most recent checkpoint
