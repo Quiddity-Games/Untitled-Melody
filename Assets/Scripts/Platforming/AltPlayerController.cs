@@ -24,6 +24,8 @@ public class AltPlayerController : MonoBehaviour
 
     public GameObject gameCamera;
 
+    public GameObject cursorAfterImage;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -122,8 +124,7 @@ public class AltPlayerController : MonoBehaviour
             isDashing = true;
 
             //Drops an "afterimage" of the cursor wherever the player just clicked
-            GameObject lastClickLocation = Instantiate(cursorTransform.gameObject);
-            lastClickLocation.GetComponent<Transform>().localScale = new Vector3(5f, 5f, 0);
+            GameObject lastClickLocation = Instantiate(cursorAfterImage);
 
             //Changes where this afterimage appears, based on whether the player clicked within the max dash distance or not
             if(Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)

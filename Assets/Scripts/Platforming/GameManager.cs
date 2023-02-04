@@ -34,8 +34,6 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
 
-        Screen.orientation = ScreenOrientation.LandscapeLeft;   //Forces the game to run in landscape
-
         player = GameObject.FindGameObjectWithTag("Player");
 
         movingHazards.AddRange(GameObject.FindGameObjectsWithTag("Moving Hazard")); //Fills out the moving hazard list with all moving hazard gameObjects in the level

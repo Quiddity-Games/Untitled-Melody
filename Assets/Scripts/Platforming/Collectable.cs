@@ -7,11 +7,11 @@ using TMPro;
 public class Collectable : MonoBehaviour
 {
     public GameObject collectableScoreDrop;
-    GameObject canvas;
+    //GameObject canvas;
 
     void Start()
     {
-        canvas = GameObject.FindGameObjectWithTag("World Space Canvas");
+        //canvas = GameObject.FindGameObjectWithTag("World Space Canvas");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
