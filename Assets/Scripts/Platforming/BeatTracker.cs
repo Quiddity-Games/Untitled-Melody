@@ -39,13 +39,13 @@ public class BeatTracker : MonoBehaviour
     float messageATriggerTime;
     float messageBTriggerTime;
     float messageCTriggerTime;
-    float messageDTriggerTime;
+    float countdownFinishTime;
     public GameObject fadingMessageTextObject;
-    public GameObject clickMessageTextObject;
+    public GameObject dashTutorialTextObject;
     bool messageATriggered;
     bool messageBTriggered;
     bool messageCTriggered;
-    bool messageDTriggered;
+    bool countdownFinished;
 
     // Start is called before the first frame update
     void Start()
@@ -70,22 +70,22 @@ public class BeatTracker : MonoBehaviour
         messageATriggerTime = (0.5f * twoBeatsLength);
         messageBTriggerTime = (2.5f * twoBeatsLength);
         messageCTriggerTime = (4.5f * twoBeatsLength);
-        messageDTriggerTime = (8f * twoBeatsLength);
+        countdownFinishTime = (8f * twoBeatsLength);
         messageATriggered = false;
         messageBTriggered = false;
         messageCTriggered = false;
-        messageDTriggered = false;
+        countdownFinished = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (startedLevel)
+        if(startedLevel)
         {
             TriggerTextMessages();
-            
+
             //Resets the level if the player presses the "R" key. (This can also be done by clicking/tapping a button on the game screen)
-            if (Input.GetKeyDown(KeyCode.R))
+            if(Input.GetKeyDown(KeyCode.R))
             {
                 ResetLevel();
             }
@@ -95,47 +95,49 @@ public class BeatTracker : MonoBehaviour
             clock.text = "" + clockTime;
             clockBar.fillAmount = clockTime / songPlayer.clip.length;
             timeTracker += Time.deltaTime;
-            
+
             //Checks if/when a new pair of "metronome bars" should appear
             UpdateRhythmIndicator();
 
-            //Checks if the player is clicking/tapping on the beat
-            if (timeTracker > (nextBeatLocation - forgivenessRange) && timeTracker < (nextBeatLocation + forgivenessRange))
+            if(countdownFinished)
             {
-                if(Input.GetMouseButtonDown(0))
+                //Checks if the player is clicking/tapping on the beat
+                if(timeTracker > (nextBeatLocation - forgivenessRange) && timeTracker < (nextBeatLocation + forgivenessRange))
                 {
-                    Debug.Log("Hit");
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("Hit");
 
-                    //Disabling combo functionality for now
-                    //GameManager.instance.dashCombos++;  //Increments the player's combo number
-                    //playerDashedThisBeat = true;    //Saved to look at next beat and determine if the player's combo value should be reset
+                            //Disabling combo functionality for now
+                            //GameManager.instance.dashCombos++;  //Increments the player's combo number
+                            //playerDashedThisBeat = true;    //Saved to look at next beat and determine if the player's combo value should be reset
+                    }
+
+                    //Sets what color the bar will be if the player clicks on this frame
+                    barDebugColor = Color.yellow;
+
+                    onBeat = true;
+                } else
+                {
+                    if(Input.GetMouseButtonDown(0))
+                    {
+                        Debug.Log("Miss");
+
+                        //Disabling combo functionality for now
+                        //GameManager.instance.dashCombos = 0;    //Resets the player's combo number
+                    }
+
+                    barDebugColor = Color.red;
+
+                    onBeat = false;
                 }
 
-                //Sets what color the bar will be if the player clicks on this frame
-                barDebugColor = Color.yellow;
-
-                onBeat = true;
-            }
-            else
-            {
-                if (Input.GetMouseButtonDown(0))
+                //Updates nextBeatLocation each time the current beat is passed
+                if(timeTracker > nextBeatLocation + forgivenessRange)
                 {
-                    Debug.Log("Miss");
-
-                    //Disabling combo functionality for now
-                    //GameManager.instance.dashCombos = 0;    //Resets the player's combo number
+                    nextBeatLocation += twoBeatsLength;
+                    canClick = true;    //Refreshes the player's attempt to click/dash
                 }
-
-                barDebugColor = Color.red;
-
-                onBeat = false;
-            }
-
-            //Updates nextBeatLocation each time the current beat is passed
-            if (timeTracker > nextBeatLocation + forgivenessRange)
-            {
-                nextBeatLocation += twoBeatsLength;
-                canClick = true;    //Refreshes the player's attempt to click/dash
             }
 
         } else
@@ -186,7 +188,7 @@ public class BeatTracker : MonoBehaviour
             }
 
         } else if(timeTracker >= messageCTriggerTime
-          && timeTracker < messageDTriggerTime)
+          && timeTracker < countdownFinishTime)
         {
             Debug.Log("Message C!");
 
@@ -199,15 +201,15 @@ public class BeatTracker : MonoBehaviour
                 messageC.GetComponent<TMP_Text>().text = "1...";
             }
 
-        } else if(timeTracker >= messageDTriggerTime)
+        } else if(timeTracker >= countdownFinishTime)
         {
             Debug.Log("Message D!");
 
-            if(messageDTriggered == false)
+            if(countdownFinished == false)
             {
-                messageDTriggered = true;
+                countdownFinished = true;
 
-                GameObject messageD = Instantiate(clickMessageTextObject, screenSpaceCanvas.GetComponent<Transform>());
+                GameObject messageD = Instantiate(dashTutorialTextObject, screenSpaceCanvas.GetComponent<Transform>());
                 messageD.GetComponent<Transform>().localPosition = new Vector3(0, 120, 0);
                 messageD.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
             }
