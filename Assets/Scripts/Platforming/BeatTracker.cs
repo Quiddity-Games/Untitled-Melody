@@ -30,10 +30,13 @@ public class BeatTracker : MonoBehaviour
     float startTime;
 
     private float rhythmIndicatorTimer;
-    public static bool needNewRhythmIndicatorBars;
+    public static bool needNewRhythmIndicatorBars1;
+    public static bool needNewRhythmIndicatorBars2;
     public GameObject bar;
     public bool barDebugMode;  //A debug tool to help the developer test the rhythm "forgiveness" value and see whether a pair of bars will count as a hit or not before clicking
     private Color barDebugColor;
+    GameObject newBarL;
+    GameObject newBarR;
 
     //Times at which a series of text messages will appear onscreen as the player begins the level
     float messageATriggerTime;
@@ -58,7 +61,7 @@ public class BeatTracker : MonoBehaviour
 
         twoBeatsLength = 60f / bpm;
         nextBeatLocation = twoBeatsLength + (twoBeatsLength / 4f);    //Added to have the "beat" land on the second and fourth beats of each measure
-        rhythmIndicatorTimer -= ((7.5f * twoBeatsLength)); //Offsets rhythmIndicatorTimer so that the bars don't start appearing until the percussion beats of "wishing well" begin, roughly four measures in
+        rhythmIndicatorTimer -= ((8f * twoBeatsLength)); //Offsets rhythmIndicatorTimer so that the bars don't start appearing until the percussion beats of "wishing well" begin, roughly four measures in
 
         clockTime = songPlayer.clip.length;
 
@@ -221,13 +224,21 @@ public class BeatTracker : MonoBehaviour
     /// </summary>
     void UpdateRhythmIndicator()
     {
-        needNewRhythmIndicatorBars = false;
+        needNewRhythmIndicatorBars1 = false;
+        needNewRhythmIndicatorBars2 = false;
         rhythmIndicatorTimer += Time.deltaTime;
+
+        if(rhythmIndicatorTimer >= twoBeatsLength / 2
+            && newBarL == null
+            && newBarR == null)
+        {
+            needNewRhythmIndicatorBars1 = true;
+        }
 
         if(rhythmIndicatorTimer >= twoBeatsLength)
         {
             rhythmIndicatorTimer -= twoBeatsLength;
-            needNewRhythmIndicatorBars = true;
+            needNewRhythmIndicatorBars2 = true;
 
             //Disabling combo functionality for now
             /*
@@ -241,11 +252,26 @@ public class BeatTracker : MonoBehaviour
             */
         }
 
-        //Spawns "metronome bar" UI to help the player visualize when the beat is
-        if(needNewRhythmIndicatorBars)
+        if(needNewRhythmIndicatorBars1)
         {
-            StartCoroutine(RhythmIndicatorBarVisual(new Vector3(-4f, 4, 0)));
-            StartCoroutine(RhythmIndicatorBarVisual(new Vector3(4f, 4, 0)));
+            newBarL = Instantiate(bar, new Vector3(-4f, 4, 0), Quaternion.identity);
+            newBarL.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
+            newBarL.GetComponent<RectTransform>().anchoredPosition = new Vector3(-4f, 4, 0);
+
+            newBarR = Instantiate(bar, new Vector3(4f, 4, 0), Quaternion.identity);
+            newBarR.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
+            newBarR.GetComponent<RectTransform>().anchoredPosition = new Vector3(4f, 4, 0);
+
+        }
+
+        //Spawns "metronome bar" UI to help the player visualize when the beat is
+        if(needNewRhythmIndicatorBars2)
+        {
+            //StartCoroutine(RhythmIndicatorBarVisual(new Vector3(-4f, 4, 0)));
+            //StartCoroutine(RhythmIndicatorBarVisual(new Vector3(4f, 4, 0)));
+
+            StartCoroutine(MoveRhythmIndicatorBarVisual(newBarL));
+            StartCoroutine(MoveRhythmIndicatorBarVisual(newBarR));
         }
     }
 
@@ -307,6 +333,67 @@ public class BeatTracker : MonoBehaviour
             }
 
             Destroy(newBar);
+        }
+
+        yield return 0;
+    }
+
+    /// <summary>
+    /// New coroutine, WIP!
+    /// </summary>
+    /// <param name="startPos"></param>
+    /// <returns></returns>
+    IEnumerator MoveRhythmIndicatorBarVisual(GameObject bar)
+    {
+        Vector3 startPos = bar.GetComponent<Transform>().localPosition;
+        Vector3 endPos = new Vector3(0, startPos.y, 0);
+
+        bool instaDestroyBar = true;   //Used to determine whether/not a bar should be instantly destroyed, or allowed to fade away in place for a moment (based on if player has clicked or not)
+
+        float t = 0;
+
+        while(t < 1)
+        {
+            bar.GetComponent<RectTransform>().anchoredPosition = Vector3.LerpUnclamped(startPos, endPos, linearCurve.Evaluate(t));
+            t += Time.deltaTime / (twoBeatsLength/4);
+            //t += Time.deltaTime / beatInterval;
+
+            //Changes bar color _before_ player clicks, but only if debug mode is on
+            if(barDebugMode == true)
+            {
+                bar.GetComponent<Image>().color = barDebugColor;
+            }
+
+            if(Input.GetMouseButtonDown(0))
+            {
+                bar.GetComponent<Image>().color = barDebugColor;    //Changes the bar's color after the player has clicked, so they can see whether/not they hit it
+                t = 1;
+
+                instaDestroyBar = false;
+            }
+
+            yield return 0;
+        }
+
+        //Either destroys the bars, or causes it to fade away _then_ destroy, depending on whether or not the player "hits" it before it disappears
+        if(instaDestroyBar == true)
+        {
+            Destroy(bar);
+
+        }
+        else
+        {
+            float alpha = bar.GetComponent<Image>().color.a;
+
+            while(alpha >= 0)
+            {
+                bar.GetComponent<Image>().color = new Color(bar.GetComponent<Image>().color.r, bar.GetComponent<Image>().color.g, bar.GetComponent<Image>().color.b, alpha);
+                alpha -= 0.02f; //Note to Self: Maybe for faster rhythms/songs, the alpha should fade faster, b/c more bars are coming in faster?
+
+                yield return 0;
+            }
+
+            Destroy(bar);
         }
 
         yield return 0;
