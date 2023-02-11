@@ -11,12 +11,13 @@ public class BeatTracker : MonoBehaviour
     public GameObject welcomeMessage;
     public AnimationCurve linearCurve;
     private GameObject playerCanvas;
+    private GameObject screenSpaceCanvas;
     public AudioSource songPlayer;
     public bool startedLevel;
 
     public float timeTracker;
     float nextBeatLocation; //The "location" of the next beat on the timeline. Periodically pushed ahead as the music continues in order to reflect when the next beat will be.
-    private float beatLength;   //The length in seconds between each beat
+    private float twoBeatsLength;   //The length in seconds between two beats in the song's tempo (the pace at which the drums in "wishing well" -- the ones that the player needs to match -- hit)
     public float forgivenessRange;  //The amount of time in seconds that the player can be "early" or "late" in hitting the beat, but still have it count as a successful dash
     public bool onBeat;
     public float bpm;
@@ -34,6 +35,18 @@ public class BeatTracker : MonoBehaviour
     public bool barDebugMode;  //A debug tool to help the developer test the rhythm "forgiveness" value and see whether a pair of bars will count as a hit or not before clicking
     private Color barDebugColor;
 
+    //Times at which a series of text messages will appear onscreen as the player begins the level
+    float messageATriggerTime;
+    float messageBTriggerTime;
+    float messageCTriggerTime;
+    float messageDTriggerTime;
+    public GameObject fadingMessageTextObject;
+    public GameObject clickMessageTextObject;
+    bool messageATriggered;
+    bool messageBTriggered;
+    bool messageCTriggered;
+    bool messageDTriggered;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,13 +56,25 @@ public class BeatTracker : MonoBehaviour
         songPlayer.Stop();
         songPlayer.volume = .5f;
 
-        beatLength = 60f / bpm;
-        nextBeatLocation = beatLength + (beatLength / 4f);    //Added to have the "beat" land on the second and fourth beats of each measure
-        rhythmIndicatorTimer -= (beatLength / 2f) + 1f; //Offsets rhythmIndicatorTimer so that the bars of the rhythm indicator collide right on the beat
+        twoBeatsLength = 60f / bpm;
+        nextBeatLocation = twoBeatsLength + (twoBeatsLength / 4f);    //Added to have the "beat" land on the second and fourth beats of each measure
+        rhythmIndicatorTimer -= ((7.5f * twoBeatsLength)); //Offsets rhythmIndicatorTimer so that the bars don't start appearing until the percussion beats of "wishing well" begin, roughly four measures in
 
         clockTime = songPlayer.clip.length;
+
         playerCanvas = GameObject.Find("PlayerCanvas");
+        screenSpaceCanvas = GameObject.Find("Screen Space Canvas");
+
         canClick = true;
+
+        messageATriggerTime = (0.5f * twoBeatsLength);
+        messageBTriggerTime = (2.5f * twoBeatsLength);
+        messageCTriggerTime = (4.5f * twoBeatsLength);
+        messageDTriggerTime = (8f * twoBeatsLength);
+        messageATriggered = false;
+        messageBTriggered = false;
+        messageCTriggered = false;
+        messageDTriggered = false;
     }
 
     // Update is called once per frame
@@ -57,6 +82,8 @@ public class BeatTracker : MonoBehaviour
     {
         if (startedLevel)
         {
+            TriggerTextMessages();
+            
             //Resets the level if the player presses the "R" key. (This can also be done by clicking/tapping a button on the game screen)
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -107,7 +134,7 @@ public class BeatTracker : MonoBehaviour
             //Updates nextBeatLocation each time the current beat is passed
             if (timeTracker > nextBeatLocation + forgivenessRange)
             {
-                nextBeatLocation += beatLength;
+                nextBeatLocation += twoBeatsLength;
                 canClick = true;    //Refreshes the player's attempt to click/dash
             }
 
@@ -126,6 +153,68 @@ public class BeatTracker : MonoBehaviour
     }
 
     /// <summary>
+    /// Checks for, and triggers, any player-facing text messages when they're set to happen.
+    /// </summary>
+    void TriggerTextMessages()
+    {
+        if (timeTracker >= messageATriggerTime
+            && timeTracker < messageBTriggerTime)
+        {
+            Debug.Log("Message A!");
+
+            if(messageATriggered == false)
+            {
+                messageATriggered = true;
+
+                GameObject messageA = Instantiate(fadingMessageTextObject, screenSpaceCanvas.GetComponent<Transform>());
+                messageA.GetComponent<Transform>().localPosition = new Vector3(0, 64, 0);
+                messageA.GetComponent<TMP_Text>().text = "3...";
+            }
+
+        } else if(timeTracker >= messageBTriggerTime
+            && timeTracker < messageCTriggerTime)
+        {
+            Debug.Log("Message B!");
+
+            if(messageBTriggered == false)
+            {
+                messageBTriggered = true;
+
+                GameObject messageB = Instantiate(fadingMessageTextObject, screenSpaceCanvas.GetComponent<Transform>());
+                messageB.GetComponent<Transform>().localPosition = new Vector3(0, 64, 0);
+                messageB.GetComponent<TMP_Text>().text = "2...";
+            }
+
+        } else if(timeTracker >= messageCTriggerTime
+          && timeTracker < messageDTriggerTime)
+        {
+            Debug.Log("Message C!");
+
+            if(messageCTriggered == false)
+            {
+                messageCTriggered = true;
+
+                GameObject messageC = Instantiate(fadingMessageTextObject, screenSpaceCanvas.GetComponent<Transform>());
+                messageC.GetComponent<Transform>().localPosition = new Vector3(0, 64, 0);
+                messageC.GetComponent<TMP_Text>().text = "1...";
+            }
+
+        } else if(timeTracker >= messageDTriggerTime)
+        {
+            Debug.Log("Message D!");
+
+            if(messageDTriggered == false)
+            {
+                messageDTriggered = true;
+
+                GameObject messageD = Instantiate(clickMessageTextObject, screenSpaceCanvas.GetComponent<Transform>());
+                messageD.GetComponent<Transform>().localPosition = new Vector3(0, 120, 0);
+                messageD.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
+            }
+        }
+    }
+
+    /// <summary>
     /// Checks if/when a new pair of "metronome bars" should appear.
     /// </summary>
     void UpdateRhythmIndicator()
@@ -133,9 +222,9 @@ public class BeatTracker : MonoBehaviour
         needNewRhythmIndicatorBars = false;
         rhythmIndicatorTimer += Time.deltaTime;
 
-        if(rhythmIndicatorTimer >= beatLength)
+        if(rhythmIndicatorTimer >= twoBeatsLength)
         {
-            rhythmIndicatorTimer -= beatLength;
+            rhythmIndicatorTimer -= twoBeatsLength;
             needNewRhythmIndicatorBars = true;
 
             //Disabling combo functionality for now
@@ -178,7 +267,7 @@ public class BeatTracker : MonoBehaviour
         while (t < 1)
         {
             newBar.GetComponent<RectTransform>().anchoredPosition = Vector3.LerpUnclamped(startPos, endPos, linearCurve.Evaluate(t));
-            t += Time.deltaTime * beatLength;
+            t += Time.deltaTime * twoBeatsLength;
             //t += Time.deltaTime / beatInterval;
 
             //Changes bar color _before_ player clicks, but only if debug mode is on

@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CollectableScoreDrop : MonoBehaviour
+public class TextUIFade : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        this.GetComponent<TMP_Text>().text = Mathf.RoundToInt(Mathf.Pow(10, 1 + ((GameManager.instance.dashCombos - 1f) / 20f))).ToString() + "pts";
-        StartCoroutine(ScoreDropFadeAndDestroy());
+        //this.GetComponent<TMP_Text>().text = Mathf.RoundToInt(Mathf.Pow(10, 1 + ((GameManager.instance.dashCombos - 1f) / 20f))).ToString() + "pts";
+        StartCoroutine(FadeAndDestroy());
     }
 
     void Update()
@@ -18,7 +18,7 @@ public class CollectableScoreDrop : MonoBehaviour
         this.GetComponent<Transform>().position = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y + (5 * Time.deltaTime), this.GetComponent<Transform>().position.z);
     }
 
-    private IEnumerator ScoreDropFadeAndDestroy()
+    private IEnumerator FadeAndDestroy()
     {
         float alpha = this.GetComponent<TMP_Text>().color.a;
 
