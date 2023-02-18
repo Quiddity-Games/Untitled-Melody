@@ -21,13 +21,15 @@ public class Checkpoint : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && currentCheckpoint != gameObject)
+        if (collision.gameObject.CompareTag("Player"))
         {
             currentCheckpoint = gameObject;
             checkPointBurst.Emit(20);
 
             GameManager.instance.tempNumCollected = 0;
             GameManager.instance.tempCollectableList.Clear();
+
+            GameManager.instance.tempScore = 0;
         }
     }
 }

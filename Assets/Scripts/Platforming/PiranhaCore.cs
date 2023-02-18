@@ -44,7 +44,10 @@ public class PiranhaCore : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        GameManager.instance.OnDeath();
+        if(col.gameObject.CompareTag("Player"))
+        {
+            GameManager.instance.OnDeath(this.gameObject.name);
+        }
 
         //Removed for now, b/c death functionality is being migrated to RespawnManager.cs
         /*

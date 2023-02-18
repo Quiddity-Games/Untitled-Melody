@@ -19,6 +19,16 @@ public class GameManager : MonoBehaviour
     public int tempNumCollected;
     public List<Vector3> tempCollectableList;
 
+    public int score;
+    public int tempScore;
+    public GameObject scoreCounter;
+    public int scoreDeathPenalty;
+
+    public int dashCombos;
+    public GameObject comboTracker;
+
+    public GameObject gameCamera;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,13 +52,42 @@ public class GameManager : MonoBehaviour
         collectibleText.text = "" + numCollected + " / " + numCollectables;
 
         tempCollectableList = new List<Vector3>();
+
+        score = 0;
+
+        //Disabling combo functionality for now
+        //dashCombos = 0;
+    }
+
+    void Update()
+    {
+        if (score < 0)
+        {
+            score = 0;
+        }
+
+        scoreCounter.GetComponent<TMP_Text>().text = score.ToString();
+
+        //Disabling combo functionality for now
+        /*
+        if(dashCombos > 0)
+        {
+            comboTracker.GetComponent<TMP_Text>().text = "x" + dashCombos.ToString();
+        } else
+        {
+            comboTracker.GetComponent<TMP_Text>().text = "";
+        }
+        */
     }
 
     /// <summary>
     /// Causes various things to happen when the player is "killed," or force to respawn
     /// </summary>
-    public void OnDeath()
+    public void OnDeath(string thisObjectCalledMe)
     {
+
+        Debug.Log("OnDeath() has been called by " + thisObjectCalledMe);
+
         stopHazardsMove = true;
 
         player.transform.position = new Vector2(Checkpoint.currentCheckpoint.transform.position.x, Checkpoint.currentCheckpoint.transform.position.y);    //Respawns the player at their most recent checkpoint
@@ -63,6 +102,9 @@ public class GameManager : MonoBehaviour
         numCollected -= tempNumCollected;
         tempNumCollected = 0;
 
+        score -= (tempScore + scoreDeathPenalty);   //Subtracts the point value of all the fragments the player collected between now and their last spawn, as well as an extra penalty for dying
+        tempScore = 0;
+
         for(int i = 0; i < tempCollectableList.Count; i++)
         {
             Instantiate(collectable, tempCollectableList[i], Quaternion.identity);
@@ -72,5 +114,10 @@ public class GameManager : MonoBehaviour
 
         tempNumCollected = 0;
         tempCollectableList.Clear();
+
+        //Disabling combo functionality for now
+        //dashCombos = 0; //Resets player's combos on death
+
+        gameCamera.GetComponent<CameraFollow>().smoothSpeed = gameCamera.GetComponent<CameraFollow>().checkpointSmoothSpeed;   //Slows down camera smooth speed so that the move back to the checkpoint isn't as visually jarring
     }
 }
