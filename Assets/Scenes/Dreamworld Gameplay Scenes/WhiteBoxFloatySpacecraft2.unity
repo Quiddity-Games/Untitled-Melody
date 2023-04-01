@@ -3390,12 +3390,11 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   songPlayer: {fileID: 0}
-  startedLevel: 0
+  startedLevelCountdown: 0
   timeTracker: 0
   forgivenessRange: 0.4
   onBeat: 0
   bpm: 51
-  clock: {fileID: 720015670}
   clockTime: 0
   clockBar: {fileID: 393577220}
   canClick: 0
@@ -3639,8 +3638,8 @@ Transform:
   - {fileID: 1144992057}
   - {fileID: 1330337438}
   - {fileID: 677497587}
-  - {fileID: 1850047092}
   - {fileID: 1733707940}
+  - {fileID: 1850047092}
   - {fileID: 500386121}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -5243,28 +5242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c6d33ebcf2713479aabb9cbb129278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1400610322}
-  acceleration: 50
-  groundLinearDrag: 5
-  maxMoveSpeed: 6
-  jumpForce: 14
-  airLinearDrag: 2.5
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
-  playerSprite: {fileID: 1400610320}
-  wallSlidingSpeed: 1
-  xWallForce: 10
-  yWallForce: 2
-  wallJumpTime: 0.2
-  cursorTransform: {fileID: 891368925}
-  dashForce: 25
-  shouldDash: 0
-  dashMod: 1
-  maxDashes: 1000
-  dashCount: 1
-  beatCursor: {fileID: 0}
-  dashingPower: 50
-  dashingTime: 0.2
 --- !u!96 &1400610324
 TrailRenderer:
   serializedVersion: 2
