@@ -28,7 +28,7 @@ public class Menus : MonoBehaviour
             pauseMenu.SetActive(false);
             Time.timeScale = 1;
 
-            if(BeatTracker.instance.startedLevel == true)
+            if(BeatTracker.instance.startedLevelCountdown == true)
             {
                 BeatTracker.instance.songPlayer.Play();
             }
