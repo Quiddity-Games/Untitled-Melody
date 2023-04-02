@@ -54,7 +54,7 @@ public class AltPlayerController : MonoBehaviour
         cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
 
         //Changes the cursor's color depending on the game state
-        if(BeatTracker.instance.canClick)
+        if(BeatTracker.instance.canDash)
         {
             //Changes the cursor's color on-beat
             if(BeatTracker.instance.onBeat)
@@ -88,9 +88,9 @@ public class AltPlayerController : MonoBehaviour
         */
         
         // Determine if the player wants to dash
-        if(Input.GetKeyDown(KeyCode.Mouse0) && BeatTracker.instance.canClick)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && BeatTracker.instance.canDash)
         {
-            BeatTracker.instance.canClick = false;   //Player's click is "spent" until the next beat
+            BeatTracker.instance.canDash = false;   //Player's click is "spent" until the next beat
             StartCoroutine(ForceDash());
         }
 

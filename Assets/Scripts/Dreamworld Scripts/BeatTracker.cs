@@ -22,7 +22,7 @@ public class BeatTracker : MonoBehaviour
     public float timeTracker;   //How much time has passed since the player started the level; incremented with each frame
     float startTime;    //The time at which the player started the level
 
-    public float clockTime; //Used to track how much time left in the song the player has to complete the level
+    public float clockTime; //Used to track how much time is left in the song, and thereby how much time the player has to complete the level
     public Image clockBar;
 
     public bool startedLevelCountdown;   //Changes based on whether/not the player has started the level
@@ -33,25 +33,26 @@ public class BeatTracker : MonoBehaviour
     public bool onBeat; //States whether or not the player has accurately clicked/tapped to the most recent beat
     public float bpm;   //"Beats per minute" of the song
     bool playerDashedThisBeat;  //States whether/not the player successfully dashed on the previous beat
-    public bool canClick;   //Determines if the player has "spent" their attempt to click/dash for the beat they're on
+    public bool canDash;   //Determines if the player has "spent" their attempt to click/dash for the beat they're on
 
     //Variables associated with the rhythm indicator (the pair of bars that appears above the player's head)
     private float rhythmIndicatorTimer; //Used to track when the rhythm indicator should spawn a new set of "metronome bars"
-    public static bool needNewRhythmIndicatorBars1;
-    public static bool needNewRhythmIndicatorBars2;
+    public static bool spawnNewRhythmIndicatorBars;
+    public static bool startMovingRhythmIndicatorBars;
     public GameObject bar;
     public bool barDebugMode;  //A debug tool to help the developer test the rhythm "forgiveness" value and see whether a pair of bars will count as a hit or not before clicking
     private Color barColor;
     GameObject newBarL;
     GameObject newBarR;
 
-    //Times at which a series of text messages will appear onscreen as the player begins the level
-    float messageATriggerTime;
-    float messageBTriggerTime;
-    float messageCTriggerTime;
+    //Times at which a series of text objects will appear onscreen as the player begins the level
+    float countdownTextTriggerTime3;
+    float countdownTextTriggerTime2;
+    float countdownTextTriggerTime1;
     float countdownFinishTime;
-    public GameObject fadingMessageTextObject;
-    public GameObject dashTutorialTextObject;
+
+    public GameObject fadingMessageTextObject;  //TextObject prefab that fades away briefly after appearing onscreen
+    public GameObject dashTutorialTextObject;   //TextObject prefab designed to disappear only after the player successfully completes a few dashes
     bool messageATriggered;
     bool messageBTriggered;
     bool messageCTriggered;
@@ -75,11 +76,11 @@ public class BeatTracker : MonoBehaviour
         playerCanvas = GameObject.Find("PlayerCanvas");
         screenSpaceCanvas = GameObject.Find("Screen Space Canvas");
 
-        canClick = true;
+        canDash = true;
 
-        messageATriggerTime = (0.5f * twoBeatsLength);
-        messageBTriggerTime = (2.5f * twoBeatsLength);
-        messageCTriggerTime = (4.5f * twoBeatsLength);
+        countdownTextTriggerTime3 = (0.5f * twoBeatsLength);
+        countdownTextTriggerTime2 = (2.5f * twoBeatsLength);
+        countdownTextTriggerTime1 = (4.5f * twoBeatsLength);
         countdownFinishTime = (8f * twoBeatsLength);
         messageATriggered = false;
         messageBTriggered = false;
@@ -149,7 +150,7 @@ public class BeatTracker : MonoBehaviour
                 if(timeTracker > nextBeatTime + forgivenessRange)
                 {
                     nextBeatTime += twoBeatsLength;
-                    canClick = true;    //Refreshes the player's attempt to click/dash
+                    canDash = true;    //Refreshes the player's attempt to click/dash
                 }
             }
 
@@ -172,8 +173,8 @@ public class BeatTracker : MonoBehaviour
     /// </summary>
     void TriggerTextMessages()
     {
-        if (timeTracker >= messageATriggerTime
-            && timeTracker < messageBTriggerTime)
+        if (timeTracker >= countdownTextTriggerTime3
+            && timeTracker < countdownTextTriggerTime2)
         {
             Debug.Log("Message A!");
 
@@ -186,8 +187,8 @@ public class BeatTracker : MonoBehaviour
                 messageA.GetComponent<TMP_Text>().text = "3...";
             }
 
-        } else if(timeTracker >= messageBTriggerTime
-            && timeTracker < messageCTriggerTime)
+        } else if(timeTracker >= countdownTextTriggerTime2
+            && timeTracker < countdownTextTriggerTime1)
         {
             Debug.Log("Message B!");
 
@@ -200,7 +201,7 @@ public class BeatTracker : MonoBehaviour
                 messageB.GetComponent<TMP_Text>().text = "2...";
             }
 
-        } else if(timeTracker >= messageCTriggerTime
+        } else if(timeTracker >= countdownTextTriggerTime1
           && timeTracker < countdownFinishTime)
         {
             Debug.Log("Message C!");
@@ -234,21 +235,21 @@ public class BeatTracker : MonoBehaviour
     /// </summary>
     void UpdateRhythmIndicator()
     {
-        needNewRhythmIndicatorBars1 = false;
-        needNewRhythmIndicatorBars2 = false;
+        spawnNewRhythmIndicatorBars = false;
+        startMovingRhythmIndicatorBars = false;
         rhythmIndicatorTimer += Time.deltaTime;
 
         if(rhythmIndicatorTimer >= twoBeatsLength / 2
             && newBarL == null
             && newBarR == null)
         {
-            needNewRhythmIndicatorBars1 = true;
+            spawnNewRhythmIndicatorBars = true;
         }
 
         if(rhythmIndicatorTimer >= twoBeatsLength)
         {
             rhythmIndicatorTimer -= twoBeatsLength;
-            needNewRhythmIndicatorBars2 = true;
+            startMovingRhythmIndicatorBars = true;
 
             //Disabling combo functionality for now
             /*
@@ -262,7 +263,7 @@ public class BeatTracker : MonoBehaviour
             */
         }
 
-        if(needNewRhythmIndicatorBars1)
+        if(spawnNewRhythmIndicatorBars)
         {
             newBarL = Instantiate(bar, new Vector3(-4f, 4, 0), Quaternion.identity);
             newBarL.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
@@ -275,7 +276,7 @@ public class BeatTracker : MonoBehaviour
         }
 
         //Spawns "metronome bar" UI to help the player visualize when the beat is
-        if(needNewRhythmIndicatorBars2)
+        if(startMovingRhythmIndicatorBars)
         {
             //StartCoroutine(RhythmIndicatorBarVisual(new Vector3(-4f, 4, 0)));
             //StartCoroutine(RhythmIndicatorBarVisual(new Vector3(4f, 4, 0)));
@@ -390,7 +391,7 @@ public class BeatTracker : MonoBehaviour
             yield return 0;
         }
 
-        //Either destroys the bars, or causes it to fade away _then_ destroy, depending on whether or not the player "hits" it before it disappears
+        //Either destroys the bar, or causes it to fade away _then_ destroy, depending on whether or not the player "hits" it before it disappears
         if(instaDestroyBar == true)
         {
             Destroy(bar);
