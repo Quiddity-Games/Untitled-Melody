@@ -285,6 +285,7 @@ public class BeatTracker : MonoBehaviour
         }
     }
 
+    /*
     /// <summary>
     /// Spawns a new pair of "metronome bars" to help the player visualize the rhythm.
     /// </summary>
@@ -347,6 +348,7 @@ public class BeatTracker : MonoBehaviour
 
         yield return 0;
     }
+    */
 
     /// <summary>
     /// New coroutine, WIP!
@@ -365,6 +367,7 @@ public class BeatTracker : MonoBehaviour
         while(t < 1)
         {
             bar.GetComponent<RectTransform>().anchoredPosition = Vector3.LerpUnclamped(startPos, endPos, linearCurve.Evaluate(t));
+
             t += Time.deltaTime / (twoBeatsLength/4);
             //t += Time.deltaTime / beatInterval;
 
@@ -376,7 +379,9 @@ public class BeatTracker : MonoBehaviour
 
             if(Input.GetMouseButtonDown(0))
             {
+
                 bar.GetComponent<Image>().color = barColor;    //Changes the bar's color after the player has clicked, so they can see whether/not they hit it
+
                 t = 1;
 
                 instaDestroyBar = false;
