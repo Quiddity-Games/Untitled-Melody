@@ -3397,9 +3397,9 @@ MonoBehaviour:
   forgivenessRange: 0.4
   onBeat: 0
   bpm: 51
-  canClick: 0
-  bar: {fileID: 5381223311931561768, guid: 87912d258528a8142935f37f8f8c9b9c, type: 3}
-  barDebugMode: 0
+  canDash: 0
+  metronomeBar: {fileID: 5381223311931561768, guid: 87912d258528a8142935f37f8f8c9b9c, type: 3}
+  metronomeBarDebugMode: 0
   fadingMessageTextObject: {fileID: 3299113272604523404, guid: edf5658fd09fc504a8465e0f323b6f2b, type: 3}
   dashTutorialTextObject: {fileID: 469584368569240078, guid: fcbabae2082bdae47831be118f2a70af, type: 3}
 --- !u!4 &1020232041
