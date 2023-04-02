@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Mathematics;
 
+/// <summary>
+/// The script responsible for controlling the player. (Named "alt" to differentiate it from a previous version of the player controller that used to be in the project.)
+/// </summary>
 public class AltPlayerController : MonoBehaviour
 {
-    public Transform cursorTransform;
-    private Vector2 dashDirection;
+    public Transform cursorTransform;   //Used to check the location of the player's cursor
+    private Vector2 dashDirection;  //Used to determine the direction in which the player will dash, based on where their cursor is
     bool isDashing;
-    //bool canClick;  //Used to determine if the player has "spent" their one click (dash attempt) they have for each beat
 
-    float dashForce;
-    public float dashForceMultiplier;
+    float dashForce;    //The force applied to the player when they dash
+    public float dashForceMultiplier;   //A coefficient value used in determining the force of each dash
     public float dashingTime;
     public float maxDashDistanceMultiplier; //Used to limit the distance of the dash to a certain max radius
 
@@ -28,8 +30,8 @@ public class AltPlayerController : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
-        //canClick = true;
+    {
+
     }
 
     // Update is called once per frame
@@ -54,7 +56,7 @@ public class AltPlayerController : MonoBehaviour
         cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
 
         //Changes the cursor's color depending on the game state
-        if(BeatTracker.instance.canClick)
+        if(BeatTracker.instance.canDash)
         {
             //Changes the cursor's color on-beat
             if(BeatTracker.instance.onBeat)
@@ -78,19 +80,11 @@ public class AltPlayerController : MonoBehaviour
             cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
             cursorTransform.localScale = Vector3.one;
         }
-
-        /*
-        // Resets the player's click
-        if(BeatTracker.instance.onBeat)
-        {
-            canClick = true;
-        }
-        */
         
         // Determine if the player wants to dash
-        if(Input.GetKeyDown(KeyCode.Mouse0) && BeatTracker.instance.canClick)
+        if(Input.GetKeyDown(KeyCode.Mouse0) && BeatTracker.instance.canDash)
         {
-            BeatTracker.instance.canClick = false;   //Player's click is "spent" until the next beat
+            BeatTracker.instance.canDash = false;   //Player's click is "spent" until the next beat
             StartCoroutine(ForceDash());
         }
 
@@ -208,7 +202,6 @@ public class AltPlayerController : MonoBehaviour
     /// </summary>
     void HorizontalMovement()
     {
-
         rb.AddForce(new Vector2(horizontalInput, 0f) * acceleration);
 
         if(Mathf.Abs(rb.velocity.x) > maxMoveSpeed)

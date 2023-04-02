@@ -3390,16 +3390,16 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   songPlayer: {fileID: 0}
-  startedLevelCountdown: 0
   timeTracker: 0
+  clockTime: 0
+  clockBar: {fileID: 393577220}
+  startedLevelCountdown: 0
   forgivenessRange: 0.4
   onBeat: 0
   bpm: 51
-  clockTime: 0
-  clockBar: {fileID: 393577220}
-  canClick: 0
-  bar: {fileID: 5381223311931561768, guid: 87912d258528a8142935f37f8f8c9b9c, type: 3}
-  barDebugMode: 0
+  canDash: 0
+  metronomeBar: {fileID: 5381223311931561768, guid: 87912d258528a8142935f37f8f8c9b9c, type: 3}
+  metronomeBarDebugMode: 0
   fadingMessageTextObject: {fileID: 3299113272604523404, guid: edf5658fd09fc504a8465e0f323b6f2b, type: 3}
   dashTutorialTextObject: {fileID: 469584368569240078, guid: fcbabae2082bdae47831be118f2a70af, type: 3}
 --- !u!4 &1020232041
@@ -5128,7 +5128,6 @@ GameObject:
   - component: {fileID: 1400610321}
   - component: {fileID: 1400610320}
   - component: {fileID: 1400610322}
-  - component: {fileID: 1400610323}
   - component: {fileID: 1400610324}
   - component: {fileID: 1400610326}
   - component: {fileID: 1400610327}
@@ -5230,18 +5229,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &1400610323
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400610318}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c6d33ebcf2713479aabb9cbb129278, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!96 &1400610324
 TrailRenderer:
   serializedVersion: 2
