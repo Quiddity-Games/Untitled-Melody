@@ -13,75 +13,31 @@ public class AltPlayerController : MonoBehaviour
     bool isDashing;
 
     float dashForce;    //The force applied to the player when they dash
-    public float dashForceMultiplier;   //A coefficient value used in determining the force of each dash
+    public float dashForceMultiplier;   //A coefficient value used when determining the force of each dash
     public float dashingTime;
     public float maxDashDistanceMultiplier; //Used to limit the distance of the dash to a certain max radius
 
-    float horizontalInput;
-
-    [SerializeField] Rigidbody2D rb;
-
-    [SerializeField] float acceleration;
-    [SerializeField] float maxMoveSpeed;
-
     public GameObject gameCamera;
 
-    public GameObject cursorAfterImage;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+    public GameObject cursorAfterImage; //A gameObject that briefly appears at the location where the player last clicked/tapped (or at the maximum distance away their dash can take them, if their click location was beyond that radius) so that they can compare the location of their click/tap with their resulting movement
 
     // Update is called once per frame
     void Update()
     {        
-        //Debug.Log("Cursor Distance is: " + Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position).ToString()); //Used for testing what the maximum dash distance should be
-
-        //Cut  keyboard/horizontal movement for now
-        /*
-        if(!isDashing)
-        {
-
-            // Check horizontal input
-            horizontalInput = GetInput().x;
-
-            // Horizontal Movement physics
-            HorizontalMovement();
-        }
-        */
-
         //Moves in-game cursor to the location of the player's computer cursor
         cursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 5));
 
-        //Changes the cursor's color depending on the game state
+        //Changes the cursor's color if the player hasn't yet "spent" their current dash attempt for the current beat
         if(BeatTracker.instance.canDash)
         {
-            //Changes the cursor's color on-beat
-            if(BeatTracker.instance.onBeat)
-            {
-                //Temporarily disabling cursor from pulsing to the beat, so we can test using only the "beat bars"
-                /*
-                cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
-                cursorTransform.localScale += Vector3.one * .005f / 2;
-                //beatCursor.transform.localScale += Vector3.one * .005f / 4;
-                */
-            }
-            else
-            {
-                cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
-                cursorTransform.localScale = Vector3.one;
-                // beatCursor.transform.localScale = Vector3.one;
-            }
+            cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         }
-        else
+        else //Changes the cursor's color if the player has spent their dash for this beat
         {
             cursorTransform.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
-            cursorTransform.localScale = Vector3.one;
         }
         
-        // Determine if the player wants to dash
+        // Determine if the player wants to dash, and hasn't spent their dash yet
         if(Input.GetKeyDown(KeyCode.Mouse0) && BeatTracker.instance.canDash)
         {
             BeatTracker.instance.canDash = false;   //Player's click is "spent" until the next beat
@@ -91,8 +47,7 @@ public class AltPlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Applies a force to the player character that pushes them in the direction of the cursor. 
-    /// Different from dashes in previous versions of the game in that it uses forces rather than velocities.
+    /// Applies a force to the player character that pushes them in the direction of the cursor.
     /// </summary>
     private IEnumerator ForceDash()
     {
@@ -108,11 +63,11 @@ public class AltPlayerController : MonoBehaviour
             dashForce = dashForceMultiplier * Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position);
         } else
         {
-            //Restricts the dash distance to the max radius when necessary
+            //Restricts the dash distance to the max radius when necessary, to ensure the player can't dash beyond a certain distance
             dashForce = dashForceMultiplier * maxDashDistanceMultiplier;
         }
 
-        //Apply Force
+        //Applies a force, but only if the player is "on beat"
         if(BeatTracker.instance.onBeat)
         {
             isDashing = true;
@@ -120,7 +75,7 @@ public class AltPlayerController : MonoBehaviour
             //Drops an "afterimage" of the cursor wherever the player just clicked
             GameObject lastClickLocation = Instantiate(cursorAfterImage);
 
-            //Changes where this afterimage appears, based on whether the player clicked within the max dash distance or not
+            //Changes the location of this afterimage so that it's within the player's "max dash radius," if needed
             if(Vector3.Distance(cursorTransform.position, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)
             {
                 lastClickLocation.GetComponent<Transform>().position = cursorTransform.position;
@@ -153,12 +108,8 @@ public class AltPlayerController : MonoBehaviour
 
             //Pause while the dash is underway
             yield return new WaitForSeconds(dashingTime);
-
-            //Resets gravity to full when dash is done
-            this.GetComponent<Rigidbody2D>().gravityScale = gravity;
-
+            
             isDashing = false;
-
         }
 
         //Resets player's trail color
@@ -167,7 +118,7 @@ public class AltPlayerController : MonoBehaviour
     }
 
     /// <summary>
-    /// Causes the gameObject showing where the player last clicked to fade away.
+    /// Causes the gameObject showing where the player last clicked/tapped to fade away.
     /// </summary>
     /// <param name="click"></param>
     /// <returns></returns>
@@ -186,27 +137,5 @@ public class AltPlayerController : MonoBehaviour
         Destroy(click);
 
         yield return 0;
-    }
-
-    /// <summary>
-    /// Get the player's input
-    /// </summary>
-    /// <returns>Returns a vector 2 of the player input</returns>
-    Vector2 GetInput()
-    {
-        return new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-    }
-
-    /// <summary>
-    /// Modify the player's horizontal velocity depending on key inputs
-    /// </summary>
-    void HorizontalMovement()
-    {
-        rb.AddForce(new Vector2(horizontalInput, 0f) * acceleration);
-
-        if(Mathf.Abs(rb.velocity.x) > maxMoveSpeed)
-        {
-            rb.velocity = new Vector2(Mathf.Sign(rb.velocity.x) * maxMoveSpeed, rb.velocity.y);
-        }
     }
 }

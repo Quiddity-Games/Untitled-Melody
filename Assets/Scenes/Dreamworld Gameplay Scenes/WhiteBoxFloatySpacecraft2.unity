@@ -2926,7 +2926,7 @@ Transform:
   m_GameObject: {fileID: 891368924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.5538, y: 3.7899, z: 0}
-  m_LocalScale: {x: 0.43849078, y: 0.43849078, z: 0.43849078}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1400610321}
@@ -5353,9 +5353,6 @@ MonoBehaviour:
   dashForceMultiplier: 60
   dashingTime: 0.65
   maxDashDistanceMultiplier: 22
-  rb: {fileID: 1400610322}
-  acceleration: 25
-  maxMoveSpeed: 6
   gameCamera: {fileID: 519420028}
   cursorAfterImage: {fileID: 1202555686096732715, guid: 0d4cac6a82fcfba44b7f8e1c58fdd830, type: 3}
 --- !u!58 &1400610327
