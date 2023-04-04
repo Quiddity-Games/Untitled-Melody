@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Makes a the attached gameObject bob up and down to add more visual appeal. Attached to all of the Collectable gameObjects.
+/// </summary>
 public class Bouncer : MonoBehaviour
 {
     private Vector3 startPos;
@@ -10,13 +13,12 @@ public class Bouncer : MonoBehaviour
 
     public float spdMod;
 
-    public bool waving = false;
-
     private float rot1;
 
     private float rot2;
 
     private float rot3;
+
     // Use this for initialization
     void Start()
     {
@@ -31,7 +33,7 @@ public class Bouncer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // transform.Rotate(rot1 * Time.deltaTime, rot2 * Time.deltaTime, rot3 * Time.deltaTime);
+        //transform.Rotate(rot1 * Time.deltaTime, rot2 * Time.deltaTime, rot3 * Time.deltaTime);
         transform.position = startPos + Vector3.up * Mathf.Sin(Time.time * spdMod) * mod;
     }
 }

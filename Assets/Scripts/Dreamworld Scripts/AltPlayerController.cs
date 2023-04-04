@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.Mathematics;
 
 /// <summary>
-/// The script responsible for controlling the player. (Named "alt" to differentiate it from a previous version of the player controller that used to be in the project.)
+/// The script responsible for controlling the player. (Named "alt" to differentiate it from a previous version of the player controller that used to be in the project.) Attached to the Player gameObject.
 /// </summary>
 public class AltPlayerController : MonoBehaviour
 {
