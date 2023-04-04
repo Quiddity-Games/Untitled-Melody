@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+/// <summary>
+/// Controls the behavior of the tutorial text that appears at the start of the level, and determines when the player no longer needs this text. Attached to the DashTutorialText prefab.
+/// </summary>
 public class DashTutorialText : MonoBehaviour
 {
-    int numOfSuccessfulDashes;
+    int numOfSuccessfulDashes;  //Checks how many dashes the player has successfully pulled off so far
 
     void Start()
     {
@@ -15,13 +18,14 @@ public class DashTutorialText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Increments the number of successful dashes when the player executes one
         if(Input.GetMouseButtonDown(0) == true
             && BeatTracker.instance.onBeat
             && numOfSuccessfulDashes < 3)
         {
             numOfSuccessfulDashes++;
 
-            //Causes the tutorial text to pulse the same color as the rhythm indicator does when the player gets a dash, to help draw a connection
+            //Causes the tutorial text to pulse the same color as the rhythm indicator does when the player gets a dash
             this.GetComponent<TMP_Text>().color = Color.yellow;
             StartCoroutine(ReturnToDefaultColor());
         }
@@ -34,6 +38,10 @@ public class DashTutorialText : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// A transition effect on the tutorial text to make the color change more "smooth"/gradual.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ReturnToDefaultColor()
     {
         Color startColor = this.GetComponent<TMP_Text>().color;
@@ -50,6 +58,10 @@ public class DashTutorialText : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fades out and removes the tutorial text when the player no longer needs it.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator FadeAndDestroy()
     {
         float alpha = this.GetComponent<TMP_Text>().color.a;

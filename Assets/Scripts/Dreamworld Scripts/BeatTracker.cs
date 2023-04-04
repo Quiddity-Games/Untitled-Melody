@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// The script responsible for determining what the song's tempo is and using that information to control various aspects of the game.
+/// The script responsible for determining what the song's tempo is and using that information to control various aspects of the game. Attached to the BeatTracker gameObject.
 /// </summary>
 public class BeatTracker : MonoBehaviour
 {
@@ -99,12 +99,6 @@ public class BeatTracker : MonoBehaviour
         if(startedLevelCountdown)
         {
             TriggerUIText();
-
-            //Resets the level if the player presses the "R" key
-            if(Input.GetKeyDown(KeyCode.R))
-            {
-                ResetLevel();
-            }
 
             timeTracker += Time.deltaTime;  //Updates the script's understanding of how much time has passed since the player began the level
 
@@ -414,14 +408,5 @@ public class BeatTracker : MonoBehaviour
         }
 
         yield return 0;
-    }
-
-    /// <summary>
-    /// Resets the level.
-    /// </summary>
-    public void ResetLevel()
-    {
-        Debug.Log("Restart triggered!");
-        clockTime = songPlayer.clip.length;
     }
 }

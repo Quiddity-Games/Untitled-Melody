@@ -7,6 +7,9 @@ using UnityEngine.UI;
 using Ink.Runtime;
 using TMPro;
 
+/// <summary>
+/// The script that handles all of the branching dialogue / "Texting scene" functionality using the Inkle plugin. Attached to the Dialogue UI Canvas gameObject.
+/// </summary>
 [Serializable] 
 public class Inkle : MonoBehaviour
 {

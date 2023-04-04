@@ -3,15 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Manages the loading/reloading of the level scene, primarily to allow the player to reset the level with the R key. Attached to the SceneManager gameObject.
+/// </summary>
 public class MySceneManager : MonoBehaviour
 {
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -19,6 +15,6 @@ public class MySceneManager : MonoBehaviour
         {
             GameManager.instance.numCollectables = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        } 
     }
 }
