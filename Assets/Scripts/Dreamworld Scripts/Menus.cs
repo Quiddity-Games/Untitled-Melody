@@ -11,29 +11,10 @@ public class Menus : MonoBehaviour
     public GameObject pauseMenu;
     public static bool paused;
 
-    // Update is called once per frame
-    void Update()
+    public void OnGamePause(bool onPause)
     {
-        //Pauses the game if the Esc key is pressed
-        if (Input.GetKeyDown(KeyCode.Escape) && !paused)
-        {
-            paused = true;
-            Time.timeScale = 0;
-            BeatTracker.instance.songPlayer.Pause();
-            pauseMenu.SetActive(true);
-
-        //Unpausing
-        } else if (Input.GetKeyDown(KeyCode.Escape) && paused) 
-        {
-            paused = false;
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1;
-
-            if(BeatTracker.instance.startedLevelCountdown == true)
-            {
-                BeatTracker.instance.songPlayer.Play();
-            }
-        }
+        paused = onPause;
+        pauseMenu.SetActive(onPause);
     }
 
     /// <summary>

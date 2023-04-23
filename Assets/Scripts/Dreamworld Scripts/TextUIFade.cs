@@ -9,16 +9,19 @@ using TMPro;
 /// </summary>
 public class TextUIFade : MonoBehaviour
 {
+    private TMP_Text _txt;
+
     // Start is called before the first frame update
     void Start()
     {
+        _txt = GetComponent<TMP_Text>();
         StartCoroutine(FadeAndDestroy());
     }
 
     void Update()
     {
         //Causes the text to float upward slightly
-        this.GetComponent<Transform>().position = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y + (5 * Time.deltaTime), this.GetComponent<Transform>().position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y + (5 * Time.deltaTime), transform.position.z);
     }
 
     /// <summary>
@@ -27,16 +30,16 @@ public class TextUIFade : MonoBehaviour
     /// <returns></returns>
     private IEnumerator FadeAndDestroy()
     {
-        float alpha = this.GetComponent<TMP_Text>().color.a;
+        float alpha = _txt.color.a;
 
         while(alpha >= 0)
         {
-            this.GetComponent<TMP_Text>().color = new Color(this.GetComponent<TMP_Text>().color.r, this.GetComponent<TMP_Text>().color.g, this.GetComponent<TMP_Text>().color.b, alpha);
+            _txt.color = new Color(_txt.color.r, _txt.color.g, _txt.color.b, alpha);
             alpha -= 0.01f;
 
             yield return 0;
         }
 
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 }

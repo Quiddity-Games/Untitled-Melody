@@ -8,12 +8,12 @@ using UnityEngine;
 public class PiranhaCore : MonoBehaviour
 {
     public float speed; //Speed at which the piranha can move
-    Rigidbody2D rb;
+    Rigidbody2D _rigidbody2D;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = this.GetComponent<Rigidbody2D>();
+        _rigidbody2D = this.GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
@@ -22,8 +22,8 @@ public class PiranhaCore : MonoBehaviour
     /// <param name="destination"></param>
     public void MovePiranhaCore(Vector3 destination)
     {
-        float xDistance = destination.x - this.GetComponent<Transform>().position.x;
-        float yDistance = destination.y - this.GetComponent<Transform>().position.y;
+        float xDistance = destination.x - transform.position.x;
+        float yDistance = destination.y - transform.position.y;
         float hypotenuseDistance = Vector2.Distance(new Vector2 (destination.x, destination.y), new Vector2(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y));
 
         float velocityXComponent = Mathf.Cos(Mathf.Acos(xDistance / hypotenuseDistance));
@@ -32,7 +32,7 @@ public class PiranhaCore : MonoBehaviour
         //Blocks the piranha from moving for one frame if the player is respawning on that frame (prevents the piranha from drifting in the player's direction after they have just killed them)
         if(GameManager.instance.stopHazardsMove == false)
         {
-            rb.velocity = new Vector2(velocityXComponent * speed * Time.deltaTime, velocityYComponent * speed * Time.deltaTime);
+            _rigidbody2D.velocity = new Vector2(velocityXComponent * speed * Time.deltaTime, velocityYComponent * speed * Time.deltaTime);
         } else
         {
             GameManager.instance.stopHazardsMove = false;

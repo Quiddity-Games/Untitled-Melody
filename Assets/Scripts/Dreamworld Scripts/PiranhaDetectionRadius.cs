@@ -21,7 +21,7 @@ public class PiranhaDetectionRadius : MonoBehaviour
     void Update()
     {
         //Moves the detection radius with the piranha's core, while still maintaining its own Z-position so it can visually appear "behind" the core
-        this.GetComponent<Transform>().position = new Vector3 (piranhaCore.GetComponent<Transform>().position.x, piranhaCore.GetComponent<Transform>().position.y, this.GetComponent<Transform>().position.z);
+        transform.position = new Vector3 (piranhaCore.transform.position.x, piranhaCore.transform.position.y, this.transform.position.z);
     }
 
     /// <summary>
