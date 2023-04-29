@@ -62,9 +62,24 @@ public class BeatTracker : MonoBehaviour
     public GameObject fadingMessageTextObject;  //TextObject prefab that fades away briefly after appearing onscreen
     public GameObject dashTutorialTextObject;   //TextObject prefab designed for tutorialization; disappears only after the player successfully completes a few dashes
 
+    private PlayerControl _playerControl;
     // Start is called before the first frame update
     void Start()
     {
+        _playerControl = new PlayerControl();
+        _playerControl.Dreamworld.Dash.performed += context =>
+        {
+            //Lets the player start the level if they have not already done so
+            if (!startedLevelCountdown)
+            {
+                welcomeMessage.SetActive(false);
+                songPlayer.Play();
+                startTime = Time.time;
+                startedLevelCountdown = true;
+            }
+        };
+        _playerControl.Enable();
+        
         instance = this;
 
         songPlayer = GetComponent<AudioSource>();
@@ -115,6 +130,7 @@ public class BeatTracker : MonoBehaviour
                 //Checks to see if the player clicking/tapping during this frame would count as being "on-beat"/successful
                 if(timeTracker > (nextBeatTime - forgivenessRange) && timeTracker < (nextBeatTime + forgivenessRange))
                 {
+                    /*
                     //Checks to see if the player has _actually_ clicked/tapped on this frame
                     if(Input.GetMouseButtonDown(0))
                     {
@@ -124,6 +140,7 @@ public class BeatTracker : MonoBehaviour
                         //GameManager.instance.dashCombos++;  //Increments the player's combo number
                         //playerDashedThisBeat = true;    //Saved to look at next beat and determine if the player's combo value should be reset
                     }
+                    */
 
                     metronomeBarColor = Color.yellow;   //Sets what color the bar will be if the player clicks/taps on this frame
 
@@ -131,6 +148,7 @@ public class BeatTracker : MonoBehaviour
 
                 } else
                 {
+                    /*
                     if(Input.GetMouseButtonDown(0))
                     {
                         Debug.Log("Missed the beat");
@@ -138,6 +156,7 @@ public class BeatTracker : MonoBehaviour
                         //Combo functionality, currently disabled due to playtesting feedback
                         //GameManager.instance.dashCombos = 0;    //Resets the player's combo number
                     }
+                    */
 
                     metronomeBarColor = Color.red;
 
@@ -152,18 +171,8 @@ public class BeatTracker : MonoBehaviour
                 }
             }
 
-        } else
-        {
-            //Lets the player start the level if they have not already done so
-            if (Input.GetMouseButtonDown(0))
-            {
-                welcomeMessage.SetActive(false);
-                songPlayer.Play();
-                startTime = Time.time;
-                startedLevelCountdown = true;
-            }
         }
-        
+
     }
 
     /// <summary>
@@ -297,6 +306,7 @@ public class BeatTracker : MonoBehaviour
                 bar.GetComponent<Image>().color = metronomeBarColor;
             }
 
+            /*
             if(Input.GetMouseButtonDown(0))
             {
 
@@ -306,6 +316,7 @@ public class BeatTracker : MonoBehaviour
 
                 instaDestroyBar = false;
             }
+            */
 
             yield return 0;
         }

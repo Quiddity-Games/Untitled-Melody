@@ -18,6 +18,7 @@ public class DashTutorialText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         //Increments the number of successful dashes when the player executes one
         if(Input.GetMouseButtonDown(0) == true
             && BeatTracker.instance.onBeat
@@ -29,6 +30,7 @@ public class DashTutorialText : MonoBehaviour
             this.GetComponent<TMP_Text>().color = Color.yellow;
             StartCoroutine(ReturnToDefaultColor());
         }
+        */
 
         //Removes tutorial text when it's clear that the player has figured out how the mechanic works
         if (numOfSuccessfulDashes >= 3)

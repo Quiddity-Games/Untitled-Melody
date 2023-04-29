@@ -11,11 +11,13 @@ public class ClickManager : MonoBehaviour
 
         private readonly Rigidbody2D _rigidbody2D;
 
+        private PlayerControl _playerControl;
+
         public readonly Vector2 Direction
         {
             get
             {
-                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - _rigidbody2D.position;
+                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(_playerControl.Dreamworld.MousePosition.ReadValue<Vector2>()) - _rigidbody2D.position;
                 dashDirection.Normalize();
                 return dashDirection;
             }
@@ -23,10 +25,12 @@ public class ClickManager : MonoBehaviour
 
         public Dash(Rigidbody2D rigidbody2D, float dashForceMultiplier = 10f, float maxDashDistance = 5f, float dashingTime = 0.25f)
         {
+            _playerControl = new PlayerControl();
             _rigidbody2D = rigidbody2D;
             DashForceMultiplier = dashForceMultiplier;
             MaxDashDistance = maxDashDistance;
             DashingTime = dashingTime;
+            _playerControl.Enable();
         }
     }
 
@@ -37,11 +41,13 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Dash _dash;
 
     private CameraFollow _cameraFollow;
+    private PlayerControl _playerControl;
 
     public Transform CursorTransform;
 
     // Declare a pool of lastClickLocation gameobjects
     private ObjectPool<GameObject> _cursorAfterImagePrefabPool;
+
 
     private void Start()
     {
@@ -54,6 +60,14 @@ public class ClickManager : MonoBehaviour
             obj.SetActive(false);
             return obj;
         }, item => { item.SetActive(false); });
+        _playerControl = new PlayerControl();
+        _playerControl.Dreamworld.Dash.performed += (context =>
+        {
+            BeatTracker.instance.CanDash = false; 
+            HandleClick();
+        });
+        
+        _playerControl.Dreamworld.Enable();
     }
 
     private IEnumerator VanishClickAfterImage(GameObject cursorPrefab)
