@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,12 +10,17 @@ using UnityEngine.UI;
 public class Menus : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public static bool paused;
+    public BoolVariable pause;
 
-    public void OnGamePause(bool onPause)
+    private void Start()
     {
-        paused = onPause;
-        pauseMenu.SetActive(onPause);
+        pause.OnValueChange += OnGamePause;
+    }
+
+    public void OnGamePause()
+    {
+        
+        pauseMenu.SetActive(pause.Value);
     }
 
     /// <summary>
@@ -22,7 +28,7 @@ public class Menus : MonoBehaviour
     /// </summary>
     public void IncreaseVolume()
     {
-        BeatTracker.instance.songPlayer.volume += .1f;
+        //BeatTracker.instance.songPlayer.volume += .1f;
     }
 
     /// <summary>
@@ -30,6 +36,6 @@ public class Menus : MonoBehaviour
     /// </summary>
     public void DecreaseVolume()
     {
-        BeatTracker.instance.songPlayer.volume -= .1f;
+      //  BeatTracker.instance.songPlayer.volume -= .1f;
     }
 }

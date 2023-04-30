@@ -48,7 +48,11 @@ public class ClickManager : MonoBehaviour
     // Declare a pool of lastClickLocation gameobjects
     private ObjectPool<GameObject> _cursorAfterImagePrefabPool;
 
+    public NoteTracker _NoteTracker;
 
+    [SerializeField] private bool canDash;
+    
+    
     private void Start()
     {
         _dash = new Dash(_rigidbody2D);
@@ -63,11 +67,19 @@ public class ClickManager : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += (context =>
         {
-            BeatTracker.instance.CanDash = false; 
+            if(canDash){
             HandleClick();
+            canDash = false;
+            }
+            
         });
-        
+
         _playerControl.Dreamworld.Enable();
+    }
+
+    public void Initialize()
+    {
+        _NoteTracker.offBeatTrigger += () => { canDash = true; };
     }
 
     private IEnumerator VanishClickAfterImage(GameObject cursorPrefab)
@@ -90,11 +102,12 @@ public class ClickManager : MonoBehaviour
 
     public async void HandleClick()
     {
+        
         _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
         float dashDistance = Mathf.Min(_dash.MaxDashDistance, Vector2.Distance(CursorTransform.position, _rigidbody2D.position));
         float dashForce = _dash.DashForceMultiplier * dashDistance;
 
-        if (!BeatTracker.instance.onBeat)
+        if (!_NoteTracker.onBeat)
         {
             _trailRenderer.startColor = Color.red;
             _trailRenderer.endColor = Color.red;
@@ -125,6 +138,7 @@ public class ClickManager : MonoBehaviour
         _rigidbody2D.gravityScale = 0f;
         _rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.AddForce(_dash.Direction * dashForce, ForceMode2D.Impulse);
+
 
         _trailRenderer.startColor = Color.yellow;
         _trailRenderer.endColor = Color.yellow;
