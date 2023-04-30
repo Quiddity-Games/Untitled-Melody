@@ -12,6 +12,7 @@ public class Menus : MonoBehaviour
     public GameObject pauseMenu;
     public BoolVariable pause;
 
+    public FloatVariable volume;
     private void Start()
     {
         pause.OnValueChange += OnGamePause;
@@ -19,7 +20,6 @@ public class Menus : MonoBehaviour
 
     public void OnGamePause()
     {
-        
         pauseMenu.SetActive(pause.Value);
     }
 
@@ -28,6 +28,7 @@ public class Menus : MonoBehaviour
     /// </summary>
     public void IncreaseVolume()
     {
+        volume.Value += .1f;
         //BeatTracker.instance.songPlayer.volume += .1f;
     }
 
@@ -36,6 +37,7 @@ public class Menus : MonoBehaviour
     /// </summary>
     public void DecreaseVolume()
     {
-      //  BeatTracker.instance.songPlayer.volume -= .1f;
+        volume.Value -= .1f;
+        //  BeatTracker.instance.songPlayer.volume -= .1f;
     }
 }

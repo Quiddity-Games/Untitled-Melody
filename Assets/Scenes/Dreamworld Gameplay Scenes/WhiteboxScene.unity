@@ -290,6 +290,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1545213157932253592, guid: e74e80f2f0872da41af3ee43c79f09db, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 11400000, guid: d17a85dafa5dc7a45a67e0defdca587b, type: 2}
+    - target: {fileID: 1545213157932253592, guid: e74e80f2f0872da41af3ee43c79f09db, type: 3}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 248786533}
@@ -621,6 +625,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6253987248133151839, guid: 2b4410d038db77c4487f73ae2bded5bc, type: 3}
+      propertyPath: volume
+      value: 
+      objectReference: {fileID: 11400000, guid: d17a85dafa5dc7a45a67e0defdca587b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b4410d038db77c4487f73ae2bded5bc, type: 3}
 --- !u!1001 &7846954487564656372

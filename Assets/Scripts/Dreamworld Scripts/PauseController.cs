@@ -17,9 +17,11 @@ public class PauseController : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Pause.performed += context =>
         {
+            Debug.Log("INPUT");
             if(!pause.Value)
             {
 
+                Debug.Log("Pause");
                 pause.Value = true;
                 Time.timeScale = 0;
                 onPause.Raise();
@@ -29,6 +31,7 @@ public class PauseController : MonoBehaviour
             else
             {
                 
+                Debug.Log("Unpause");
                 pause.Value = false;
                 Time.timeScale = 1;
                 onUnpause.Raise();
@@ -36,5 +39,7 @@ public class PauseController : MonoBehaviour
            
             }
         };
+        
+        _playerControl.Enable();
     }
 }
