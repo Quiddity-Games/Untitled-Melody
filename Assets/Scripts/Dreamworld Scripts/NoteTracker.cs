@@ -14,6 +14,10 @@ public class NoteTracker : ScriptableObject
     private float _bpm;
 
     public VoidCallback onBeatTrigger;
+    public VoidCallback onGoodTrigger;
+    public VoidCallback onGreatTrigger;
+    public VoidCallback onPerfectTrigger;
+
     public VoidCallback offBeatTrigger;
 
     
@@ -21,15 +25,33 @@ public class NoteTracker : ScriptableObject
 
     public bool onBeat;
 
+    [SerializeField] private float _timeTracker;
+
+
+    public bool inRange = false;
+    public bool inPerfectRange = false;
+    public bool inGoodRange = false;
+    public bool inGreatRange = false;
+
+    [SerializeField] private float bottomGoodRange = 0;
+    [SerializeField] private float bottomGreatRange = 0;
+    [SerializeField] private float bottomPerfectRange = 0;
+    [SerializeField] private float topGoodRange = 0;
+    [SerializeField] private float topGreatRange = 0;
+    [SerializeField] private float topPerfectRange = 0;
+    
+    
     public float bpm //"Beats per minute" of the song
     {
         set
         {
+            totalTime = 0;
             twoBeatsLength = 60f / bpm;
             nextBeatTime = twoBeatsLength + (twoBeatsLength / 4f);    //Added to have the "matchable rhythm" land on the second and fourth beats of each measure
             _bpm = value;
             timeTracker = 0;
-            forgivenessRange = 0.4f;
+           
+
         }
 
         get
@@ -37,22 +59,17 @@ public class NoteTracker : ScriptableObject
             return _bpm;
         }
     }
-
-    [SerializeField] private float _timeTracker;
-
-
-    public bool inRange = false;
-
-    public float bottomRange;
-    public float topRange;
     public float timeTracker
     {
         set
         {
-            bottomRange = nextBeatTime - forgivenessRange;
-            topRange = nextBeatTime + forgivenessRange;
-            inRange = (value > (nextBeatTime - forgivenessRange) &&
-                       value < (nextBeatTime + forgivenessRange));
+
+            
+            inPerfectRange = value > bottomPerfectRange && value < topPerfectRange;
+            inGreatRange = value > bottomGreatRange && value < topGreatRange && !inPerfectRange;
+            inGoodRange = value > bottomGoodRange && value < topGoodRange && !inGoodRange && !inPerfectRange;
+            inRange = inGoodRange || inGreatRange || inPerfectRange;
+            
             if (inRange != onBeat)
             {
                 onBeat = !onBeat;
@@ -60,22 +77,36 @@ public class NoteTracker : ScriptableObject
                 if (onBeat)
                 {
                     onBeatTrigger?.Invoke();
+                    if (inPerfectRange)
+                    {
+                        onPerfectTrigger?.Invoke();
+                    }
+                    else if (inGreatRange)
+                    {
+                        onGreatTrigger?.Invoke();
+                    }
+                    else
+                    {
+                        onGoodTrigger?.Invoke();
+                    }
                 }
                 else
                 {
                     offBeatTrigger?.Invoke();
                 }
-                
-                
-            }
-            
-            //Determines when the next beat of the matchable rhythm will be
-            if(value > nextBeatTime + forgivenessRange)
-            {
-                nextBeatTime += twoBeatsLength;
             }
             
             _timeTracker = value;
+            if(value > nextBeatTime + goodRange){
+            nextBeatTime += twoBeatsLength ;
+            bottomGoodRange = nextBeatTime - goodRange;
+            bottomGreatRange = nextBeatTime - greatRange;
+            bottomPerfectRange = nextBeatTime - perfectRange;
+            topGoodRange = nextBeatTime + goodRange;
+            topGreatRange = nextBeatTime + greatRange;
+            topPerfectRange = nextBeatTime + perfectRange;
+           }
+
             onTimeUpdate?.Invoke();
         }
         get
@@ -99,15 +130,21 @@ public class NoteTracker : ScriptableObject
         return twoBeatsLength;
     }
 
-    public float GetForgivenessRange()
+    public float GetGoodRange()
     {
-        return forgivenessRange;
+        return goodRange;
     }
     
+    public float GetGreatRange()
+    {
+        return greatRange;
+    }
     public bool startedLevelCountdown;   //Determines whether/not the player has started the level
 
     private float nextBeatTime; //The "location" in time of the next beat that the player can hit/miss, aka the "matchable rhythm" for the dash mechanic
     private float twoBeatsLength;   //The length in seconds between two beats in the song's tempo. (Important b/c the "matchable rhythm" for the dash mechanic occurs only once every *two* beats of the song's tempo)
-    private float forgivenessRange;  //The amount of time in seconds that the player can be "early" or "late" in hitting the beat, but still have it count as a successful hit
+    [SerializeField] private float goodRange;  //The amount of time in seconds that the player can be "early" or "late" in hitting the beat, but still have it count as a successful hit
+    [SerializeField] private float greatRange;
+    [SerializeField] private float perfectRange;
 
 }

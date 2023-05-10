@@ -117,6 +117,19 @@ public class ClickManager : MonoBehaviour
             return;
         }
 
+        if (_NoteTracker.inPerfectRange)
+        {
+            Debug.Log("Perfect Hit");
+        }
+        if (_NoteTracker.inGreatRange)
+        {
+            Debug.Log("Great Hit");
+        }
+        if (_NoteTracker.inGoodRange)
+        {
+            Debug.Log("Good Hit");
+        }
+
         // Get object from the pool
         GameObject cursorPrefab = await _cursorAfterImagePrefabPool.GetFromPoolAsync();
 

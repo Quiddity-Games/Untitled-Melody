@@ -47,16 +47,7 @@ public class BeatTracker : MonoBehaviour
         //TODO: Move to a Dash Handler
         _noteTracker.offBeatTrigger += () => CanDash = true;
         instance = this;
-
-
-
-        
         CanDash = true;
-        
-     
-        
-
-
     }
 
     // Update is called once per frame
@@ -65,20 +56,11 @@ public class BeatTracker : MonoBehaviour
         //When the player has clicked/tapped to begin the level
         if(startedLevelCountdown)
         {
-            
-
             _noteTracker.timeTracker += Time.deltaTime;  //Updates the script's understanding of how much time has passed since the player began the level
             //Checks if/when a new pair of "metronome bars" should appear
             _metronomeBar.UpdateRhythmIndicator();
-
-   
-               
-
-         
-            }
-
         }
-
     }
+}
 
 

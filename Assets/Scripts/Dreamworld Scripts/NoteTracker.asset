@@ -14,6 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGameStart: 0
   onBeat: 0
+  _timeTracker: 69.28429
+  inRange: 0
+  inPerfectRange: 0
+  inGoodRange: 0
+  inGreatRange: 0
+  bottomGoodRange: 69.30589
+  bottomGreatRange: 69.455894
+  bottomPerfectRange: 69.605896
+  topGoodRange: 70.105896
+  topGreatRange: 69.955894
+  topPerfectRange: 69.80589
   startTime: 0
-  totalTime: 0
+  totalTime: 206.86368
   startedLevelCountdown: 0
+  goodRange: 0.4
+  greatRange: 0.25
+  perfectRange: 0.1
