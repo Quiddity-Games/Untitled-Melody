@@ -12,22 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a112cd2a87a178f479e93246923f4a06, type: 3}
   m_Name: NoteTracker
   m_EditorClassIdentifier: 
-  isGameStart: 0
   onBeat: 0
-  _timeTracker: 69.28429
+  _timeTracker: 24.499527
   inRange: 0
-  inPerfectRange: 0
-  inGoodRange: 0
-  inGreatRange: 0
-  bottomGoodRange: 69.30589
-  bottomGreatRange: 69.455894
-  bottomPerfectRange: 69.605896
-  topGoodRange: 70.105896
-  topGreatRange: 69.955894
-  topPerfectRange: 69.80589
+  wasHit: 1
   startTime: 0
   totalTime: 206.86368
   startedLevelCountdown: 0
+  badRange: 0.5
   goodRange: 0.4
-  greatRange: 0.25
-  perfectRange: 0.1
+  greatRange: 0.3
+  perfectRange: 0.2

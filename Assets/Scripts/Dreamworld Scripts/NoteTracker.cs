@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Ink.Runtime;
@@ -7,51 +8,122 @@ using UnityEngine;
 public class NoteTracker : ScriptableObject
 {
 
+
+
+    public enum BeatTiming
+    {
+        EARLY, LATE, PERFECT
+    }
+    public enum BeatRating
+    {
+        MISS, BAD, GOOD, GREAT, PERFECT
+    }
     
-    //Todo: Consider moving to a different class or use events?
-    public bool isGameStart;
+ 
 
     private float _bpm;
 
     public VoidCallback onBeatTrigger;
-    public VoidCallback onGoodTrigger;
-    public VoidCallback onGreatTrigger;
-    public VoidCallback onPerfectTrigger;
+
+    public VoidCallback onMissTrigger;
+
+    public HitInfoCallback HitCallback;
 
     public VoidCallback offBeatTrigger;
 
-    
     public VoidCallback onTimeUpdate;
 
-    public bool onBeat;
 
     [SerializeField] private float _timeTracker;
 
+    public bool onBeat;
 
-    public bool inRange = false;
-    public bool inPerfectRange = false;
-    public bool inGoodRange = false;
-    public bool inGreatRange = false;
+    private bool inRange = false;
+    private bool wasHit = false;
 
-    [SerializeField] private float bottomGoodRange = 0;
-    [SerializeField] private float bottomGreatRange = 0;
-    [SerializeField] private float bottomPerfectRange = 0;
-    [SerializeField] private float topGoodRange = 0;
-    [SerializeField] private float topGreatRange = 0;
-    [SerializeField] private float topPerfectRange = 0;
-    
-    
+
+    [Serializable]
+    private class BeatRangeQueue
+    {
+        private Queue<BeatRange> ranges;
+
+        public BeatRangeQueue()
+        {
+            ranges = new Queue<BeatRange>();
+        }
+        public void Enqueue(BeatRange range)
+        {
+            ranges.Enqueue(range);
+        }
+        
+        public void IncrementBeats(float newBeatTime)
+        {
+            foreach(BeatRange range in ranges)
+            {
+                Debug.Log("Incremented");
+                range.IncrementRange(newBeatTime);
+            }
+        }
+
+        public BeatRating PollRating(float timing)
+        {
+            foreach(BeatRange range in ranges)
+            {
+                if (range.InRange(timing))
+                {
+                    return range.GetRating();
+                }
+            }
+
+            return BeatRating.MISS;
+        }
+    }
+
+    private class BeatRange
+    {
+        private float _maxRange;
+        private float _minRange;
+        private float _range;
+
+        private BeatRating _rating;
+        public BeatRange(float firstBeat, float range, BeatRating rating)
+        {
+            _maxRange = firstBeat + range;
+            _minRange = firstBeat - range;
+            _range = range;
+            _rating = rating;
+        }
+        public bool InRange(float time)
+        {
+            return (time > _minRange && time < _maxRange);
+        }
+
+        public BeatRating GetRating()
+        {
+            return _rating;
+        }
+        public void IncrementRange(float beatTime)
+        {
+            _maxRange = beatTime + _range;
+            _minRange = beatTime - _range;
+        }
+    }
+
+    private BeatRangeQueue range = new ();
     public float bpm //"Beats per minute" of the song
     {
         set
         {
+            Debug.Log("NEW BPM");
             totalTime = 0;
             twoBeatsLength = 60f / bpm;
             nextBeatTime = twoBeatsLength + (twoBeatsLength / 4f);    //Added to have the "matchable rhythm" land on the second and fourth beats of each measure
             _bpm = value;
             timeTracker = 0;
-           
-
+            range.Enqueue(new BeatRange(nextBeatTime, perfectRange, BeatRating.PERFECT));
+            range.Enqueue(new BeatRange(nextBeatTime, greatRange, BeatRating.GREAT));
+            range.Enqueue(new BeatRange(nextBeatTime, goodRange, BeatRating.GOOD));
+            range.Enqueue(new BeatRange(nextBeatTime, badRange, BeatRating.BAD));
         }
 
         get
@@ -59,54 +131,58 @@ public class NoteTracker : ScriptableObject
             return _bpm;
         }
     }
+
+    public struct HitInfo
+    {
+        public BeatRating rating;
+        public BeatTiming timing;
+
+    }
+    public void OnHit()
+    {
+        
+        wasHit = true;
+
+        HitInfo hitInfo = new HitInfo()
+        {
+            timing = _timeTracker > nextBeatTime ? BeatTiming.LATE : BeatTiming.EARLY,
+            rating = range.PollRating(_timeTracker)
+        };
+        
+        HitCallback?.Invoke(hitInfo);
+    }
+
     public float timeTracker
     {
         set
         {
-
-            
-            inPerfectRange = value > bottomPerfectRange && value < topPerfectRange;
-            inGreatRange = value > bottomGreatRange && value < topGreatRange && !inPerfectRange;
-            inGoodRange = value > bottomGoodRange && value < topGoodRange && !inGoodRange && !inPerfectRange;
-            inRange = inGoodRange || inGreatRange || inPerfectRange;
-            
+            BeatRating rate = range.PollRating(_timeTracker);
+            inRange = (rate != BeatRating.MISS);
+      
             if (inRange != onBeat)
             {
+                
                 onBeat = !onBeat;
 
                 if (onBeat)
                 {
                     onBeatTrigger?.Invoke();
-                    if (inPerfectRange)
-                    {
-                        onPerfectTrigger?.Invoke();
-                    }
-                    else if (inGreatRange)
-                    {
-                        onGreatTrigger?.Invoke();
-                    }
-                    else
-                    {
-                        onGoodTrigger?.Invoke();
-                    }
                 }
                 else
                 {
+                    if (!wasHit)
+                    {
+                        onMissTrigger?.Invoke();
+                    }
+                    wasHit = false;
+                    
+                    nextBeatTime += twoBeatsLength ;
+                    range.IncrementBeats(nextBeatTime);
                     offBeatTrigger?.Invoke();
                 }
             }
-            
-            _timeTracker = value;
-            if(value > nextBeatTime + goodRange){
-            nextBeatTime += twoBeatsLength ;
-            bottomGoodRange = nextBeatTime - goodRange;
-            bottomGreatRange = nextBeatTime - greatRange;
-            bottomPerfectRange = nextBeatTime - perfectRange;
-            topGoodRange = nextBeatTime + goodRange;
-            topGreatRange = nextBeatTime + greatRange;
-            topPerfectRange = nextBeatTime + perfectRange;
-           }
 
+            _timeTracker = value;
             onTimeUpdate?.Invoke();
         }
         get
@@ -130,19 +206,10 @@ public class NoteTracker : ScriptableObject
         return twoBeatsLength;
     }
 
-    public float GetGoodRange()
-    {
-        return goodRange;
-    }
     
-    public float GetGreatRange()
-    {
-        return greatRange;
-    }
-    public bool startedLevelCountdown;   //Determines whether/not the player has started the level
-
     private float nextBeatTime; //The "location" in time of the next beat that the player can hit/miss, aka the "matchable rhythm" for the dash mechanic
     private float twoBeatsLength;   //The length in seconds between two beats in the song's tempo. (Important b/c the "matchable rhythm" for the dash mechanic occurs only once every *two* beats of the song's tempo)
+    [SerializeField] private float badRange;  
     [SerializeField] private float goodRange;  //The amount of time in seconds that the player can be "early" or "late" in hitting the beat, but still have it count as a successful hit
     [SerializeField] private float greatRange;
     [SerializeField] private float perfectRange;

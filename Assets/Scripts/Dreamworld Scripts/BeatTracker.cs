@@ -14,11 +14,9 @@ public class BeatTracker : MonoBehaviour
 
     public GameObject welcomeMessage;   //Text message that greets the player before they start the level
 
-    public bool onBeat; //States whether or not the player has accurately clicked/tapped to the most recent beat
 
 
     bool playerDashedThisBeat;  //States whether/not the player successfully dashed on the previous beat
-    public bool CanDash;   //Determines if the player has "spent" their attempt to click/dash for the beat (of the matchable rhythm) that they're currently on
 
     private bool startedLevelCountdown;
 
@@ -43,11 +41,8 @@ public class BeatTracker : MonoBehaviour
             }
         };
         _playerControl.Enable();
-
-        //TODO: Move to a Dash Handler
-        _noteTracker.offBeatTrigger += () => CanDash = true;
         instance = this;
-        CanDash = true;
+    
     }
 
     // Update is called once per frame

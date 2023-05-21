@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using RoboRyanTron.Unite2017.Events;
 using TMPro;
 using UnityEngine;
@@ -35,6 +32,13 @@ public class RhythmUI : MonoBehaviour
     private void Start()
     {
         screenSpaceCanvas = GameObject.Find("Screen Space Canvas");
+      
+        
+        _NoteTracker.onTimeUpdate += HandleCountdown;
+    }
+
+    public void Init()
+    {
         countdownTextTriggerTime3 = (0.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime2 = (2.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime1 = (4.5f * _NoteTracker.GetTwoBeatsLength());
@@ -43,10 +47,7 @@ public class RhythmUI : MonoBehaviour
         _countdownTextDisplayed2 = false;
         _countdownTextDisplayed1 = false;
         _countdownFinished = false;
-
-        _NoteTracker.onTimeUpdate += HandleCountdown;
     }
-
 
 
 
@@ -56,6 +57,7 @@ public class RhythmUI : MonoBehaviour
     public void HandleCountdown()
     {
         float timeTracker = _NoteTracker.timeTracker;
+
         //"3..."
         if (timeTracker >= countdownTextTriggerTime3
             && timeTracker < countdownTextTriggerTime2)

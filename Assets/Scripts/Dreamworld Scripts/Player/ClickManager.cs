@@ -37,7 +37,6 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private GameObject _cursorAfterImagePrefab;
     [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private Rigidbody2D _rigidbody2D;
-    [SerializeField] private SpriteRenderer _cursorSpriteRenderer;
     [SerializeField] private Dash _dash;
 
     private CameraFollow _cameraFollow;
@@ -58,6 +57,7 @@ public class ClickManager : MonoBehaviour
         _dash = new Dash(_rigidbody2D);
         _cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
+        _NoteTracker.HitCallback += HandleDash;
         // Initialize the _cursorAfterImagePrefabPool pool with 10 objects
         _cursorAfterImagePrefabPool = new ObjectPool<GameObject>(10,() => {
             GameObject obj = Instantiate(_cursorAfterImagePrefab);
@@ -100,35 +100,24 @@ public class ClickManager : MonoBehaviour
         _cursorAfterImagePrefabPool.ReturnToPool(cursorPrefab);
     }
 
-    public async void HandleClick()
+    private async void HandleDash(NoteTracker.HitInfo hitInfo)
     {
+
+        float dashScale = 1f;
         
+        switch (hitInfo.rating)
+        {
+            case NoteTracker.BeatRating.GOOD:
+                dashScale = 0.5f;
+                break;
+            case NoteTracker.BeatRating.BAD:
+                dashScale = 0.1f;
+                break;
+        }
+  
         _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
-        float dashDistance = Mathf.Min(_dash.MaxDashDistance, Vector2.Distance(CursorTransform.position, _rigidbody2D.position));
+        float dashDistance = Mathf.Min(_dash.MaxDashDistance,dashScale * Vector2.Distance(CursorTransform.position, _rigidbody2D.position));
         float dashForce = _dash.DashForceMultiplier * dashDistance;
-
-        if (!_NoteTracker.onBeat)
-        {
-            _trailRenderer.startColor = Color.red;
-            _trailRenderer.endColor = Color.red;
-            _cursorSpriteRenderer.color = Color.red;
-
-            StartCoroutine(ResetTrailColor());
-            return;
-        }
-
-        if (_NoteTracker.inPerfectRange)
-        {
-            Debug.Log("Perfect Hit");
-        }
-        if (_NoteTracker.inGreatRange)
-        {
-            Debug.Log("Great Hit");
-        }
-        if (_NoteTracker.inGoodRange)
-        {
-            Debug.Log("Good Hit");
-        }
 
         // Get object from the pool
         GameObject cursorPrefab = await _cursorAfterImagePrefabPool.GetFromPoolAsync();
@@ -155,9 +144,26 @@ public class ClickManager : MonoBehaviour
 
         _trailRenderer.startColor = Color.yellow;
         _trailRenderer.endColor = Color.yellow;
-        _cursorSpriteRenderer.color = Color.white;
 
         StartCoroutine(ResetGravity());
+    }
+    public  void HandleClick()
+    {
+        
+
+        if (!_NoteTracker.onBeat)
+        {
+            _trailRenderer.startColor = Color.red;
+            _trailRenderer.endColor = Color.red;
+
+            StartCoroutine(ResetTrailColor());
+            return;
+        }
+
+        _NoteTracker.OnHit();
+        
+
+    
     }
 
     private IEnumerator ResetTrailColor()
