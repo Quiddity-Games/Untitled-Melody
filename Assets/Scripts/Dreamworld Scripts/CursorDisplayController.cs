@@ -13,6 +13,7 @@ public class CursorDisplayController : MonoBehaviour
     [Serializable]
     private struct DisplaySprites
     {
+        public Sprite defaultSprite;
         public Sprite missSprite;
         public Sprite badSprite;
         public Sprite goodSprite;
@@ -34,19 +35,31 @@ public class CursorDisplayController : MonoBehaviour
         {
             case NoteTracker.BeatRating.MISS:
                 _cursorSpriteRenderer.sprite = sprites.missSprite;
-                return;
+                break;
             case NoteTracker.BeatRating.BAD:
                 _cursorSpriteRenderer.sprite = sprites.badSprite;
-                return;
+                break;
             case NoteTracker.BeatRating.GOOD:
                 _cursorSpriteRenderer.sprite = sprites.goodSprite;
-                return;
+                break;
             case NoteTracker.BeatRating.GREAT:
                 _cursorSpriteRenderer.sprite = sprites.greatSprite;
-                return;
+                break;
             case NoteTracker.BeatRating.PERFECT:
                 _cursorSpriteRenderer.sprite = sprites.perfectSprite;
-                return;
+                break;
+            default:
+                _cursorSpriteRenderer.sprite = sprites.defaultSprite;
+                break;
         }
+
+        StartCoroutine(ResetDisplay());
+    }
+
+
+    private IEnumerator ResetDisplay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _cursorSpriteRenderer.sprite = sprites.defaultSprite;
     }
 }

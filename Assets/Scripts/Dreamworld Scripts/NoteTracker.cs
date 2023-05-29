@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Ink.Runtime;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class NoteTracker : ScriptableObject
+
+public class NoteTracker : MonoBehaviour
 {
 
 
@@ -19,11 +17,12 @@ public class NoteTracker : ScriptableObject
         MISS, BAD, GOOD, GREAT, PERFECT
     }
     
- 
-
     private float _bpm;
 
+    public VoidCallback onLoad;
     public VoidCallback onBeatTrigger;
+        public VoidCallback onBeatEnter;
+
 
     public VoidCallback onMissTrigger;
 
@@ -40,6 +39,7 @@ public class NoteTracker : ScriptableObject
 
     private bool inRange = false;
     private bool wasHit = false;
+    [SerializeField] private bool actualBeat = false;
 
 
     [Serializable]
@@ -60,7 +60,6 @@ public class NoteTracker : ScriptableObject
         {
             foreach(BeatRange range in ranges)
             {
-                Debug.Log("Incremented");
                 range.IncrementRange(newBeatTime);
             }
         }
@@ -116,14 +115,15 @@ public class NoteTracker : ScriptableObject
         {
             Debug.Log("NEW BPM");
             totalTime = 0;
-            twoBeatsLength = 60f / bpm;
+            twoBeatsLength = (60f / value);
             nextBeatTime = twoBeatsLength + (twoBeatsLength / 4f);    //Added to have the "matchable rhythm" land on the second and fourth beats of each measure
             _bpm = value;
-            timeTracker = 0;
+            _timeTracker = 0;
             range.Enqueue(new BeatRange(nextBeatTime, perfectRange, BeatRating.PERFECT));
             range.Enqueue(new BeatRange(nextBeatTime, greatRange, BeatRating.GREAT));
             range.Enqueue(new BeatRange(nextBeatTime, goodRange, BeatRating.GOOD));
             range.Enqueue(new BeatRange(nextBeatTime, badRange, BeatRating.BAD));
+            onLoad?.Invoke();
         }
 
         get
@@ -140,7 +140,7 @@ public class NoteTracker : ScriptableObject
     }
     public void OnHit()
     {
-        
+        Debug.Log("ON HIT TRIGGERED");
         wasHit = true;
 
         HitInfo hitInfo = new HitInfo()
@@ -159,6 +159,13 @@ public class NoteTracker : ScriptableObject
             BeatRating rate = range.PollRating(_timeTracker);
             inRange = (rate != BeatRating.MISS);
       
+            if (rate == BeatRating.PERFECT && !actualBeat)
+            {
+                actualBeat = true;
+                Debug.Log("BEAT ENTER");
+                onBeatTrigger?.Invoke();
+            }
+            
             if (inRange != onBeat)
             {
                 
@@ -166,7 +173,9 @@ public class NoteTracker : ScriptableObject
 
                 if (onBeat)
                 {
-                    onBeatTrigger?.Invoke();
+               
+                    onBeatEnter?.Invoke();
+    
                 }
                 else
                 {
@@ -174,8 +183,9 @@ public class NoteTracker : ScriptableObject
                     {
                         onMissTrigger?.Invoke();
                     }
+
+                    actualBeat = false;
                     wasHit = false;
-                    
                     nextBeatTime += twoBeatsLength ;
                     range.IncrementBeats(nextBeatTime);
                     offBeatTrigger?.Invoke();
@@ -208,7 +218,7 @@ public class NoteTracker : ScriptableObject
 
     
     private float nextBeatTime; //The "location" in time of the next beat that the player can hit/miss, aka the "matchable rhythm" for the dash mechanic
-    private float twoBeatsLength;   //The length in seconds between two beats in the song's tempo. (Important b/c the "matchable rhythm" for the dash mechanic occurs only once every *two* beats of the song's tempo)
+    [SerializeField] private float twoBeatsLength;   //The length in seconds between two beats in the song's tempo. (Important b/c the "matchable rhythm" for the dash mechanic occurs only once every *two* beats of the song's tempo)
     [SerializeField] private float badRange;  
     [SerializeField] private float goodRange;  //The amount of time in seconds that the player can be "early" or "late" in hitting the beat, but still have it count as a successful hit
     [SerializeField] private float greatRange;

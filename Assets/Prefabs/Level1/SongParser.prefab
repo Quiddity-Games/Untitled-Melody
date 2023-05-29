@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9199860553591027428}
   - component: {fileID: 9199860553591027429}
+  - component: {fileID: 6690863670989706188}
   m_Layer: 0
   m_Name: SongParser
   m_TagString: Untagged
@@ -45,4 +46,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _song: {fileID: 11400000, guid: 6945a4401f1c0e24e8e74e24d14f5229, type: 2}
-  _NoteTracker: {fileID: 11400000, guid: de2597406d0b54943a8d18a6abe7e934, type: 2}
+  _NoteTracker: {fileID: 6690863670989706188}
+--- !u!114 &6690863670989706188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199860553591027434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a112cd2a87a178f479e93246923f4a06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timeTracker: 0
+  onBeat: 0
+  startTime: 0
+  totalTime: 0
+  badRange: 0
+  goodRange: 0
+  greatRange: 0
+  perfectRange: 0

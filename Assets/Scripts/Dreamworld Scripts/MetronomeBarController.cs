@@ -23,26 +23,32 @@ public class MetronomeBarController : MonoBehaviour
 
     private float twoBeatsLength;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerCanvas = GameObject.Find("PlayerCanvas");
-        rhythmIndicatorTimer -= ((8f * _NoteTracker.GetTwoBeatsLength())); //Offsets rhythmIndicatorTimer so that the "metronome bars" above the player's head don't start appearing until the percussion beats of the "wishing well" song begin, roughly four measures in
-        twoBeatsLength = _NoteTracker.GetTwoBeatsLength();
+        _NoteTracker.onTimeUpdate += UpdateRhythmIndicator;
+        _NoteTracker.onLoad += Init;
     }
 
-
+    private void Init()
+    {
+        twoBeatsLength = _NoteTracker.GetTwoBeatsLength();
+        rhythmIndicatorTimer -= ((8f * _NoteTracker.GetTwoBeatsLength())); //Offsets rhythmIndicatorTimer so that the "metronome bars" above the player's head don't start appearing until the percussion beats of the "wishing well" song begin, roughly four measures in
+    }
     
     /// <summary>
     /// Checks if/when a new pair of "metronome bars" should appear.
     /// </summary>
     public void UpdateRhythmIndicator()
     {
+      
+
         startMovingMetronomeBars = false;
 
         rhythmIndicatorTimer += Time.deltaTime;
 
         //Triggers when it's time for a new pair of metronome bars to appear
-        if(rhythmIndicatorTimer >= twoBeatsLength / 2
+        if(rhythmIndicatorTimer >= twoBeatsLength
            && newMetronomeBarL == null
            && newMetronomeBarR == null)
         {
@@ -50,9 +56,9 @@ public class MetronomeBarController : MonoBehaviour
         }
 
         //Triggers when it's time for those metronome bars to start moving towards each other
-        if(rhythmIndicatorTimer >= twoBeatsLength)
+        if(rhythmIndicatorTimer >= twoBeatsLength*2)
         {
-            rhythmIndicatorTimer -= twoBeatsLength;
+            rhythmIndicatorTimer -= twoBeatsLength*2;
             StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarL));
             StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarR));
         }

@@ -89,6 +89,17 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""bf51f114-8042-4b2b-9d74-77573c7086b4"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""81e1b373-fb9f-4a19-a617-0709d9e3b870"",
                     ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",

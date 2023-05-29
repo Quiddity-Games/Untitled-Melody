@@ -29,16 +29,17 @@ public class RhythmUI : MonoBehaviour
     private GameObject
         dashTutorialTextObject; //TextObject prefab designed for tutorialization; disappears only after the player successfully completes a few dashes
 
-    private void Start()
+    private void Awake()
     {
         screenSpaceCanvas = GameObject.Find("Screen Space Canvas");
-      
-        
+
+        _NoteTracker.onLoad += Init;
         _NoteTracker.onTimeUpdate += HandleCountdown;
     }
 
     public void Init()
     {
+        Debug.Log(_NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime3 = (0.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime2 = (2.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime1 = (4.5f * _NoteTracker.GetTwoBeatsLength());

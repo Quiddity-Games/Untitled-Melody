@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5224013006852190113}
   - component: {fileID: 5224013006852190114}
   - component: {fileID: 5224013006852190118}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collectable
   m_TagString: Collectable
   m_Icon: {fileID: 0}
@@ -125,9 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b6fd75a16b79246a81ffa9dc83c24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mod: 0.25
-  spdMod: 3
-  waving: 0
+  _modifier: 0
+  _speedModifier: 0
 --- !u!114 &5224013006852190118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,4 +139,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90dbe396b8902044bbe171ad90f826ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectableScoreDrop: {fileID: 4500481380778800652, guid: 9beadc7aabaa21545b864a497654fc6d, type: 3}

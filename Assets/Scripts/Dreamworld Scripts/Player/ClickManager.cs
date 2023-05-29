@@ -50,14 +50,19 @@ public class ClickManager : MonoBehaviour
     public NoteTracker _NoteTracker;
 
     [SerializeField] private bool canDash;
-    
-    
+
+    [SerializeField] private bool dashEnabled = false;  
+    private void Awake()
+    {
+        _NoteTracker.offBeatTrigger += () => { canDash = true; };
+        _NoteTracker.HitCallback += HandleDash;
+
+    }
     private void Start()
     {
         _dash = new Dash(_rigidbody2D);
         _cameraFollow = Camera.main.GetComponent<CameraFollow>();
 
-        _NoteTracker.HitCallback += HandleDash;
         // Initialize the _cursorAfterImagePrefabPool pool with 10 objects
         _cursorAfterImagePrefabPool = new ObjectPool<GameObject>(10,() => {
             GameObject obj = Instantiate(_cursorAfterImagePrefab);
@@ -67,20 +72,22 @@ public class ClickManager : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += (context =>
         {
-            if(canDash){
+            if(canDash && dashEnabled){
             HandleClick();
             canDash = false;
             }
             
         });
-
         _playerControl.Dreamworld.Enable();
+
     }
 
-    public void Initialize()
+    public void EnableDash()
     {
-        _NoteTracker.offBeatTrigger += () => { canDash = true; };
+        dashEnabled = true;
     }
+
+   
 
     private IEnumerator VanishClickAfterImage(GameObject cursorPrefab)
     {
@@ -160,6 +167,7 @@ public class ClickManager : MonoBehaviour
             return;
         }
 
+        Debug.Log("DASH");
         _NoteTracker.OnHit();
         
 

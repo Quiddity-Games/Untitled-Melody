@@ -22,7 +22,6 @@ public class BeatTracker : MonoBehaviour
 
     public GameEvent onGameStart;
 
-    [SerializeField] private MetronomeBarController _metronomeBar;
     [SerializeField] private NoteTracker _noteTracker;
     private PlayerControl _playerControl;
     // Start is called before the first frame update
@@ -35,6 +34,7 @@ public class BeatTracker : MonoBehaviour
             //Lets the player start the level if they have not already done so
             if (!startedLevelCountdown)
             {   
+                Debug.LogError("STARTED GAME");
                 onGameStart.Raise();
                 welcomeMessage.SetActive(false);
                 startedLevelCountdown = true;
@@ -51,9 +51,9 @@ public class BeatTracker : MonoBehaviour
         //When the player has clicked/tapped to begin the level
         if(startedLevelCountdown)
         {
+
             _noteTracker.timeTracker += Time.deltaTime;  //Updates the script's understanding of how much time has passed since the player began the level
             //Checks if/when a new pair of "metronome bars" should appear
-            _metronomeBar.UpdateRhythmIndicator();
         }
     }
 }
