@@ -1,3 +1,5 @@
+using System;
+using RoboRyanTron.Unite2017.Events;
 using TMPro;
 using UnityEngine;
 
@@ -8,19 +10,26 @@ public interface ICollectable
 
 public class Collectable : MonoBehaviour, ICollectable
 {
-    private GameManager _gameManager;
-    private TMP_Text _collectibleUIText;
+    [SerializeField] private CollectionSignal OnCollect;
+
+    private Vector3 startingLocation;
 
     private void Start()
     {
-        _gameManager = FindObjectOfType<GameManager>();
-        _collectibleUIText = _gameManager?.CollectibleUIText;
+        startingLocation = transform.position;
+        OnCollect.Register?.Invoke();
     }
 
     public void Collect()
     {
-        _gameManager?.OnCollectableCollected(transform.position);
+        OnCollect.SendCollect?.Invoke(this);
         gameObject.SetActive(false);
+        transform.position = startingLocation;
+    }
+
+    public void Reset()
+    {
+        gameObject.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
