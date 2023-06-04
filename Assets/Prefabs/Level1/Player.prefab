@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587ffc1024dbae6449c795652bc915a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noteTracker: {fileID: 11400000, guid: de2597406d0b54943a8d18a6abe7e934, type: 2}
-  pulseForce: 0
-  pulseRadius: 0
+  _noteTracker: {fileID: 0}
+  pulseForce: 40
+  pulseRadius: 20
 --- !u!1 &3174740992724564301
 GameObject:
   m_ObjectHideFlags: 0
@@ -143,9 +143,10 @@ GameObject:
   - component: {fileID: 8789452932008370532}
   - component: {fileID: 8789452932008370534}
   - component: {fileID: 8789452932008370528}
-  - component: {fileID: 8789452932008370530}
   - component: {fileID: 8789452932008370531}
   - component: {fileID: 7013668427749348914}
+  - component: {fileID: 1197886186}
+  - component: {fileID: 1197886187}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -353,18 +354,6 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &8789452932008370530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8789452932008370554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c333902d5ac0c7d49a1dc28516796180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!58 &8789452932008370531
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -396,6 +385,62 @@ MonoBehaviour:
   onPause: {fileID: 11400000, guid: 81ea8b1d5f786464b83e3de6dfa49c94, type: 2}
   onUnpause: {fileID: 11400000, guid: 5c66d71f86413d44cb4a3a7b170cb362, type: 2}
   pause: {fileID: 11400000, guid: 9216c0a1c57110246b27447447708a36, type: 2}
+--- !u!114 &1197886186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789452932008370554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5c66d71f86413d44cb4a3a7b170cb362, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8789452932008370534}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody2D, UnityEngine
+        m_MethodName: WakeUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1197886187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789452932008370554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 81ea8b1d5f786464b83e3de6dfa49c94, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8789452932008370534}
+        m_TargetAssemblyTypeName: UnityEngine.Rigidbody2D, UnityEngine
+        m_MethodName: Sleep
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8789452932651263732
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +536,8 @@ GameObject:
   - component: {fileID: 8789452932878773890}
   - component: {fileID: 8789452932878773889}
   - component: {fileID: 8789452932878773891}
+  - component: {fileID: 1868911096}
+  - component: {fileID: 1868911097}
   m_Layer: 0
   m_Name: ClickManager
   m_TagString: Untagged
@@ -529,7 +576,7 @@ MonoBehaviour:
   _trailRenderer: {fileID: 8789452932008370528}
   _rigidbody2D: {fileID: 8789452932008370534}
   CursorTransform: {fileID: 8789452933512383145}
-  _NoteTracker: {fileID: 11400000, guid: de2597406d0b54943a8d18a6abe7e934, type: 2}
+  _NoteTracker: {fileID: 0}
   canDash: 0
   dashEnabled: 0
 --- !u!114 &8789452932878773891
@@ -550,8 +597,64 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8789452932878773889}
         m_TargetAssemblyTypeName: ClickManager, Assembly-CSharp
-        m_MethodName: Initialize
+        m_MethodName: EnableDash
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1868911096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789452932878773888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 5c66d71f86413d44cb4a3a7b170cb362, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8789452932878773889}
+        m_TargetAssemblyTypeName: ClickManager, Assembly-CSharp
+        m_MethodName: ToggleControls
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!114 &1868911097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8789452932878773888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 81ea8b1d5f786464b83e3de6dfa49c94, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8789452932878773889}
+        m_TargetAssemblyTypeName: ClickManager, Assembly-CSharp
+        m_MethodName: ToggleControls
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -743,7 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cursorSpriteRenderer: {fileID: 7509826147165614796}
-  _noteTracker: {fileID: 11400000, guid: de2597406d0b54943a8d18a6abe7e934, type: 2}
+  _noteTracker: {fileID: 0}
   sprites:
     defaultSprite: {fileID: 21300000, guid: 441de27c3df3e1849adf44e87c573445, type: 3}
     missSprite: {fileID: 21300000, guid: 441de27c3df3e1849adf44e87c573445, type: 3}
@@ -779,7 +882,7 @@ RectTransform:
   m_GameObject: {fileID: 8789452933757774467}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6671057, y: 0.6671057, z: 1.3342113}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8789452933305314568}
@@ -788,8 +891,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 29.4969, y: 29.4969}
+  m_AnchoredPosition: {x: 169.11128, y: 84.365585}
+  m_SizeDelta: {x: 450, y: 253}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8789452933757774479
 Canvas:
@@ -859,6 +962,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8789452933512383145}
     m_Modifications:
+    - target: {fileID: 1456061966397609986, guid: 9d37701b9724a4349b39b589aea3db95, type: 3}
+      propertyPath: maxRadius
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1456061966397609987, guid: 9d37701b9724a4349b39b589aea3db95, type: 3}
       propertyPath: m_RootOrder
       value: 1

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ClickManager : MonoBehaviour
 {
@@ -39,6 +41,8 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Dash _dash;
 
+    
+        
     private CameraFollow _cameraFollow;
     private PlayerControl _playerControl;
 
@@ -70,19 +74,36 @@ public class ClickManager : MonoBehaviour
             return obj;
         }, item => { item.SetActive(false); });
         _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Dash.performed += (context =>
-        {
-            CursorTransform.position = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
-            if(canDash && dashEnabled){
-            HandleClick();
-            canDash = false;
-            }
-            
-        });
+        _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
         _playerControl.Dreamworld.Enable();
 
     }
 
+    private void OnDestroy()
+    {
+        _playerControl.Dreamworld.Dash.performed -= DashOnPerformed;
+    }
+
+    private void DashOnPerformed(InputAction.CallbackContext obj)
+    {
+        CursorTransform.position = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
+        if(canDash && dashEnabled){
+            HandleClick();
+            canDash = false;
+        }
+    }
+
+
+    public void ToggleControls(bool value)
+    {
+        if(value){
+            _playerControl.Dreamworld.Enable();
+        }
+        else
+        {
+            _playerControl.Dreamworld.Disable();
+        }
+    }
     public void EnableDash()
     {
         dashEnabled = true;
@@ -124,6 +145,8 @@ public class ClickManager : MonoBehaviour
         }
   
         _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
+        CursorTransform.position = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
+
         float dashDistance = Mathf.Min(_dash.MaxDashDistance,dashScale * Vector2.Distance(CursorTransform.position, _rigidbody2D.position));
         float dashForce = _dash.DashForceMultiplier * dashDistance;
 

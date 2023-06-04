@@ -18,7 +18,9 @@ public class BeatTracker : MonoBehaviour
 
     bool playerDashedThisBeat;  //States whether/not the player successfully dashed on the previous beat
 
-    private bool startedLevelCountdown;
+    private bool enableCount;
+
+    private bool countdownStarted;
 
     public GameEvent onGameStart;
 
@@ -27,30 +29,35 @@ public class BeatTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startedLevelCountdown = false;
+        countdownStarted = false;
+        enableCount = false;
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += context =>
         {
             //Lets the player start the level if they have not already done so
-            if (!startedLevelCountdown)
+            if (!countdownStarted)
             {   
                 onGameStart.Raise();
                 welcomeMessage.SetActive(false);
-                startedLevelCountdown = true;
+                countdownStarted = true;
+                enableCount = true;
             }
         };
         _playerControl.Enable();
         instance = this;
-    
+    }
+
+    public void Pause(bool value)
+    {
+        enableCount = value;
     }
 
     // Update is called once per frame
     void Update()
     {
         //When the player has clicked/tapped to begin the level
-        if(startedLevelCountdown)
+        if(enableCount && countdownStarted)
         {
-
             _noteTracker.timeTracker += Time.deltaTime;  //Updates the script's understanding of how much time has passed since the player began the level
             //Checks if/when a new pair of "metronome bars" should appear
         }

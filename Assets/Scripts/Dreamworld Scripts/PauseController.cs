@@ -12,34 +12,30 @@ public class PauseController : MonoBehaviour
 
     [SerializeField] private BoolVariable pause;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Pause.performed += context =>
+        pause.OnValueChange += Pause;
+    }
+
+    public void Pause()
+    {
+        Debug.Log("PAUSE CONTROLLER");
+        if(pause.Value)
         {
-            Debug.Log("INPUT");
-            if(!pause.Value)
-            {
+            
+            Time.timeScale = 0;
+            onPause.Raise();
 
-                Debug.Log("Pause");
-                pause.Value = true;
-                Time.timeScale = 0;
-                onPause.Raise();
-
-                //Unpausing
-            }
-            else
-            {
+            //Unpausing
+        }
+        else
+        {
                 
-                Debug.Log("Unpause");
-                pause.Value = false;
-                Time.timeScale = 1;
-                onUnpause.Raise();
+            Debug.Log("Unpause");
+            Time.timeScale = 1;
+            onUnpause.Raise();
 
            
-            }
-        };
-        
-        _playerControl.Enable();
+        }
     }
 }

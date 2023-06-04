@@ -18,6 +18,11 @@ public class Menus : MonoBehaviour
         pause.OnValueChange += OnGamePause;
     }
 
+    private void OnDestroy()
+    {
+        pause.OnValueChange -= OnGamePause;
+    }
+
     public void OnGamePause()
     {
         pauseMenu.SetActive(pause.Value);

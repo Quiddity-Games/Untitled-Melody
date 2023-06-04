@@ -7,7 +7,7 @@ public class BoolVariable : ScriptableObject
 {
 
     public VoidCallback OnValueChange;
-    private bool value;
+    [SerializeField] private bool value;
 
     public bool Value
     {
