@@ -34,7 +34,6 @@ public class BeatTracker : MonoBehaviour
             //Lets the player start the level if they have not already done so
             if (!startedLevelCountdown)
             {   
-                Debug.LogError("STARTED GAME");
                 onGameStart.Raise();
                 welcomeMessage.SetActive(false);
                 startedLevelCountdown = true;

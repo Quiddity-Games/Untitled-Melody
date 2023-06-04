@@ -72,6 +72,7 @@ public class ClickManager : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += (context =>
         {
+            CursorTransform.position = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
             if(canDash && dashEnabled){
             HandleClick();
             canDash = false;
@@ -167,7 +168,6 @@ public class ClickManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("DASH");
         _NoteTracker.OnHit();
         
 

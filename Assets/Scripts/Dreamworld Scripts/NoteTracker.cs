@@ -140,7 +140,6 @@ public class NoteTracker : MonoBehaviour
     }
     public void OnHit()
     {
-        Debug.Log("ON HIT TRIGGERED");
         wasHit = true;
 
         HitInfo hitInfo = new HitInfo()
@@ -162,7 +161,6 @@ public class NoteTracker : MonoBehaviour
             if (rate == BeatRating.PERFECT && !actualBeat)
             {
                 actualBeat = true;
-                Debug.Log("BEAT ENTER");
                 onBeatTrigger?.Invoke();
             }
             

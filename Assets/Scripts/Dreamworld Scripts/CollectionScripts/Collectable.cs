@@ -13,7 +13,8 @@ public class Collectable : MonoBehaviour, ICollectable
     [SerializeField] private CollectionSignal OnCollect;
 
     private Vector3 startingLocation;
-
+    [SerializeField] private GameObject display;
+    [SerializeField] private Collider2D collider;
     private void Start()
     {
         startingLocation = transform.position;
@@ -23,21 +24,22 @@ public class Collectable : MonoBehaviour, ICollectable
     public void Collect()
     {
         OnCollect.SendCollect?.Invoke(this);
-        gameObject.SetActive(false);
+        display.SetActive(false);
         transform.position = startingLocation;
+        collider.enabled = false;
     }
 
-    public void Reset()
+    public void ResetDisplay()
     {
-        gameObject.SetActive(true);
+        display.SetActive(true);
+        collider.enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            ICollectable collectable = this;
-            collision.gameObject.GetComponent<Player>()?.Collect(collectable);
+            Collect();
         }
     }
 }

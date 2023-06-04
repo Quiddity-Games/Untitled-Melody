@@ -39,7 +39,6 @@ public class RhythmUI : MonoBehaviour
 
     public void Init()
     {
-        Debug.Log(_NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime3 = (0.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime2 = (2.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime1 = (4.5f * _NoteTracker.GetTwoBeatsLength());

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1545213157932253593}
   - component: {fileID: 1545213157932253592}
-  - component: {fileID: 1545213157932253594}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -47,23 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
   pause: {fileID: 11400000, guid: 9216c0a1c57110246b27447447708a36, type: 2}
---- !u!114 &1545213157932253594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1545213157932253599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcba8007c664e674cad1344c5906333a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  stopHazardsMove: 0
-  collectable: {fileID: 5224013006852190124, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
-  CollectibleUIText: {fileID: 0}
-  numCollectables: 0
-  numCollected: 0
-  tempNumCollected: 0
-  tempCollectableList: []
-  gameCamera: {fileID: 0}
+  volume: {fileID: 0}

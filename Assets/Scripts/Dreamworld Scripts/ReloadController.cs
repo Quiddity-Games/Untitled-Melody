@@ -14,7 +14,6 @@ public class ReloadController : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Reload.performed += context =>
         {
-            GameManager.instance.numCollectables = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         };
         _playerControl.Enable();
