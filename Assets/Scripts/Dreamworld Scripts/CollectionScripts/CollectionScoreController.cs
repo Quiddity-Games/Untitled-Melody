@@ -13,14 +13,18 @@ public class CollectionScoreController : MonoBehaviour
     private int numCollectables = 0; //Total number of collectables in the level
     [SerializeField] private int numCollected;    //Number of collectables the player has acquired so far
     [SerializeField] private int tempNumCollected; //"Temporary" information about collectables the player has claimed since their last checkpoint; used to determine what collectables they should lose / that should be reset the next time the player dies
-
+    [SerializeField] private int requiredNumCollected;
+        
     [SerializeField] private CollectableUI _ui;
     [SerializeField] private CollectionResetter resetter;
+    [SerializeField] private EndScreenController endScreen;
+    [SerializeField] private CollectableInfo endInfo;
     void Awake()
     {
         numCollectables = 0;
         numCollected = 0;
         tempNumCollected = 0;
+        endInfo.ResetValues();
         signal.Register += () => { numCollectables += 1; };
         signal.SendCollect += HandleCollection;
         checkpointSignal.OnCheckpointEnter += value =>
@@ -31,13 +35,13 @@ public class CollectionScoreController : MonoBehaviour
 
     private void Start()
     {
-        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables);
+        UpdateInfo();
     }
 
     void HandleCollection(Collectable collect)
     {
         UpdateCount();
-        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables);
+        UpdateInfo();
         resetter.RegisterTemp(collect);
     }
 
@@ -45,6 +49,12 @@ public class CollectionScoreController : MonoBehaviour
     {
         ClearTemp();
         resetter.ResetTempCollectables();
+    }
+
+    private void UpdateInfo()
+    {
+        endInfo.UpdateValues(numCollected + tempNumCollected, requiredNumCollected, numCollectables);
+        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables);
     }
     void UpdateCount()
     {
@@ -56,12 +66,12 @@ public class CollectionScoreController : MonoBehaviour
         numCollected += tempNumCollected;
         tempNumCollected = 0;
         resetter.ClearTemp();
-        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables);
+        UpdateInfo();
     }
 
     public void ClearTemp()
     {
         tempNumCollected = 0;
-        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables);
+        UpdateInfo();
     }
 }

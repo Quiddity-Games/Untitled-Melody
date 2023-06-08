@@ -20,7 +20,7 @@ public class HazardBase : MonoBehaviour
     /// Checks if the Hazard has collided with the player.
     /// </summary>
     /// <param name="col"></param>
-    private void OnTriggerEnter2D(Collider2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         Debug.Log("COLLISION");
 

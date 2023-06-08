@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using RoboRyanTron.Unite2017.Events;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// The script responsible for determining what the song's tempo is and using that information to control various aspects of the game. Attached to the BeatTracker gameObject.
@@ -30,21 +32,24 @@ public class BeatTracker : MonoBehaviour
     void Start()
     {
         countdownStarted = false;
-        enableCount = false;
+        enableCount = true;
         _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Dash.performed += context =>
-        {
-            //Lets the player start the level if they have not already done so
-            if (!countdownStarted)
-            {   
-                onGameStart.Raise();
-                welcomeMessage.SetActive(false);
-                countdownStarted = true;
-                enableCount = true;
-            }
-        };
-        _playerControl.Enable();
+        _playerControl.Dreamworld.Dash.performed +=  StartGame;
+            _playerControl.Enable();
         instance = this;
+    }
+
+ 
+
+    private void StartGame(InputAction.CallbackContext ctx) 
+    {
+        if (!countdownStarted && enableCount)
+        {   
+            onGameStart.Raise();
+            welcomeMessage.SetActive(false);
+            countdownStarted = true;
+            _playerControl.Dreamworld.Dash.performed -= StartGame;
+        }
     }
 
     public void Pause(bool value)
