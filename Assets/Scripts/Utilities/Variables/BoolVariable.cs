@@ -9,6 +9,10 @@ public class BoolVariable : ScriptableObject
     public VoidCallback OnValueChange;
     [SerializeField] private bool value;
 
+    public void Set(bool value)
+    {
+        this.value = value;
+    }
     public bool Value
     {
         set

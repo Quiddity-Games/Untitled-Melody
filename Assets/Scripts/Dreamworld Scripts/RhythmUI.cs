@@ -15,7 +15,7 @@ public class RhythmUI : MonoBehaviour
     bool _countdownTextDisplayed3;
     bool _countdownTextDisplayed2;
     private bool _countdownTextDisplayed1;
-    private bool _countdownFinished;
+    [SerializeField] private bool _countdownFinished;
     private GameObject screenSpaceCanvas;
 
     public GameEvent countdownOver;
@@ -26,7 +26,7 @@ public class RhythmUI : MonoBehaviour
         fadingMessageTextObject; //TextObject prefab that fades away briefly after appearing onscreen
 
     [SerializeField]
-    private GameObject
+    private DashTutorialText
         dashTutorialTextObject; //TextObject prefab designed for tutorialization; disappears only after the player successfully completes a few dashes
 
     private void Awake()
@@ -56,6 +56,10 @@ public class RhythmUI : MonoBehaviour
     /// </summary>
     public void HandleCountdown()
     {
+        if (_countdownFinished)
+        {
+            return;
+        }
         float timeTracker = _NoteTracker.timeTracker;
 
         //"3..."
@@ -111,13 +115,17 @@ public class RhythmUI : MonoBehaviour
         {
             if (_countdownFinished == false)
             {
-                GameObject countdownFinishedText = Instantiate(dashTutorialTextObject,
+                Debug.Log("CHECK");
+                DashTutorialText countdownFinishedText = Instantiate(dashTutorialTextObject,
                     screenSpaceCanvas.GetComponent<Transform>());
-                countdownFinishedText.GetComponent<Transform>().localPosition =
+                
+                countdownFinishedText.Init(_NoteTracker);
+                countdownFinishedText.gameObject.GetComponent<Transform>().localPosition =
                     new Vector3(0, 120, 0);
-                countdownFinishedText.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
+                countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
                 _NoteTracker.onTimeUpdate -= HandleCountdown;
                 countdownOver.Raise();
+                _countdownFinished = true;
             }
 
         }

@@ -14,12 +14,12 @@ public class PauseController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        pause.Set(false);
         pause.OnValueChange += Pause;
     }
 
     public void Pause()
     {
-        Debug.Log("PAUSE CONTROLLER");
         if(pause.Value)
         {
             

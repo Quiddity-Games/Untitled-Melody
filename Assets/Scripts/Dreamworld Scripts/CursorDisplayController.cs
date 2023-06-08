@@ -28,7 +28,8 @@ public class CursorDisplayController : MonoBehaviour
     {
         _noteTracker.HitCallback += UpdateSprite;
     }
-
+    
+    
     private void UpdateSprite(NoteTracker.HitInfo hitInfo)
     {
         switch (hitInfo.rating)
@@ -52,7 +53,7 @@ public class CursorDisplayController : MonoBehaviour
                 _cursorSpriteRenderer.sprite = sprites.defaultSprite;
                 break;
         }
-
+        
         StartCoroutine(ResetDisplay());
     }
 

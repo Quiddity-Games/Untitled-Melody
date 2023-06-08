@@ -40,8 +40,9 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private TrailRenderer _trailRenderer;
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private Dash _dash;
+    [SerializeField] private float dashForceMultiplier;
+    [SerializeField] private float maxDashDistanceMultiplier;
 
-    
         
     private CameraFollow _cameraFollow;
     private PlayerControl _playerControl;
@@ -97,10 +98,12 @@ public class ClickManager : MonoBehaviour
     public void ToggleControls(bool value)
     {
         if(value){
+            CursorTransform.gameObject.SetActive(true);
             _playerControl.Dreamworld.Enable();
         }
         else
         {
+            CursorTransform.gameObject.SetActive(false);
             _playerControl.Dreamworld.Disable();
         }
     }
@@ -147,9 +150,21 @@ public class ClickManager : MonoBehaviour
         _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
         CursorTransform.position = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
 
-        float dashDistance = Mathf.Min(_dash.MaxDashDistance,dashScale * Vector2.Distance(CursorTransform.position, _rigidbody2D.position));
-        float dashForce = _dash.DashForceMultiplier * dashDistance;
 
+
+  
+        
+        float dashDistance = Mathf.Min(_dash.MaxDashDistance,dashScale * Vector2.Distance(CursorTransform.position, _rigidbody2D.position));
+        float dashForce = 5f * dashDistance;
+        //Adjusts the player's dash distance based on how far away the cursor is from the player
+        if(Vector3.Distance(CursorTransform.position, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)
+        {
+            dashForce = dashForceMultiplier * Vector3.Distance(CursorTransform.position, this.GetComponent<Transform>().position);
+        } else
+        {
+            //Restricts the dash distance to the max radius when necessary
+            dashForce = dashForceMultiplier * maxDashDistanceMultiplier;
+        }
         // Get object from the pool
         GameObject cursorPrefab = await _cursorAfterImagePrefabPool.GetFromPoolAsync();
 

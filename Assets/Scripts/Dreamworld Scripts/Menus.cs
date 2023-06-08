@@ -15,7 +15,6 @@ public class Menus : MonoBehaviour
     public FloatVariable volume;
     private void Awake()
     {
-        pause.Value = false;
         pause.OnValueChange += OnGamePause;
     }
 
