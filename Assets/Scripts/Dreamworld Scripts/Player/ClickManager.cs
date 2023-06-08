@@ -153,7 +153,6 @@ public class ClickManager : MonoBehaviour
 
 
   
-        
         float dashDistance = Mathf.Min(_dash.MaxDashDistance,dashScale * Vector2.Distance(CursorTransform.position, _rigidbody2D.position));
         float dashForce = 5f * dashDistance;
         //Adjusts the player's dash distance based on how far away the cursor is from the player
