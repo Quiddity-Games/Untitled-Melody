@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RoboRyanTron.Unite2017.Events;
 using UnityEngine;
 
 public class CollectionScoreController : MonoBehaviour
@@ -19,6 +20,7 @@ public class CollectionScoreController : MonoBehaviour
     [SerializeField] private CollectionResetter resetter;
     [SerializeField] private EndScreenController endScreen;
     [SerializeField] private CollectableInfo endInfo;
+    [SerializeField] private GameEvent onGameEnd;
     void Awake()
     {
         numCollectables = 0;
@@ -43,6 +45,11 @@ public class CollectionScoreController : MonoBehaviour
         UpdateCount();
         UpdateInfo();
         resetter.RegisterTemp(collect);
+        if (numCollected + tempNumCollected >= numCollectables)
+        {
+            RecordCurrentCollection();
+            onGameEnd.Raise();
+        }
     }
 
     public void HandleDeath()

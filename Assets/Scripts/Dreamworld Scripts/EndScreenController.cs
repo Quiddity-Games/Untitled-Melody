@@ -35,7 +35,7 @@ public class EndScreenController : MonoBehaviour
         int required = info.requiredCollectables;
         int max = info.totalCollectables;
         int obtained = info.obtainedCollectables;
-        neededCollectableText.text = max.ToString();
+        neededCollectableText.text = required.ToString();
         obtainedCollectableText.text = obtained.ToString();
         totalCollectableText.text = max.ToString();
         if (obtained < required)

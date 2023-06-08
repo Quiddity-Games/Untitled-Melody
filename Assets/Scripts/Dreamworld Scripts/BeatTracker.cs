@@ -25,6 +25,7 @@ public class BeatTracker : MonoBehaviour
     private bool countdownStarted;
 
     public GameEvent onGameStart;
+    [SerializeField] private GameEvent OnGameEnd;
 
     [SerializeField] private NoteTracker _noteTracker;
     private PlayerControl _playerControl;
@@ -63,8 +64,13 @@ public class BeatTracker : MonoBehaviour
         //When the player has clicked/tapped to begin the level
         if(enableCount && countdownStarted)
         {
+            if (_noteTracker.timeTracker >= _noteTracker.totalTime)
+            {
+                OnGameEnd.Raise();
+                enableCount = false;
+                return;
+            }
             _noteTracker.timeTracker += Time.deltaTime;  //Updates the script's understanding of how much time has passed since the player began the level
-            //Checks if/when a new pair of "metronome bars" should appear
         }
     }
 }
