@@ -9,6 +9,7 @@ public class PiranhaCore : MovingHazardBase
 {
     public float speed; //Speed at which the piranha can move
 
+    
     /// <summary>
     /// Used to move the piranha towards the player.
     /// </summary>

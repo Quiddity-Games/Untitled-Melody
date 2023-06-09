@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,18 @@ using UnityEngine;
 /// <summary>
 /// Controls the behavior of -- and is attached to -- the threat radius gameObject of the piranha hazard object.
 /// </summary>
+[RequireComponent(typeof(AudioSource))]
 public class PiranhaDetectionRadius : MonoBehaviour
 {
     private GameObject piranhaCore; //The corresponding "core" gameObject associated with this detection radius
     private GameObject player;
     public Vector3 playerPos;
-
+    public AudioClip chaseSound;
+    private AudioSource source;
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         piranhaCore = this.transform.parent.gameObject;
     }
 
@@ -22,6 +26,17 @@ public class PiranhaDetectionRadius : MonoBehaviour
     {
         //Moves the detection radius with the piranha's core, while still maintaining its own Z-position so it can visually appear "behind" the core
         transform.position = new Vector3 (piranhaCore.transform.position.x, piranhaCore.transform.position.y, this.transform.position.z);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+        
+            if(other.gameObject.CompareTag("Player"))
+            {
+                Debug.Log("FOUND YOU");
+                source.PlayOneShot(chaseSound);
+            }
     }
 
     /// <summary>

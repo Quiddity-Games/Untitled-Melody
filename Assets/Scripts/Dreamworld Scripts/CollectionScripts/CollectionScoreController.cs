@@ -15,7 +15,8 @@ public class CollectionScoreController : MonoBehaviour
     [SerializeField] private int numCollected;    //Number of collectables the player has acquired so far
     [SerializeField] private int tempNumCollected; //"Temporary" information about collectables the player has claimed since their last checkpoint; used to determine what collectables they should lose / that should be reset the next time the player dies
     [SerializeField] private int requiredNumCollected;
-        
+
+    [SerializeField] private CollectionSound sound;
     [SerializeField] private CollectableUI _ui;
     [SerializeField] private CollectionResetter resetter;
     [SerializeField] private EndScreenController endScreen;
@@ -44,6 +45,7 @@ public class CollectionScoreController : MonoBehaviour
     {
         UpdateCount();
         UpdateInfo();
+        sound.PlaySound();
         resetter.RegisterTemp(collect);
         if (numCollected + tempNumCollected >= numCollectables)
         {
