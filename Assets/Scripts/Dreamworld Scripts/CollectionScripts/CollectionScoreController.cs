@@ -36,6 +36,14 @@ public class CollectionScoreController : MonoBehaviour
         };
     }
 
+    private void OnDestroy()
+    {
+        signal.SendCollect = collectable => { };
+        signal.Register = () => {  };
+        checkpointSignal.OnCheckpointEnter = value => { };
+
+    }
+
     private void Start()
     {
         UpdateInfo();
