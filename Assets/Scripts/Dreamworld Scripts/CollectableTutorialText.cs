@@ -7,38 +7,32 @@ using TMPro;
 /// <summary>
 /// Controls the behavior of the tutorial text that appears at the start of the level, and determines when the player no longer needs this text. Attached to the DashTutorialText prefab.
 /// </summary>
-public class DashTutorialText : MonoBehaviour
+public class CollectableTutorialText : MonoBehaviour
 {
-    int numOfSuccessfulDashes;  //Checks how many dashes the player has successfully pulled off so far
-    private NoteTracker _noteTracker;
-    private CollectionScoreController _collectionScore;
-    private VoidCallback onDestroy;
+    int numCollectable;  //Checks how many dashes the player has successfully pulled off so far
 
-    public void Init(NoteTracker tracker, VoidCallback onDestroy)
+    [SerializeField] private CollectionSignal _collections;
+
+
+    public void Start()
     {
-        numOfSuccessfulDashes = 0;
-        this.onDestroy = onDestroy;
-        _noteTracker = tracker;
-        _noteTracker.HitCallback += HandleTutorial;
+        numCollectable = 0;
+        _collections.SendCollect += HandleTutorial;
+
     }
 
     private void OnDestroy()
     {
-        onDestroy?.Invoke();
-        if(_noteTracker != null)
-        {
-        _noteTracker.HitCallback -= HandleTutorial;
-        }
+        _collections.SendCollect -= HandleTutorial;
     }
 
-    private void HandleTutorial(NoteTracker.HitInfo info)
+    private void HandleTutorial(Collectable collectable)
     {
-        if (info.rating != NoteTracker.BeatRating.MISS)
-        {
-            numOfSuccessfulDashes++;
-        }
+  
+            numCollectable++;
+
         
-        if (numOfSuccessfulDashes >= 3)
+        if (numCollectable >= 3)
         {
             StartCoroutine(FadeAndDestroy());
             this.GetComponent<Transform>().position = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y + (5 * Time.deltaTime), this.GetComponent<Transform>().position.z);

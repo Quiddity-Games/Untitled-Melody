@@ -28,6 +28,9 @@ public class RhythmUI : MonoBehaviour
     [SerializeField]
     private DashTutorialText
         dashTutorialTextObject; //TextObject prefab designed for tutorialization; disappears only after the player successfully completes a few dashes
+    [SerializeField]
+    private CollectableTutorialText
+        collectableTutorialTextObject; //TextObject prefab designed for tutorialization; disappears only after the player successfully completes a few dashes
 
     private void Awake()
     {
@@ -119,7 +122,13 @@ public class RhythmUI : MonoBehaviour
                 DashTutorialText countdownFinishedText = Instantiate(dashTutorialTextObject,
                     screenSpaceCanvas.GetComponent<Transform>());
                 
-                countdownFinishedText.Init(_NoteTracker);
+                countdownFinishedText.Init(_NoteTracker, () =>
+                {
+                    CollectableTutorialText countdownFinishedText = Instantiate(collectableTutorialTextObject,
+                        screenSpaceCanvas.GetComponent<Transform>());
+                    countdownFinishedText.gameObject.GetComponent<Transform>().localPosition =
+                        new Vector3(0, 120, 0);
+                });
                 countdownFinishedText.gameObject.GetComponent<Transform>().localPosition =
                     new Vector3(0, 120, 0);
                 countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";

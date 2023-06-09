@@ -42,8 +42,7 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Dash _dash;
     [SerializeField] private float dashForceMultiplier;
     [SerializeField] private float maxDashDistanceMultiplier;
-    [SerializeField] private MemiMoveSmoother cursorMover;
-    [SerializeField] private MemiHover hover;
+
         
     private CameraFollow _cameraFollow;
     private PlayerControl _playerControl;
@@ -78,7 +77,7 @@ public class ClickManager : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
         _playerControl.Dreamworld.Enable();
-        hover.OnHover();
+       
 
     }
 
@@ -207,10 +206,7 @@ public class ClickManager : MonoBehaviour
             return;
         }
         Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
-        hover.DisableHover();
 
-        cursorMover.Move(Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 5)),
-            () => { });
         _NoteTracker.OnHit();
         
 
@@ -235,7 +231,6 @@ public class ClickManager : MonoBehaviour
         _trailRenderer.endColor = Color.white;
         
         yield return new WaitForSeconds(0.1f);
-        hover.OnHover();
 
     }
 }
