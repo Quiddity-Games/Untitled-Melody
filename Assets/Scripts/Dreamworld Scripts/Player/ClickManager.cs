@@ -43,6 +43,7 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private float dashForceMultiplier;
     [SerializeField] private float maxDashDistanceMultiplier;
 
+    [SerializeField] private ParticleSystem ps;
         
     private CameraFollow _cameraFollow;
     private PlayerControl _playerControl;
@@ -172,6 +173,9 @@ public class ClickManager : MonoBehaviour
         {
             cursorPrefab.transform.position = dashLocation;
         }
+
+        ps.gameObject.transform.position = dashLocation;
+        ps.Emit(20);
 
         if (dashDistance == _dash.MaxDashDistance)
         {
