@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInput : MonoBehaviour
 {
-    [SerializeField] private ClickManager _clickManager;
     private PlayerControl _playerControl;
 
     [SerializeField] private BoolVariable PauseValue;
@@ -30,11 +29,5 @@ public class PlayerInput : MonoBehaviour
         _playerControl.Dreamworld.Pause.performed -= PauseOnPerformed;
     }
 
-    void Update()
-    {
-        if(!PauseValue.Value){
-        Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
-        _clickManager.CursorTransform.position = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 5));
-        }
-    }
+
 }

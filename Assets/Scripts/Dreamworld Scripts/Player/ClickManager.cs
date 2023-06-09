@@ -42,7 +42,8 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Dash _dash;
     [SerializeField] private float dashForceMultiplier;
     [SerializeField] private float maxDashDistanceMultiplier;
-
+    [SerializeField] private MemiMoveSmoother cursorMover;
+    [SerializeField] private MemiHover hover;
         
     private CameraFollow _cameraFollow;
     private PlayerControl _playerControl;
@@ -77,6 +78,7 @@ public class ClickManager : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
         _playerControl.Dreamworld.Enable();
+        hover.OnHover();
 
     }
 
@@ -87,7 +89,7 @@ public class ClickManager : MonoBehaviour
 
     private void DashOnPerformed(InputAction.CallbackContext obj)
     {
-        CursorTransform.position = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
+         
         if(canDash && dashEnabled){
             HandleClick();
             canDash = false;
@@ -147,18 +149,18 @@ public class ClickManager : MonoBehaviour
                 break;
         }
   
-        _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
-        CursorTransform.position = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
-
-
-
   
-        float dashDistance = Mathf.Min(_dash.MaxDashDistance,dashScale * Vector2.Distance(CursorTransform.position, _rigidbody2D.position));
+        _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
+
+        Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
+        Vector3 dashLocation = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 5)); 
+  
+        float dashDistance = Mathf.Min(_dash.MaxDashDistance,dashScale * Vector2.Distance(dashLocation, _rigidbody2D.position));
         float dashForce = 5f * dashDistance;
         //Adjusts the player's dash distance based on how far away the cursor is from the player
-        if(Vector3.Distance(CursorTransform.position, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)
+        if(Vector3.Distance(dashLocation, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)
         {
-            dashForce = dashForceMultiplier * Vector3.Distance(CursorTransform.position, this.GetComponent<Transform>().position);
+            dashForce = dashForceMultiplier * Vector3.Distance(dashLocation, this.GetComponent<Transform>().position);
         } else
         {
             //Restricts the dash distance to the max radius when necessary
@@ -169,7 +171,7 @@ public class ClickManager : MonoBehaviour
 
         if (cursorPrefab != null)
         {
-            cursorPrefab.transform.position = CursorTransform.position;
+            cursorPrefab.transform.position = dashLocation;
         }
 
         if (dashDistance == _dash.MaxDashDistance)
@@ -204,7 +206,11 @@ public class ClickManager : MonoBehaviour
             StartCoroutine(ResetTrailColor());
             return;
         }
+        Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
+        hover.DisableHover();
 
+        cursorMover.Move(Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 5)),
+            () => { });
         _NoteTracker.OnHit();
         
 
@@ -217,6 +223,7 @@ public class ClickManager : MonoBehaviour
 
         _trailRenderer.startColor = Color.white;
         _trailRenderer.endColor = Color.white;
+
     }
 
     private IEnumerator ResetGravity()
@@ -226,5 +233,9 @@ public class ClickManager : MonoBehaviour
         _rigidbody2D.gravityScale = 1f;
         _trailRenderer.startColor = Color.white;
         _trailRenderer.endColor = Color.white;
+        
+        yield return new WaitForSeconds(0.1f);
+        hover.OnHover();
+
     }
 }
