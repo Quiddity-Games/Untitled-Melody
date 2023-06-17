@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-//using UnityEngine.UIElements;
 using Ink.Runtime;
 using TMPro;
+using UnityEngine.Serialization;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// The script that handles all of the branching dialogue / "Texting scene" functionality using the Inkle plugin. Attached to the Dialogue UI Canvas gameObject.
@@ -13,170 +14,322 @@ using TMPro;
 [Serializable] 
 public class Inkle : MonoBehaviour
 {
-    public TextAsset inktext;
-    public Sprite receiversprite;
-    public Sprite sendersprite;
-    public GameObject scrollviewcontent;
-    public Scrollbar vertscrollbar;
-    public GameObject textbubbleprefab;
-    public ScrollRect scrollview;
-    TextGenerator textgen;
-    public GameObject[] dialogueresponses = new GameObject[4];
-    Story inkstory;
-    public bool receiverspeaking = true;
-    float currentdialoguelength = 0.0f;
-    float phonewidth;
-    float phoneheight;
-    float vertscrollbarwidth;
-    float horzscrollbarheight;
-    int count = 0;
-    GameObject cellphone;
+    [FormerlySerializedAs("inkText")]
+    [SerializeField] TextAsset inkTextAsset;
 
-    //vert./horiz. offset distance of textbubbles from sides of screen or each other 
-    public float verttextbubbleoffset;
-    public float horztextbubbleoffset;
+    [SerializeField] Button startDialogueButton;
+    [SerializeField] Button continueDialogueButton;
 
-    //vert./horiz. offset dstance of text inside textbubble
-    public float verttextoffsetinsidebubble;
-    public float horztextoffsetinsidebubble;
+    [Header("Phone UI: Overall")]
+    [SerializeField] CanvasScaler canvasScaler;
+    [SerializeField] CanvasGroup cellPhoneCanvasGroup;
+    [SerializeField] float canvasFadeDuration;
+    [SerializeField] float startDialogueDelayDuration;
+    [Header("Phone UI: Header")]
+    [SerializeField] CanvasGroup headerCanvasGroup;
+    [SerializeField] Image headerIcon;
+    [SerializeField] TextMeshProUGUI headerText;
+    [Header("Phone UI: Body")]
+    [SerializeField] RectTransform bodyScrollViewTransform;
+    [SerializeField] GameObject bodyScrollContent;
+    [SerializeField] ScrollRect bodyScrollRect;
 
-    //recommended values for textrecwidth/height of textbubble prefab in inspector, based on max size of text on screen, 
-    public float textrectwidth; //float textrectwidth = phonewidth - vertscrollbarwidth - (horztextbubbleoffset * 2.0f)) - (horztextoffsetinsidebubble * 2.0f);
-    public float textrectheight; //float textrectheight = phoneheight - horzscrollbarwidth - (verttextbubbleoffset * 2.0f)) - (verttextoffsetinsidebubble * 2.0f);
+    [Space(10)]
+    [Header("Bubbles")]
+    [SerializeField] GameObject textBubblePrefab;
+    [SerializeField] GameObject optionButtonPrefab;
+    [SerializeField] GameObject textOptionsContainer;
+    [SerializeField] float bubbleFadeDuration;
 
-    void Awake()
+    #region Hidden Variables
+    Dictionary<string, string> GlobalTagsDictionary = new Dictionary<string, string>();
+    Dictionary<string, TextBubbleUIElements> CharacterUIDictionary = new Dictionary<string, TextBubbleUIElements>();
+
+    [HideInInspector] float textContainerTop;
+    [HideInInspector] float textContainerRight;
+    [HideInInspector] float textContainerLeft;
+    [HideInInspector] float textContainerBottom;
+
+    [HideInInspector] int currentBubbleIndex;
+    [HideInInspector] List<string> linesBeforeChoice = new List<string>();
+    [HideInInspector] List<TextBubbleUI> bubblesBeforeChoice = new List<TextBubbleUI>();
+    [HideInInspector] List<TextOptionUI> currentOptions = new List<TextOptionUI>();
+
+    [HideInInspector] Story inkStory;
+    [HideInInspector] TextBubbleCharacterUI characterUI;
+    #endregion
+
+    void Start()
     {
-        //initialize ink story with the dialogue when object loads
-        textgen = new TextGenerator();
-        inkstory = new Story(inktext.text);
-        cellphone = GameObject.Find("Cell Phone");
-        RectTransform cellphonerect = cellphone.GetComponent(typeof(RectTransform)) as RectTransform;
-        phonewidth = cellphonerect.rect.width;
-        phoneheight = cellphonerect.rect.height;
-        //RectTransform cellphonerecthorizontal = cellphone.transform.GetChild(1).gameObject.GetComponent(typeof(RectTransform)) as RectTransform;
-        RectTransform cellphonerectvertical = cellphone.transform.GetChild(1).gameObject.GetComponent(typeof(RectTransform)) as RectTransform;
-       //horzscrollbarheight = cellphonerecthorizontal.rect.height;
-        vertscrollbarwidth = cellphonerectvertical.rect.width;
-}
+        // Get components and variables.
+        inkStory = new Story(inkTextAsset.text);
+        characterUI = GetComponent<TextBubbleCharacterUI>();
 
-    // Update is called once per frame
-    void Update()
+        // Set up UI layout and visibility.
+        LayoutRebuilder.ForceRebuildLayoutImmediate(textOptionsContainer.gameObject.transform as RectTransform);
+        cellPhoneCanvasGroup.alpha = 0f;
+        headerCanvasGroup.alpha = 0f;
+
+        // Give functions to buttons.
+        startDialogueButton.onClick.AddListener(ShowDialogueUI);
+        continueDialogueButton.onClick.AddListener(PlayDialogue);
+
+        GetDictionaryValues();
+        linesBeforeChoice = GetLinesBeforeChoice();
+
+        // Get current size of texting body container.
+        textContainerLeft = bodyScrollViewTransform.offsetMin.x;
+        textContainerRight = bodyScrollViewTransform.offsetMax.x;
+        textContainerTop = bodyScrollViewTransform.offsetMax.y;
+        textContainerBottom = bodyScrollViewTransform.offsetMin.y;
+    }
+
+    void GetDictionaryValues()
     {
-        if (count > 0) //this is here because unity doesn't resize the content rect until after this update is called on this frame, it puts the scrollbar at the bottom after the resizing took place
+        // Get global tags.
+        for (int i = 0; i < inkStory.globalTags.Count; i++)
         {
-            count--;
-            vertscrollbar.value = 0.0f;
+            if (inkStory.globalTags[i].Contains("Conversation: "))
+            {
+                GlobalTagsDictionary.Add("Conversation", inkStory.globalTags[i].Replace("Conversation: ", ""));
+            }
+            else if (inkStory.globalTags[i].Contains("Alias: "))
+            {
+                GlobalTagsDictionary.Add("Alias", inkStory.globalTags[i].Replace("Alias: ", ""));
+            }
         }
-        //dialogue running
-        //resize content rect, instantiate text bubble prefab with sized speech bubbles 
-        if (Input.GetMouseButtonDown(0) && !dialogueresponses[0].activeSelf)
+
+        // Get character UI elements.
+        for (int i = 0; i < characterUI.CharacterUIElements.Count; i++)
         {
-            continueDialogue();
-            vertscrollbar.value = 0.0f;
-            count += 1;
+            CharacterUIDictionary.Add(characterUI.CharacterUIElements[i].CharacterName, characterUI.CharacterUIElements[i]);
         }
     }
 
-    void continueDialogue()
+    /// <summary>
+    /// Show dialogue UI after delay on start.
+    /// </summary>
+    void ShowDialogueUI()
     {
-        if (inkstory.canContinue)
+        FadeInUI(cellPhoneCanvasGroup, canvasFadeDuration);
+        GetHeaderText();
+        startDialogueButton.gameObject.SetActive(false);
+        continueDialogueButton.interactable = false;
+
+        StartCoroutine(PlayFirstLine(canvasFadeDuration));
+
+        IEnumerator PlayFirstLine(float duration)
         {
-            string textstring = inkstory.Continue();
-            if (textstring == "&receiver\n")   //if found marker indicating receiver is speaking, or sender is speaking
-            {
-                receiverspeaking = true;
-                textstring = inkstory.Continue();
-            }
-            else if (textstring == "&sender\n")
-            {
-                receiverspeaking = false;
-                textstring = inkstory.Continue();
-            }
-            textstring = textstring.Replace("emoji1", "<sprite=0>");
-            GameObject newtextbubble = Instantiate(textbubbleprefab, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity); //instantiate new textbubble
-            RectTransform bubbleimagerect = newtextbubble.transform.GetChild(0).gameObject.GetComponentInChildren<RectTransform>();
-            newtextbubble.transform.SetParent(scrollviewcontent.transform, false);
-            TextMeshProUGUI textcomponent = newtextbubble.transform.GetChild(0).GetChild(0).gameObject.GetComponentInChildren<TextMeshProUGUI>(); //determine height/width of text to set dimensions of speech bubble
-            textcomponent.text = textstring;
-            //TextGenerationSettings gensettings = textcomponent.GetGenerationSettings(textcomponent.rectTransform.rect.size);
-            textcomponent.ForceMeshUpdate();
-            Vector2 dimensions = textcomponent.GetPreferredValues(textstring);
-            float textwidth = dimensions.x;
-            float textheight = dimensions.y;
-            //float textheight = textcomponent.GetPreferredHeight(textstring, gensettings);
-            //float textwidth = textgen.GetPreferredWidth(textstring, gensettings) + (horztextoffsetinsidebubble * 2.0f);
-            if (textwidth > phonewidth - vertscrollbarwidth + (horztextbubbleoffset * 2.0f) - (horztextoffsetinsidebubble * 2.0f))
-            {
-                textwidth = phonewidth - vertscrollbarwidth - (horztextbubbleoffset * 2.0f) - (horztextoffsetinsidebubble * 2.0f);
-                Debug.Log("sadadsdsa");
-            }
-            bubbleimagerect.sizeDelta = new Vector2(textwidth, textheight);
-            float halfhorztextdistance = textwidth / 2.0f;
-            float halfverttextdistance = textheight / 2.0f;
-            //float textrectwidth = phonewidth - vertscrollbarwidth - (horztextbubbleoffset * 2.0f)) - (horztextoffsetinsidebubble * 2.0f);
-            //float textrectheight = phoneheight - horzscrollbarwidth - (verttextbubbleoffset * 2.0f)) - (verttextoffsetinsidebubble * 2.0f);
+            float time = 0;
+            duration += startDialogueDelayDuration;
 
-            if (receiverspeaking) //speechbubble color/location determined by if receiver or sender is speaking
+            while (time < duration)
             {
-                newtextbubble.transform.localPosition = new Vector3(horztextbubbleoffset + 55.0f, -currentdialoguelength - halfverttextdistance - verttextbubbleoffset, 0.0f);
-                SpriteRenderer profilepicture = newtextbubble.transform.GetChild(1).GetChild(0).gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-                profilepicture.sprite = receiversprite;
-                //newtextbubble.GetComponent<Image>().color = new Vector4(0.0f, 0.05f, 1.0f, 1.0f);
-                bubbleimagerect.localPosition = new Vector3(bubbleimagerect.localPosition.x + halfhorztextdistance - 47.5f, bubbleimagerect.localPosition.y, 0.0f);
-                bubbleimagerect.GetComponent<Image>().color = new Vector4(0.0f, 0.05f, 1.0f, 1.0f);
-                //textcomponent.transform.localposition = newtextbubble.transform.localposition;
-                textcomponent.transform.localPosition = new Vector3(textcomponent.transform.localPosition.x - halfhorztextdistance + (textrectwidth / 2.0f) + horztextoffsetinsidebubble, textcomponent.transform.localPosition.y, 0.0f);
-                //textcomponent.transform.localPosition = new Vector3(textcomponent.transform.localPosition.x - halfhorztextdistance + (textrectwidth / 2.0f) + horztextoffsetinsidebubble, textcomponent.transform.localPosition.y, 0.0f);
-                textcomponent.color = new Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-            }
-            else
-            {
-                //newtextbubble.transform.localPosition = new Vector3((phonewidth - vertscrollbarwidth - horztextbubbleoffset) - halfhorztextdistance, -currentdialoguelength - halfverttextdistance - verttextbubbleoffset, 0.0f);
-                newtextbubble.transform.localPosition = new Vector3((phonewidth - vertscrollbarwidth - horztextbubbleoffset) - 40.0f, -currentdialoguelength - halfverttextdistance - verttextbubbleoffset, 0.0f);
-                SpriteRenderer profilepicture = newtextbubble.transform.GetChild(1).GetChild(0).gameObject.GetComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-                profilepicture.sprite = sendersprite;
-                //newtextbubble.GetComponent<Image>().color = new Vector4(195.0f, 195.0f, 195.0f, 255.0f);
-                bubbleimagerect.localPosition = new Vector3(bubbleimagerect.localPosition.x - halfhorztextdistance + 47.5f, bubbleimagerect.localPosition.y, 0.0f);
-                bubbleimagerect.GetComponent<Image>().color = new Vector4(195.0f, 195.0f, 195.0f, 255.0f);
-                newtextbubble.transform.GetChild(1).localPosition = new Vector3(-newtextbubble.transform.GetChild(1).localPosition.x, 0.0f, 0.0f);
-                textcomponent.transform.localPosition = new Vector3(textcomponent.transform.localPosition.x - halfhorztextdistance + (textrectwidth / 2.0f) + horztextoffsetinsidebubble, textcomponent.transform.localPosition.y, 0.0f);
-                textcomponent.color = new Vector4(0.0f, 0.0f, 0.0f, 1.0f);
+                time += Time.deltaTime;
+                yield return null;
             }
 
-            currentdialoguelength += textheight + verttextbubbleoffset;
-            if (currentdialoguelength > phoneheight)
-            { //resize scrollview content rect if number of messages exceeds size of "phone screen"
-                scrollviewcontent.GetComponent<RectTransform>().sizeDelta = new Vector2(scrollviewcontent.GetComponent<RectTransform>().sizeDelta.x, currentdialoguelength + 20.0f);
+            PlayDialogue();
+            continueDialogueButton.interactable = true;
+        }
+    }
+
+    /// <summary>
+    /// Create a text bubble using the parsed text.
+    /// </summary>
+    /// <param name="line"></param>
+    void CreateTextBubble(string line)
+    {
+        GameObject textBubble = Instantiate(textBubblePrefab, bodyScrollContent.transform);
+        textBubble.SetActive(false);
+        bubblesBeforeChoice.Add(textBubble.GetComponent<TextBubbleUI>());
+        
+        TextBubbleUI ui = textBubble.GetComponent<TextBubbleUI>();
+        FadeInUI(ui.CanvasGroup, bubbleFadeDuration);
+
+        string speakerName = ui.ParseSpeaker(line, GlobalTagsDictionary);
+
+        ui.SetTextBubbleInformation(line, speakerName, characterUI.MainCharacterName, GetSenderIcon(speakerName));
+    }
+
+    /// <summary>
+    /// Set the header text and icon.
+    /// Can use an alias with tag "#Alias: x", if applicable.
+    /// </summary>
+    void GetHeaderText()
+    {
+        headerIcon.sprite = GetSenderIcon(GlobalTagsDictionary["Conversation"]);
+        if (GlobalTagsDictionary.ContainsKey("Alias") && !string.IsNullOrEmpty(GlobalTagsDictionary["Alias"]))
+            headerText.text = GlobalTagsDictionary["Alias"];
+        else
+            headerText.text = GlobalTagsDictionary["Conversation"];
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(headerCanvasGroup.gameObject.transform as RectTransform);
+        FadeInUI(headerCanvasGroup, bubbleFadeDuration);
+    }
+
+    /// <summary>
+    /// Get a list of strings as all lines before choices, including tags.
+    /// </summary>
+    /// <returns></returns>
+    List<string> GetLinesBeforeChoice()
+    {
+        List<string> lines = new List<string>();
+        while (inkStory.canContinue)
+        {
+            string currentTextChunk = inkStory.Continue();
+            List<string> currentTags = inkStory.currentTags;
+
+            string line = "";
+
+            foreach (string tag in currentTags)
+            {
+                line += ("#" + tag + "\n");
             }
-            //Debug.Log(scrollview.scrollOffset);
+            line += currentTextChunk;
+
+            if (!string.IsNullOrEmpty(line))
+            {
+                lines.Add(line);
+                CreateTextBubble(line);
+            }
+        }
+
+        return lines;
+    }
+
+    /// <summary>
+    /// Displays all current instantiated bubbles in order until dialogue ends or choices appear.
+    /// </summary>
+    void PlayDialogue()
+    {
+        if (bubblesBeforeChoice.Count > 0 && !bubblesBeforeChoice[bubblesBeforeChoice.Count - 1].gameObject.activeInHierarchy)
+        {
+            continueDialogueButton.interactable = true;
+
+            bubblesBeforeChoice[currentBubbleIndex].gameObject.SetActive(true);
+            FadeInUI(bubblesBeforeChoice[currentBubbleIndex].CanvasGroup, bubbleFadeDuration);
+            bodyScrollRect.verticalNormalizedPosition = 0f; // Scroll to the bottom of the container.
+
+            currentBubbleIndex++;
         }
         else
-        //if encountered a choice, show choice options on screen
         {
-            for (int i = 0; i < inkstory.currentChoices.Count; i++)
-            {
-                dialogueresponses[i].SetActive(true);
-                dialogueresponses[i].GetComponentInChildren<Text>().text = inkstory.currentChoices[i].text;
-            }
+            linesBeforeChoice.Clear();
+            bubblesBeforeChoice.Clear();
+            currentBubbleIndex = 0;
+            continueDialogueButton.interactable = false;
+
+            if (inkStory.currentChoices.Count > 0)
+                DisplayOptions();
         }
     }
 
-    //callback function for when choice button is clicked
-    public void choiceMadeCallback(int choice)
+    /// <summary>
+    /// Creates a container for options and instantiates a number of option buttons based on Ink.
+    /// </summary>
+    void DisplayOptions()
     {
-        //make choice based on button pressed, hide UI part of it
-        if (inkstory.currentChoices.Count > 0)
+        // Use the empty choice in container.
+        TextOptionUI topOption = textOptionsContainer.transform.GetChild(0).GetComponent<TextOptionUI>();
+        currentOptions.Add(topOption);
+        topOption.OptionText.text = inkStory.currentChoices[0].text;
+        topOption.OptionIndex = 0;
+
+        for (int i = 1; i < inkStory.currentChoices.Count; i++)
         {
-            //Debug.Log("Count " + inkstory.currentChoices.Count);
-            for (int i = 0; i < inkstory.currentChoices.Count; i++)
+            GameObject optionButton = Instantiate(optionButtonPrefab, textOptionsContainer.transform);
+            TextOptionUI ui = optionButton.GetComponent<TextOptionUI>();
+            currentOptions.Add(ui);
+
+            ui.OptionText.text = inkStory.currentChoices[i].text;
+            ui.OptionIndex = i;
+        }
+
+        // Set event to buttons and fade them in gradually.
+        foreach(TextOptionUI options in currentOptions)
+        {
+            options.OptionButton.onClick.AddListener(() => ChoiceMadeCallback(options.OptionIndex));
+            FadeInUI(options.GetComponent<CanvasGroup>(), bubbleFadeDuration + options.OptionIndex * 0.15f);
+        }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(textOptionsContainer.transform as RectTransform);
+
+        bodyScrollViewTransform.offsetMin = new Vector2(textContainerLeft, (textOptionsContainer.transform as RectTransform).sizeDelta.y);
+        bodyScrollViewTransform.offsetMax = new Vector2(textContainerRight, (headerCanvasGroup.gameObject.transform as RectTransform).sizeDelta.y);
+
+    }
+
+    /// <summary>
+    /// Gets the sender's icon sprite from <see cref="textMessageElements"/> if name matches in-line Ink tag.
+    /// </summary>
+    /// <param name="senderName"></param>
+    /// <returns></returns>
+    Sprite GetSenderIcon(string senderName)
+    {
+        Sprite sprite = null;
+
+        if (CharacterUIDictionary.ContainsKey(senderName))
+        {
+            sprite = CharacterUIDictionary[senderName].IconSprite;
+        }
+
+        return sprite;
+    }
+
+    /// <summary>
+    /// Used when a choice is selected.
+    /// Clears all current options objects before grabbing the next set of text objects.
+    /// </summary>
+    /// <param name="choice"></param>
+    void ChoiceMadeCallback(int choice)
+    {
+        if (inkStory.currentChoices.Count > 0)
+        {
+            // Select route and destroy buttons.
+            inkStory.ChooseChoiceIndex(choice);
+
+            for (int i = 1; i < currentOptions.Count; i++)
             {
-                dialogueresponses[i].GetComponentInChildren<Text>().text = "";
-                dialogueresponses[i].SetActive(false);
+                Destroy(currentOptions[i].gameObject);
             }
-            inkstory.ChooseChoiceIndex(choice);
-            inkstory.Continue();
-            continueDialogue();
-            //dialogue.GetComponentInChildren<Text>().text = inkstory.Continue();
+
+            currentOptions.Clear();
+            linesBeforeChoice = GetLinesBeforeChoice();
+            PlayDialogue();
+
+            // Reset container size values.
+            TextOptionUI topOption = textOptionsContainer.transform.GetChild(0).GetComponent<TextOptionUI>();
+            topOption.OptionText.text = "";
+
+            bodyScrollViewTransform.offsetMin = new Vector2(textContainerLeft, textContainerBottom);
+            bodyScrollViewTransform.offsetMax = new Vector2(textContainerRight, textContainerTop);
+
+            continueDialogueButton.interactable = true; // Re-enable continue button.
+        }
+    }
+
+    /// <summary>
+    /// Used to fade in UI with a CanvasGroup component attached.
+    /// </summary>
+    /// <param name="canvasGroup"></param>
+    /// <param name="duration"></param>
+    void FadeInUI(CanvasGroup canvasGroup, float duration)
+    {
+        StartCoroutine(FadeIn(duration));
+
+        IEnumerator FadeIn(float duration)
+        {
+            float time = 0;
+
+            while (time < duration)
+            {
+                canvasGroup.alpha = Mathf.Lerp(0f, 1f, time / duration);
+                time += Time.deltaTime;
+                yield return null;
+            }
+
+            canvasGroup.alpha = 1f;
         }
     }
 }
