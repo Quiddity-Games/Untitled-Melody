@@ -10,7 +10,9 @@ public enum BubbleAlignment { Left, Right }
 
 public class TextBubbleUI : MonoBehaviour
 {
-    public Image IconSprite;
+    public Image IconImage;
+    public Image BubbleImage;
+    private Color defaultColor = Color.white;
     [Header("Text Objects")]
     public TextMeshProUGUI SenderNameText;
     public TextMeshProUGUI MessageText;
@@ -67,19 +69,24 @@ public class TextBubbleUI : MonoBehaviour
     /// Parse information for the text bubble and set the variables.
     /// </summary>
     /// <param name="currentLine"></param>
-    public void SetTextBubbleInformation(string currentLine, string speakerName, string mainCharacterName, Sprite senderIcon)
+    public void SetTextBubbleInformation(string currentLine, string mainCharacterName, TextBubbleUIElements senderUI)
     {
         currentLine = RemoveTags(ParseEmojis(currentLine));
 
         // Set bubble alignment (left or right).
-        if (speakerName.Contains(mainCharacterName))
+        if (senderUI.CharacterName.Contains(mainCharacterName))
             SetBubbleAlignment(TextAnchor.LowerRight);
         else
             SetBubbleAlignment(TextAnchor.LowerLeft);
 
-        SenderNameText.text = speakerName;
+        IconImage.sprite = senderUI.IconSprite;
+        SenderNameText.text = senderUI.CharacterName;
+        SenderNameText.color = senderUI.FontColor;
+
         MessageText.text = currentLine;
-        IconSprite.sprite = senderIcon;
+        MessageText.color = senderUI.FontColor;
+
+        BubbleImage.color = senderUI.TextBoxColor;
     }
 
     /// <summary>
@@ -88,7 +95,7 @@ public class TextBubbleUI : MonoBehaviour
     /// <param name="currentLine"></param>
     /// <param name="globalTags"></param>
     /// <returns></returns>
-    public string ParseSpeaker(string currentLine, Dictionary<string, string> globalTags)
+    public string ParseSpeaker(string currentLine)
     {
         string speakerName = "";
 
@@ -96,7 +103,14 @@ public class TextBubbleUI : MonoBehaviour
         if (Regex.IsMatch(currentLine, @"\#[Ss]peaker\:.*"))
         {
             Regex speakerRx = new Regex(@"[Ss]peaker\:\s(\w+)");
+            MatchCollection speakerMatch = speakerRx.Matches(currentLine);
+            foreach (Match m in speakerMatch)
+            {
+                speakerName = m.Groups[1].Value;
+            }
 
+            #region Parse Alias (unused)
+            /*
             // If there is a "#Speaker: X" tag, use the alias instead.
             if (globalTags.ContainsKey("Alias") && !string.IsNullOrEmpty(globalTags["Alias"]))
             {
@@ -110,6 +124,8 @@ public class TextBubbleUI : MonoBehaviour
                     speakerName = m.Groups[1].Value;
                 }
             }
+            */
+            #endregion
         }
 
         return speakerName;

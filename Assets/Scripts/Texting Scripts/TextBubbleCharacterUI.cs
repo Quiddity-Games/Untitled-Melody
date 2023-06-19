@@ -13,12 +13,18 @@ public class TextBubbleUIElements
     public string CharacterName;
     public Sprite IconSprite;
     public Color TextBoxColor;
-    public Color fontColor;
+    public Color FontColor;
 }
 
 [Serializable]
 public class TextBubbleCharacterUI : MonoBehaviour
 {
+    public static TextBubbleCharacterUI Instance;
     public string MainCharacterName;
     public List<TextBubbleUIElements> CharacterUIElements;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 }
