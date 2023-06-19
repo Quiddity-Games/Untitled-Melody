@@ -3,7 +3,6 @@
 === Scene_1 ===
 This is a right-side dialogue bubble! #Speaker: Amika
 This is a left-aligned bubble! #Speaker: Emerald
-Another one, but with no speaker name!
 More bubbles to extend the box! #Speaker: Amika
 Even MORE bubbles to extend the box! #Speaker: Amika
 And more dialogue! With emojis! [emoji:hearteyes] [emoji:smiling] #Speaker: Emerald
