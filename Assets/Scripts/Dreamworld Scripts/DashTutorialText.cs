@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,28 +10,34 @@ using TMPro;
 public class DashTutorialText : MonoBehaviour
 {
     int numOfSuccessfulDashes;  //Checks how many dashes the player has successfully pulled off so far
+    private NoteTracker _noteTracker;
+    private CollectionScoreController _collectionScore;
+    private VoidCallback onDestroy;
 
-    void Start()
+    public void Init(NoteTracker tracker, VoidCallback onDestroy)
     {
         numOfSuccessfulDashes = 0;
+        this.onDestroy = onDestroy;
+        _noteTracker = tracker;
+        _noteTracker.HitCallback += HandleTutorial;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
-        //Increments the number of successful dashes when the player executes one
-        if(Input.GetMouseButtonDown(0) == true
-            && BeatTracker.instance.onBeat
-            && numOfSuccessfulDashes < 3)
+        onDestroy?.Invoke();
+        if(_noteTracker != null)
+        {
+        _noteTracker.HitCallback -= HandleTutorial;
+        }
+    }
+
+    private void HandleTutorial(NoteTracker.HitInfo info)
+    {
+        if (info.rating != NoteTracker.BeatRating.MISS)
         {
             numOfSuccessfulDashes++;
-
-            //Causes the tutorial text to pulse the same color as the rhythm indicator does when the player gets a dash
-            this.GetComponent<TMP_Text>().color = Color.yellow;
-            StartCoroutine(ReturnToDefaultColor());
         }
-
-        //Removes tutorial text when it's clear that the player has figured out how the mechanic works
+        
         if (numOfSuccessfulDashes >= 3)
         {
             StartCoroutine(FadeAndDestroy());

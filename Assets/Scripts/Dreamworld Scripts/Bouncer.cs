@@ -1,39 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Makes a the attached gameObject bob up and down to add more visual appeal. Attached to all of the Collectable gameObjects.
 /// </summary>
 public class Bouncer : MonoBehaviour
 {
-    private Vector3 startPos;
+    [SerializeField] private float _modifier;
+    [SerializeField] private float _speedModifier;
 
-    public float mod;
+    private Vector3 _startPosition;
 
-    public float spdMod;
-
-    private float rot1;
-
-    private float rot2;
-
-    private float rot3;
-
-    // Use this for initialization
     void Start()
     {
-        //mod = Random.Range(.25f, .5f);
-        //spdMod = Random.Range(-2f, 2f);
-        startPos = transform.position;
-        rot1 = Random.Range(-10, 10);
-        rot2 = Random.Range(-10, 10);
-        rot3 = Random.Range(-10, 10);
+        _startPosition = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //transform.Rotate(rot1 * Time.deltaTime, rot2 * Time.deltaTime, rot3 * Time.deltaTime);
-        transform.position = startPos + Vector3.up * Mathf.Sin(Time.time * spdMod) * mod;
+        //transform.position = _startPos + Vector3.up * Mathf.Sin(Time.time * _spdMod) * _mod;
+        float time = Time.time;
+        transform.position = _startPosition + Vector3.up * Mathf.Sin(time * _speedModifier) * _modifier;
     }
 }
