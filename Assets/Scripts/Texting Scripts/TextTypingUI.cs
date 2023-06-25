@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TextTypingUI : MonoBehaviour
 {
-
-    private Color defaultColor = Color.white;
-
     public Image BubbleImage;
     public Image[] EllipsesImages;
 

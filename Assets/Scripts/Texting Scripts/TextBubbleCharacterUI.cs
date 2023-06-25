@@ -1,13 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-[Serializable]
 /// <summary>
 /// Used as a dictionary to keep track of character icons, using character name as a means of tracking.
+/// Dictionary is created on Awake by the <see cref="DialogueController"/>. Must be attached to the GameObject holding the Dialogue Controller.
 /// </summary>
+
+[Serializable]
+[RequireComponent(typeof(DialogueController))]
 public class TextBubbleUIElements
 {
     public string CharacterName;

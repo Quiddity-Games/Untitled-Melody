@@ -6,20 +6,24 @@ using UnityEngine.UI;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine.Serialization;
-using System.Text.RegularExpressions;
 
 /// <summary>
-/// The script that handles all of the branching dialogue / "Texting" functionality using the Inkle plugin. Attached to the Dialogue UI Canvas gameObject.
+/// Handles the entirety of the display of the texting UI, using references from the scene's <see cref="DialogueController"/>.
+/// Attached to the Dialogue UI Canvas gameObject.
 /// </summary>
+
 [Serializable]
 public class DialogueCanvasUI : MonoBehaviour
 {
+    #region Variables: Buttons
     [Header("Buttons")]
     [SerializeField] Button startDialogueButton;
     public Button ContinueDialogueButton;
     [SerializeField] Toggle autoplayToggleButton;
     [SerializeField] Button skipToChoiceButton;
+    #endregion
 
+    #region Variables: Cellphone UI
     [Header("Phone UI: Overall")]
     [FormerlySerializedAs("cellPhoneCanvasGroup")]
     [SerializeField] CanvasGroup phoneContainerCanvasGroup;
@@ -35,19 +39,20 @@ public class DialogueCanvasUI : MonoBehaviour
     [SerializeField] ScrollRect bodyScrollRect;
     [SerializeField] GameObject textOptionsContainer;
     public GameObject TextTypingContainer;
+    #endregion
 
+    #region Variables: Autoplay/Skip
     [Header("Phone UI: Autoplay/Skip")]
     [SerializeField] GameObject autoplaySkipContainer;
     public TextMeshProUGUI autoplayText;
     private Animator autoplaySkipAnimator;
+    #endregion
 
     #region Hidden Variables
     [HideInInspector] float textContainerTop;
     [HideInInspector] float textContainerRight;
     [HideInInspector] float textContainerLeft;
     [HideInInspector] float textContainerBottom;
-
-    private Story inkStory;
 
     private float canvasFadeDuration;
     private float startDelayDuration;
@@ -72,7 +77,6 @@ public class DialogueCanvasUI : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(textOptionsContainer.gameObject.transform as RectTransform);
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
-        autoplaySkipAnimator = autoplaySkipContainer.GetComponent<Animator>();
 
         // Give functions to buttons.
         startDialogueButton.onClick.AddListener(ShowDialogueUI);
@@ -85,6 +89,15 @@ public class DialogueCanvasUI : MonoBehaviour
         textContainerRight = bodyScrollViewTransform.offsetMax.x;
         textContainerTop = bodyScrollViewTransform.offsetMax.y;
         textContainerBottom = bodyScrollViewTransform.offsetMin.y;
+    }
+
+    /// <summary>
+    /// Get all starting references from the <see cref="DialogueController"/>.
+    /// Called from the Dialogue Controller after Awake to ensure correct order of operations.
+    /// </summary>
+    public void GetReferencesFromController()
+    {
+        autoplaySkipAnimator = autoplaySkipContainer.GetComponent<Animator>();
 
         #region Get values from DialogueController
         canvasFadeDuration = DialogueController.Instance.CanvasFadeDuration;
@@ -92,7 +105,6 @@ public class DialogueCanvasUI : MonoBehaviour
         bubbleFadeDuration = DialogueController.Instance.BubbleFadeDuration;
         autoplayDelayDuration = DialogueController.Instance.AutoplayDelayDuration;
         characterUIDictionary = DialogueController.Instance.CharacterUIDictionary;
-        inkStory = DialogueController.Instance.InkStory;
         longTypingDelayDuration = DialogueController.Instance.LongTypingDelayDuration;
         midTypingDelayDuration = DialogueController.Instance.MidTypingDelayDuration;
         shortTypingDelayDuration = DialogueController.Instance.ShortTypingDelayDuration;
@@ -220,7 +232,7 @@ public class DialogueCanvasUI : MonoBehaviour
         else if (bubblesBeforeChoice[bubblesBeforeChoice.Count - 1].gameObject.activeInHierarchy)
         {
             // If there are choices to be shown, show them.
-            if (inkStory.currentChoices.Count > 0)
+            if (DialogueController.Instance.InkStory.currentChoices.Count > 0)
                 DisplayChoices();
         }
     }
@@ -259,6 +271,7 @@ public class DialogueCanvasUI : MonoBehaviour
         DialogueController.Instance.CurrentBubbleIndex = 0;
 
         List<TextOptionUI> currentOptions = DialogueController.Instance.CurrentOptions;
+        Story inkStory = DialogueController.Instance.InkStory;
 
         // Show a typing bubble animation.
         TextTypingContainer.transform.SetAsLastSibling();
@@ -317,6 +330,7 @@ public class DialogueCanvasUI : MonoBehaviour
     public void SkipToChoice()
     {
         List<TextBubbleUI> bubblesBeforeChoice = DialogueController.Instance.BubblesBeforeChoice;
+        Story inkStory = DialogueController.Instance.InkStory;
         DisplayAutoplaySkipOptions(false);
 
         if (bubblesBeforeChoice.Count > 0)
@@ -360,7 +374,7 @@ public class DialogueCanvasUI : MonoBehaviour
                 if (autoplay)
                 {
                     PlayDialogue();
-                    yield return new WaitForSeconds(autoplayDelayDuration);
+                    yield return new WaitForSeconds(autoplayDelayDuration + currentTypingDelayDuration);
                 }
                 yield return null;
             }
@@ -373,8 +387,6 @@ public class DialogueCanvasUI : MonoBehaviour
     /// <param name="on"></param>
     public void DisplayAutoplaySkipOptions(bool on)
     {
-        bool autoplay = DialogueController.Instance.Autoplay;
-
         if (on)
         {
             Time.timeScale = 0f;
@@ -384,7 +396,7 @@ public class DialogueCanvasUI : MonoBehaviour
             Time.timeScale = 1f;
             autoplaySkipAnimator.SetTrigger("Close");
 
-            if (autoplay)
+            if (DialogueController.Instance.Autoplay)
                 AutoplayDialogue();
         }
     }

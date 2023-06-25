@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Serialization;
 using System.Text.RegularExpressions;
 
-public enum BubbleAlignment { Left, Right }
+/// <summary>
+/// Used to create the text bubble and set all of the object's values from the Ink flow.
+/// </summary>
 
 public class TextBubbleUI : MonoBehaviour
 {
     public Image IconImage;
     public Image BubbleImage;
-    private Color defaultColor = Color.white;
     [Header("Text Objects")]
     public TextMeshProUGUI SenderNameText;
     public TextMeshProUGUI MessageText;

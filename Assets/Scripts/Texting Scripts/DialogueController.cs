@@ -1,36 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
-using UnityEngine.UI;
 using Ink.Runtime;
-using TMPro;
 using UnityEngine.Serialization;
-using System.Text.RegularExpressions;
 
 /// <summary>
 /// Dialogue controller which the active <see cref="DialogueCanvasUI"/> derives its values and static methods from.
 /// On Awake, it creates itself an instance and gathers the dictionary values for global tags and character UI elements. <see cref="TextBubbleCharacterUI"/>
 /// </summary>
 
+public enum BubbleAlignment { Left, Right }
+
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController Instance;
+    enum Platform { PC, Android }
 
+    #region Variables: Canvas
     public TextAsset InkTextAsset;
     public bool Autoplay;
+    [Tooltip("Only for inspector use.")]
+    [SerializeField] Platform platform;
     [Space(5)]
     private DialogueCanvasUI currentDialogueCanvas;
-    [SerializeField] DialogueCanvasUI dialogueCanvas;
+    [FormerlySerializedAs("dialogueCanvas")]
+    [SerializeField] DialogueCanvasUI desktopDialogueCanvas;
     [SerializeField] DialogueCanvasUI mobileDialogueCanvas;
+    #endregion
 
-    [Header("Phone UI: Overall")]
+    #region Variables: Timers
+    [Header("Phone UI: Timers")]
     public float CanvasFadeDuration;
     public float StartDelayDuration;
     public float BubbleFadeDuration;
     public float AutoplayDelayDuration;
     [HideInInspector] public bool CanPrintDialogue;
+    #endregion
 
+    #region Variables: Typing Bubbles
     [Header("Phone UI: Typing Bubbles")]
     public float ShortTypingDelayDuration;
     public float MidTypingDelayDuration;
@@ -38,11 +45,14 @@ public class DialogueController : MonoBehaviour
     [HideInInspector] public CanvasGroup CurrentTypingBubble;
     [HideInInspector] public CanvasGroup LeftTypingBubble;
     [HideInInspector] public CanvasGroup RightTypingBubble;
+    #endregion
 
+    #region Variables: Prefabs
     [Header("Prefabs")]
     public GameObject TextBubblePrefab;
     public GameObject OptionButtonPrefab;
     public GameObject TypingBubblePrefab;
+    #endregion
 
     #region Hidden Variables
     [HideInInspector] public Story InkStory;
@@ -61,17 +71,7 @@ public class DialogueController : MonoBehaviour
     {
         Instance = this;
 
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            currentDialogueCanvas = mobileDialogueCanvas;
-            mobileDialogueCanvas.gameObject.SetActive(true);
-            dialogueCanvas.gameObject.SetActive(false);
-        } else
-        {
-            currentDialogueCanvas = dialogueCanvas;
-            mobileDialogueCanvas.gameObject.SetActive(false);
-            dialogueCanvas.gameObject.SetActive(true);
-        }
+        SelectPlatform();
 
         InkStory = new Story(InkTextAsset.text);
         GetDictionaryValues();
@@ -83,6 +83,48 @@ public class DialogueController : MonoBehaviour
         CreateTextTypingBubbles();
     }
 
+    /// <summary>
+    /// Check the platform and set the correct UI as current.
+    /// Can be used in-editor by using the <see cref="Platform"/> dropdown in the inspector.
+    /// </summary>
+    void SelectPlatform()
+    {
+#if UNITY_EDITOR
+        if (platform == Platform.Android)
+        {
+            currentDialogueCanvas = mobileDialogueCanvas;
+            mobileDialogueCanvas.gameObject.SetActive(true);
+            desktopDialogueCanvas.gameObject.SetActive(false);
+        }
+        else
+        {
+            currentDialogueCanvas = desktopDialogueCanvas;
+            mobileDialogueCanvas.gameObject.SetActive(false);
+            desktopDialogueCanvas.gameObject.SetActive(true);
+        }
+
+#elif UNITY_STANDALONE
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            currentDialogueCanvas = mobileDialogueCanvas;
+            mobileDialogueCanvas.gameObject.SetActive(true);
+            desktopDialogueCanvas.gameObject.SetActive(false);
+        }
+        else
+        {
+            currentDialogueCanvas = desktopDialogueCanvas;
+            mobileDialogueCanvas.gameObject.SetActive(false);
+            desktopDialogueCanvas.gameObject.SetActive(true);
+        }
+#endif
+
+        currentDialogueCanvas.GetReferencesFromController();
+        
+    }
+
+    /// <summary>
+    /// Create dictionary of <see cref="TextBubbleCharacterUI.CharacterUIElements"/> items.
+    /// </summary>
     void GetDictionaryValues()
     {
         // Get global tags.
@@ -215,6 +257,8 @@ public class DialogueController : MonoBehaviour
 
             currentDialogueCanvas.ResetTextContainerSize();
             currentDialogueCanvas.ContinueDialogueButton.gameObject.SetActive(true);
+
+            CanPrintDialogue = true;
 
             if (Autoplay)
                 currentDialogueCanvas.AutoplayDialogue();
