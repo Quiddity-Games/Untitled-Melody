@@ -11,11 +11,14 @@ using System.Text.RegularExpressions;
 /// <summary>
 /// The script that handles all of the branching dialogue / "Texting" functionality using the Inkle plugin. Attached to the Dialogue UI Canvas gameObject.
 /// </summary>
-[Serializable] 
+[Serializable]
 public class DialogueCanvasUI : MonoBehaviour
 {
+    [Header("Buttons")]
     [SerializeField] Button startDialogueButton;
     public Button ContinueDialogueButton;
+    [SerializeField] Toggle autoplayToggleButton;
+    [SerializeField] Button skipToChoiceButton;
 
     [Header("Phone UI: Overall")]
     [FormerlySerializedAs("cellPhoneCanvasGroup")]
@@ -31,12 +34,36 @@ public class DialogueCanvasUI : MonoBehaviour
     [SerializeField] GameObject bodyScrollContent;
     [SerializeField] ScrollRect bodyScrollRect;
     [SerializeField] GameObject textOptionsContainer;
+    public GameObject TextTypingContainer;
+
+    [Header("Phone UI: Autoplay/Skip")]
+    [SerializeField] GameObject autoplaySkipContainer;
+    public TextMeshProUGUI autoplayText;
+    private Animator autoplaySkipAnimator;
 
     #region Hidden Variables
     [HideInInspector] float textContainerTop;
     [HideInInspector] float textContainerRight;
     [HideInInspector] float textContainerLeft;
     [HideInInspector] float textContainerBottom;
+
+    private Story inkStory;
+
+    private float canvasFadeDuration;
+    private float startDelayDuration;
+    private float bubbleFadeDuration;
+    private float currentTypingDelayDuration;
+    private float autoplayDelayDuration;
+
+    // Typing bubble delays
+    private float longTypingDelayDuration;
+    private float midTypingDelayDuration;
+    private float shortTypingDelayDuration;
+
+    // Character info
+    private Dictionary<string, TextBubbleUIElements> characterUIDictionary;
+    private string mainCharacterName;
+
     #endregion
 
     void Start()
@@ -45,16 +72,33 @@ public class DialogueCanvasUI : MonoBehaviour
         LayoutRebuilder.ForceRebuildLayoutImmediate(textOptionsContainer.gameObject.transform as RectTransform);
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
+        autoplaySkipAnimator = autoplaySkipContainer.GetComponent<Animator>();
 
         // Give functions to buttons.
         startDialogueButton.onClick.AddListener(ShowDialogueUI);
         ContinueDialogueButton.onClick.AddListener(PlayDialogue);
+        autoplayToggleButton.onValueChanged.AddListener(delegate { DialogueController.Instance.SetAutoplay(); });
+        skipToChoiceButton.onClick.AddListener(SkipToChoice);
 
         // Get current size of texting body container.
         textContainerLeft = bodyScrollViewTransform.offsetMin.x;
         textContainerRight = bodyScrollViewTransform.offsetMax.x;
         textContainerTop = bodyScrollViewTransform.offsetMax.y;
         textContainerBottom = bodyScrollViewTransform.offsetMin.y;
+
+        #region Get values from DialogueController
+        canvasFadeDuration = DialogueController.Instance.CanvasFadeDuration;
+        startDelayDuration = DialogueController.Instance.StartDelayDuration;
+        bubbleFadeDuration = DialogueController.Instance.BubbleFadeDuration;
+        autoplayDelayDuration = DialogueController.Instance.AutoplayDelayDuration;
+        characterUIDictionary = DialogueController.Instance.CharacterUIDictionary;
+        inkStory = DialogueController.Instance.InkStory;
+        longTypingDelayDuration = DialogueController.Instance.LongTypingDelayDuration;
+        midTypingDelayDuration = DialogueController.Instance.MidTypingDelayDuration;
+        shortTypingDelayDuration = DialogueController.Instance.ShortTypingDelayDuration;
+
+        mainCharacterName = TextBubbleCharacterUI.Instance.MainCharacterName;
+        #endregion
     }
 
     /// <summary>
@@ -62,17 +106,17 @@ public class DialogueCanvasUI : MonoBehaviour
     /// </summary>
     void ShowDialogueUI()
     {
-        DialogueController.Instance.FadeInUI(phoneContainerCanvasGroup, DialogueController.Instance.CanvasFadeDuration);
+        DialogueController.Instance.FadeInUI(phoneContainerCanvasGroup, canvasFadeDuration);
         GetHeaderText();
         startDialogueButton.gameObject.SetActive(false);
         ContinueDialogueButton.interactable = false;
 
-        StartCoroutine(PlayFirstLine(DialogueController.Instance.CanvasFadeDuration));
+        StartCoroutine(PlayFirstLine(canvasFadeDuration));
 
         IEnumerator PlayFirstLine(float duration)
         {
             float time = 0;
-            duration += DialogueController.Instance.StartDelayDuration;
+            duration += startDelayDuration;
 
             while (time < duration)
             {
@@ -80,7 +124,10 @@ public class DialogueCanvasUI : MonoBehaviour
                 yield return null;
             }
 
-            PlayDialogue();
+            if (DialogueController.Instance.Autoplay)
+                AutoplayDialogue();
+            else
+                PlayDialogue();
             ContinueDialogueButton.interactable = true;
         }
     }
@@ -94,12 +141,12 @@ public class DialogueCanvasUI : MonoBehaviour
         GameObject textBubble = Instantiate(DialogueController.Instance.TextBubblePrefab, bodyScrollContent.transform);
         textBubble.SetActive(false);
         DialogueController.Instance.BubblesBeforeChoice.Add(textBubble.GetComponent<TextBubbleUI>());
-        
+
         TextBubbleUI ui = textBubble.GetComponent<TextBubbleUI>();
         string speakerName = ui.ParseSpeaker(line);
-        DialogueController.Instance.FadeInUI(ui.CanvasGroup, DialogueController.Instance.BubbleFadeDuration);
+        DialogueController.Instance.FadeInUI(ui.CanvasGroup, bubbleFadeDuration);
 
-        ui.SetTextBubbleInformation(line, TextBubbleCharacterUI.Instance.MainCharacterName, DialogueController.Instance.CharacterUIDictionary[speakerName]);
+        ui.SetTextBubbleInformation(line, mainCharacterName, characterUIDictionary[speakerName]);
     }
 
     /// <summary>
@@ -108,11 +155,11 @@ public class DialogueCanvasUI : MonoBehaviour
     /// </summary>
     void GetHeaderText()
     {
-        headerIcon.sprite = DialogueController.Instance.CharacterUIDictionary[DialogueController.Instance.GlobalTagsDictionary["Conversation"]].IconSprite;
+        headerIcon.sprite = characterUIDictionary[DialogueController.Instance.GlobalTagsDictionary["Conversation"]].IconSprite;
         headerText.text = DialogueController.Instance.GlobalTagsDictionary["Conversation"];
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(headerCanvasGroup.gameObject.transform as RectTransform);
-        DialogueController.Instance.FadeInUI(headerCanvasGroup, DialogueController.Instance.BubbleFadeDuration);
+        DialogueController.Instance.FadeInUI(headerCanvasGroup, bubbleFadeDuration);
     }
 
     /// <summary>
@@ -122,30 +169,81 @@ public class DialogueCanvasUI : MonoBehaviour
     {
         List<TextBubbleUI> bubblesBeforeChoice = DialogueController.Instance.BubblesBeforeChoice;
         int currentBubbleIndex = DialogueController.Instance.CurrentBubbleIndex;
+        
+        DialogueController.Instance.CanPrintDialogue = false;
 
         if (bubblesBeforeChoice.Count > 0 && !bubblesBeforeChoice[bubblesBeforeChoice.Count - 1].gameObject.activeInHierarchy)
         {
-            ContinueDialogueButton.interactable = true;
+            // Get the correctly aligned typing bubble.
+            CanvasGroup typingCanvasGroup = DialogueController.Instance.GetCurrentBubble(bubblesBeforeChoice[currentBubbleIndex].SenderNameText.text);
 
-            // Check the current index of the shown bubble, and set it to true.
-            bubblesBeforeChoice[currentBubbleIndex].gameObject.SetActive(true);
-            DialogueController.Instance.FadeInUI(bubblesBeforeChoice[currentBubbleIndex].CanvasGroup, DialogueController.Instance.BubbleFadeDuration);
-            bodyScrollRect.verticalNormalizedPosition = 0f; // Scroll to the bottom of the container.
+            StartCoroutine(ShowTextTypingBubble());
 
-            DialogueController.Instance.CurrentBubbleIndex++;
+            IEnumerator ShowTextTypingBubble()
+            {
+                // Set the typing bubble to the bottom.
+                TextTypingContainer.transform.SetAsLastSibling();
+
+                if (!typingCanvasGroup.gameObject.activeInHierarchy)
+                {
+                    typingCanvasGroup.gameObject.SetActive(true);
+                    DialogueController.Instance.FadeInUI(typingCanvasGroup, bubbleFadeDuration);
+                    TMP_TextInfo info = bubblesBeforeChoice[currentBubbleIndex].MessageText.GetTextInfo(bubblesBeforeChoice[currentBubbleIndex].MessageText.text);
+
+                    float duration = 0f;
+                    float time = 0f;
+
+                    // Change the duration of the typing bubble based on line length.
+                    if (info.characterCount >= 100)
+                        duration = longTypingDelayDuration;
+                    else if (info.lineCount >= 50 && info.lineCount <= 100)
+                        duration = midTypingDelayDuration;
+                    else
+                        duration = shortTypingDelayDuration;
+
+                    currentTypingDelayDuration = duration;
+
+                    while (time < duration)
+                    {
+                        time += Time.deltaTime;
+                        yield return null;
+                    }
+                }
+
+                if (bubblesBeforeChoice.Count > 0)
+                {
+                    typingCanvasGroup.gameObject.SetActive(false);
+                    ShowNextTextBubble(bubblesBeforeChoice, currentBubbleIndex);
+                }
+            }
         }
         else if (bubblesBeforeChoice[bubblesBeforeChoice.Count - 1].gameObject.activeInHierarchy)
         {
-            ContinueDialogueButton.interactable = false;
-            DialogueController.Instance.LinesBeforeChoice.Clear();
-            bubblesBeforeChoice.Clear();
-
-            DialogueController.Instance.CurrentBubbleIndex = 0;
-
             // If there are choices to be shown, show them.
-            if (DialogueController.Instance.InkStory.currentChoices.Count > 0)
+            if (inkStory.currentChoices.Count > 0)
                 DisplayChoices();
         }
+    }
+
+    /// <summary>
+    /// Used to print the next text bubble after the typing bubble animation clears.
+    /// </summary>
+    /// <param name="bubblesBeforeChoice"></param>
+    /// <param name="currentBubbleIndex"></param>
+    void ShowNextTextBubble(List<TextBubbleUI> bubblesBeforeChoice, int currentBubbleIndex)
+    {
+        DialogueController.Instance.CurrentTypingBubble.gameObject.SetActive(false);
+
+        ContinueDialogueButton.interactable = true;
+
+        // Check the current index of the shown bubble, and set it to true.
+        bubblesBeforeChoice[currentBubbleIndex].gameObject.SetActive(true);
+        DialogueController.Instance.FadeInUI(bubblesBeforeChoice[currentBubbleIndex].CanvasGroup, bubbleFadeDuration);
+        bodyScrollRect.verticalNormalizedPosition = 0f; // Scroll to the bottom of the container.
+
+        DialogueController.Instance.CurrentBubbleIndex++;
+        DialogueController.Instance.CanPrintDialogue = true;
+
     }
 
     /// <summary>
@@ -153,20 +251,34 @@ public class DialogueCanvasUI : MonoBehaviour
     /// </summary>
     void DisplayChoices()
     {
+        ContinueDialogueButton.interactable = false;
+
+        // Reset all current text bubble values for DialogueController.
+        DialogueController.Instance.LinesBeforeChoice.Clear();
+        DialogueController.Instance.BubblesBeforeChoice.Clear();
+        DialogueController.Instance.CurrentBubbleIndex = 0;
+
         List<TextOptionUI> currentOptions = DialogueController.Instance.CurrentOptions;
+
+        // Show a typing bubble animation.
+        TextTypingContainer.transform.SetAsLastSibling();
+        CanvasGroup typingCanvasGroup = DialogueController.Instance.RightTypingBubble;
+        typingCanvasGroup.gameObject.SetActive(true);
+        DialogueController.Instance.FadeInUI(typingCanvasGroup, bubbleFadeDuration);
 
         ContinueDialogueButton.gameObject.SetActive(false);
         
-        for (int i = 0; i < DialogueController.Instance.InkStory.currentChoices.Count; i++)
+        // Create a button for each available choice.
+        for (int i = 0; i < inkStory.currentChoices.Count; i++)
         {
             GameObject optionButton = Instantiate(DialogueController.Instance.OptionButtonPrefab, textOptionsContainer.transform);
             TextOptionUI ui = optionButton.GetComponent<TextOptionUI>();
-            ui.OptionFontColour = DialogueController.Instance.CharacterUIDictionary[TextBubbleCharacterUI.Instance.MainCharacterName].FontColor;
+            ui.OptionFontColour = characterUIDictionary[mainCharacterName].FontColor;
 
             currentOptions.Add(ui);
 
             ui.OptionText.color = ui.OptionFontColour;
-            ui.OptionText.text = DialogueController.Instance.InkStory.currentChoices[i].text;
+            ui.OptionText.text = inkStory.currentChoices[i].text;
             ui.OptionIndex = i;
         }
 
@@ -174,7 +286,7 @@ public class DialogueCanvasUI : MonoBehaviour
         foreach(TextOptionUI options in currentOptions)
         {
             options.OptionButton.onClick.AddListener(() => DialogueController.Instance.ChoiceMadeCallback(options.OptionIndex));
-            DialogueController.Instance.FadeInUI(options.GetComponent<CanvasGroup>(), DialogueController.Instance.BubbleFadeDuration + options.OptionIndex * 0.15f);
+            DialogueController.Instance.FadeInUI(options.GetComponent<CanvasGroup>(), bubbleFadeDuration + options.OptionIndex * 0.15f);
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(textOptionsContainer.transform as RectTransform);
@@ -197,5 +309,83 @@ public class DialogueCanvasUI : MonoBehaviour
         bodyScrollViewTransform.offsetMax = new Vector2(textContainerRight, textContainerTop);
 
         ContinueDialogueButton.interactable = true; // Re-enable continue button.
+    }
+
+    /// <summary>
+    /// Used to skip directly to the next choice. Shows all bubbles and then <see cref="DisplayChoices"/>.
+    /// </summary>
+    public void SkipToChoice()
+    {
+        List<TextBubbleUI> bubblesBeforeChoice = DialogueController.Instance.BubblesBeforeChoice;
+        DisplayAutoplaySkipOptions(false);
+
+        if (bubblesBeforeChoice.Count > 0)
+        {
+            for (int i = 0; i < bubblesBeforeChoice.Count; i++)
+            {
+                if (!bubblesBeforeChoice[i].gameObject.activeInHierarchy)
+                {
+                    bubblesBeforeChoice[i].gameObject.SetActive(true);
+                    DialogueController.Instance.FadeInUI(bubblesBeforeChoice[i].CanvasGroup, bubbleFadeDuration);
+                }
+            }
+        }
+
+        if (inkStory.currentChoices.Count > 0)
+            DisplayChoices();
+    }
+
+    /// <summary>
+    /// Used to autoplay dialogue if the setting is on.
+    /// Only prints after a bubble has finished printing.
+    /// </summary>
+    public void AutoplayDialogue()
+    {
+        List<TextBubbleUI> bubblesBeforeChoice = DialogueController.Instance.BubblesBeforeChoice;
+        int currentBubbleIndex = DialogueController.Instance.CurrentBubbleIndex;
+        bool autoplay = DialogueController.Instance.Autoplay;
+
+        if (currentBubbleIndex < bubblesBeforeChoice.Count - 1)
+            StartCoroutine(Autoplay());
+
+        IEnumerator Autoplay()
+        {
+            while (currentBubbleIndex < bubblesBeforeChoice.Count - 1)
+            {
+                while (!DialogueController.Instance.CanPrintDialogue)
+                {
+                    yield return null;
+                }
+
+                if (autoplay)
+                {
+                    PlayDialogue();
+                    yield return new WaitForSeconds(autoplayDelayDuration);
+                }
+                yield return null;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Used to animate the autoplay and skip to choice options menu.
+    /// </summary>
+    /// <param name="on"></param>
+    public void DisplayAutoplaySkipOptions(bool on)
+    {
+        bool autoplay = DialogueController.Instance.Autoplay;
+
+        if (on)
+        {
+            Time.timeScale = 0f;
+            autoplaySkipAnimator.SetTrigger("Open");
+        } else
+        {
+            Time.timeScale = 1f;
+            autoplaySkipAnimator.SetTrigger("Close");
+
+            if (autoplay)
+                AutoplayDialogue();
+        }
     }
 }

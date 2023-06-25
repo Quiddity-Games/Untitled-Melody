@@ -25,6 +25,5 @@ public class TextOptionUI : MonoBehaviour
         {
             OptionFontColour = DialogueController.Instance.CharacterUIDictionary[TextBubbleCharacterUI.Instance.MainCharacterName].FontColor;
         }
-
     }
 }

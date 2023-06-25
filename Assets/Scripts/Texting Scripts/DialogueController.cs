@@ -8,11 +8,18 @@ using TMPro;
 using UnityEngine.Serialization;
 using System.Text.RegularExpressions;
 
+/// <summary>
+/// Dialogue controller which the active <see cref="DialogueCanvasUI"/> derives its values and static methods from.
+/// On Awake, it creates itself an instance and gathers the dictionary values for global tags and character UI elements. <see cref="TextBubbleCharacterUI"/>
+/// </summary>
+
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController Instance;
 
     public TextAsset InkTextAsset;
+    public bool Autoplay;
+    [Space(5)]
     private DialogueCanvasUI currentDialogueCanvas;
     [SerializeField] DialogueCanvasUI dialogueCanvas;
     [SerializeField] DialogueCanvasUI mobileDialogueCanvas;
@@ -21,14 +28,24 @@ public class DialogueController : MonoBehaviour
     public float CanvasFadeDuration;
     public float StartDelayDuration;
     public float BubbleFadeDuration;
+    public float AutoplayDelayDuration;
+    [HideInInspector] public bool CanPrintDialogue;
+
+    [Header("Phone UI: Typing Bubbles")]
+    public float ShortTypingDelayDuration;
+    public float MidTypingDelayDuration;
+    public float LongTypingDelayDuration;
+    [HideInInspector] public CanvasGroup CurrentTypingBubble;
+    [HideInInspector] public CanvasGroup LeftTypingBubble;
+    [HideInInspector] public CanvasGroup RightTypingBubble;
 
     [Header("Prefabs")]
     public GameObject TextBubblePrefab;
     public GameObject OptionButtonPrefab;
+    public GameObject TypingBubblePrefab;
 
+    #region Hidden Variables
     [HideInInspector] public Story InkStory;
-    [HideInInspector] public TextBubbleCharacterUI textBubbleCharacterUI;
-
     [HideInInspector] public int CurrentBubbleIndex;
     [HideInInspector] public List<string> LinesBeforeChoice = new List<string>();
     [HideInInspector] public List<TextBubbleUI> BubblesBeforeChoice = new List<TextBubbleUI>();
@@ -36,6 +53,7 @@ public class DialogueController : MonoBehaviour
 
     public Dictionary<string, string> GlobalTagsDictionary = new Dictionary<string, string>();
     public Dictionary<string, TextBubbleUIElements> CharacterUIDictionary = new Dictionary<string, TextBubbleUIElements>();
+    #endregion
 
 
     // Start is called before the first frame update
@@ -59,9 +77,10 @@ public class DialogueController : MonoBehaviour
         GetDictionaryValues();
     }
 
-    private void Start()
+    void Start()
     {
         GetLinesBeforeChoice();
+        CreateTextTypingBubbles();
     }
 
     void GetDictionaryValues()
@@ -111,6 +130,45 @@ public class DialogueController : MonoBehaviour
     }
 
     /// <summary>
+    /// Create the typing bubbles with values from <see cref="TextBubbleCharacterUI"/> and hide them in the inspector.
+    /// </summary>
+    void CreateTextTypingBubbles()
+    {
+        foreach (TextBubbleUIElements ui in TextBubbleCharacterUI.Instance.CharacterUIElements)
+        {
+            GameObject typingBubble = Instantiate(TypingBubblePrefab, currentDialogueCanvas.TextTypingContainer.transform);
+            TextTypingUI typingUI = typingBubble.GetComponent<TextTypingUI>();
+
+            if (ui.CharacterName.Equals(TextBubbleCharacterUI.Instance.MainCharacterName))
+            {
+                typingUI.SetBubbleAlignment(TextAnchor.LowerRight);
+                RightTypingBubble = typingUI.CanvasGroup;
+            } else
+            {
+                typingUI.SetBubbleAlignment(TextAnchor.LowerLeft);
+                LeftTypingBubble = typingUI.CanvasGroup;
+            }
+
+            typingUI.SetBubbleColor(TextBubbleCharacterUI.Instance.MainCharacterName, ui);
+        }
+    }
+
+    /// <summary>
+    /// Gets the current speaker's bubble to correctly show the typing animation.
+    /// </summary>
+    /// <param name="speakerName"></param>
+    /// <returns></returns>
+    public CanvasGroup GetCurrentBubble(string speakerName)
+    {
+        if (speakerName.Equals(TextBubbleCharacterUI.Instance.MainCharacterName))
+            CurrentTypingBubble = RightTypingBubble;
+        else
+            CurrentTypingBubble = LeftTypingBubble;
+
+        return CurrentTypingBubble;
+    }
+
+    /// <summary>
     /// Used to fade in UI with a CanvasGroup component attached.
     /// </summary>
     /// <param name="canvasGroup"></param>
@@ -145,6 +203,7 @@ public class DialogueController : MonoBehaviour
         {
             // Select route and destroy buttons.
             InkStory.ChooseChoiceIndex(choice);
+            GetCurrentBubble(TextBubbleCharacterUI.Instance.MainCharacterName);
 
             for (int i = 0; i < CurrentOptions.Count; i++)
             {
@@ -154,9 +213,29 @@ public class DialogueController : MonoBehaviour
             CurrentOptions.Clear();
             GetLinesBeforeChoice();
 
-            currentDialogueCanvas.PlayDialogue();
             currentDialogueCanvas.ResetTextContainerSize();
             currentDialogueCanvas.ContinueDialogueButton.gameObject.SetActive(true);
+
+            if (Autoplay)
+                currentDialogueCanvas.AutoplayDialogue();
+            else
+                currentDialogueCanvas.PlayDialogue();
         }
+    }
+
+    /// <summary>
+    /// Sets the autoplay variable and changes the text on the UI accordingly.
+    /// </summary>
+    /// <returns></returns>
+    public bool SetAutoplay()
+    {
+        Autoplay = !Autoplay;
+
+        if (Autoplay)
+            currentDialogueCanvas.autoplayText.text = "Autoplay\n(ON)";
+        else
+            currentDialogueCanvas.autoplayText.text = "Autoplay\n(OFF)";
+
+        return Autoplay;
     }
 }

@@ -5,6 +5,7 @@ This is a right-side dialogue bubble! #Speaker: Amika
 This is a left-aligned bubble! #Speaker: Emerald
 More bubbles to extend the box! #Speaker: Amika
 Even MORE bubbles to extend the box! #Speaker: Amika
+This message is going to be unnecessarily long so that the typing can parse that it is over 100 characters and needs to take longer to print!!! #Speaker: Emerald
 And more dialogue! With emojis! [emoji:hearteyes] [emoji:smiling] #Speaker: Emerald
 *   What about choice 1? #Speaker: Amika
     Choice 1 sounds great! #Speaker: Emerald
