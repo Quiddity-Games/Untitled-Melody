@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.Serialization;
+using UnityEngine.Events;
 
 /// <summary>
 /// Dialogue controller which the active <see cref="DialogueCanvasUI"/> derives its values and static methods from.
@@ -14,18 +15,18 @@ public enum BubbleAlignment { Left, Right }
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController Instance;
-    enum Platform { PC, Android }
 
     #region Variables: Canvas
     public TextAsset InkTextAsset;
+
     public bool Autoplay;
-    [Tooltip("Only for inspector use.")]
-    [SerializeField] Platform platform;
     [Space(5)]
-    private DialogueCanvasUI currentDialogueCanvas;
-    [FormerlySerializedAs("dialogueCanvas")]
-    [SerializeField] DialogueCanvasUI desktopDialogueCanvas;
-    [SerializeField] DialogueCanvasUI mobileDialogueCanvas;
+    [SerializeField] bool previewAspectRatio;
+    [Tooltip("Only for inspector use.")]
+    [SerializeField] Vector2 aspectRatio;
+    [Space(5)]
+    [SerializeField] DialogueCanvasUI dialogueCanvas;
+    [SerializeField] AutoplaySkipUI autoplaySkipUI;
     #endregion
 
     #region Variables: Timers
@@ -39,12 +40,13 @@ public class DialogueController : MonoBehaviour
 
     #region Variables: Typing Bubbles
     [Header("Phone UI: Typing Bubbles")]
+    [HideInInspector] public float CurrentTypingDelayDuration;
     public float ShortTypingDelayDuration;
     public float MidTypingDelayDuration;
     public float LongTypingDelayDuration;
-    [HideInInspector] public CanvasGroup CurrentTypingBubble;
-    [HideInInspector] public CanvasGroup LeftTypingBubble;
-    [HideInInspector] public CanvasGroup RightTypingBubble;
+    [HideInInspector] public TextTypingUI CurrentTypingBubble;
+    [HideInInspector] public TextTypingUI LeftTypingBubble;
+    [HideInInspector] public TextTypingUI RightTypingBubble;
     #endregion
 
     #region Variables: Prefabs
@@ -56,9 +58,9 @@ public class DialogueController : MonoBehaviour
 
     #region Hidden Variables
     [HideInInspector] public Story InkStory;
-    [HideInInspector] public int CurrentBubbleIndex;
+    public int CurrentBubbleIndex;
     [HideInInspector] public List<string> LinesBeforeChoice = new List<string>();
-    [HideInInspector] public List<TextBubbleUI> BubblesBeforeChoice = new List<TextBubbleUI>();
+    public List<TextBubbleUI> BubblesBeforeChoice = new List<TextBubbleUI>();
     [HideInInspector] public List<TextOptionUI> CurrentOptions = new List<TextOptionUI>();
 
     public Dictionary<string, string> GlobalTagsDictionary = new Dictionary<string, string>();
@@ -70,10 +72,8 @@ public class DialogueController : MonoBehaviour
     void Awake()
     {
         Instance = this;
-
-        SelectPlatform();
-
         InkStory = new Story(InkTextAsset.text);
+        CurrentBubbleIndex = 0;
         GetDictionaryValues();
     }
 
@@ -81,49 +81,46 @@ public class DialogueController : MonoBehaviour
     {
         GetLinesBeforeChoice();
         CreateTextTypingBubbles();
+        SelectPlatform();
+    }
+
+    private void OnValidate()
+    {
+#if UNITY_EDITOR
+        if (previewAspectRatio)
+        {
+            ScreenAspectRatio currentAspectRatio = FindObjectOfType<ScreenAspectRatio>();
+
+            for (int i = 0; i < currentAspectRatio.TextingFormatting.Count; i++)
+            {
+                if (aspectRatio == currentAspectRatio.TextingFormatting[i].AspectRatio)
+                {
+                    dialogueCanvas.ResizeCanvasForPlatform(currentAspectRatio.TextingFormatting[i]);
+                    autoplaySkipUI.ResizeMenuForPlatform(currentAspectRatio.TextingFormatting[i]);
+                }
+            }
+
+            previewAspectRatio = false;
+        }
+#endif
     }
 
     /// <summary>
     /// Check the platform and set the correct UI as current.
     /// Can be used in-editor by using the <see cref="Platform"/> dropdown in the inspector.
+    /// Called on <see cref="Awake"/>.
     /// </summary>
     void SelectPlatform()
     {
-#if UNITY_EDITOR
-        if (platform == Platform.Android)
-        {
-            currentDialogueCanvas = mobileDialogueCanvas;
-            mobileDialogueCanvas.gameObject.SetActive(true);
-            desktopDialogueCanvas.gameObject.SetActive(false);
-        }
-        else
-        {
-            currentDialogueCanvas = desktopDialogueCanvas;
-            mobileDialogueCanvas.gameObject.SetActive(false);
-            desktopDialogueCanvas.gameObject.SetActive(true);
-        }
+        dialogueCanvas.ResizeCanvasForPlatform(ScreenAspectRatio.AspectRatio);
+        dialogueCanvas.GetReferencesFromController();
 
-#elif UNITY_STANDALONE
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            currentDialogueCanvas = mobileDialogueCanvas;
-            mobileDialogueCanvas.gameObject.SetActive(true);
-            desktopDialogueCanvas.gameObject.SetActive(false);
-        }
-        else
-        {
-            currentDialogueCanvas = desktopDialogueCanvas;
-            mobileDialogueCanvas.gameObject.SetActive(false);
-            desktopDialogueCanvas.gameObject.SetActive(true);
-        }
-#endif
-
-        currentDialogueCanvas.GetReferencesFromController();
-        
+        autoplaySkipUI.ResizeMenuForPlatform(ScreenAspectRatio.AspectRatio);
     }
 
     /// <summary>
     /// Create dictionary of <see cref="TextBubbleCharacterUI.CharacterUIElements"/> items.
+    /// Called on <see cref="Awake"/>.
     /// </summary>
     void GetDictionaryValues()
     {
@@ -147,6 +144,7 @@ public class DialogueController : MonoBehaviour
 
     /// <summary>
     /// Get a list of strings as all lines before choices, including tags.
+    /// Called on <see cref="Start"/>.
     /// </summary>
     void GetLinesBeforeChoice()
     {
@@ -166,29 +164,46 @@ public class DialogueController : MonoBehaviour
             if (!string.IsNullOrEmpty(parsedLine))
             {
                 LinesBeforeChoice.Add(parsedLine);
-                currentDialogueCanvas.CreateTextBubble(parsedLine);
+                CreateTextBubble(parsedLine);
             }
         }
     }
 
     /// <summary>
+    /// Create a text bubble using the parsed text.
+    /// </summary>
+    /// <param name="line"></param>
+    void CreateTextBubble(string line)
+    {
+        GameObject textBubble = Instantiate(TextBubblePrefab, dialogueCanvas.BodyScrollContent.transform);
+        BubblesBeforeChoice.Add(textBubble.GetComponent<TextBubbleUI>());
+
+        TextBubbleUI ui = textBubble.GetComponent<TextBubbleUI>();
+        string speakerName = ui.ParseSpeaker(line);
+        FadeInUI(ui.CanvasGroup, BubbleFadeDuration);
+
+        ui.SetTextBubbleInformation(line, TextBubbleCharacterUI.Instance.MainCharacterName, CharacterUIDictionary[speakerName]);
+    }
+
+    /// <summary>
     /// Create the typing bubbles with values from <see cref="TextBubbleCharacterUI"/> and hide them in the inspector.
+    /// Called on <see cref="Start"/>, simultaneously with <see cref="GetLinesBeforeChoice"/>.
     /// </summary>
     void CreateTextTypingBubbles()
     {
         foreach (TextBubbleUIElements ui in TextBubbleCharacterUI.Instance.CharacterUIElements)
         {
-            GameObject typingBubble = Instantiate(TypingBubblePrefab, currentDialogueCanvas.TextTypingContainer.transform);
+            GameObject typingBubble = Instantiate(TypingBubblePrefab, dialogueCanvas.BodyScrollContent.transform);
             TextTypingUI typingUI = typingBubble.GetComponent<TextTypingUI>();
 
             if (ui.CharacterName.Equals(TextBubbleCharacterUI.Instance.MainCharacterName))
             {
-                typingUI.SetBubbleAlignment(TextAnchor.LowerRight);
-                RightTypingBubble = typingUI.CanvasGroup;
+                typingUI.GetBubbleFormatting(ScreenAspectRatio.AspectRatio, TextAnchor.LowerRight);
+                RightTypingBubble = typingUI;
             } else
             {
-                typingUI.SetBubbleAlignment(TextAnchor.LowerLeft);
-                LeftTypingBubble = typingUI.CanvasGroup;
+                typingUI.GetBubbleFormatting(ScreenAspectRatio.AspectRatio, TextAnchor.LowerLeft);
+                LeftTypingBubble = typingUI;
             }
 
             typingUI.SetBubbleColor(TextBubbleCharacterUI.Instance.MainCharacterName, ui);
@@ -196,11 +211,118 @@ public class DialogueController : MonoBehaviour
     }
 
     /// <summary>
+    /// Used when a choice is selected.
+    /// Clears all current options objects before grabbing the next set of text objects.
+    /// Called by <see cref="DialogueCanvasUI.DisplayChoices"/>.
+    /// </summary>
+    /// <param name="choice"></param>
+    public void ChoiceMadeCallback(int choice)
+    {
+        Debug.Log("Choice made callback called");
+
+        // Select route and destroy buttons.
+        InkStory.ChooseChoiceIndex(choice);
+        GetCurrentTypingBubble(TextBubbleCharacterUI.Instance.MainCharacterName);
+
+        for (int i = 0; i < CurrentOptions.Count; i++)
+        {
+            Destroy(CurrentOptions[i].gameObject);
+        }
+
+        CurrentOptions.Clear();
+        GetLinesBeforeChoice();
+
+        dialogueCanvas.ResetTextContainerSize();
+        dialogueCanvas.ContinueDialogueButton.gameObject.SetActive(true);
+
+        BubblesBeforeChoice[BubblesBeforeChoice.Count - 1].gameObject.SetActive(false);
+        CurrentTypingBubble.gameObject.SetActive(false);
+        CanPrintDialogue = true;
+
+        if (Autoplay)
+            dialogueCanvas.AutoplayDialogue();
+        else
+            dialogueCanvas.PlayDialogue();
+    }
+
+    /// <summary>
+    /// Sets the autoplay variable and changes the text on the UI accordingly.
+    /// Called when <see cref="currentDialogueCanvas.autoplayToggleButton"/> has its value changed.
+    /// </summary>
+    /// <returns></returns>
+    public bool SetAutoplay()
+    {
+        Autoplay = !Autoplay;
+
+        if (Autoplay)
+            dialogueCanvas.autoplayText.text = "Autoplay\n(ON)";
+        else
+            dialogueCanvas.autoplayText.text = "Autoplay\n(OFF)";
+
+        return Autoplay;
+    }
+
+    /// <summary>
+    /// Used to skip directly to the next choice. Shows all bubbles and then <see cref="DisplayChoices"/>.
+    /// </summary>
+    public void SkipToChoice()
+    {
+        List<TextBubbleUI> bubblesBeforeChoice = BubblesBeforeChoice;
+        Story inkStory = InkStory;
+        AutoplaySkipUI.Instance.DisplayAutoplayMenu(false);
+
+        if (bubblesBeforeChoice.Count > 0)
+        {
+            for (int i = 0; i < bubblesBeforeChoice.Count; i++)
+            {
+                if (!bubblesBeforeChoice[i].gameObject.activeInHierarchy)
+                {
+                    bubblesBeforeChoice[i].gameObject.SetActive(true);
+                    FadeInUI(bubblesBeforeChoice[i].CanvasGroup, BubbleFadeDuration);
+                }
+            }
+        }
+
+        if (inkStory.currentChoices.Count > 0)
+            dialogueCanvas.DisplayChoices();
+    }
+
+    /// <summary>
+    /// Used to autoplay dialogue if the setting is on.
+    /// Only prints after a bubble has finished printing.
+    /// </summary>
+    public void AutoplayDialogue()
+    {
+        StartCoroutine(StartAutoplay());
+    }
+
+    IEnumerator StartAutoplay()
+    {
+        while (CurrentBubbleIndex < BubblesBeforeChoice.Count - 1 && Autoplay)
+        {
+            while (!CanPrintDialogue)
+            {
+                yield return null;
+            }
+
+            if (Autoplay)
+            {
+                dialogueCanvas.PlayDialogue();
+                yield return new WaitForSeconds(AutoplayDelayDuration + CurrentTypingDelayDuration);
+            }
+            yield return null;
+        }
+
+        yield break;
+    }
+
+    /// <summary>
     /// Gets the current speaker's bubble to correctly show the typing animation.
+    /// Called by <see cref="DialogueCanvasUI.PlayDialogue"/>.
     /// </summary>
     /// <param name="speakerName"></param>
     /// <returns></returns>
-    public CanvasGroup GetCurrentBubble(string speakerName)
+    public TextTypingUI GetCurrentTypingBubble(string speakerName)
     {
         if (speakerName.Equals(TextBubbleCharacterUI.Instance.MainCharacterName))
             CurrentTypingBubble = RightTypingBubble;
@@ -232,54 +354,5 @@ public class DialogueController : MonoBehaviour
 
             canvasGroup.alpha = 1f;
         }
-    }
-
-    /// <summary>
-    /// Used when a choice is selected.
-    /// Clears all current options objects before grabbing the next set of text objects.
-    /// </summary>
-    /// <param name="choice"></param>
-    public void ChoiceMadeCallback(int choice)
-    {
-        if (InkStory.currentChoices.Count > 0)
-        {
-            // Select route and destroy buttons.
-            InkStory.ChooseChoiceIndex(choice);
-            GetCurrentBubble(TextBubbleCharacterUI.Instance.MainCharacterName);
-
-            for (int i = 0; i < CurrentOptions.Count; i++)
-            {
-                Destroy(CurrentOptions[i].gameObject);
-            }
-
-            CurrentOptions.Clear();
-            GetLinesBeforeChoice();
-
-            currentDialogueCanvas.ResetTextContainerSize();
-            currentDialogueCanvas.ContinueDialogueButton.gameObject.SetActive(true);
-
-            CanPrintDialogue = true;
-
-            if (Autoplay)
-                currentDialogueCanvas.AutoplayDialogue();
-            else
-                currentDialogueCanvas.PlayDialogue();
-        }
-    }
-
-    /// <summary>
-    /// Sets the autoplay variable and changes the text on the UI accordingly.
-    /// </summary>
-    /// <returns></returns>
-    public bool SetAutoplay()
-    {
-        Autoplay = !Autoplay;
-
-        if (Autoplay)
-            currentDialogueCanvas.autoplayText.text = "Autoplay\n(ON)";
-        else
-            currentDialogueCanvas.autoplayText.text = "Autoplay\n(OFF)";
-
-        return Autoplay;
     }
 }

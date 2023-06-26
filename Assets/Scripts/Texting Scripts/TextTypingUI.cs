@@ -7,12 +7,13 @@ public class TextTypingUI : MonoBehaviour
     public Image[] EllipsesImages;
 
     [Header("Layout Groups")]
-    public HorizontalLayoutGroup BubbleLayoutGroup;
+    public LayoutGroup BubbleLayoutGroup;
     public CanvasGroup CanvasGroup;
 
     [Space(10)]
+    [SerializeField] bool previewAlignment;
     [Tooltip("Only for inspector use.")]
-    [SerializeField] BubbleAlignment previewAlignment;
+    [SerializeField] BubbleAlignment currentAlignment;
 
     // Start is called before the first frame update
     void Start()
@@ -22,17 +23,19 @@ public class TextTypingUI : MonoBehaviour
 
     private void OnValidate()
     {
-        switch (previewAlignment)
+        if (previewAlignment)
         {
-            case BubbleAlignment.Left:
-                SetBubbleAlignment(TextAnchor.LowerLeft);
-                break;
-            case BubbleAlignment.Right:
-                SetBubbleAlignment(TextAnchor.LowerRight);
-                break;
-            default:
-                SetBubbleAlignment(TextAnchor.LowerLeft);
-                break;
+            switch (currentAlignment)
+            {
+                case BubbleAlignment.Left:
+                    SetBubbleAlignment(TextAnchor.LowerLeft);
+                    break;
+                case BubbleAlignment.Right:
+                    SetBubbleAlignment(TextAnchor.LowerRight);
+                    break;
+            }
+
+            previewAlignment = false;
         }
     }
 
@@ -40,9 +43,22 @@ public class TextTypingUI : MonoBehaviour
     /// Sets the alignment of the bubble.
     /// </summary>
     /// <param name="textAnchor"></param>
-    public void SetBubbleAlignment(TextAnchor textAnchor)
+    void SetBubbleAlignment(TextAnchor textAnchor)
     {
         BubbleLayoutGroup.childAlignment = textAnchor;
+    }
+
+    /// <summary>
+    /// Sets the alignment and padding of the bubble.
+    /// </summary>
+    /// <param name="textAnchor"></param>
+    public void GetBubbleFormatting(TextingAspectRatioFormat aspect, TextAnchor textAnchor)
+    {
+        BubbleLayoutGroup.childAlignment = textAnchor;
+
+        // Set padding on left/right
+        BubbleLayoutGroup.padding.left = aspect.IconEdgePadding;
+        BubbleLayoutGroup.padding.right = aspect.IconEdgePadding;
     }
 
     /// <summary>

@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,43 +12,70 @@ using System.Text.RegularExpressions;
 
 public class TextBubbleUI : MonoBehaviour
 {
+    [SerializeField] LayoutElement iconMaskLayout;
     public Image IconImage;
     public Image BubbleImage;
     [Header("Text Objects")]
     public TextMeshProUGUI SenderNameText;
     public TextMeshProUGUI MessageText;
     [Header("Layout Groups")]
-    public HorizontalLayoutGroup BubbleLayoutGroup;
-    public VerticalLayoutGroup MessageLayoutGroup;
+    public LayoutGroup BubbleLayoutGroup;
+    public LayoutGroup MessageLayoutGroup;
     public CanvasGroup CanvasGroup;
 
     [Space(10)]
+    [SerializeField] bool previewAlignment;
     [Tooltip("Only for inspector use.")]
-    [SerializeField] BubbleAlignment previewAlignment;
+    [SerializeField] BubbleAlignment currentAlignment;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (!BubbleLayoutGroup)
-            BubbleLayoutGroup = GetComponent<HorizontalLayoutGroup>();
-
         CanvasGroup.alpha = 0f;
+        //gameObject.SetActive(false);
     }
 
     private void OnValidate()
     {
-        switch (previewAlignment)
+        if (previewAlignment)
         {
-            case BubbleAlignment.Left:
-                SetBubbleAlignment(TextAnchor.LowerLeft);
-                break;
-            case BubbleAlignment.Right:
-                SetBubbleAlignment(TextAnchor.LowerRight);
-                break;
-            default:
-                SetBubbleAlignment(TextAnchor.LowerLeft);
-                break;
+            switch (currentAlignment)
+            {
+                case BubbleAlignment.Left:
+                    SetBubbleAlignment(TextAnchor.LowerLeft);
+                    break;
+                case BubbleAlignment.Right:
+                    SetBubbleAlignment(TextAnchor.LowerRight);
+                    break;
+            }
+
+            previewAlignment = false;
         }
+    }
+
+    void GetBubbleFormatting(TextingAspectRatioFormat aspect, TextAnchor textAnchor)
+    {
+        // Set padding on left/right
+        if (textAnchor == TextAnchor.LowerLeft || textAnchor == TextAnchor.UpperLeft)
+        {
+            BubbleLayoutGroup.padding.left = aspect.IconEdgePadding;
+            BubbleLayoutGroup.padding.right = aspect.BubbleEdgePadding;
+        } else if (textAnchor == TextAnchor.LowerRight || textAnchor == TextAnchor.UpperRight)
+        {
+            BubbleLayoutGroup.padding.right = aspect.IconEdgePadding;
+            BubbleLayoutGroup.padding.left = aspect.BubbleEdgePadding;
+        }
+
+        // Set icon size
+        iconMaskLayout.minWidth = aspect.IconSize;
+        iconMaskLayout.minHeight = aspect.IconSize;
+        iconMaskLayout.preferredWidth = aspect.IconSize;
+        iconMaskLayout.preferredHeight = aspect.IconSize;
+
+        // Set font size
+        SenderNameText.fontSize = aspect.SenderFontSize;
+        MessageText.fontSize = aspect.MessageFontSize;
+        (BubbleLayoutGroup as HorizontalLayoutGroup).spacing = aspect.LayoutSpacing;
     }
 
     /// <summary>
@@ -54,13 +84,22 @@ public class TextBubbleUI : MonoBehaviour
     /// <param name="textAnchor"></param>
     public void SetBubbleAlignment(TextAnchor textAnchor)
     {
+        gameObject.SetActive(false);
         BubbleLayoutGroup.childAlignment = textAnchor;
         MessageLayoutGroup.childAlignment = textAnchor;
 
         if (textAnchor == TextAnchor.LowerLeft || textAnchor == TextAnchor.UpperLeft)
-            BubbleLayoutGroup.reverseArrangement = false;
+        {
+            SenderNameText.alignment = TextAlignmentOptions.MidlineLeft;
+            (BubbleLayoutGroup as HorizontalLayoutGroup).reverseArrangement = false;
+        }
         else if (textAnchor == TextAnchor.LowerRight || textAnchor == TextAnchor.UpperRight)
-            BubbleLayoutGroup.reverseArrangement = true;
+        {
+            (BubbleLayoutGroup as HorizontalLayoutGroup).reverseArrangement = true;
+            SenderNameText.alignment = TextAlignmentOptions.MidlineRight;
+        }
+
+        GetBubbleFormatting(ScreenAspectRatio.AspectRatio, textAnchor);
     }
 
     /// <summary>
