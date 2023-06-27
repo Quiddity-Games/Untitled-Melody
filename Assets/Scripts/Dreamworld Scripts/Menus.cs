@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,31 +10,22 @@ using UnityEngine.UI;
 public class Menus : MonoBehaviour
 {
     public GameObject pauseMenu;
-    public static bool paused;
+    public BoolVariable pause;
 
-    // Update is called once per frame
-    void Update()
+    public FloatVariable volume;
+    private void Awake()
     {
-        //Pauses the game if the Esc key is pressed
-        if (Input.GetKeyDown(KeyCode.Escape) && !paused)
-        {
-            paused = true;
-            Time.timeScale = 0;
-            BeatTracker.instance.songPlayer.Pause();
-            pauseMenu.SetActive(true);
+        pause.OnValueChange += OnGamePause;
+    }
 
-        //Unpausing
-        } else if (Input.GetKeyDown(KeyCode.Escape) && paused) 
-        {
-            paused = false;
-            pauseMenu.SetActive(false);
-            Time.timeScale = 1;
+    private void OnDestroy()
+    {
+        pause.OnValueChange -= OnGamePause;
+    }
 
-            if(BeatTracker.instance.startedLevelCountdown == true)
-            {
-                BeatTracker.instance.songPlayer.Play();
-            }
-        }
+    public void OnGamePause()
+    {
+        pauseMenu.SetActive(pause.Value);
     }
 
     /// <summary>
@@ -41,7 +33,8 @@ public class Menus : MonoBehaviour
     /// </summary>
     public void IncreaseVolume()
     {
-        BeatTracker.instance.songPlayer.volume += .1f;
+        volume.Value += .1f;
+        //BeatTracker.instance.songPlayer.volume += .1f;
     }
 
     /// <summary>
@@ -49,6 +42,7 @@ public class Menus : MonoBehaviour
     /// </summary>
     public void DecreaseVolume()
     {
-        BeatTracker.instance.songPlayer.volume -= .1f;
+        volume.Value -= .1f;
+        //  BeatTracker.instance.songPlayer.volume -= .1f;
     }
 }

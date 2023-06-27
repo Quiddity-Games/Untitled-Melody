@@ -7,21 +7,53 @@ using UnityEngine;
 /// </summary>
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    public enum SmoothSpeedType
+    {
+        Normal,
+        Dashing,
+        Checkpoint
+    }
 
-    public float smoothSpeed;   //This is set equal to one of the two following variables in the GameManager.cs script
-    public float dashingSmoothSpeed;    //The smooth speed when the player is dashing (triggered in GameManager.cs)
-    public float checkpointSmoothSpeed; //The smooth speed when the player is respawning at a checkpoint (triggered in GameManager.cs)
+    private SmoothSpeedType _smoothSpeed = SmoothSpeedType.Normal;
 
-    [SerializeField] Vector3 offset;    //Makes it so the camera doesn't have to be pointing *directly* at the player
+    private Transform _player;
 
-    /// <summary>
-    /// Updates the camera's position.
-    /// </summary>
+    private const float SmoothSpeedNormal = 10;
+    private const float SmoothSpeedDashing = 10;    
+    private const float SmoothSpeedCheckpoint = 2; 
+
+    [SerializeField] private Vector3 _offset;    //Makes it so the camera doesn't have to be pointing *directly* at the player
+
+    private void Start()
+    {
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     private void LateUpdate()
     {
-        Vector3 desiredPosition = player.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        Vector3 desiredPosition = _player.position + _offset;
+        float smoothSpeedValue;
+        switch (_smoothSpeed)
+        {
+            case SmoothSpeedType.Normal:
+                smoothSpeedValue = SmoothSpeedNormal;
+                break;
+            case SmoothSpeedType.Dashing:
+                smoothSpeedValue = SmoothSpeedDashing;
+                break;
+            case SmoothSpeedType.Checkpoint:
+                smoothSpeedValue = SmoothSpeedCheckpoint;
+                break;
+            default:
+                smoothSpeedValue = SmoothSpeedNormal;
+                break;
+        }
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeedValue * Time.deltaTime);
         transform.position = smoothedPosition;
+    }
+
+    public void UpdateSpeed(SmoothSpeedType smoothSpeedType)
+    {
+        _smoothSpeed = smoothSpeedType;
     }
 }
