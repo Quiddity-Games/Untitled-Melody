@@ -18,9 +18,10 @@ public class DialogueCanvasUI : MonoBehaviour
 {
     #region Variables: Buttons
     [Header("Buttons")]
+    [SerializeField] Button autoskipMenuButton;
     [SerializeField] Button startDialogueButton;
     public Button ContinueDialogueButton;
-    [SerializeField] Button autoskipMenuButton;
+    [SerializeField] TextOptionUI[] dialogueOptions;
     #endregion
 
     #region Variables: Cellphone UI
@@ -79,6 +80,11 @@ public class DialogueCanvasUI : MonoBehaviour
 
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
+
+#if UNITY_ANDROID
+        autoskipMenuButton.gameObject.SetActive(false);
+        autoskipMenuButton.interactable = false;
+#endif
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
@@ -277,22 +283,17 @@ public class DialogueCanvasUI : MonoBehaviour
         // Create a button for each available choice.
         for (int i = 0; i < inkStory.currentChoices.Count; i++)
         {
-            GameObject optionButton = Instantiate(DialogueController.Instance.OptionButtonPrefab, textOptionsContainer.transform);
-            TextOptionUI ui = optionButton.GetComponent<TextOptionUI>();
-            ui.OptionFontColour = characterUIDictionary[mainCharacterName].FontColor;
+            dialogueOptions[i].OptionText.text = inkStory.currentChoices[i].text;
+            dialogueOptions[i].gameObject.SetActive(true);
+            dialogueOptions[i].OptionButton.onClick.AddListener(delegate
+            {
+                foreach (TextOptionUI option in dialogueOptions)
+                {
+                    option.gameObject.SetActive(false);
+                }
+            });
 
-            currentOptions.Add(ui);
-
-            ui.OptionText.color = ui.OptionFontColour;
-            ui.OptionText.text = inkStory.currentChoices[i].text;
-            ui.OptionIndex = i;
-        }
-
-        // Set event to buttons and fade them in gradually.
-        foreach(TextOptionUI options in currentOptions)
-        {
-            options.OptionButton.onClick.AddListener(() => DialogueController.Instance.ChoiceMadeCallback(options.OptionIndex));
-            DialogueController.Instance.FadeInUI(options.GetComponent<CanvasGroup>(), bubbleFadeDuration + options.OptionIndex * 0.15f);
+            DialogueController.Instance.FadeInUI(dialogueOptions[i].OptionCanvasGroup, bubbleFadeDuration + dialogueOptions[i].OptionIndex * 0.15f);
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(textOptionsContainer.transform as RectTransform);
@@ -307,10 +308,6 @@ public class DialogueCanvasUI : MonoBehaviour
     public void ResetTextContainerSize()
     {
         // Reset container size values.
-        TextOptionUI topOption = textOptionsContainer.transform.GetChild(0).GetComponent<TextOptionUI>();
-        topOption.OptionText.color = topOption.FadedFontColor;
-        topOption.OptionText.text = "Continue";
-
         bodyScrollViewTransform.offsetMin = new Vector2(textContainerLeft, textContainerBottom);
         bodyScrollViewTransform.offsetMax = new Vector2(textContainerRight, textContainerTop);
 

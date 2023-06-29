@@ -216,18 +216,10 @@ public class DialogueController : MonoBehaviour
     /// Called by <see cref="DialogueCanvasUI.DisplayChoices"/>.
     /// </summary>
     /// <param name="choice"></param>
-    public void ChoiceMadeCallback(int choice)
+    public void ChoiceMadeCallback()
     {
-        Debug.Log("Choice made callback called");
-
-        // Select route and destroy buttons.
-        InkStory.ChooseChoiceIndex(choice);
+        // Select route and hide buttons.
         GetCurrentTypingBubble(TextBubbleCharacterUI.Instance.MainCharacterName);
-
-        for (int i = 0; i < CurrentOptions.Count; i++)
-        {
-            Destroy(CurrentOptions[i].gameObject);
-        }
 
         CurrentOptions.Clear();
         GetLinesBeforeChoice();
