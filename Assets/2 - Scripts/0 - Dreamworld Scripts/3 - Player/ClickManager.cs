@@ -141,11 +141,20 @@ public class ClickManager : MonoBehaviour
         
         switch (hitInfo.rating)
         {
+            case NoteTracker.BeatRating.PERFECT:
+                dashScale = 1f;
+                break;
+            case NoteTracker.BeatRating.GREAT:
+                dashScale = 0.8f;
+                break;
             case NoteTracker.BeatRating.GOOD:
-                dashScale = 0.5f;
+                dashScale = 0.6f;
                 break;
             case NoteTracker.BeatRating.BAD:
                 dashScale = 0.1f;
+                break;
+            case NoteTracker.BeatRating.MISS:
+                dashScale = 0f;
                 break;
         }
   

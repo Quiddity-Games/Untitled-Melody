@@ -16,7 +16,7 @@ public class RhythmUI : MonoBehaviour
     bool _countdownTextDisplayed2;
     private bool _countdownTextDisplayed1;
     [SerializeField] private bool _countdownFinished;
-    private GameObject screenSpaceCanvas;
+    private GameObject dreamworldUICanvas;
 
     public GameEvent countdownOver;
     public NoteTracker _NoteTracker;
@@ -34,7 +34,7 @@ public class RhythmUI : MonoBehaviour
 
     private void Awake()
     {
-        screenSpaceCanvas = GameObject.Find("Screen Space Canvas");
+        dreamworldUICanvas = DreamworldUIManager.Instance.gameObject;
 
         _NoteTracker.onLoad += Init;
         _NoteTracker.onTimeUpdate += HandleCountdown;
@@ -74,8 +74,8 @@ public class RhythmUI : MonoBehaviour
                 _countdownTextDisplayed3 = true;
 
                 GameObject countdownText3 = Instantiate(fadingMessageTextObject,
-                    screenSpaceCanvas.GetComponent<Transform>());
-                countdownText3.GetComponent<Transform>().localPosition = new Vector3(0, 64, 0);
+                    dreamworldUICanvas.transform);
+                (countdownText3.transform as RectTransform).localPosition = new Vector3(0, 64, 0);
                 countdownText3.GetComponent<TMP_Text>().text = "3...";
             }
 
@@ -89,8 +89,8 @@ public class RhythmUI : MonoBehaviour
                 _countdownTextDisplayed2 = true;
 
                 GameObject countdownText2 = Instantiate(fadingMessageTextObject,
-                    screenSpaceCanvas.GetComponent<Transform>());
-                countdownText2.GetComponent<Transform>().localPosition = new Vector3(0, 64, 0);
+                    dreamworldUICanvas.transform);
+                (countdownText2.transform as RectTransform).localPosition = new Vector3(0, 64, 0);
                 countdownText2.GetComponent<TMP_Text>().text = "2...";
             }
 
@@ -105,8 +105,8 @@ public class RhythmUI : MonoBehaviour
                 _countdownTextDisplayed1 = true;
 
                 GameObject countdownText1 = Instantiate(fadingMessageTextObject,
-                    screenSpaceCanvas.GetComponent<Transform>());
-                countdownText1.GetComponent<Transform>().localPosition = new Vector3(0, 64, 0);
+                    dreamworldUICanvas.transform);
+                (countdownText1.transform as RectTransform).localPosition = new Vector3(0, 64, 0);
                 countdownText1.GetComponent<TMP_Text>().text = "1...";
             }
 
@@ -120,16 +120,16 @@ public class RhythmUI : MonoBehaviour
             {
                 Debug.Log("CHECK");
                 DashTutorialText countdownFinishedText = Instantiate(dashTutorialTextObject,
-                    screenSpaceCanvas.GetComponent<Transform>());
+                    dreamworldUICanvas.transform);
                 
                 countdownFinishedText.Init(_NoteTracker, () =>
                 {
                     CollectableTutorialText countdownFinishedText = Instantiate(collectableTutorialTextObject,
-                        screenSpaceCanvas.GetComponent<Transform>());
-                    countdownFinishedText.gameObject.GetComponent<Transform>().localPosition =
+                        dreamworldUICanvas.transform);
+                    (countdownFinishedText.gameObject.transform as RectTransform).localPosition =
                         new Vector3(0, 120, 0);
                 });
-                countdownFinishedText.gameObject.GetComponent<Transform>().localPosition =
+                (countdownFinishedText.gameObject.transform as RectTransform).localPosition =
                     new Vector3(0, 120, 0);
                 countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
                 _NoteTracker.onTimeUpdate -= HandleCountdown;
