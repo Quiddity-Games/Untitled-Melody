@@ -3,29 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+/// <summary>
+/// Grabs information for resizing the UI to suit other screens.
+/// </summary>
 public class ScreenAspectRatio : MonoBehaviour
 {
-    public static Dictionary<string, TextingAspectRatioFormat> AspectRatioDictionary = new Dictionary<string, TextingAspectRatioFormat>();
+    public static Dictionary<string, TextingAspectRatioFormat> TextingFormatDictionary = new Dictionary<string, TextingAspectRatioFormat>();
     public static TextingAspectRatioFormat AspectRatio;
 
-    [FormerlySerializedAs("textingFormatting")]
-    public List<TextingAspectRatioFormat> TextingFormatting = new List<TextingAspectRatioFormat>();
+    [SerializeField] CanvasType canvasType;
+    public ScriptableObject CanvasInformation;
+
+    public static TextingScreenFormat TextingFormatting;
 
     private Camera mainCamera;
+
+    [Serializable]
+    enum CanvasType { Dreamworld, Dialogue }
 
     // Start is called before the first frame update
     void Awake()
     {
-        foreach (TextingAspectRatioFormat txt in TextingFormatting)
+        switch (canvasType)
         {
-            AspectRatioDictionary.Add((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00"), CreateDictionaryEntry(txt));
+            case CanvasType.Dialogue:
+                TextingFormatting = CanvasInformation as TextingScreenFormat;
+                foreach (TextingAspectRatioFormat txt in TextingFormatting.TextingFormatList)
+                {
+                    TextingFormatDictionary.Add((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00"), CreateDictionaryEntry(txt));
+                }
+                break;
         }
     }
 
     private void Start()
     {
         mainCamera = GetComponent<Camera>();
-        AspectRatio = GetAspectRatio();
+        AspectRatio = GetTextingFormatValues();
     }
 
     /// <summary>
@@ -60,46 +74,17 @@ public class ScreenAspectRatio : MonoBehaviour
     /// Get the current aspect ratio and its values for formatting.
     /// </summary>
     /// <returns></returns>
-    TextingAspectRatioFormat GetAspectRatio()
+    TextingAspectRatioFormat GetTextingFormatValues()
     {
         //float ratio = Screen.width / Screen.height;
         string ratio = mainCamera.aspect.ToString("#.00");
         TextingAspectRatioFormat aspect = new TextingAspectRatioFormat();
 
-        if (AspectRatioDictionary.ContainsKey(ratio))
+        if (TextingFormatDictionary.ContainsKey(ratio))
         {
-            aspect = AspectRatioDictionary[ratio];
+            aspect = TextingFormatDictionary[ratio];
         }
 
         return aspect;
     }
-}
-
-/// <summary>
-/// An inspector-friendly and editable class used to reference and set values for each screen size.
-/// </summary>
-[Serializable]
-public class TextingAspectRatioFormat
-{
-    enum ScreenSize { Landscape, Portrait }
-
-    public Vector2 AspectRatio;
-    [SerializeField] ScreenSize screenSize;
-    [Space(5)]
-    [Header("Text Bubbles")]
-    [FormerlySerializedAs("LeftOffset")] public int BubbleEdgePadding;
-    [FormerlySerializedAs("RightOffset")] public int IconEdgePadding;
-    [Space(5)]
-    public float IconSize;
-    public int SenderFontSize;
-    public int MessageFontSize;
-    public int LayoutSpacing;
-    [Space(5)]
-    [Header("Phone Container")]
-    public Vector2 PhoneContainerOffsetMin;
-    public Vector2 PhoneContainerOffsetMax;
-    [Space(5)]
-    [Header("Autoskip Menu")]
-    public float AutoplayMenuPivotX;
-    public float AutoplayMenuAnchorX;
 }

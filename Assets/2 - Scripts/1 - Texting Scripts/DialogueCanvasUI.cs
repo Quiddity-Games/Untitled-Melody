@@ -163,7 +163,7 @@ public class DialogueCanvasUI : MonoBehaviour
 
             DialogueController.Instance.CanPrintDialogue = true;
 
-            if (DialogueController.Instance.Autoplay)
+            if (DialogueController.Instance.AutoplayEnabled)
                 AutoplayDialogue();
             else
                 PlayDialogue();
@@ -328,14 +328,14 @@ public class DialogueCanvasUI : MonoBehaviour
         int bubblesBeforeChoice = DialogueController.Instance.BubblesBeforeChoice.Count;
         int currentBubbleIndex = DialogueController.Instance.CurrentBubbleIndex;
 
-        while (currentBubbleIndex < bubblesBeforeChoice - 1 && DialogueController.Instance.Autoplay)
+        while (currentBubbleIndex < bubblesBeforeChoice - 1 && DialogueController.Instance.AutoplayEnabled)
         {
             while (!DialogueController.Instance.CanPrintDialogue)
             {
                 yield return null;
             }
 
-            if (DialogueController.Instance.Autoplay)
+            if (DialogueController.Instance.AutoplayEnabled)
             {
                 PlayDialogue();
                 yield return new WaitForSeconds(autoplayDelayDuration + currentTypingDelayDuration);
