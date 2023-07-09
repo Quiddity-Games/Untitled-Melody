@@ -20,6 +20,7 @@ public class TextingAspectRatioFormat
 
     public Vector2 AspectRatio;
     [SerializeField] ScreenSize screenSize;
+    public Vector2 BackgroundOffsetMax;
     [Space(5)]
     [Header("Text Bubbles")]
     [FormerlySerializedAs("LeftOffset")] public int BubbleEdgePadding;

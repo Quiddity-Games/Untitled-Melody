@@ -52,6 +52,7 @@ public class ScreenAspectRatio : MonoBehaviour
         TextingAspectRatioFormat format = new TextingAspectRatioFormat();
 
         format.AspectRatio = text.AspectRatio;
+        format.BackgroundOffsetMax = text.BackgroundOffsetMax;
 
         format.IconSize = text.IconSize;
         format.IconEdgePadding = text.IconEdgePadding;

@@ -15,6 +15,7 @@ MonoBehaviour:
   TextingFormatList:
   - AspectRatio: {x: 4, y: 3}
     screenSize: 0
+    BackgroundOffsetMax: {x: 67, y: 0}
     BubbleEdgePadding: 105
     IconEdgePadding: 25
     IconSize: 110
@@ -27,6 +28,7 @@ MonoBehaviour:
     AutoplayMenuAnchorX: -40
   - AspectRatio: {x: 16, y: 10}
     screenSize: 0
+    BackgroundOffsetMax: {x: 20, y: 0}
     BubbleEdgePadding: 115
     IconEdgePadding: 25
     IconSize: 110
@@ -39,6 +41,7 @@ MonoBehaviour:
     AutoplayMenuAnchorX: -40
   - AspectRatio: {x: 16, y: 9}
     screenSize: 0
+    BackgroundOffsetMax: {x: 0, y: 0}
     BubbleEdgePadding: 140
     IconEdgePadding: 25
     IconSize: 110
@@ -51,6 +54,7 @@ MonoBehaviour:
     AutoplayMenuAnchorX: -40
   - AspectRatio: {x: 3, y: 4}
     screenSize: 1
+    BackgroundOffsetMax: {x: 65, y: 0}
     BubbleEdgePadding: 80
     IconEdgePadding: 25
     IconSize: 90
@@ -63,6 +67,7 @@ MonoBehaviour:
     AutoplayMenuAnchorX: 0
   - AspectRatio: {x: 10, y: 16}
     screenSize: 1
+    BackgroundOffsetMax: {x: 70, y: 0}
     BubbleEdgePadding: 40
     IconEdgePadding: 25
     IconSize: 90
@@ -75,6 +80,7 @@ MonoBehaviour:
     AutoplayMenuAnchorX: 0
   - AspectRatio: {x: 9, y: 16}
     screenSize: 1
+    BackgroundOffsetMax: {x: 80, y: 0}
     BubbleEdgePadding: 15
     IconEdgePadding: 25
     IconSize: 90

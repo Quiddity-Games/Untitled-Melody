@@ -26,6 +26,7 @@ public class DialogueCanvasUI : MonoBehaviour
 
     #region Variables: Cellphone UI
     [Header("Phone UI: Overall")]
+    [SerializeField] RectTransform backgroundTransform;
     [SerializeField] GameObject phoneContainer;
     private CanvasGroup phoneContainerCanvasGroup;
     private RectTransform phoneContainerTransform;
@@ -89,6 +90,8 @@ public class DialogueCanvasUI : MonoBehaviour
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
     {
+        backgroundTransform.offsetMax = new Vector2(format.BackgroundOffsetMax.x, backgroundTransform.offsetMax.y);
+
         phoneContainerTransform = phoneContainer.transform as RectTransform;
 
         phoneContainerTransform.offsetMin = format.PhoneContainerOffsetMin;
