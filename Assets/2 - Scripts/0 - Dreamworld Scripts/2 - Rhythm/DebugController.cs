@@ -26,7 +26,7 @@ public class DebugController : MonoBehaviour
         return optionNames;
     }
 
-    public void HandleOptions(string selectedOp)
+    public void HandleOptions(string selectedOp, bool value)
     {
         
         foreach (DebugOptions opt in Options)
@@ -37,7 +37,7 @@ public class DebugController : MonoBehaviour
             }
             else
             {
-                opt.callback.Invoke(true);
+                opt.callback.Invoke(value);
             }
         }
     }
