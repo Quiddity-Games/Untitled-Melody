@@ -144,7 +144,7 @@ public class NoteTracker : MonoBehaviour
 
         HitInfo hitInfo = new HitInfo()
         {
-            timing = _timeTracker > nextBeatTime ? BeatTiming.LATE : BeatTiming.EARLY,
+            timing = _timeTracker > nextBeatTime ? BeatTiming.LATE : _timeTracker > nextBeatTime ? BeatTiming.EARLY : BeatTiming.PERFECT,
             rating = range.PollRating(_timeTracker)
         };
         
