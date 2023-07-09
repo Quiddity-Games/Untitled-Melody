@@ -136,7 +136,6 @@ public class ClickManager : MonoBehaviour
 
     private async void HandleDash(NoteTracker.HitInfo hitInfo)
     {
-
         float dashScale = 1f;
         
         switch (hitInfo.rating)

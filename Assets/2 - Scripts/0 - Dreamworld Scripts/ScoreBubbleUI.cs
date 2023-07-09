@@ -9,13 +9,15 @@ public class ScoreBubbleUI : MonoBehaviour
 {
     [SerializeField] NoteTracker noteTracker;
 
-    [SerializeField] float scoreBubbleOffsetDuration;
-    [SerializeField] float scoreBubbleVerticalOffset;
+    [SerializeField] float offsetDuration;
+    [SerializeField] float verticalOffset;
+    [SerializeField] TextMeshProUGUI ratingText;
+    [SerializeField] TextMeshProUGUI timingText;
 
     private Animator scoreBubbleAnimator;
-    private TextMeshProUGUI scoreBubbleText;
     private Image scoreBubbleImage;
     private Vector2 originalPos;
+    private GameObject timingObject;
 
     private void Awake()
     {
@@ -26,9 +28,9 @@ public class ScoreBubbleUI : MonoBehaviour
     void Start()
     {
         scoreBubbleAnimator = GetComponent<Animator>();
-        scoreBubbleText = GetComponentInChildren<TextMeshProUGUI>();
         scoreBubbleImage = GetComponent<Image>();
         originalPos = (transform as RectTransform).anchoredPosition;
+        timingObject = timingText.gameObject;
     }
 
 
@@ -44,26 +46,42 @@ public class ScoreBubbleUI : MonoBehaviour
         if (scoreBubbleAnimator.GetBool("Fading"))
             scoreBubbleAnimator.SetBool("Fading", false);
 
-        switch (hitInfo.rating)
+        // Set timing text. If PERFECT, do not display text.
+        switch (hitInfo.timing)
         {
-            case NoteTracker.BeatRating.MISS:
-                scoreBubbleText.text = "Miss...";
+            case NoteTracker.BeatTiming.EARLY:
+                timingText.text = "(Early)";
+                timingObject.SetActive(true);
                 break;
-            case NoteTracker.BeatRating.BAD:
-                scoreBubbleText.text = "Bad...";
+            case NoteTracker.BeatTiming.LATE:
+                timingText.text = "(Late)";
+                timingObject.SetActive(true);
                 break;
-            case NoteTracker.BeatRating.GOOD:
-                scoreBubbleText.text = "Good!";
-                break;
-            case NoteTracker.BeatRating.GREAT:
-                scoreBubbleText.text = "Great!!";
-                break;
-            case NoteTracker.BeatRating.PERFECT:
-                scoreBubbleText.text = "Perfect!!!";
+            case NoteTracker.BeatTiming.PERFECT:
+                timingObject.SetActive(false);
                 break;
         }
 
-        StartCoroutine(FadeScoreBubble(scoreBubbleOffsetDuration, scoreBubbleVerticalOffset));
+        // Set rating text.
+        switch (hitInfo.rating)
+        {
+            case NoteTracker.BeatRating.MISS:
+                break;
+            case NoteTracker.BeatRating.BAD:
+                ratingText.text = "Bad...";
+                break;
+            case NoteTracker.BeatRating.GOOD:
+                ratingText.text = "Good!";
+                break;
+            case NoteTracker.BeatRating.GREAT:
+                ratingText.text = "Great!!";
+                break;
+            case NoteTracker.BeatRating.PERFECT:
+                ratingText.text = "Perfect!!!";
+                break;
+        }
+
+        StartCoroutine(FadeScoreBubble(offsetDuration, verticalOffset));
     }
 
     IEnumerator FadeScoreBubble(float duration, float offsetY)
