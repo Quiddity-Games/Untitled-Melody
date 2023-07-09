@@ -57,11 +57,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Sniglet-Regular SDF
+  m_Name: Sniglet-Regular-Outline SDF
   m_EditorClassIdentifier: 
-  hashCode: 722234376
+  hashCode: 1201882085
   material: {fileID: 1402589956106185427}
-  materialHashCode: -1669244248
+  materialHashCode: -567735003
   m_Version: 1.1.0
   m_SourceFontFileGUID: 1c1339dad16d7f84692b74be63885a57
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 1c1339dad16d7f84692b74be63885a57, type: 3}
@@ -397,6 +397,20 @@ MonoBehaviour:
       m_Height: 68
     m_Scale: 1
     m_AtlasIndex: 0
+  - m_Index: 121
+    m_Metrics:
+      m_Width: 39.609375
+      m_Height: 9
+      m_HorizontalBearingX: 1.796875
+      m_HorizontalBearingY: 31.046875
+      m_HorizontalAdvance: 43.203125
+    m_GlyphRect:
+      m_X: 453
+      m_Y: 181
+      m_Width: 41
+      m_Height: 10
+    m_Scale: 1
+    m_AtlasIndex: 0
   - m_Index: 122
     m_Metrics:
       m_Width: 11.0625
@@ -705,20 +719,6 @@ MonoBehaviour:
       m_Height: 11
     m_Scale: 1
     m_AtlasIndex: 0
-  - m_Index: 121
-    m_Metrics:
-      m_Width: 39.609375
-      m_Height: 9
-      m_HorizontalBearingX: 1.796875
-      m_HorizontalBearingY: 31.046875
-      m_HorizontalAdvance: 43.203125
-    m_GlyphRect:
-      m_X: 453
-      m_Y: 181
-      m_Width: 41
-      m_Height: 10
-    m_Scale: 1
-    m_AtlasIndex: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 32
@@ -727,6 +727,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 33
     m_GlyphIndex: 108
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 45
+    m_GlyphIndex: 121
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 46
@@ -895,10 +899,6 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 8230
     m_GlyphIndex: 190
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 45
-    m_GlyphIndex: 121
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: -757851245201663119}
@@ -1379,7 +1379,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 0
+    - _FaceDilate: 0.4
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -1393,12 +1393,12 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0
+    - _OutlineWidth: 0.4
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 0.73125
-    - _ScaleRatioC: 0.73125
+    - _ScaleRatioB: 0.37125
+    - _ScaleRatioC: 0.37125
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
