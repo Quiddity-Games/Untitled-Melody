@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.Serialization;
+using UnityEngine.Events;
 
 /// <summary>
 /// Dialogue controller which the active <see cref="DialogueCanvasUI"/> derives its values and static methods from.
@@ -66,6 +67,7 @@ public class DialogueController : MonoBehaviour
 
     public Dictionary<string, string> GlobalTagsDictionary = new Dictionary<string, string>();
     public Dictionary<string, TextBubbleUIElements> CharacterUIDictionary = new Dictionary<string, TextBubbleUIElements>();
+    public static UnityEvent InitializeDialogue;
     #endregion
 
     // Start is called before the first frame update
@@ -79,13 +81,11 @@ public class DialogueController : MonoBehaviour
         InkStory = new Story(InkTextAsset.text);
         CurrentBubbleIndex = 0;
         GetDictionaryValues();
-    }
 
-    void Start()
-    {
-        GetLinesBeforeChoice();
-        CreateTextTypingBubbles();
-        SelectPlatform();
+        InitializeDialogue.AddListener(GetLinesBeforeChoice);
+        InitializeDialogue.AddListener(CreateTextTypingBubbles);
+        InitializeDialogue.AddListener(SelectPlatform);
+
     }
 
     private void OnValidate()
@@ -112,7 +112,7 @@ public class DialogueController : MonoBehaviour
     /// Can be used in-editor by using the <see cref="Platform"/> dropdown in the inspector.
     /// Called on <see cref="Awake"/>.
     /// </summary>
-    void SelectPlatform()
+    public void SelectPlatform()
     {
         dialogueCanvas.ResizeCanvasForPlatform(ScreenAspectRatio.AspectRatio);
         dialogueCanvas.GetReferencesFromController();
@@ -148,7 +148,7 @@ public class DialogueController : MonoBehaviour
     /// Get a list of strings as all lines before choices, including tags.
     /// Called on <see cref="Start"/>.
     /// </summary>
-    void GetLinesBeforeChoice()
+    public void GetLinesBeforeChoice()
     {
         while (InkStory.canContinue)
         {
@@ -191,7 +191,7 @@ public class DialogueController : MonoBehaviour
     /// Create the typing bubbles with values from <see cref="TextBubbleCharacterUI"/> and hide them in the inspector.
     /// Called on <see cref="Start"/>, simultaneously with <see cref="GetLinesBeforeChoice"/>.
     /// </summary>
-    void CreateTextTypingBubbles()
+    public void CreateTextTypingBubbles()
     {
         foreach (TextBubbleUIElements ui in TextBubbleCharacterUI.Instance.CharacterUIElements)
         {

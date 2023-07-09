@@ -81,11 +81,6 @@ public class DialogueCanvasUI : MonoBehaviour
 
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
-
-#if UNITY_ANDROID
-        autoskipMenuButton.gameObject.SetActive(false);
-        autoskipMenuButton.interactable = false;
-#endif
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)

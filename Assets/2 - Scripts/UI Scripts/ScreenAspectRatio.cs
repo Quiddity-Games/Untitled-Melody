@@ -8,13 +8,13 @@ using UnityEngine.Serialization;
 /// </summary>
 public class ScreenAspectRatio : MonoBehaviour
 {
+    // Texting UI formatting values.
     public static Dictionary<string, TextingAspectRatioFormat> TextingFormatDictionary = new Dictionary<string, TextingAspectRatioFormat>();
     public static TextingAspectRatioFormat AspectRatio;
+    public static TextingScreenFormat TextingFormatting;
 
     [SerializeField] CanvasType canvasType;
     public ScriptableObject CanvasInformation;
-
-    public static TextingScreenFormat TextingFormatting;
 
     private Camera mainCamera;
 
@@ -29,9 +29,7 @@ public class ScreenAspectRatio : MonoBehaviour
             case CanvasType.Dialogue:
                 TextingFormatting = CanvasInformation as TextingScreenFormat;
                 foreach (TextingAspectRatioFormat txt in TextingFormatting.TextingFormatList)
-                {
                     TextingFormatDictionary.Add((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00"), CreateDictionaryEntry(txt));
-                }
                 break;
         }
     }
@@ -39,7 +37,14 @@ public class ScreenAspectRatio : MonoBehaviour
     private void Start()
     {
         mainCamera = GetComponent<Camera>();
-        AspectRatio = GetTextingFormatValues();
+
+        switch (canvasType)
+        {
+            case CanvasType.Dialogue:
+                AspectRatio = GetTextingFormatValues();
+                DialogueController.InitializeDialogue.Invoke();
+                break;
+        }
     }
 
     /// <summary>
@@ -72,7 +77,7 @@ public class ScreenAspectRatio : MonoBehaviour
     }
 
     /// <summary>
-    /// Get the current aspect ratio and its values for formatting.
+    /// Get the current aspect ratio and its values for formatting texting UI.
     /// </summary>
     /// <returns></returns>
     TextingAspectRatioFormat GetTextingFormatValues()
