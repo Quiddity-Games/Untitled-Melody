@@ -66,12 +66,13 @@ public class CollectionScoreController : MonoBehaviour
     {
         ClearTemp();
         resetter.ResetTempCollectables();
+        _ui.UpdateLostCount();
     }
 
     private void UpdateInfo()
     {
         endInfo.UpdateValues(numCollected + tempNumCollected, requiredNumCollected, numCollectables);
-        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables);
+        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables, tempNumCollected);
     }
     void UpdateCount()
     {
