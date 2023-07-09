@@ -21,7 +21,7 @@ public class NoteTracker : MonoBehaviour
 
     public VoidCallback onLoad;
     public VoidCallback onBeatTrigger;
-        public VoidCallback onBeatEnter;
+    public VoidCallback onBeatEnter;
 
 
     public VoidCallback onMissTrigger;
