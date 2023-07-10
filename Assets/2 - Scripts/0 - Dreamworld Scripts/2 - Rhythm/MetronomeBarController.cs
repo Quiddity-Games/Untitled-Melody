@@ -53,6 +53,13 @@ public class MetronomeBarController : MonoBehaviour
         {
             _NoteTracker.onBeatEnter -= HandleBars;
             panel.SetActive(false);
+            if(newMetronomeBarR != null && newMetronomeBarL != null)
+            {
+                StopCoroutine(Left);
+                StopCoroutine(Right);
+                Destroy(newMetronomeBarR);
+                Destroy(newMetronomeBarL);
+            }
         }
     }
 
