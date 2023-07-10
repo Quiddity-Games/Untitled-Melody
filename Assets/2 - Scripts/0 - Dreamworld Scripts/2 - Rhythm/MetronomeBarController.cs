@@ -35,6 +35,8 @@ public class MetronomeBarController : MonoBehaviour
 
     private Coroutine Left;
     private Coroutine Right;
+
+    private Coroutine spawner;
     // Start is called before the first frame update
     void Awake()
     {
@@ -57,6 +59,7 @@ public class MetronomeBarController : MonoBehaviour
             {
                 StopCoroutine(Left);
                 StopCoroutine(Right);
+                StopCoroutine(spawner);
                 Destroy(newMetronomeBarR);
                 Destroy(newMetronomeBarL);
             }
@@ -172,7 +175,7 @@ public class MetronomeBarController : MonoBehaviour
      void HandleBars()
      {
 
-         StartCoroutine(SpawnNewMetronomeBars());
+         spawner = StartCoroutine(SpawnNewMetronomeBars());
      }
      private IEnumerator SpawnNewMetronomeBars()
      {

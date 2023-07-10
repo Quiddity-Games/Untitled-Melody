@@ -49,7 +49,6 @@ public class MetronomePulseController : MonoBehaviour
         }
         
         
-        Debug.Log(startRadius + ", " + maxRadius);
         pulseState = state;
         
     }

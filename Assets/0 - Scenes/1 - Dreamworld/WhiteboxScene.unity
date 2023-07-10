@@ -6150,7 +6150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 336988011}
   togglePrefab: {fileID: 7449285728243033994, guid: d267a640ddc1dfb4ebfdb7d6ca3cc7d3, type: 3}
-  DebugMenu: {fileID: 1714746719}
+  DebugMenu: {fileID: 6092025078600305331, guid: f556ffeecd070734ea507596ecb39bc0, type: 3}
+  panel: {fileID: 1714746714}
 --- !u!114 &336988011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6164,7 +6165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Options:
-  - label: On Emit
+  - groupID: 0
+    label: On Emit
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -6180,7 +6182,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - label: On Max
+  - groupID: 0
+    label: On Max
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -6196,7 +6199,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - label: On Min
+  - groupID: 0
+    label: On Min
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -6212,7 +6216,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - label: Bar
+  - groupID: 1
+    label: Bar
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -6228,7 +6233,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - label: Blinking
+  - groupID: 2
+    label: Blinking
     callback:
       m_PersistentCalls:
         m_Calls:
@@ -9930,7 +9936,6 @@ GameObject:
   - component: {fileID: 1714746718}
   - component: {fileID: 1714746717}
   - component: {fileID: 1714746716}
-  - component: {fileID: 1714746719}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -10022,19 +10027,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1714746714}
   m_CullTransparentMesh: 1
---- !u!114 &1714746719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1714746714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 1
 --- !u!82 &1720794696 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6253987248133151832, guid: 2b4410d038db77c4487f73ae2bded5bc, type: 3}
