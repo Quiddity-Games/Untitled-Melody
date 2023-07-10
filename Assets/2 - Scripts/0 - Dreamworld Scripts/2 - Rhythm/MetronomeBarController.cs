@@ -32,6 +32,9 @@ public class MetronomeBarController : MonoBehaviour
     public GameObject panelPrefab;
 
     private GameObject panel;
+
+    private Coroutine Left;
+    private Coroutine Right;
     // Start is called before the first frame update
     void Awake()
     {
@@ -168,8 +171,6 @@ public class MetronomeBarController : MonoBehaviour
      {
          yield return new WaitForSeconds(twoBeatsLength/2);
 
-
-         Debug.Log("SPAWN");
          newMetronomeBarL = Instantiate(metronomeBar, new Vector3(-width, height, 0), Quaternion.identity);
          newMetronomeBarL.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
          newMetronomeBarL.GetComponent<RectTransform>().anchoredPosition = new Vector3(-width, height, 0);
@@ -178,8 +179,8 @@ public class MetronomeBarController : MonoBehaviour
          newMetronomeBarR.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
          newMetronomeBarR.GetComponent<RectTransform>().anchoredPosition = new Vector3(width, height, 0);
          
-         StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarL));
-         StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarR));
+         Left = StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarL));
+         Right = StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarR));
     }
      
 }
