@@ -13,6 +13,9 @@ public class MetronomeBarController : MonoBehaviour
     GameObject newMetronomeBarL;
     GameObject newMetronomeBarR;
 
+    [SerializeField] private float height;
+    [SerializeField] private float width;
+
     private GameObject playerCanvas;    //Canvas parented to the player, used to display text UI that should be attached to the player
     public AnimationCurve linearCurve;  //Used for lerp calculations
 
@@ -22,18 +25,53 @@ public class MetronomeBarController : MonoBehaviour
     private float rhythmIndicatorTimer; //Timer specifically dedicated to the rhythm indicator, aka the "metronome bars" above the player's head
 
     private float twoBeatsLength;
+
+    private float timeToMove;
+
+    private int delay;
+    public GameObject panelPrefab;
+
+    private GameObject panel;
+
+    private Coroutine Left;
+    private Coroutine Right;
+
+    private Coroutine spawner;
     // Start is called before the first frame update
     void Awake()
     {
-        playerCanvas = GameObject.Find("PlayerCanvas");
-        _NoteTracker.onTimeUpdate += UpdateRhythmIndicator;
+        playerCanvas = GameObject.Find("Screen Space Canvas");
         _NoteTracker.onLoad += Init;
+    }
+
+    public void Toggle(bool enabled)
+    {
+        if (enabled)
+        {
+            _NoteTracker.onBeatEnter += HandleBars;
+            panel.SetActive(true);
+        }
+        else
+        {
+            _NoteTracker.onBeatEnter -= HandleBars;
+            panel.SetActive(false);
+            if(newMetronomeBarR != null && newMetronomeBarL != null)
+            {
+                StopCoroutine(Left);
+                StopCoroutine(Right);
+                StopCoroutine(spawner);
+                Destroy(newMetronomeBarR);
+                Destroy(newMetronomeBarL);
+            }
+        }
     }
 
     private void Init()
     {
         twoBeatsLength = _NoteTracker.GetTwoBeatsLength();
         rhythmIndicatorTimer -= ((8f * _NoteTracker.GetTwoBeatsLength())); //Offsets rhythmIndicatorTimer so that the "metronome bars" above the player's head don't start appearing until the percussion beats of the "wishing well" song begin, roughly four measures in
+        panel = Instantiate(panelPrefab, playerCanvas.transform);
+        panel.SetActive(false);
     }
     
     /// <summary>
@@ -59,8 +97,7 @@ public class MetronomeBarController : MonoBehaviour
         if(rhythmIndicatorTimer >= twoBeatsLength*2)
         {
             rhythmIndicatorTimer -= twoBeatsLength*2;
-            StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarL));
-            StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarR));
+
         }
 
       
@@ -74,7 +111,8 @@ public class MetronomeBarController : MonoBehaviour
     /// <param name="startPos"></param>
     /// <returns></returns>
     IEnumerator MoveRhythmIndicatorBarVisual(GameObject bar)
-    {
+     {
+         yield return new WaitForSeconds(twoBeatsLength/2);
         Vector3 startPos = bar.GetComponent<Transform>().localPosition;
         Vector3 endPos = new Vector3(0, startPos.y, 0);
 
@@ -133,14 +171,26 @@ public class MetronomeBarController : MonoBehaviour
         yield return 0;
     }
 
-     private void SpawnNewMetronomeBars()
-     {
-         newMetronomeBarL = Instantiate(metronomeBar, new Vector3(-4f, 4, 0), Quaternion.identity);
-         newMetronomeBarL.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
-         newMetronomeBarL.GetComponent<RectTransform>().anchoredPosition = new Vector3(-4f, 4, 0);
 
-         newMetronomeBarR = Instantiate(metronomeBar, new Vector3(4f, 4, 0), Quaternion.identity);
-         newMetronomeBarR.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
-         newMetronomeBarR.GetComponent<RectTransform>().anchoredPosition = new Vector3(4f, 4, 0);
+     void HandleBars()
+     {
+
+         spawner = StartCoroutine(SpawnNewMetronomeBars());
      }
+     private IEnumerator SpawnNewMetronomeBars()
+     {
+         yield return new WaitForSeconds(twoBeatsLength/2);
+
+         newMetronomeBarL = Instantiate(metronomeBar, new Vector3(-width, height, 0), Quaternion.identity);
+         newMetronomeBarL.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
+         newMetronomeBarL.GetComponent<RectTransform>().anchoredPosition = new Vector3(-width, height, 0);
+
+         newMetronomeBarR = Instantiate(metronomeBar, new Vector3(width, height, 0), Quaternion.identity);
+         newMetronomeBarR.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
+         newMetronomeBarR.GetComponent<RectTransform>().anchoredPosition = new Vector3(width, height, 0);
+         
+         Left = StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarL));
+         Right = StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarR));
+    }
+     
 }
