@@ -64,9 +64,9 @@ public class CollectionScoreController : MonoBehaviour
 
     public void HandleDeath()
     {
+        _ui.UpdateLostCount();
         ClearTemp();
         resetter.ResetTempCollectables();
-        _ui.UpdateLostCount();
     }
 
     private void UpdateInfo()

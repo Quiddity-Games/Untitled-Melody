@@ -34,10 +34,13 @@ public class RhythmUI : MonoBehaviour
 
     private void Awake()
     {
-        dreamworldUICanvas = DreamworldUIManager.Instance.gameObject;
-
         _NoteTracker.onLoad += Init;
         _NoteTracker.onTimeUpdate += HandleCountdown;
+    }
+
+    private void Start()
+    {
+        dreamworldUICanvas = DreamworldUIManager.Instance.gameObject;
     }
 
     public void Init()

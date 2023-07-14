@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CollectableUI : MonoBehaviour
 {
@@ -9,16 +10,19 @@ public class CollectableUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI maxDisplay;
     [Space(5)]
     [SerializeField] private TextMeshProUGUI tempDisplay;
-    [SerializeField] private Color lostColor;
+    [FormerlySerializedAs("lostColor")]
+    [SerializeField] private Color bleedColor;
 
     private int tempCount;
     private CanvasGroup tempDisplayCanvasGroup;
     private GameObject tempDisplayObject;
+    private Vector2 originalPos;
 
     private void Start()
     {
         tempDisplayCanvasGroup = tempDisplay.gameObject.GetComponent<CanvasGroup>();
         tempDisplayObject = tempDisplay.gameObject;
+        originalPos = (tempDisplayObject.transform as RectTransform).anchoredPosition;
         tempDisplayObject.SetActive(false);
     }
 
@@ -40,22 +44,23 @@ public class CollectableUI : MonoBehaviour
     /// </summary>
     public void UpdateLostCount()
     {
+        ResetBleedDisplay();
+
         if (tempCount > 0)
         {
             int bleedCount = tempCount; // Snapshot the total bleed amount before it resets to 0.
             tempCount = 0; // Reset temp count on death.
 
+            (tempDisplayObject.transform as RectTransform).anchoredPosition = originalPos;
             tempDisplay.text = "-" + bleedCount.ToString();
             tempDisplayObject.SetActive(true);
 
-            currentDisplay.color = lostColor;
+            currentDisplay.color = bleedColor;
             StartCoroutine(ShowFloatingText());
         }
 
         IEnumerator ShowFloatingText()
         {
-            Vector2 originalPos = (tempDisplayObject.transform as RectTransform).anchoredPosition;
-
             float time = 0f;
             float flashDuration = 1f;
             float fadeDuration = 2f;
@@ -63,7 +68,7 @@ public class CollectableUI : MonoBehaviour
             // Have current collectibles number flash red.
             while (time < flashDuration)
             {
-                currentDisplay.color = Color.Lerp(lostColor, Color.white, time / flashDuration);
+                currentDisplay.color = Color.Lerp(bleedColor, Color.white, time / flashDuration);
                 time += Time.deltaTime;
                 yield return null;
             }
@@ -85,5 +90,14 @@ public class CollectableUI : MonoBehaviour
             (tempDisplayObject.transform as RectTransform).anchoredPosition = originalPos;
             tempDisplayObject.SetActive(false);
         }
+    }
+
+    void ResetBleedDisplay()
+    {
+        currentDisplay.color = Color.white;
+
+        (tempDisplayObject.transform as RectTransform).anchoredPosition = originalPos;
+        tempDisplayCanvasGroup.alpha = 0f;
+        tempDisplayObject.SetActive(true);
     }
 }
