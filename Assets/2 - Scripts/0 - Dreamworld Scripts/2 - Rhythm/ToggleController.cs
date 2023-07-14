@@ -8,11 +8,11 @@ public class ToggleController : MonoBehaviour
 {
 
     [SerializeField] private TextMeshProUGUI label;
-    private VoidCallback_String callback;
+    private VoidCallback_StringBool callback;
     private string option;
 
     [SerializeField] private Toggle toggle;
-    public void Initialize(string optionName, VoidCallback_String callback, ToggleGroup group)
+    public void Initialize(string optionName, VoidCallback_StringBool callback, ToggleGroup group)
     {
         option = optionName;
         label.text = optionName;
@@ -22,10 +22,7 @@ public class ToggleController : MonoBehaviour
 
     public void OnSelect(bool value)
     {
-        if(value)
-        {
-            callback?.Invoke(option);
-        }
+            callback?.Invoke(option, value);        
     }
     
     

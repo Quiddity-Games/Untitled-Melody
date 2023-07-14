@@ -10,6 +10,7 @@ public class DebugController : MonoBehaviour
 
     struct DebugOptions
     {
+        public int groupID;
         public string label;
         public UnityEvent<bool> callback;
     }
@@ -26,19 +27,27 @@ public class DebugController : MonoBehaviour
         return optionNames;
     }
 
-    public void HandleOptions(string selectedOp)
+    public List<Tuple<string, int>> GetOptionIdentifiers()
+    {
+        List<Tuple<string, int>> optionNames = new List<Tuple<string, int>>();
+
+        foreach (DebugOptions opt in Options)
+        {
+            optionNames.Add(new Tuple<string, int>(opt.label, opt.groupID));
+        }
+        return optionNames;    
+    }
+
+    public void HandleOptions(string selectedOp, bool value)
     {
         
         foreach (DebugOptions opt in Options)
         {
-            if (opt.label != selectedOp)
+            if (opt.label == selectedOp)
             {
-                opt.callback.Invoke(false);
+                opt.callback.Invoke(value);
             }
-            else
-            {
-                opt.callback.Invoke(true);
-            }
+ 
         }
     }
         
