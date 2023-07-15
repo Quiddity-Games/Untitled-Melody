@@ -132,6 +132,7 @@ MonoBehaviour:
   - {fileID: 3893259552012404657}
   - {fileID: 5650526750581163240}
   - {fileID: 6000915449912431723}
+  backgroundTransform: {fileID: 0}
   phoneContainer: {fileID: 7950313734912146293}
   headerCanvasGroup: {fileID: 8536569289948575828}
   headerIcon: {fileID: 8827631259538217571}
@@ -570,7 +571,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7950313736048024309}
   - component: {fileID: 7950313736048024308}
-  - component: {fileID: 7950313736048024311}
   m_Layer: 0
   m_Name: Dialogue Controller
   m_TagString: Untagged
@@ -628,22 +628,6 @@ MonoBehaviour:
   TextBubblePrefab: {fileID: 3968320940576767325, guid: 6b5623530596e984da11d77a5558d9bd, type: 3}
   OptionButtonPrefab: {fileID: 5848781214036233668, guid: 0abcfe47b85b1f147a214eeb3b5893b5, type: 3}
   TypingBubblePrefab: {fileID: 2193143276300938580, guid: 242b89599c395354fb6654d61a35cb59, type: 3}
-  CurrentBubbleIndex: 0
-  LinesBeforeChoice: []
-  BubblesBeforeChoice: []
-  CurrentOptions: []
---- !u!114 &7950313736048024311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7950313736048024310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4be4a5a1e99927544ab77b1048c9b2d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   MainCharacterName: Amika
   CharacterUIElements:
   - CharacterName: Emerald
@@ -654,6 +638,10 @@ MonoBehaviour:
     IconSprite: {fileID: 21300000, guid: 34a89fcf5498f1a46b2f4206c7d4ce23, type: 3}
     TextBoxColor: {r: 0.6666667, g: 0.5294118, b: 0.87058824, a: 1}
     FontColor: {r: 0.15484823, g: 0.08690815, b: 0.2924528, a: 1}
+  CurrentBubbleIndex: 0
+  LinesBeforeChoice: []
+  BubblesBeforeChoice: []
+  CurrentOptions: []
 --- !u!1001 &1545318452905756895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1434,7 +1422,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2660485371423265594, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 799.5393
+      value: 800.60925
       objectReference: {fileID: 0}
     - target: {fileID: 2660485371423265594, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1482,7 +1470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2817761000407573653, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 614.0393
+      value: 615.10925
       objectReference: {fileID: 0}
     - target: {fileID: 2817761000407573653, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1578,7 +1566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4298784697248456473, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 528.5393
+      value: 529.60925
       objectReference: {fileID: 0}
     - target: {fileID: 4298784697248456473, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1586,7 +1574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4298784697248456473, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 264.26965
+      value: 264.80463
       objectReference: {fileID: 0}
     - target: {fileID: 4298784697248456473, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -1734,7 +1722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4785990950768695827, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 759.5393
+      value: 760.60925
       objectReference: {fileID: 0}
     - target: {fileID: 4785990950768695827, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1742,7 +1730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4785990950768695827, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 399.76965
+      value: 400.30463
       objectReference: {fileID: 0}
     - target: {fileID: 4785990950768695827, guid: dbf4a16b532ad2b45a9dd0cc629e49d0, type: 3}
       propertyPath: m_AnchoredPosition.y

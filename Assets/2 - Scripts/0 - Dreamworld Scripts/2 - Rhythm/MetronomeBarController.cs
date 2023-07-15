@@ -40,12 +40,6 @@ public class MetronomeBarController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        //_NoteTracker.onLoad += Init;
-    }
-
-    private void Start()
-    {
-        dreamworldUICanvas = DreamworldUIManager.Instance.gameObject;
         _NoteTracker.onLoad += Init;
     }
 
@@ -73,6 +67,7 @@ public class MetronomeBarController : MonoBehaviour
 
     private void Init()
     {
+        dreamworldUICanvas = DreamworldUIManager.Instance.gameObject;
         twoBeatsLength = _NoteTracker.GetTwoBeatsLength();
         rhythmIndicatorTimer -= ((8f * _NoteTracker.GetTwoBeatsLength())); //Offsets rhythmIndicatorTimer so that the "metronome bars" above the player's head don't start appearing until the percussion beats of the "wishing well" song begin, roughly four measures in
         panel = Instantiate(panelPrefab, dreamworldUICanvas.transform);

@@ -38,13 +38,9 @@ public class RhythmUI : MonoBehaviour
         _NoteTracker.onTimeUpdate += HandleCountdown;
     }
 
-    private void Start()
-    {
-        dreamworldUICanvas = DreamworldUIManager.Instance.gameObject;
-    }
-
     public void Init()
     {
+        dreamworldUICanvas = DreamworldUIManager.Instance.gameObject;
         countdownTextTriggerTime3 = (0.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime2 = (2.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime1 = (4.5f * _NoteTracker.GetTwoBeatsLength());

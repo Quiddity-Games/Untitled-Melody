@@ -82,7 +82,6 @@ public class ScreenAspectRatio : MonoBehaviour
     /// <returns></returns>
     TextingAspectRatioFormat GetTextingFormatValues()
     {
-        //float ratio = Screen.width / Screen.height;
         string ratio = mainCamera.aspect.ToString("#.00");
         TextingAspectRatioFormat aspect = new TextingAspectRatioFormat();
 

@@ -68,7 +68,7 @@ public class DialogueCanvasUI : MonoBehaviour
     private float shortTypingDelayDuration;
 
     // Character info
-    private Dictionary<string, TextBubbleUIElements> characterUIDictionary;
+    private Dictionary<string, CharacterUIElements> characterUIDictionary;
     private string mainCharacterName;
 
     #endregion
@@ -115,7 +115,7 @@ public class DialogueCanvasUI : MonoBehaviour
         midTypingDelayDuration = DialogueController.Instance.MidTypingDelayDuration;
         shortTypingDelayDuration = DialogueController.Instance.ShortTypingDelayDuration;
 
-        mainCharacterName = TextBubbleCharacterUI.Instance.MainCharacterName;
+        mainCharacterName = DialogueController.Instance.MainCharacterName;
 
         // Give functions to buttons.
         startDialogueButton.onClick.AddListener(ShowDialogueUI);
