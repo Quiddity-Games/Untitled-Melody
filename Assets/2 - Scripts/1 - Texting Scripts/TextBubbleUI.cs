@@ -106,7 +106,7 @@ public class TextBubbleUI : MonoBehaviour
     /// Parse information for the text bubble and set the variables.
     /// </summary>
     /// <param name="currentLine"></param>
-    public void SetTextBubbleInformation(string currentLine, string mainCharacterName, TextBubbleUIElements senderUI)
+    public void SetTextBubbleInformation(string currentLine, string mainCharacterName, CharacterUIElements senderUI)
     {
         currentLine = RemoveTags(ParseEmojis(currentLine));
 
@@ -200,5 +200,22 @@ public class TextBubbleUI : MonoBehaviour
         }
 
         return currentLine;
+    }
+}
+
+[Serializable]
+public struct CharacterUIElements
+{
+    public string CharacterName;
+    public Sprite IconSprite;
+    public Color TextBoxColor;
+    public Color FontColor;
+
+    public CharacterUIElements(string name, Sprite sprite, Color boxColor, Color fontColor)
+    {
+        CharacterName = name;
+        IconSprite = sprite;
+        TextBoxColor = boxColor;
+        FontColor = fontColor;
     }
 }

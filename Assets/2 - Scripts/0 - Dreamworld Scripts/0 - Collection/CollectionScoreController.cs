@@ -64,6 +64,7 @@ public class CollectionScoreController : MonoBehaviour
 
     public void HandleDeath()
     {
+        _ui.UpdateLostCount();
         ClearTemp();
         resetter.ResetTempCollectables();
     }
@@ -71,7 +72,7 @@ public class CollectionScoreController : MonoBehaviour
     private void UpdateInfo()
     {
         endInfo.UpdateValues(numCollected + tempNumCollected, requiredNumCollected, numCollectables);
-        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables);
+        _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables, tempNumCollected);
     }
     void UpdateCount()
     {

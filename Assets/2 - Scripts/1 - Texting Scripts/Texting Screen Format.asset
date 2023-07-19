@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8bbe43149a81d94dad5fa65b8000156, type: 3}
+  m_Name: Texting Screen Format
+  m_EditorClassIdentifier: 
+  TextingFormatList:
+  - aspectRatioName: 4:3
+    AspectRatio: {x: 4, y: 3}
+    screenSize: 0
+    BackgroundOffsetMax: {x: 67, y: 0}
+    BubbleEdgePadding: 105
+    IconEdgePadding: 25
+    IconSize: 110
+    SenderFontSize: 28
+    MessageFontSize: 34
+    LayoutSpacing: 25
+    PhoneContainerOffsetMin: {x: 100, y: 0}
+    PhoneContainerOffsetMax: {x: -700, y: -90}
+    AutoplayMenuPivotX: 1
+    AutoplayMenuAnchorX: -40
+  - aspectRatioName: 16:19
+    AspectRatio: {x: 16, y: 10}
+    screenSize: 0
+    BackgroundOffsetMax: {x: 20, y: 0}
+    BubbleEdgePadding: 115
+    IconEdgePadding: 25
+    IconSize: 110
+    SenderFontSize: 28
+    MessageFontSize: 34
+    LayoutSpacing: 25
+    PhoneContainerOffsetMin: {x: 100, y: 0}
+    PhoneContainerOffsetMax: {x: -920, y: -90}
+    AutoplayMenuPivotX: 1
+    AutoplayMenuAnchorX: -40
+  - aspectRatioName: 16:9
+    AspectRatio: {x: 16, y: 9}
+    screenSize: 0
+    BackgroundOffsetMax: {x: 0, y: 0}
+    BubbleEdgePadding: 140
+    IconEdgePadding: 25
+    IconSize: 110
+    SenderFontSize: 28
+    MessageFontSize: 34
+    LayoutSpacing: 25
+    PhoneContainerOffsetMin: {x: 100, y: 0}
+    PhoneContainerOffsetMax: {x: -1020, y: -90}
+    AutoplayMenuPivotX: 1
+    AutoplayMenuAnchorX: -40
+  - aspectRatioName: 3:4
+    AspectRatio: {x: 3, y: 4}
+    screenSize: 1
+    BackgroundOffsetMax: {x: 65, y: 0}
+    BubbleEdgePadding: 80
+    IconEdgePadding: 25
+    IconSize: 90
+    SenderFontSize: 24
+    MessageFontSize: 30
+    LayoutSpacing: 20
+    PhoneContainerOffsetMin: {x: 80, y: 0}
+    PhoneContainerOffsetMax: {x: -80, y: -80}
+    AutoplayMenuPivotX: 0.5
+    AutoplayMenuAnchorX: 0
+  - aspectRatioName: 10:16
+    AspectRatio: {x: 10, y: 16}
+    screenSize: 1
+    BackgroundOffsetMax: {x: 70, y: 0}
+    BubbleEdgePadding: 40
+    IconEdgePadding: 25
+    IconSize: 90
+    SenderFontSize: 24
+    MessageFontSize: 30
+    LayoutSpacing: 20
+    PhoneContainerOffsetMin: {x: 70, y: 0}
+    PhoneContainerOffsetMax: {x: -70, y: -70}
+    AutoplayMenuPivotX: 0.5
+    AutoplayMenuAnchorX: 0
+  - aspectRatioName: 9:16
+    AspectRatio: {x: 9, y: 16}
+    screenSize: 1
+    BackgroundOffsetMax: {x: 80, y: 0}
+    BubbleEdgePadding: 15
+    IconEdgePadding: 25
+    IconSize: 90
+    SenderFontSize: 24
+    MessageFontSize: 30
+    LayoutSpacing: 20
+    PhoneContainerOffsetMin: {x: 70, y: 0}
+    PhoneContainerOffsetMax: {x: -70, y: -70}
+    AutoplayMenuPivotX: 0.5
+    AutoplayMenuAnchorX: 0

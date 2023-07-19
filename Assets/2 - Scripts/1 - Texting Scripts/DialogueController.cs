@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 /// <summary>
 /// Dialogue controller which the active <see cref="DialogueCanvasUI"/> derives its values and static methods from.
-/// On Awake, it creates itself an instance and gathers the dictionary values for global tags and character UI elements. <see cref="TextBubbleCharacterUI"/>
+/// On Awake, it creates itself an instance and gathers the dictionary values for global tags and character UI elements.
 /// </summary>
 
 public enum BubbleAlignment { Left, Right }
@@ -19,12 +19,14 @@ public class DialogueController : MonoBehaviour
     #region Variables: Canvas
     public TextAsset InkTextAsset;
 
-    public bool Autoplay;
+    public bool AutoplayEnabled;
     [Space(5)]
+    [Header("Debug tools, only for inspector use.")]
+    [SerializeField] TextingScreenFormat aspectRatioValues;
     [SerializeField] bool previewAspectRatio;
-    [Tooltip("Only for inspector use.")]
     [SerializeField] Vector2 aspectRatio;
     [Space(5)]
+    [Header("Scene Components")]
     [SerializeField] DialogueCanvasUI dialogueCanvas;
     [SerializeField] AutoplaySkipUI autoplaySkipUI;
     #endregion
@@ -56,32 +58,41 @@ public class DialogueController : MonoBehaviour
     public GameObject TypingBubblePrefab;
     #endregion
 
+    #region Variables: Character UI 
+    [Space(10)]
+    [Header("Character UI")]
+    public string MainCharacterName;
+    public List<CharacterUIElements> CharacterUIElements;
+    #endregion
+
     #region Hidden Variables
     [HideInInspector] public Story InkStory;
-    public int CurrentBubbleIndex;
+    [HideInInspector] public int CurrentBubbleIndex;
     [HideInInspector] public List<string> LinesBeforeChoice = new List<string>();
-    public List<TextBubbleUI> BubblesBeforeChoice = new List<TextBubbleUI>();
+    [HideInInspector] public List<TextBubbleUI> BubblesBeforeChoice = new List<TextBubbleUI>();
     [HideInInspector] public List<TextOptionUI> CurrentOptions = new List<TextOptionUI>();
 
     public Dictionary<string, string> GlobalTagsDictionary = new Dictionary<string, string>();
-    public Dictionary<string, TextBubbleUIElements> CharacterUIDictionary = new Dictionary<string, TextBubbleUIElements>();
+    public Dictionary<string, CharacterUIElements> CharacterUIDictionary = new Dictionary<string, CharacterUIElements>();
+    public static VoidCallback InitializeDialogue;
     #endregion
-
 
     // Start is called before the first frame update
     void Awake()
     {
+#if UNITY_STANDALONE
+        aspectRatioValues = null;
+#endif
+
         Instance = this;
         InkStory = new Story(InkTextAsset.text);
         CurrentBubbleIndex = 0;
         GetDictionaryValues();
-    }
 
-    void Start()
-    {
-        GetLinesBeforeChoice();
-        CreateTextTypingBubbles();
-        SelectPlatform();
+        InitializeDialogue += GetLinesBeforeChoice;
+        InitializeDialogue += CreateTextTypingBubbles;
+        InitializeDialogue += SelectPlatform;
+
     }
 
     private void OnValidate()
@@ -89,14 +100,12 @@ public class DialogueController : MonoBehaviour
 #if UNITY_EDITOR
         if (previewAspectRatio)
         {
-            ScreenAspectRatio currentAspectRatio = FindObjectOfType<ScreenAspectRatio>();
-
-            for (int i = 0; i < currentAspectRatio.TextingFormatting.Count; i++)
+            for (int i = 0; i < aspectRatioValues.TextingFormatList.Count; i++)
             {
-                if (aspectRatio == currentAspectRatio.TextingFormatting[i].AspectRatio)
+                if (aspectRatio == aspectRatioValues.TextingFormatList[i].AspectRatio)
                 {
-                    dialogueCanvas.ResizeCanvasForPlatform(currentAspectRatio.TextingFormatting[i]);
-                    autoplaySkipUI.ResizeMenuForPlatform(currentAspectRatio.TextingFormatting[i]);
+                    dialogueCanvas.ResizeCanvasForPlatform(aspectRatioValues.TextingFormatList[i]);
+                    autoplaySkipUI.ResizeMenuForPlatform(aspectRatioValues.TextingFormatList[i]);
                 }
             }
 
@@ -110,7 +119,7 @@ public class DialogueController : MonoBehaviour
     /// Can be used in-editor by using the <see cref="Platform"/> dropdown in the inspector.
     /// Called on <see cref="Awake"/>.
     /// </summary>
-    void SelectPlatform()
+    public void SelectPlatform()
     {
         dialogueCanvas.ResizeCanvasForPlatform(ScreenAspectRatio.AspectRatio);
         dialogueCanvas.GetReferencesFromController();
@@ -119,7 +128,7 @@ public class DialogueController : MonoBehaviour
     }
 
     /// <summary>
-    /// Create dictionary of <see cref="TextBubbleCharacterUI.CharacterUIElements"/> items.
+    /// Create dictionary of <see cref="CharacterUIElements"/> items.
     /// Called on <see cref="Awake"/>.
     /// </summary>
     void GetDictionaryValues()
@@ -133,12 +142,12 @@ public class DialogueController : MonoBehaviour
             }
         }
 
-        List<TextBubbleUIElements> characterUIElements = TextBubbleCharacterUI.Instance.CharacterUIElements;
+        //List<CharacterUIElements> characterUIElements = CharacterUIElements;
 
         // Get character UI elements.
-        for (int i = 0; i < characterUIElements.Count; i++)
+        for (int i = 0; i < CharacterUIElements.Count; i++)
         {
-            CharacterUIDictionary.Add(characterUIElements[i].CharacterName, characterUIElements[i]);
+            CharacterUIDictionary.Add(CharacterUIElements[i].CharacterName, CharacterUIElements[i]);
         }
     }
 
@@ -146,7 +155,7 @@ public class DialogueController : MonoBehaviour
     /// Get a list of strings as all lines before choices, including tags.
     /// Called on <see cref="Start"/>.
     /// </summary>
-    void GetLinesBeforeChoice()
+    public void GetLinesBeforeChoice()
     {
         while (InkStory.canContinue)
         {
@@ -182,21 +191,21 @@ public class DialogueController : MonoBehaviour
         string speakerName = ui.ParseSpeaker(line);
         FadeInUI(ui.CanvasGroup, BubbleFadeDuration);
 
-        ui.SetTextBubbleInformation(line, TextBubbleCharacterUI.Instance.MainCharacterName, CharacterUIDictionary[speakerName]);
+        ui.SetTextBubbleInformation(line, MainCharacterName, CharacterUIDictionary[speakerName]);
     }
 
     /// <summary>
-    /// Create the typing bubbles with values from <see cref="TextBubbleCharacterUI"/> and hide them in the inspector.
+    /// Create the typing bubbles with values from <see cref="CharacterUIElements"/> and hide them in the inspector.
     /// Called on <see cref="Start"/>, simultaneously with <see cref="GetLinesBeforeChoice"/>.
     /// </summary>
-    void CreateTextTypingBubbles()
+    public void CreateTextTypingBubbles()
     {
-        foreach (TextBubbleUIElements ui in TextBubbleCharacterUI.Instance.CharacterUIElements)
+        foreach (CharacterUIElements ui in CharacterUIElements)
         {
             GameObject typingBubble = Instantiate(TypingBubblePrefab, dialogueCanvas.BodyScrollContent.transform);
             TextTypingUI typingUI = typingBubble.GetComponent<TextTypingUI>();
 
-            if (ui.CharacterName.Equals(TextBubbleCharacterUI.Instance.MainCharacterName))
+            if (ui.CharacterName.Equals(MainCharacterName))
             {
                 typingUI.GetBubbleFormatting(ScreenAspectRatio.AspectRatio, TextAnchor.LowerRight);
                 RightTypingBubble = typingUI;
@@ -206,7 +215,7 @@ public class DialogueController : MonoBehaviour
                 LeftTypingBubble = typingUI;
             }
 
-            typingUI.SetBubbleColor(TextBubbleCharacterUI.Instance.MainCharacterName, ui);
+            typingUI.SetBubbleColor(MainCharacterName, ui);
         }
     }
 
@@ -219,7 +228,7 @@ public class DialogueController : MonoBehaviour
     public void ChoiceMadeCallback()
     {
         // Select route and hide buttons.
-        GetCurrentTypingBubble(TextBubbleCharacterUI.Instance.MainCharacterName);
+        GetCurrentTypingBubble(MainCharacterName);
 
         CurrentOptions.Clear();
         GetLinesBeforeChoice();
@@ -231,7 +240,7 @@ public class DialogueController : MonoBehaviour
         CurrentTypingBubble.gameObject.SetActive(false);
         CanPrintDialogue = true;
 
-        if (Autoplay)
+        if (AutoplayEnabled)
             dialogueCanvas.AutoplayDialogue();
         else
             dialogueCanvas.PlayDialogue();
@@ -244,14 +253,14 @@ public class DialogueController : MonoBehaviour
     /// <returns></returns>
     public bool SetAutoplay()
     {
-        Autoplay = !Autoplay;
+        AutoplayEnabled = !AutoplayEnabled;
 
-        if (Autoplay)
+        if (AutoplayEnabled)
             dialogueCanvas.autoplayText.text = "Autoplay\n(ON)";
         else
             dialogueCanvas.autoplayText.text = "Autoplay\n(OFF)";
 
-        return Autoplay;
+        return AutoplayEnabled;
     }
 
     /// <summary>
@@ -290,14 +299,14 @@ public class DialogueController : MonoBehaviour
 
     IEnumerator StartAutoplay()
     {
-        while (CurrentBubbleIndex < BubblesBeforeChoice.Count - 1 && Autoplay)
+        while (CurrentBubbleIndex < BubblesBeforeChoice.Count - 1 && AutoplayEnabled)
         {
             while (!CanPrintDialogue)
             {
                 yield return null;
             }
 
-            if (Autoplay)
+            if (AutoplayEnabled)
             {
                 dialogueCanvas.PlayDialogue();
                 yield return new WaitForSeconds(AutoplayDelayDuration + CurrentTypingDelayDuration);
@@ -316,7 +325,7 @@ public class DialogueController : MonoBehaviour
     /// <returns></returns>
     public TextTypingUI GetCurrentTypingBubble(string speakerName)
     {
-        if (speakerName.Equals(TextBubbleCharacterUI.Instance.MainCharacterName))
+        if (speakerName.Equals(MainCharacterName))
             CurrentTypingBubble = RightTypingBubble;
         else
             CurrentTypingBubble = LeftTypingBubble;

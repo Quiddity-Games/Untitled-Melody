@@ -16,7 +16,7 @@ public class MetronomeBarController : MonoBehaviour
     [SerializeField] private float height;
     [SerializeField] private float width;
 
-    private GameObject playerCanvas;    //Canvas parented to the player, used to display text UI that should be attached to the player
+    private GameObject dreamworldUICanvas;    //Canvas parented to the player, used to display text UI that should be attached to the player
     public AnimationCurve linearCurve;  //Used for lerp calculations
 
     private bool spawnNewMetronomeBars;   //Determines when the rhythm indicator should spawn a new set of (initially unmoving) metronome bars
@@ -40,7 +40,6 @@ public class MetronomeBarController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        playerCanvas = GameObject.Find("Screen Space Canvas");
         _NoteTracker.onLoad += Init;
     }
 
@@ -68,9 +67,10 @@ public class MetronomeBarController : MonoBehaviour
 
     private void Init()
     {
+        dreamworldUICanvas = DreamworldUIManager.Instance.gameObject;
         twoBeatsLength = _NoteTracker.GetTwoBeatsLength();
         rhythmIndicatorTimer -= ((8f * _NoteTracker.GetTwoBeatsLength())); //Offsets rhythmIndicatorTimer so that the "metronome bars" above the player's head don't start appearing until the percussion beats of the "wishing well" song begin, roughly four measures in
-        panel = Instantiate(panelPrefab, playerCanvas.transform);
+        panel = Instantiate(panelPrefab, dreamworldUICanvas.transform);
         panel.SetActive(false);
     }
     
@@ -182,11 +182,11 @@ public class MetronomeBarController : MonoBehaviour
          yield return new WaitForSeconds(twoBeatsLength/2);
 
          newMetronomeBarL = Instantiate(metronomeBar, new Vector3(-width, height, 0), Quaternion.identity);
-         newMetronomeBarL.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
+         newMetronomeBarL.GetComponent<RectTransform>().SetParent(dreamworldUICanvas.transform, false);
          newMetronomeBarL.GetComponent<RectTransform>().anchoredPosition = new Vector3(-width, height, 0);
 
          newMetronomeBarR = Instantiate(metronomeBar, new Vector3(width, height, 0), Quaternion.identity);
-         newMetronomeBarR.GetComponent<RectTransform>().SetParent(playerCanvas.transform, false);
+         newMetronomeBarR.GetComponent<RectTransform>().SetParent(dreamworldUICanvas.transform, false);
          newMetronomeBarR.GetComponent<RectTransform>().anchoredPosition = new Vector3(width, height, 0);
          
          Left = StartCoroutine(MoveRhythmIndicatorBarVisual(newMetronomeBarL));

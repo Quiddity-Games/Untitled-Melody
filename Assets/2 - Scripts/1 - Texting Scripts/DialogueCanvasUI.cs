@@ -26,6 +26,7 @@ public class DialogueCanvasUI : MonoBehaviour
 
     #region Variables: Cellphone UI
     [Header("Phone UI: Overall")]
+    [SerializeField] RectTransform backgroundTransform;
     [SerializeField] GameObject phoneContainer;
     private CanvasGroup phoneContainerCanvasGroup;
     private RectTransform phoneContainerTransform;
@@ -67,7 +68,7 @@ public class DialogueCanvasUI : MonoBehaviour
     private float shortTypingDelayDuration;
 
     // Character info
-    private Dictionary<string, TextBubbleUIElements> characterUIDictionary;
+    private Dictionary<string, CharacterUIElements> characterUIDictionary;
     private string mainCharacterName;
 
     #endregion
@@ -80,15 +81,12 @@ public class DialogueCanvasUI : MonoBehaviour
 
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
-
-#if UNITY_ANDROID
-        autoskipMenuButton.gameObject.SetActive(false);
-        autoskipMenuButton.interactable = false;
-#endif
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
     {
+        backgroundTransform.offsetMax = new Vector2(format.BackgroundOffsetMax.x, backgroundTransform.offsetMax.y);
+
         phoneContainerTransform = phoneContainer.transform as RectTransform;
 
         phoneContainerTransform.offsetMin = format.PhoneContainerOffsetMin;
@@ -117,7 +115,7 @@ public class DialogueCanvasUI : MonoBehaviour
         midTypingDelayDuration = DialogueController.Instance.MidTypingDelayDuration;
         shortTypingDelayDuration = DialogueController.Instance.ShortTypingDelayDuration;
 
-        mainCharacterName = TextBubbleCharacterUI.Instance.MainCharacterName;
+        mainCharacterName = DialogueController.Instance.MainCharacterName;
 
         // Give functions to buttons.
         startDialogueButton.onClick.AddListener(ShowDialogueUI);
@@ -163,7 +161,7 @@ public class DialogueCanvasUI : MonoBehaviour
 
             DialogueController.Instance.CanPrintDialogue = true;
 
-            if (DialogueController.Instance.Autoplay)
+            if (DialogueController.Instance.AutoplayEnabled)
                 AutoplayDialogue();
             else
                 PlayDialogue();
@@ -328,14 +326,14 @@ public class DialogueCanvasUI : MonoBehaviour
         int bubblesBeforeChoice = DialogueController.Instance.BubblesBeforeChoice.Count;
         int currentBubbleIndex = DialogueController.Instance.CurrentBubbleIndex;
 
-        while (currentBubbleIndex < bubblesBeforeChoice - 1 && DialogueController.Instance.Autoplay)
+        while (currentBubbleIndex < bubblesBeforeChoice - 1 && DialogueController.Instance.AutoplayEnabled)
         {
             while (!DialogueController.Instance.CanPrintDialogue)
             {
                 yield return null;
             }
 
-            if (DialogueController.Instance.Autoplay)
+            if (DialogueController.Instance.AutoplayEnabled)
             {
                 PlayDialogue();
                 yield return new WaitForSeconds(autoplayDelayDuration + currentTypingDelayDuration);

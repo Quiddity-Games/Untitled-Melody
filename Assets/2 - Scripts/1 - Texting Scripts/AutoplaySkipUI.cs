@@ -44,7 +44,7 @@ public class AutoplaySkipUI : MonoBehaviour
             Time.timeScale = 1f;
             animator.SetTrigger("Close");
 
-            if (DialogueController.Instance.Autoplay)
+            if (DialogueController.Instance.AutoplayEnabled)
                 DialogueController.Instance.AutoplayDialogue();
         }
     }
