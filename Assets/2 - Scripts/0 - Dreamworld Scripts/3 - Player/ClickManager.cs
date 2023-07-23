@@ -207,7 +207,7 @@ public class ClickManager : MonoBehaviour
     }
     public  void HandleClick()
     {
-        
+
 
         if (!_NoteTracker.onBeat)
         {
@@ -217,7 +217,6 @@ public class ClickManager : MonoBehaviour
             StartCoroutine(ResetTrailColor());
             return;
         }
-        Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
 
         _NoteTracker.OnHit();
         
