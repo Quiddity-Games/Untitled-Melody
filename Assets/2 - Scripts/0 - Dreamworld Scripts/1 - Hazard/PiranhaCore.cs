@@ -28,8 +28,8 @@ public class PiranhaCore : MovingHazardBase
         float velocityXComponent = Mathf.Cos(Mathf.Acos(xDistance / hypotenuseDistance));
         float velocityYComponent = Mathf.Sin(Mathf.Asin(yDistance / hypotenuseDistance));
         
-        rb.velocity = new Vector2(velocityXComponent * speed * Time.deltaTime,
-            velocityYComponent * speed * Time.deltaTime);
+        rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(velocityXComponent * speed * Time.deltaTime,
+            velocityYComponent * speed * Time.deltaTime), Time.deltaTime);
     }
 
    
