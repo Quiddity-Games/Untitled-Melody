@@ -22,7 +22,6 @@ public class HazardBase : MonoBehaviour
     /// <param name="col"></param>
     private void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("COLLISION");
 
         if(col.gameObject.CompareTag("Player"))
         {
