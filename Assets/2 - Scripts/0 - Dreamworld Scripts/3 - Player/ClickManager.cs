@@ -57,7 +57,10 @@ public class ClickManager : MonoBehaviour
 
     [SerializeField] private bool canDash;
 
-    [SerializeField] private bool dashEnabled = false;  
+    [SerializeField] private bool dashEnabled = false;
+
+    [SerializeField] private Vector2 _currentPosition;
+
     private void Awake()
     {
         _NoteTracker.offBeatTrigger += () => { canDash = true; };
@@ -78,8 +81,8 @@ public class ClickManager : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
         _playerControl.Dreamworld.Enable();
-       
 
+        GetCurrentPosition();
     }
 
     private void OnDestroy()
@@ -89,7 +92,6 @@ public class ClickManager : MonoBehaviour
 
     private void DashOnPerformed(InputAction.CallbackContext obj)
     {
-         
         if(canDash && dashEnabled){
             HandleClick();
             canDash = false;
@@ -113,8 +115,11 @@ public class ClickManager : MonoBehaviour
     {
         dashEnabled = true;
     }
-
-   
+    
+    void GetCurrentPosition()
+    {
+        _currentPosition = _rigidbody2D.transform.position;
+    }
 
     private IEnumerator VanishClickAfterImage(GameObject cursorPrefab)
     {
@@ -137,7 +142,7 @@ public class ClickManager : MonoBehaviour
     private async void HandleDash(NoteTracker.HitInfo hitInfo)
     {
         float dashScale = 1f;
-        
+
         switch (hitInfo.rating)
         {
             case NoteTracker.BeatRating.PERFECT:
@@ -147,33 +152,40 @@ public class ClickManager : MonoBehaviour
                 dashScale = 0.8f;
                 break;
             case NoteTracker.BeatRating.GOOD:
-                dashScale = 0.6f;
+                dashScale = 0.7f;
                 break;
             case NoteTracker.BeatRating.BAD:
-                dashScale = 0.1f;
+                dashScale = 0.5f;
                 break;
             case NoteTracker.BeatRating.MISS:
                 dashScale = 0f;
                 break;
         }
-  
-  
+
         _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
 
         Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
-        Vector3 dashLocation = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 5)); 
-  
-        float dashDistance = Mathf.Min(_dash.MaxDashDistance,dashScale * Vector2.Distance(dashLocation, _rigidbody2D.position));
-        float dashForce = 5f * dashDistance;
-        //Adjusts the player's dash distance based on how far away the cursor is from the player
-        if(Vector3.Distance(dashLocation, this.GetComponent<Transform>().position) <= maxDashDistanceMultiplier)
-        {
-            dashForce = dashForceMultiplier * Vector3.Distance(dashLocation, this.GetComponent<Transform>().position);
-        } else
-        {
-            //Restricts the dash distance to the max radius when necessary
-            dashForce = dashForceMultiplier * maxDashDistanceMultiplier;
-        }
+        Vector3 dashLocation = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 5));
+
+        float dashDistance = Mathf.Min(_dash.MaxDashDistance, dashScale * Vector2.Distance(dashLocation, _rigidbody2D.position));
+        float dashForce = dashForceMultiplier * maxDashDistanceMultiplier * dashScale;
+
+        /// Left out intentionally for August 2nd, 2023 (-ish) build. May return to it eventually?
+        /// If not, delete entire comment block below and this commented section as well.
+        /// See comment for details on where it's going wrong:
+        /// <see cref="https://discord.com/channels/738438082147254283/738438438365298738/1134927541564608522"/>
+
+        // float dashForce = 5f * dashDistance;
+        // Adjusts the player's dash distance based on how far away the cursor is from the player
+        // if (Vector3.Distance(dashLocation, _currentPosition) <= maxDashDistanceMultiplier)
+        //{
+        //    dashForce = dashForceMultiplier * Vector3.Distance(dashLocation, _currentPosition);
+        //} else
+        //{
+        //    //Restricts the dash distance to the max radius when necessary
+        //    dashForce = dashForceMultiplier * maxDashDistanceMultiplier;
+        //}
+
         // Get object from the pool
         GameObject cursorPrefab = await _cursorAfterImagePrefabPool.GetFromPoolAsync();
 
@@ -199,16 +211,16 @@ public class ClickManager : MonoBehaviour
         _rigidbody2D.velocity = Vector2.zero;
         _rigidbody2D.AddForce(_dash.Direction * dashForce, ForceMode2D.Impulse);
 
-
         _trailRenderer.startColor = Color.yellow;
         _trailRenderer.endColor = Color.yellow;
 
         StartCoroutine(ResetGravity());
+
+        Debug.Log("Rating: " + hitInfo.rating.ToString() + " / Distance: " + Vector2.Distance(_currentPosition, _rigidbody2D.transform.position));
     }
+
     public  void HandleClick()
     {
-
-
         if (!_NoteTracker.onBeat)
         {
             _trailRenderer.startColor = Color.red;
@@ -219,9 +231,6 @@ public class ClickManager : MonoBehaviour
         }
 
         _NoteTracker.OnHit();
-        
-
-    
     }
 
     private IEnumerator ResetTrailColor()
