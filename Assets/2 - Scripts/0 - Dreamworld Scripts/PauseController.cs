@@ -12,30 +12,29 @@ public class PauseController : MonoBehaviour
 
     [SerializeField] private BoolVariable pause;
     // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         pause.Set(false);
         pause.OnValueChange += Pause;
     }
 
+    private void Start()
+    {
+        if (Time.timeScale == 0)
+            Time.timeScale = 1;
+    }
+
     public void Pause()
     {
         if(pause.Value)
-        {
-            
+        { 
             Time.timeScale = 0;
             onPause.Raise();
-
-            //Unpausing
         }
         else
-        {
-                
-            Debug.Log("Unpause");
+        { 
             Time.timeScale = 1;
             onUnpause.Raise();
-
-           
         }
     }
 }

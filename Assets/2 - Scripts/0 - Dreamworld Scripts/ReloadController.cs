@@ -18,10 +18,4 @@ public class ReloadController : MonoBehaviour
         };
         _playerControl.Enable();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

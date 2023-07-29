@@ -101,7 +101,8 @@ public class ClickManager : MonoBehaviour
 
     public void ToggleControls(bool value)
     {
-        if(value){
+        if(value)
+        {
             CursorTransform.gameObject.SetActive(true);
             _playerControl.Dreamworld.Enable();
         }
