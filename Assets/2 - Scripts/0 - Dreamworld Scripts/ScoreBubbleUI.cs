@@ -58,7 +58,6 @@ public class ScoreBubbleUI : MonoBehaviour
                 timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatTiming.PERFECT:
-                timingObject.SetActive(false);
                 break;
         }
 
@@ -66,18 +65,23 @@ public class ScoreBubbleUI : MonoBehaviour
         switch (hitInfo.rating)
         {
             case NoteTracker.BeatRating.MISS:
+                timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatRating.BAD:
                 ratingText.text = "Bad...";
+                timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatRating.GOOD:
                 ratingText.text = "Good!";
+                timingObject.SetActive(false);
                 break;
             case NoteTracker.BeatRating.GREAT:
                 ratingText.text = "Great!!";
+                timingObject.SetActive(false);
                 break;
             case NoteTracker.BeatRating.PERFECT:
                 ratingText.text = "Perfect!!!";
+                timingObject.SetActive(false);
                 break;
         }
 
