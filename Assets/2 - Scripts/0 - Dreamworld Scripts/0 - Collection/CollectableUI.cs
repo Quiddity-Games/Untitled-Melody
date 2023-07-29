@@ -14,6 +14,7 @@ public class CollectableUI : MonoBehaviour
     [SerializeField] private Color bleedColor;
 
     private int tempCount;
+    private RectTransform tempDisplayTransform;
     private CanvasGroup tempDisplayCanvasGroup;
     private GameObject tempDisplayObject;
     private Vector2 originalPos;
@@ -22,7 +23,8 @@ public class CollectableUI : MonoBehaviour
     {
         tempDisplayCanvasGroup = tempDisplay.gameObject.GetComponent<CanvasGroup>();
         tempDisplayObject = tempDisplay.gameObject;
-        originalPos = (tempDisplayObject.transform as RectTransform).anchoredPosition;
+        tempDisplayTransform = (tempDisplayObject.transform as RectTransform);
+        originalPos = tempDisplayTransform.anchoredPosition;
         tempDisplayObject.SetActive(false);
     }
 
@@ -51,7 +53,7 @@ public class CollectableUI : MonoBehaviour
             int bleedCount = tempCount; // Snapshot the total bleed amount before it resets to 0.
             tempCount = 0; // Reset temp count on death.
 
-            (tempDisplayObject.transform as RectTransform).anchoredPosition = originalPos;
+            tempDisplayTransform.anchoredPosition = originalPos;
             tempDisplay.text = "-" + bleedCount.ToString();
             tempDisplayObject.SetActive(true);
 
@@ -62,32 +64,23 @@ public class CollectableUI : MonoBehaviour
         IEnumerator ShowFloatingText()
         {
             float time = 0f;
-            float flashDuration = 1f;
-            float fadeDuration = 2f;
+            float duration = 2.5f;
+            Vector2 endPos = new Vector2(originalPos.x, originalPos.y - 120f);
 
-            // Have current collectibles number flash red.
-            while (time < flashDuration)
+            // Have current collectibles number flash red. Fade out bleed total and lerp downwards.
+            while (time < duration)
             {
-                currentDisplay.color = Color.Lerp(bleedColor, Color.white, time / flashDuration);
+                currentDisplay.color = Color.Lerp(bleedColor, Color.white, time / duration);
+                tempDisplayCanvasGroup.alpha = Mathf.Lerp(1f, 0f, time / duration);
+                tempDisplayTransform.anchoredPosition = Vector2.Lerp(originalPos, endPos, time / duration);
                 time += Time.deltaTime;
                 yield return null;
             }
-
-            time = 0f;
 
             tempDisplayCanvasGroup.alpha = 1f;
 
-            // Fade out bleed total and lerp downwards.
-            while (time < fadeDuration)
-            {
-                tempDisplayCanvasGroup.alpha = Mathf.Lerp(1f, 0f, time / fadeDuration);
-                (tempDisplayObject.transform as RectTransform).anchoredPosition = Vector2.Lerp((tempDisplayObject.transform as RectTransform).anchoredPosition, new Vector2((tempDisplayObject.transform as RectTransform).anchoredPosition.x, (tempDisplayObject.transform as RectTransform).anchoredPosition.y - 0.5f), time / fadeDuration);
-                time += Time.deltaTime;
-                yield return null;
-            }
-
             // Reset bleed number.
-            (tempDisplayObject.transform as RectTransform).anchoredPosition = originalPos;
+            tempDisplayTransform.anchoredPosition = originalPos;
             tempDisplayObject.SetActive(false);
         }
     }
