@@ -22,22 +22,27 @@ public class EndScreenController : MonoBehaviour
     private struct EndScreenSprites
     {
         public Sprite perfectSprite;
-         public Sprite goodSprite;
-         public Sprite badSprite;
+        public Sprite goodSprite;
+        public Sprite badSprite;
     }
     
     [SerializeField] private EndScreenSprites endSprites;
-    
 
-    // Start is called before the first frame update
+    private void Start()
+    {
+        EndScreenMenu.SetActive(false);
+    }
+
     public void LoadEndScreen()
     {
         int required = info.requiredCollectables;
         int max = info.totalCollectables;
         int obtained = info.obtainedCollectables;
+
         neededCollectableText.text = required.ToString();
         obtainedCollectableText.text = obtained.ToString();
         totalCollectableText.text = max.ToString();
+
         if (obtained < required)
         {
             titleText.text = "Try Again!";
@@ -63,11 +68,5 @@ public class EndScreenController : MonoBehaviour
     public void HideLoadScreen()
     {
         EndScreenMenu.SetActive(false);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
