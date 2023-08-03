@@ -65,10 +65,7 @@ public class ScoreBubbleUI : MonoBehaviour
         switch (hitInfo.rating)
         {
             case NoteTracker.BeatRating.MISS:
-                timingObject.SetActive(true);
-                break;
-            case NoteTracker.BeatRating.BAD:
-                ratingText.text = "Bad...";
+                ratingText.text = "Miss...";
                 timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatRating.GOOD:
