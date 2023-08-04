@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 6010155735985409071}
   - component: {fileID: 1767282057215555625}
   - component: {fileID: 5140743684525230342}
+  - component: {fileID: 6682370812657851855}
   m_Layer: 5
   m_Name: CollectibleBar
   m_TagString: Untagged
@@ -194,7 +195,7 @@ MonoBehaviour:
   currentDisplay: {fileID: 1620272919007618459}
   maxDisplay: {fileID: 1015607263212851085}
   tempDisplay: {fileID: 6978701744571747056}
-  lostColor: {r: 0.7372549, g: 0.101960786, b: 0.101960786, a: 1}
+  bleedColor: {r: 0.7372549, g: 0.101960786, b: 0.101960786, a: 1}
 --- !u!114 &1767282057215555625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,6 +236,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &6682370812657851855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3746136033194882680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: f6cb65ed3f512fa48b6ca66f3924d9ac, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6010155735985409071}
+        m_TargetAssemblyTypeName: CollectableUI, Assembly-CSharp
+        m_MethodName: ResetScoreUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4908641350605214428
 GameObject:
   m_ObjectHideFlags: 0
