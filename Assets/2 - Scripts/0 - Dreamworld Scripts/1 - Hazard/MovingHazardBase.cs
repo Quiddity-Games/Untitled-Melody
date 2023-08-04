@@ -11,6 +11,7 @@ public class MovingHazardBase : HazardBase
     void Start()
     {
         startingPosition = transform.position;
+        canMove = true;
     }
 
      public void ToggleMovement(bool enableMovement)
