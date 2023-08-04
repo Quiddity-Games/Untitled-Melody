@@ -216,6 +216,8 @@ public class ClickManager : MonoBehaviour
         _trailRenderer.endColor = Color.yellow;
 
         StartCoroutine(ResetGravity());
+
+        Debug.Log("Rating: " + hitInfo.rating.ToString() + " / Distance: " + Vector2.Distance(_currentPosition, _rigidbody2D.transform.position));
     }
 
     public  void HandleClick()

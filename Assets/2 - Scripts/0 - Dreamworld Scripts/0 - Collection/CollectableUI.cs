@@ -1,8 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.UI;
 
 public class CollectableUI : MonoBehaviour
 {
@@ -26,14 +26,6 @@ public class CollectableUI : MonoBehaviour
         tempDisplayTransform = (tempDisplayObject.transform as RectTransform);
         originalPos = tempDisplayTransform.anchoredPosition;
         tempDisplayObject.SetActive(false);
-
-        LayoutRebuilder.ForceRebuildLayoutImmediate(gameObject.gameObject.transform as RectTransform);
-    }
-
-    public void RestartCounter()
-    {
-        currentDisplay.text = "0";
-        tempCount = 0;
     }
 
     /// <summary>

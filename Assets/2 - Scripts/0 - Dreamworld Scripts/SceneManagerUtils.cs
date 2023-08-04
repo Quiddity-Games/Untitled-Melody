@@ -10,9 +10,4 @@ public class SceneManagerUtils : ScriptableObject
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-    public void Quit()
-    {
-        Application.Quit();
-    }
 }
