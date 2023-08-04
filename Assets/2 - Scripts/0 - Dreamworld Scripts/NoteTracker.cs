@@ -14,7 +14,7 @@ public class NoteTracker : MonoBehaviour
     }
     public enum BeatRating
     {
-        MISS, BAD, GOOD, GREAT, PERFECT
+        MISS, GOOD, GREAT, PERFECT
     }
     
     private float _bpm;
@@ -122,7 +122,6 @@ public class NoteTracker : MonoBehaviour
             range.Enqueue(new BeatRange(nextBeatTime, perfectRange, BeatRating.PERFECT));
             range.Enqueue(new BeatRange(nextBeatTime, greatRange, BeatRating.GREAT));
             range.Enqueue(new BeatRange(nextBeatTime, goodRange, BeatRating.GOOD));
-            range.Enqueue(new BeatRange(nextBeatTime, badRange, BeatRating.BAD));
             onLoad?.Invoke();
         }
 

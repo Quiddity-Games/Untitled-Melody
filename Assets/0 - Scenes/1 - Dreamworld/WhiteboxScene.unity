@@ -7781,6 +7781,10 @@ PrefabInstance:
       propertyPath: _noteTracker
       value: 
       objectReference: {fileID: 1369963775}
+    - target: {fileID: 6529547540661163527, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: sprites.missSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 48c266d059cc6be43803db1d751bae53, type: 3}
     - target: {fileID: 8506654259782846044, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: _noteTracker
       value: 
