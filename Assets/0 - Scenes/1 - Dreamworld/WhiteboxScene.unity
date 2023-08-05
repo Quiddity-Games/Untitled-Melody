@@ -5513,7 +5513,7 @@ PrefabInstance:
       objectReference: {fileID: 1211173198127417280, guid: 9c58ce4d53c02f2488d71a529f06e59d, type: 3}
     - target: {fileID: 5448848607272641547, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: pulseRadius
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5448848607272641547, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: _noteTracker
@@ -5940,11 +5940,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 174976148487863244, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: Options.Array.data[5].label
-      value: Pulse at Origin
+      value: Pulse at Player
       objectReference: {fileID: 0}
     - target: {fileID: 174976148487863244, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: Options.Array.data[6].label
-      value: Pulse at Origin Delay
+      value: Pulse at Player, Delayed
       objectReference: {fileID: 0}
     - target: {fileID: 174976148487863244, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: Options.Array.data[7].label

@@ -44,18 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbe8d30acb9d7aa4eaebaf96ae405954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pulseRadius: 0
+  pulseRadius: 40
   _noteTracker: {fileID: 0}
-  pulseForce: 0
+  pulseForce: 20
   origin: {fileID: 0}
-  pulsePrefab: {fileID: 0}
+  pulsePrefab: {fileID: 1211173198127417280, guid: 9c58ce4d53c02f2488d71a529f06e59d, type: 3}
   pulseArray:
   - Id: 0
     location: {fileID: 0}
     delay: 0
   - Id: 1
     location: {fileID: 0}
-    delay: 0
+    delay: 0.2
   - Id: 2
     location: {fileID: 0}
     delay: 0
