@@ -5088,7 +5088,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 4
-      m_TileSpriteIndex: 9
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 2
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5098,7 +5098,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 10
       m_TileMatrixIndex: 2
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5108,7 +5108,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 2
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 2
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5118,7 +5118,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 1
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 2
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5158,7 +5158,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 4
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -5193,8 +5193,20 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 408684491, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -1679079425, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1790957706, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: 1783047448, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 332706558, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
   - m_RefCount: 1
@@ -5202,19 +5214,7 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 1261127599, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -1679079425, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1790957706, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 1783047448, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 1
     m_Data: {fileID: -594125838, guid: f0002f2ea08ee6a47a04bea8fde2773c, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 1
     m_Data:
@@ -5513,7 +5513,7 @@ PrefabInstance:
       objectReference: {fileID: 1211173198127417280, guid: 9c58ce4d53c02f2488d71a529f06e59d, type: 3}
     - target: {fileID: 5448848607272641547, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: pulseRadius
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5448848607272641547, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: _noteTracker
@@ -5940,11 +5940,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 174976148487863244, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: Options.Array.data[5].label
-      value: Pulse at Origin
+      value: Pulse at Player
       objectReference: {fileID: 0}
     - target: {fileID: 174976148487863244, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: Options.Array.data[6].label
-      value: Pulse at Origin Delay
+      value: Pulse at Player, Delayed
       objectReference: {fileID: 0}
     - target: {fileID: 174976148487863244, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: Options.Array.data[7].label
