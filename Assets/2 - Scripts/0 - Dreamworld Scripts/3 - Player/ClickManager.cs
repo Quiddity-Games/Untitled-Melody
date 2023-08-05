@@ -155,11 +155,8 @@ public class ClickManager : MonoBehaviour
             case NoteTracker.BeatRating.GOOD:
                 dashScale = 0.7f;
                 break;
-            case NoteTracker.BeatRating.BAD:
-                dashScale = 0.5f;
-                break;
             case NoteTracker.BeatRating.MISS:
-                dashScale = 0f;
+                dashScale = 0.5f;
                 break;
         }
 
@@ -226,7 +223,7 @@ public class ClickManager : MonoBehaviour
         {
             _trailRenderer.startColor = Color.red;
             _trailRenderer.endColor = Color.red;
-
+            _NoteTracker.OnHit();
             StartCoroutine(ResetTrailColor());
             return;
         }

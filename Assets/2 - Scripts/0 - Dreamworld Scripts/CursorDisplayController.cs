@@ -15,7 +15,6 @@ public class CursorDisplayController : MonoBehaviour
     {
         public Sprite defaultSprite;
         public Sprite missSprite;
-        public Sprite badSprite;
         public Sprite goodSprite;
         public Sprite greatSprite;
         public Sprite perfectSprite;
@@ -36,9 +35,6 @@ public class CursorDisplayController : MonoBehaviour
         {
             case NoteTracker.BeatRating.MISS:
                 _cursorSpriteRenderer.sprite = sprites.missSprite;
-                break;
-            case NoteTracker.BeatRating.BAD:
-                _cursorSpriteRenderer.sprite = sprites.badSprite;
                 break;
             case NoteTracker.BeatRating.GOOD:
                 _cursorSpriteRenderer.sprite = sprites.goodSprite;

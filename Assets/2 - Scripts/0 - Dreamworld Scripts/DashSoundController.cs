@@ -31,8 +31,6 @@ public class DashSoundController : MonoBehaviour
         switch (hitInfo.rating)
         {
             case NoteTracker.BeatRating.MISS:
-                break;
-            case NoteTracker.BeatRating.BAD:
                 soundControl.PlayOneShot(sounds.badSound);
                 break;
             case NoteTracker.BeatRating.GOOD:
