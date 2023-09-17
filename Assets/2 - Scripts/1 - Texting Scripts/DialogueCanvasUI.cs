@@ -69,6 +69,7 @@ public class DialogueCanvasUI : MonoBehaviour
 
     // Character info
     private Dictionary<string, CharacterUIElements> characterUIDictionary;
+    private Dictionary<string, CharacterDialogueInfo> charactersInStoryDictionary;
     private string mainCharacterName;
 
     #endregion
@@ -110,7 +111,8 @@ public class DialogueCanvasUI : MonoBehaviour
         startDelayDuration = DialogueController.Instance.StartDelayDuration;
         bubbleFadeDuration = DialogueController.Instance.BubbleFadeDuration;
         autoplayDelayDuration = DialogueController.Instance.AutoplayDelayDuration;
-        characterUIDictionary = DialogueController.Instance.CharacterUIDictionary;
+        //characterUIDictionary = DialogueController.Instance.CharacterUIDictionary;
+        charactersInStoryDictionary = DialogueController.Instance.CharactersInStoryDictionary;
         longTypingDelayDuration = DialogueController.Instance.LongTypingDelayDuration;
         midTypingDelayDuration = DialogueController.Instance.MidTypingDelayDuration;
         shortTypingDelayDuration = DialogueController.Instance.ShortTypingDelayDuration;
@@ -129,7 +131,7 @@ public class DialogueCanvasUI : MonoBehaviour
     /// </summary>
     void GetHeaderText()
     {
-        headerIcon.sprite = characterUIDictionary[DialogueController.Instance.GlobalTagsDictionary["Conversation"]].IconSprite;
+        headerIcon.sprite = charactersInStoryDictionary[DialogueController.Instance.GlobalTagsDictionary["Conversation"]].IconSprite;
         headerText.text = DialogueController.Instance.GlobalTagsDictionary["Conversation"];
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(headerCanvasGroup.gameObject.transform as RectTransform);

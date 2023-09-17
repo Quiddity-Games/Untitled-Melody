@@ -906,6 +906,26 @@ PrefabInstance:
       propertyPath: previewAspectRatio
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7950313736048024308, guid: a1531c091b1c8824c971771dc3a68b34, type: 3}
+      propertyPath: charactersInStory.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950313736048024308, guid: a1531c091b1c8824c971771dc3a68b34, type: 3}
+      propertyPath: charactersInStory.Array.data[0].Info
+      value: 
+      objectReference: {fileID: 11400000, guid: 37690ceca0823714b9bcf9136aa62acc, type: 2}
+    - target: {fileID: 7950313736048024308, guid: a1531c091b1c8824c971771dc3a68b34, type: 3}
+      propertyPath: charactersInStory.Array.data[1].Info
+      value: 
+      objectReference: {fileID: 11400000, guid: 08a98014558f5ca4987d54b553d5242e, type: 2}
+    - target: {fileID: 7950313736048024308, guid: a1531c091b1c8824c971771dc3a68b34, type: 3}
+      propertyPath: charactersInStory.Array.data[0].CharacterName
+      value: Amika
+      objectReference: {fileID: 0}
+    - target: {fileID: 7950313736048024308, guid: a1531c091b1c8824c971771dc3a68b34, type: 3}
+      propertyPath: charactersInStory.Array.data[1].CharacterName
+      value: Emerald
+      objectReference: {fileID: 0}
     - target: {fileID: 7950313736048024309, guid: a1531c091b1c8824c971771dc3a68b34, type: 3}
       propertyPath: m_RootOrder
       value: 1

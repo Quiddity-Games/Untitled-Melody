@@ -106,18 +106,20 @@ public class TextBubbleUI : MonoBehaviour
     /// Parse information for the text bubble and set the variables.
     /// </summary>
     /// <param name="currentLine"></param>
-    public void SetTextBubbleInformation(string currentLine, string mainCharacterName, CharacterUIElements senderUI)
+    public void SetTextBubbleInformation(string currentLine, string mainCharacterName, string speakerName)
     {
+        CharacterDialogueInfo senderUI = DialogueController.Instance.CharactersInStoryDictionary[speakerName];
+
         currentLine = RemoveTags(ParseEmojis(currentLine));
 
         // Set bubble alignment (left or right).
-        if (senderUI.CharacterName.Contains(mainCharacterName))
+        if (speakerName.Contains(mainCharacterName))
             SetBubbleAlignment(TextAnchor.LowerRight);
         else
             SetBubbleAlignment(TextAnchor.LowerLeft);
 
         IconImage.sprite = senderUI.IconSprite;
-        SenderNameText.text = senderUI.CharacterName;
+        SenderNameText.text = speakerName;
         SenderNameText.color = senderUI.FontColor;
 
         MessageText.text = currentLine;
@@ -204,7 +206,7 @@ public class TextBubbleUI : MonoBehaviour
 }
 
 [Serializable]
-public struct CharacterUIElements
+public class CharacterUIElements
 {
     public string CharacterName;
     public Sprite IconSprite;

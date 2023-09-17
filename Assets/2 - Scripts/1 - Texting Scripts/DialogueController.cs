@@ -4,6 +4,8 @@ using UnityEngine;
 using Ink.Runtime;
 using UnityEngine.Serialization;
 using UnityEngine.Events;
+using UnityEditor;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// Dialogue controller which the active <see cref="DialogueCanvasUI"/> derives its values and static methods from.
@@ -62,18 +64,19 @@ public class DialogueController : MonoBehaviour
     [Space(10)]
     [Header("Character UI")]
     public string MainCharacterName;
-    public List<CharacterUIElements> CharacterUIElements;
+    [SerializeField] bool updateCharacterList;
+    [SerializeField] List<CharacterUIInfo> charactersInStory = new();
     #endregion
 
     #region Hidden Variables
     [HideInInspector] public Story InkStory;
     [HideInInspector] public int CurrentBubbleIndex;
-    [HideInInspector] public List<string> LinesBeforeChoice = new List<string>();
-    [HideInInspector] public List<TextBubbleUI> BubblesBeforeChoice = new List<TextBubbleUI>();
-    [HideInInspector] public List<TextOptionUI> CurrentOptions = new List<TextOptionUI>();
+    [HideInInspector] public List<string> LinesBeforeChoice = new();
+    [HideInInspector] public List<TextBubbleUI> BubblesBeforeChoice = new();
+    [HideInInspector] public List<TextOptionUI> CurrentOptions = new();
 
-    public Dictionary<string, string> GlobalTagsDictionary = new Dictionary<string, string>();
-    public Dictionary<string, CharacterUIElements> CharacterUIDictionary = new Dictionary<string, CharacterUIElements>();
+    public Dictionary<string, string> GlobalTagsDictionary = new();
+    public Dictionary<string, CharacterDialogueInfo> CharactersInStoryDictionary = new();
     public static VoidCallback InitializeDialogue;
     #endregion
 
@@ -111,6 +114,36 @@ public class DialogueController : MonoBehaviour
 
             previewAspectRatio = false;
         }
+
+        if (updateCharacterList && InkTextAsset)
+        {
+            updateCharacterList = false;
+            charactersInStory.Clear();
+
+            List<string> names = new List<string>();
+
+            string pattern = @"(?:[Ss]peaker\:.)(\w+)";
+            Regex r = new Regex(pattern, RegexOptions.IgnoreCase);
+            MatchCollection m = r.Matches(InkTextAsset.text);
+
+            foreach (Match match in m)
+            {
+                if (!names.Contains(match.Groups[1].Value))
+                    names.Add(match.Groups[1].Value);
+            }
+
+            foreach (string name in names)
+            {
+                CharacterDialogueInfo asset = (CharacterDialogueInfo)AssetDatabase.LoadAssetAtPath(
+                    "Assets/2 - Scripts/1 - Texting Scripts/0 - Character UI Info/" + name + " Dialogue Info.asset",
+                    typeof(CharacterDialogueInfo));
+
+                CharacterUIInfo info = new(name, asset);
+
+                if (!charactersInStory.Contains(info))
+                    charactersInStory.Add(info);
+            }
+        }
 #endif
     }
 
@@ -142,12 +175,10 @@ public class DialogueController : MonoBehaviour
             }
         }
 
-        //List<CharacterUIElements> characterUIElements = CharacterUIElements;
-
         // Get character UI elements.
-        for (int i = 0; i < CharacterUIElements.Count; i++)
+        for (int i = 0; i < charactersInStory.Count; i++)
         {
-            CharacterUIDictionary.Add(CharacterUIElements[i].CharacterName, CharacterUIElements[i]);
+            CharactersInStoryDictionary.Add(charactersInStory[i].CharacterName, charactersInStory[i].Info);
         }
     }
 
@@ -184,14 +215,13 @@ public class DialogueController : MonoBehaviour
     /// <param name="line"></param>
     void CreateTextBubble(string line)
     {
-        GameObject textBubble = Instantiate(TextBubblePrefab, dialogueCanvas.BodyScrollContent.transform);
-        BubblesBeforeChoice.Add(textBubble.GetComponent<TextBubbleUI>());
+        TextBubbleUI textBubble = Instantiate(TextBubblePrefab, dialogueCanvas.BodyScrollContent.transform).GetComponent<TextBubbleUI>();
+        BubblesBeforeChoice.Add(textBubble);
 
-        TextBubbleUI ui = textBubble.GetComponent<TextBubbleUI>();
-        string speakerName = ui.ParseSpeaker(line);
-        FadeInUI(ui.CanvasGroup, BubbleFadeDuration);
+        string speakerName = textBubble.ParseSpeaker(line);
+        FadeInUI(textBubble.CanvasGroup, BubbleFadeDuration);
 
-        ui.SetTextBubbleInformation(line, MainCharacterName, CharacterUIDictionary[speakerName]);
+        textBubble.SetTextBubbleInformation(line, MainCharacterName, speakerName);
     }
 
     /// <summary>
@@ -200,10 +230,9 @@ public class DialogueController : MonoBehaviour
     /// </summary>
     public void CreateTextTypingBubbles()
     {
-        foreach (CharacterUIElements ui in CharacterUIElements)
+        foreach (CharacterUIInfo ui in charactersInStory)
         {
-            GameObject typingBubble = Instantiate(TypingBubblePrefab, dialogueCanvas.BodyScrollContent.transform);
-            TextTypingUI typingUI = typingBubble.GetComponent<TextTypingUI>();
+            TextTypingUI typingUI = Instantiate(TypingBubblePrefab, dialogueCanvas.BodyScrollContent.transform).GetComponent<TextTypingUI>();
 
             if (ui.CharacterName.Equals(MainCharacterName))
             {
@@ -215,7 +244,7 @@ public class DialogueController : MonoBehaviour
                 LeftTypingBubble = typingUI;
             }
 
-            typingUI.SetBubbleColor(MainCharacterName, ui);
+            typingUI.SetBubbleColor(MainCharacterName, ui.CharacterName);
         }
     }
 
