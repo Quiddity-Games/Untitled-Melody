@@ -20,22 +20,22 @@ MonoBehaviour:
     BubbleEdgePadding: 105
     IconEdgePadding: 25
     IconSize: 110
-    SenderFontSize: 28
-    MessageFontSize: 34
+    SenderFontSize: 36
+    MessageFontSize: 42
     LayoutSpacing: 25
     PhoneContainerOffsetMin: {x: 100, y: 0}
     PhoneContainerOffsetMax: {x: -700, y: -90}
     AutoplayMenuPivotX: 1
     AutoplayMenuAnchorX: -40
-  - aspectRatioName: 16:19
+  - aspectRatioName: 16:10
     AspectRatio: {x: 16, y: 10}
     screenSize: 0
     BackgroundOffsetMax: {x: 20, y: 0}
     BubbleEdgePadding: 115
     IconEdgePadding: 25
     IconSize: 110
-    SenderFontSize: 28
-    MessageFontSize: 34
+    SenderFontSize: 40
+    MessageFontSize: 46
     LayoutSpacing: 25
     PhoneContainerOffsetMin: {x: 100, y: 0}
     PhoneContainerOffsetMax: {x: -920, y: -90}
@@ -48,25 +48,26 @@ MonoBehaviour:
     BubbleEdgePadding: 140
     IconEdgePadding: 25
     IconSize: 110
-    SenderFontSize: 28
-    MessageFontSize: 34
+    SenderFontSize: 40
+    MessageFontSize: 46
     LayoutSpacing: 25
     PhoneContainerOffsetMin: {x: 100, y: 0}
     PhoneContainerOffsetMax: {x: -1020, y: -90}
     AutoplayMenuPivotX: 1
     AutoplayMenuAnchorX: -40
-  - aspectRatioName: 3:4
-    AspectRatio: {x: 3, y: 4}
+  unusedFormatList:
+  - aspectRatioName: 9:16
+    AspectRatio: {x: 9, y: 16}
     screenSize: 1
-    BackgroundOffsetMax: {x: 65, y: 0}
-    BubbleEdgePadding: 80
+    BackgroundOffsetMax: {x: 80, y: 0}
+    BubbleEdgePadding: 15
     IconEdgePadding: 25
     IconSize: 90
     SenderFontSize: 24
     MessageFontSize: 30
     LayoutSpacing: 20
-    PhoneContainerOffsetMin: {x: 80, y: 0}
-    PhoneContainerOffsetMax: {x: -80, y: -80}
+    PhoneContainerOffsetMin: {x: 70, y: 0}
+    PhoneContainerOffsetMax: {x: -70, y: -70}
     AutoplayMenuPivotX: 0.5
     AutoplayMenuAnchorX: 0
   - aspectRatioName: 10:16
@@ -83,17 +84,17 @@ MonoBehaviour:
     PhoneContainerOffsetMax: {x: -70, y: -70}
     AutoplayMenuPivotX: 0.5
     AutoplayMenuAnchorX: 0
-  - aspectRatioName: 9:16
-    AspectRatio: {x: 9, y: 16}
+  - aspectRatioName: 3:4
+    AspectRatio: {x: 3, y: 4}
     screenSize: 1
-    BackgroundOffsetMax: {x: 80, y: 0}
-    BubbleEdgePadding: 15
+    BackgroundOffsetMax: {x: 65, y: 0}
+    BubbleEdgePadding: 80
     IconEdgePadding: 25
     IconSize: 90
     SenderFontSize: 24
     MessageFontSize: 30
     LayoutSpacing: 20
-    PhoneContainerOffsetMin: {x: 70, y: 0}
-    PhoneContainerOffsetMax: {x: -70, y: -70}
+    PhoneContainerOffsetMin: {x: 80, y: 0}
+    PhoneContainerOffsetMax: {x: -80, y: -80}
     AutoplayMenuPivotX: 0.5
     AutoplayMenuAnchorX: 0

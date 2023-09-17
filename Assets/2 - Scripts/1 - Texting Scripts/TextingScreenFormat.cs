@@ -8,6 +8,8 @@ public class TextingScreenFormat : ScriptableObject
 {
     [FormerlySerializedAs("TextingFormatting")]
     public List<TextingAspectRatioFormat> TextingFormatList = new List<TextingAspectRatioFormat>();
+
+    [SerializeField] List<TextingAspectRatioFormat> unusedFormatList;
 }
 
 /// <summary>
