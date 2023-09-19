@@ -520,6 +520,7 @@ GameObject:
   - component: {fileID: 2198711431731033790}
   - component: {fileID: 4859694228467475748}
   - component: {fileID: 2741924145214774423}
+  - component: {fileID: 6057361168001154594}
   m_Layer: 0
   m_Name: Continue Button
   m_TagString: Untagged
@@ -607,7 +608,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 3
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -640,6 +641,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4625665953198608164}
   m_CullTransparentMesh: 1
+--- !u!95 &6057361168001154594
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4625665953198608164}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94f5cb44b7ef8f34da302e1726ea8708, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5127722793192544232
 GameObject:
   m_ObjectHideFlags: 0
@@ -716,8 +737,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 2346091685
-  m_fontColor: {r: 0.6478806, g: 0.51882344, b: 0.8396226, a: 0.54509807}
+    rgba: 2342790745
+  m_fontColor: {r: 0.34922135, g: 0.14827341, b: 0.6415094, a: 0.54509807}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

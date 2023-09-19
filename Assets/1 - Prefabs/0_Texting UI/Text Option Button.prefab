@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 4492672438086805775}
   - component: {fileID: 1829039446489144895}
   - component: {fileID: 3969892628883431031}
-  - component: {fileID: 3829269402775166118}
+  - component: {fileID: 3363952025479094959}
   m_Layer: 0
   m_Name: Text Option Button
   m_TagString: Untagged
@@ -572,7 +572,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5848781214036233668}
   m_CullTransparentMesh: 1
---- !u!95 &3829269402775166118
+--- !u!95 &3363952025479094959
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0

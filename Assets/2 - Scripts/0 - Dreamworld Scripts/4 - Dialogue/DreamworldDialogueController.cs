@@ -345,7 +345,6 @@ public class DreamworldDialogueController : MonoBehaviour
         else
             previousButton.interactable = on;
 
-        previousButton.interactable = on;
         continueButton.interactable = on;
 
         if (mostRecentLineIndex >= lastLineIndex)
