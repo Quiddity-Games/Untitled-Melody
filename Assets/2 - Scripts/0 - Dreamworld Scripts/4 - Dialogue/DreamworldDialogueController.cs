@@ -60,7 +60,7 @@ public class DreamworldDialogueController : MonoBehaviour
     private int currentLineIndex;
     private int mostRecentLineIndex;
     private int lastLineIndex;
-    private Dictionary<string, CharacterDialogueInfo> charactersInStoryDictionary = new();
+    private Dictionary<string, CharacterDialogueInfo> charactersDictionary = new();
 
     private Vector2 finishButtonOriginalPosition;
     private Vector2 textContainerOriginalPosition;
@@ -175,11 +175,11 @@ public class DreamworldDialogueController : MonoBehaviour
 
     private void InitializePortraits(string conversationPartner)
     {
-        leftPortrait.sprite = charactersInStoryDictionary[conversationPartner].IconSprite;
+        leftPortrait.sprite = charactersDictionary[conversationPartner].IconSprite;
         leftPortraitCanvasGroup = leftPortrait.gameObject.GetComponent<CanvasGroup>();
         leftPortraitRect = leftPortrait.gameObject.GetComponent<RectTransform>();
 
-        rightPortrait.sprite = charactersInStoryDictionary[mainCharacterName].IconSprite;
+        rightPortrait.sprite = charactersDictionary[mainCharacterName].IconSprite;
         rightPortraitCanvasGroup = rightPortrait.gameObject.GetComponent<CanvasGroup>();
         rightPortraitRect = rightPortrait.gameObject.GetComponent<RectTransform>();
 
@@ -192,7 +192,7 @@ public class DreamworldDialogueController : MonoBehaviour
         // Get character UI elements.
         for (int i = 0; i < charactersInStory.Count; i++)
         {
-            charactersInStoryDictionary.Add(charactersInStory[i].CharacterName, charactersInStory[i].Info);
+            charactersDictionary.Add(charactersInStory[i].CharacterName, charactersInStory[i].Info);
         }
     }
 
@@ -393,12 +393,12 @@ public class DreamworldDialogueController : MonoBehaviour
         currentLine = RemoveTags(ParseEmojis(currentLine));
 
         senderNameText.text = speakerName;
-        senderNameText.color = charactersInStoryDictionary[speakerName].FontColor;
+        senderNameText.color = charactersDictionary[speakerName].FontColor;
 
         messageText.text = currentLine;
-        messageText.color = charactersInStoryDictionary[speakerName].FontColor;
+        messageText.color = charactersDictionary[speakerName].FontColor;
 
-        textBoxImage.color = charactersInStoryDictionary[speakerName].TextBoxColor;
+        textBoxImage.color = charactersDictionary[speakerName].TextBoxColor;
     }
 
     private void ResizeTextBox(string speakerName, bool noDelay, TextBoxState state)

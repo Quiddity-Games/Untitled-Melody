@@ -132,7 +132,7 @@ MonoBehaviour:
   - {fileID: 3893259552012404657}
   - {fileID: 5650526750581163240}
   - {fileID: 6000915449912431723}
-  backgroundTransform: {fileID: 0}
+  backgroundTransform: {fileID: 7950313735503632685}
   phoneContainer: {fileID: 7950313734912146293}
   headerCanvasGroup: {fileID: 8536569289948575828}
   headerIcon: {fileID: 8827631259538217571}
@@ -141,6 +141,11 @@ MonoBehaviour:
   BodyScrollContent: {fileID: 8489898230367756133}
   bodyScrollRect: {fileID: 3072787392696057515}
   textOptionsContainer: {fileID: 7290548590682445207}
+  canvasFadeDuration: 1
+  startDelayDuration: 1
+  shortTypingDelayDuration: 0.8
+  midTypingDelayDuration: 1.25
+  longTypingDelayDuration: 2
   autoplaySkipContainer: {fileID: 7950313735132575033}
   autoplayText: {fileID: 7950313735261811806}
 --- !u!1 &7950313734912146293
@@ -606,40 +611,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f77510fb010c1546aa3d288bc5696a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InkTextAsset: {fileID: 4900000, guid: c165cac97e7826d4788fd263b47b3e19, type: 3}
+  onDialogueEnd: {fileID: 11400000, guid: 9bfb6b33cbd651e49b38d3469a75f875, type: 2}
+  inkTextAsset: {fileID: 0}
+  mainCharacterName: {fileID: 11400000, guid: cb9314072a940174690c87c9718f035f, type: 2}
+  MainCharacterName: Amika
+  CharactersInStory: []
+  LinesBeforeChoice: []
+  AutoplayDelayDuration: 1.5
+  CurrentLineIndex: 0
+  LastLineIndex: 0
+  CanPrintDialogue: 0
   AutoplayEnabled: 0
-  aspectRatioValues: {fileID: 11400000, guid: 05224f00d5cbfdb40b92bba09b821e16, type: 2}
-  previewAspectRatio: 0
-  aspectRatio: {x: 16, y: 9}
   dialogueCanvas: {fileID: 7950313734719587622}
   autoplaySkipUI: {fileID: 1511338499149879608}
-  CanvasFadeDuration: 1
-  StartDelayDuration: 1
-  BubbleFadeDuration: 0.15
-  AutoplayDelayDuration: 1.5
-  CanPrintDialogue: 0
-  CurrentTypingDelayDuration: 0
-  ShortTypingDelayDuration: 0.8
-  MidTypingDelayDuration: 1.2
-  LongTypingDelayDuration: 2.5
+  BubbleFadeDuration: 0.2
   CurrentTypingBubble: {fileID: 0}
   LeftTypingBubble: {fileID: 0}
   RightTypingBubble: {fileID: 0}
   TextBubblePrefab: {fileID: 3968320940576767325, guid: 6b5623530596e984da11d77a5558d9bd, type: 3}
   OptionButtonPrefab: {fileID: 5848781214036233668, guid: 0abcfe47b85b1f147a214eeb3b5893b5, type: 3}
   TypingBubblePrefab: {fileID: 2193143276300938580, guid: 242b89599c395354fb6654d61a35cb59, type: 3}
-  MainCharacterName: Amika
-  CharacterUIElements:
-  - CharacterName: Emerald
-    IconSprite: {fileID: 21300000, guid: 3c28ffe51e6eefd4d82e45ce5d03c744, type: 3}
-    TextBoxColor: {r: 1, g: 0.49803922, b: 0.16470589, a: 1}
-    FontColor: {r: 0.3018868, g: 0.10062893, b: 0.0754717, a: 1}
-  - CharacterName: Amika
-    IconSprite: {fileID: 21300000, guid: 34a89fcf5498f1a46b2f4206c7d4ce23, type: 3}
-    TextBoxColor: {r: 0.6666667, g: 0.5294118, b: 0.87058824, a: 1}
-    FontColor: {r: 0.15484823, g: 0.08690815, b: 0.2924528, a: 1}
-  CurrentBubbleIndex: 0
-  LinesBeforeChoice: []
   BubblesBeforeChoice: []
   CurrentOptions: []
 --- !u!1001 &1545318452905756895
@@ -659,7 +650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099841997003833, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 60
+      value: 82.5
       objectReference: {fileID: 0}
     - target: {fileID: 8874099841997003833, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_SizeDelta.y
@@ -707,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842449047433, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 60
+      value: 72.5
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842449047433, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -731,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842565913735, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 68.085
+      value: 87.445
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842565913735, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -847,7 +838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842765320890, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 98.085
+      value: 122.445
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842765320890, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -903,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842924462583, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 331.16998
+      value: 397.39
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842924462583, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -919,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099843101602348, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 50
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 8874099843101602348, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_SizeDelta.y

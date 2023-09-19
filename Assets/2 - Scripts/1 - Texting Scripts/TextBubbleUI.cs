@@ -108,7 +108,7 @@ public class TextBubbleUI : MonoBehaviour
     /// <param name="currentLine"></param>
     public void SetTextBubbleInformation(string currentLine, string mainCharacterName, string speakerName)
     {
-        CharacterDialogueInfo senderUI = DialogueController.Instance.CharactersInStoryDictionary[speakerName];
+        CharacterDialogueInfo senderUI = DialogueController.Instance.CharactersDictionary[speakerName];
 
         currentLine = RemoveTags(ParseEmojis(currentLine));
 

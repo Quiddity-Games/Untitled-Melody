@@ -23,8 +23,8 @@ public class AutoplaySkipUI : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-        autoplayToggleButton.onValueChanged.AddListener(delegate { DialogueController.Instance.SetAutoplay(); });
-        skipToChoiceButton.onClick.AddListener(DialogueController.Instance.SkipToChoice);
+        autoplayToggleButton.onValueChanged.AddListener(delegate { TextingDialogueController.TextingUI.SetAutoplay(); });
+        skipToChoiceButton.onClick.AddListener(TextingDialogueController.TextingUI.SkipToChoice);
         screenWideButton.onClick.AddListener(delegate { DisplayAutoplayMenu(false); });
     }
 
@@ -44,8 +44,8 @@ public class AutoplaySkipUI : MonoBehaviour
             Time.timeScale = 1f;
             animator.SetTrigger("Close");
 
-            if (DialogueController.Instance.AutoplayEnabled)
-                DialogueController.Instance.AutoplayDialogue();
+            if (TextingDialogueController.TextingUI.AutoplayEnabled)
+                DialogueCanvasUI.Instance.AutoplayDialogue();
         }
     }
 
