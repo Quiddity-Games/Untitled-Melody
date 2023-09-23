@@ -5,7 +5,7 @@ using Ink.Runtime;
 using DG.Tweening;
 
 /// <summary>
-/// Dialogue controller which the active <see cref="DialogueCanvasUI"/> derives its values and static methods from.
+/// Dialogue controller which the active <see cref="TextingDialogueCanvas"/> derives its values and static methods from.
 /// On Awake, it creates itself an instance and gathers the dictionary values for global tags and character UI elements.
 /// </summary>
 
@@ -17,7 +17,7 @@ public class TextingDialogueController : DialogueController
 
     #region Variables: Canvas
     [Header("Scene Components")]
-    [SerializeField] DialogueCanvasUI dialogueCanvas;
+    [SerializeField] TextingDialogueCanvas dialogueCanvas;
     [SerializeField] AutoplaySkipUI autoplaySkipUI;
     #endregion
 
@@ -42,9 +42,13 @@ public class TextingDialogueController : DialogueController
     #endregion
 
     // Start is called before the first frame update
-    private void OnEnable()
+    public override void Awake()
     {
         TextingUI = this;
+    }
+
+    private void OnEnable()
+    {
         OnLoadNextChunk += CreateTextBubble;
         InitializeDialogue += SelectPlatform;
         InitializeDialogue += GetConversationTags;
@@ -129,7 +133,7 @@ public class TextingDialogueController : DialogueController
     /// <summary>
     /// Used when a choice is selected.
     /// Clears all current options objects before grabbing the next set of text objects.
-    /// Called by <see cref="DialogueCanvasUI.DisplayChoices"/>.
+    /// Called by <see cref="TextingDialogueCanvas.DisplayChoices"/>.
     /// </summary>
     /// <param name="choice"></param>
     public void ChoiceMadeCallback()
@@ -204,7 +208,7 @@ public class TextingDialogueController : DialogueController
 
     /// <summary>
     /// Gets the current speaker's bubble to correctly show the typing animation.
-    /// Called by <see cref="DialogueCanvasUI.PlayDialogue"/>.
+    /// Called by <see cref="TextingDialogueCanvas.PlayDialogue"/>.
     /// </summary>
     /// <param name="speakerName"></param>
     /// <returns></returns>

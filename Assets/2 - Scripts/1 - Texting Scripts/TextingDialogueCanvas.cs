@@ -14,9 +14,9 @@ using DG.Tweening;
 /// </summary>
 
 [Serializable]
-public class DialogueCanvasUI : MonoBehaviour
+public class TextingDialogueCanvas : MonoBehaviour
 {
-    public static DialogueCanvasUI Instance;
+    public static TextingDialogueCanvas Instance;
 
     #region Variables: Buttons
     [Header("Buttons")]
@@ -76,12 +76,16 @@ public class DialogueCanvasUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        DialogueController.SubscribeButtonEvents += SubscribeButtonEvents;
+    }
+
+    private void OnEnable()
+    {
+        DialogueController.SubscribeButtonEvents += InitializeButtonEvents;
     }
 
     private void OnDestroy()
     {
-        DialogueController.SubscribeButtonEvents -= SubscribeButtonEvents;
+        DialogueController.SubscribeButtonEvents -= InitializeButtonEvents;
     }
 
     void Start()
@@ -110,7 +114,7 @@ public class DialogueCanvasUI : MonoBehaviour
         textContainerBottom = bodyScrollViewTransform.offsetMin.y;
     }
 
-    private void SubscribeButtonEvents()
+    private void InitializeButtonEvents()
     {
         // Give functions to buttons.
         startDialogueButton.onClick.AddListener(ShowDialogueUI);

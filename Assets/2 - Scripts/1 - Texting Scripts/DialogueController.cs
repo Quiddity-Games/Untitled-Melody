@@ -24,7 +24,7 @@ public class DialogueController : MonoBehaviour
 
     public Action<string> OnLoadNextChunk; // Does something when the next chunk is parsed (i.e. make text bubbles)
 
-    [SerializeField] private GameEvent onDialogueEnd;
+    [SerializeField] public GameEvent OnDialogueEnd;
 
     [Header("Ink & Characters")]
     public Story InkStory;
@@ -47,7 +47,7 @@ public class DialogueController : MonoBehaviour
     public bool CanPrintDialogue;
     public bool AutoplayEnabled;
 
-    private void Awake()
+    public virtual void Awake()
     {
         Instance = this;
         InkStory = new Story(inkTextAsset.text);
@@ -59,7 +59,7 @@ public class DialogueController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         SubscribeButtonEvents?.Invoke();
         InitializeDialogue?.Invoke();

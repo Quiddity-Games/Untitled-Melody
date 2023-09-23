@@ -45,7 +45,7 @@ public class AutoplaySkipUI : MonoBehaviour
             animator.SetTrigger("Close");
 
             if (TextingDialogueController.TextingUI.AutoplayEnabled)
-                DialogueCanvasUI.Instance.AutoplayDialogue();
+                TextingDialogueCanvas.Instance.AutoplayDialogue();
         }
     }
 
