@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 public class TextBubbleUI : MonoBehaviour
 {
-    [SerializeField] LayoutElement iconMaskLayout;
+    [SerializeField] LayoutElement iconLayout;
     public Image IconImage;
     public Image BubbleImage;
     [Header("Text Objects")]
@@ -67,10 +67,10 @@ public class TextBubbleUI : MonoBehaviour
         }
 
         // Set icon size
-        iconMaskLayout.minWidth = aspect.IconSize;
-        iconMaskLayout.minHeight = aspect.IconSize;
-        iconMaskLayout.preferredWidth = aspect.IconSize;
-        iconMaskLayout.preferredHeight = aspect.IconSize;
+        iconLayout.minWidth = aspect.IconSize;
+        iconLayout.minHeight = aspect.IconSize;
+        iconLayout.preferredWidth = aspect.IconSize;
+        iconLayout.preferredHeight = aspect.IconSize;
 
         // Set font size
         SenderNameText.fontSize = aspect.SenderFontSize;
