@@ -127,7 +127,7 @@ public class DialogueController : MonoBehaviour
         return speakerName;
     }
 
-    string ParseEmojis(string currentLine)
+    public string ParseEmojis(string currentLine)
     {
         // Parse emoji names. Searching for "[emoji:x]". If it finds a match, it switches the text out for a sprite tag.
         if (Regex.IsMatch(currentLine, @"\[emoji\:.*\]", RegexOptions.IgnoreCase))
@@ -145,7 +145,7 @@ public class DialogueController : MonoBehaviour
         return currentLine;
     }
 
-    string RemoveTags(string currentLine)
+    public string RemoveTags(string currentLine)
     {
         // Remove tags from lines. Searches for "#TAGNAME: X".
         if (Regex.IsMatch(currentLine, @"\#\w+\:.*\w+[\r\n]", RegexOptions.IgnoreCase))

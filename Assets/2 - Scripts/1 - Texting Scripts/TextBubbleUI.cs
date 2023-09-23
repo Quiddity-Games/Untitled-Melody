@@ -23,18 +23,17 @@ public class TextBubbleUI : MonoBehaviour
     public LayoutGroup MessageLayoutGroup;
     public CanvasGroup CanvasGroup;
 
-    [Space(10)]
-    [SerializeField] bool previewAlignment;
-    [Tooltip("Only for inspector use.")]
-    [SerializeField] BubbleAlignment currentAlignment;
-
     // Start is called before the first frame update
     void Start()
     {
         CanvasGroup.alpha = 0f;
-        //gameObject.SetActive(false);
     }
 
+#if UNITY_EDITOR
+    [Space(10)]
+    [Tooltip("Only for inspector use.")]
+    [SerializeField] BubbleAlignment currentAlignment;
+    [SerializeField] bool previewAlignment;
     private void OnValidate()
     {
         if (previewAlignment)
@@ -52,6 +51,7 @@ public class TextBubbleUI : MonoBehaviour
             previewAlignment = false;
         }
     }
+#endif
 
     void GetBubbleFormatting(TextingAspectRatioFormat aspect, TextAnchor textAnchor)
     {
@@ -110,7 +110,7 @@ public class TextBubbleUI : MonoBehaviour
     {
         CharacterDialogueInfo senderUI = DialogueController.Instance.CharactersDictionary[speakerName];
 
-        currentLine = RemoveTags(ParseEmojis(currentLine));
+        currentLine = DialogueController.Instance.RemoveTags(DialogueController.Instance.ParseEmojis(currentLine));
 
         // Set bubble alignment (left or right).
         if (speakerName.Contains(mainCharacterName))
@@ -126,48 +126,6 @@ public class TextBubbleUI : MonoBehaviour
         MessageText.color = senderUI.FontColor;
 
         BubbleImage.color = senderUI.TextBoxColor;
-    }
-
-    /// <summary>
-    /// Get the speaker of a given line.
-    /// </summary>
-    /// <param name="currentLine"></param>
-    /// <param name="globalTags"></param>
-    /// <returns></returns>
-    public string ParseSpeaker(string currentLine)
-    {
-        string speakerName = "";
-
-        // Parse speaker name. Searches for "#Speaker: X" tag.
-        if (Regex.IsMatch(currentLine, @"\#[Ss]peaker\:.*"))
-        {
-            Regex speakerRx = new Regex(@"[Ss]peaker\:\s(\w+)");
-            MatchCollection speakerMatch = speakerRx.Matches(currentLine);
-            foreach (Match m in speakerMatch)
-            {
-                speakerName = m.Groups[1].Value;
-            }
-
-            #region Parse Alias (unused)
-            /*
-            // If there is a "#Speaker: X" tag, use the alias instead.
-            if (globalTags.ContainsKey("Alias") && !string.IsNullOrEmpty(globalTags["Alias"]))
-            {
-                speakerName = globalTags["Alias"];
-            }
-            else
-            {
-                MatchCollection speakerMatch = speakerRx.Matches(currentLine);
-                foreach (Match m in speakerMatch)
-                {
-                    speakerName = m.Groups[1].Value;
-                }
-            }
-            */
-            #endregion
-        }
-
-        return speakerName;
     }
 
     string ParseEmojis(string currentLine)

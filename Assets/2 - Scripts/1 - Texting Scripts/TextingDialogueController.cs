@@ -95,7 +95,7 @@ public class TextingDialogueController : DialogueController
         TextBubbleUI textBubble = Instantiate(TextBubblePrefab, dialogueCanvas.BodyScrollContent.transform).GetComponent<TextBubbleUI>();
         BubblesBeforeChoice.Add(textBubble);
 
-        string speakerName = textBubble.ParseSpeaker(line);
+        string speakerName = ParseSpeaker(line);
         textBubble.CanvasGroup.DOFade(1f, BubbleFadeDuration);
         //FadeInUI(textBubble.CanvasGroup, BubbleFadeDuration);
 
