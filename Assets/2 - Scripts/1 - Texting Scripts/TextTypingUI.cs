@@ -64,10 +64,12 @@ public class TextTypingUI : MonoBehaviour
     /// <summary>
     /// Parse information for the text bubble and set the variables.
     /// </summary>
-    public void SetBubbleColor(string mainCharacterName, CharacterUIElements senderUI)
+    public void SetBubbleColor(string mainCharacterName, string speakerName)
     {
+        CharacterDialogueInfo senderUI = DialogueController.Instance.CharactersDictionary[speakerName];
+
         // Set bubble alignment (left or right).
-        if (senderUI.CharacterName.Contains(mainCharacterName))
+        if (speakerName.Contains(mainCharacterName))
             SetBubbleAlignment(TextAnchor.LowerRight);
         else
             SetBubbleAlignment(TextAnchor.LowerLeft);

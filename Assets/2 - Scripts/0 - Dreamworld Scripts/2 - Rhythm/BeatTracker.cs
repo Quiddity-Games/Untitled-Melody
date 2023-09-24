@@ -26,6 +26,7 @@ public class BeatTracker : MonoBehaviour
 
     public GameEvent onGameStart;
     [SerializeField] private GameEvent OnGameEnd;
+    [SerializeField] private GameEvent onDialogueEnd;
 
     [SerializeField] private NoteTracker _noteTracker;
     private PlayerControl _playerControl;
@@ -35,7 +36,7 @@ public class BeatTracker : MonoBehaviour
         countdownStarted = false;
         enableCount = true;
         _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Dash.performed +=  StartGame;
+        //_playerControl.Dreamworld.Dash.performed +=  StartGame;
             _playerControl.Enable();
         instance = this;
     }
@@ -51,6 +52,11 @@ public class BeatTracker : MonoBehaviour
             countdownStarted = true;
             _playerControl.Dreamworld.Dash.performed -= StartGame;
         }
+    }
+
+    public void SetGameReady()
+    {
+        _playerControl.Dreamworld.Dash.performed += StartGame;
     }
 
     public void Pause(bool value)
