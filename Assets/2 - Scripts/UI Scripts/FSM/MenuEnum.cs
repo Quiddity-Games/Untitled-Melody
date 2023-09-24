@@ -8,7 +8,6 @@ public enum MenuEnum
     Story = 1,
     Stats = 2,
         Options = 3,
-        Credits = 4,
-        Exit = 5
+        Exit = 4
 }
 
