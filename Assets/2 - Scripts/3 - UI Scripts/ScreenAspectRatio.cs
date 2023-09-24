@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// Grabs information for resizing the UI to suit other screens.
@@ -49,7 +48,7 @@ public class ScreenAspectRatio : MonoBehaviour
     /// <returns></returns>
     TextingAspectRatioFormat CreateDictionaryEntry(TextingAspectRatioFormat text)
     {
-        TextingAspectRatioFormat format = new TextingAspectRatioFormat();
+        TextingAspectRatioFormat format = null;
 
         format.AspectRatio = text.AspectRatio;
         format.BackgroundOffsetMax = text.BackgroundOffsetMax;
@@ -78,7 +77,7 @@ public class ScreenAspectRatio : MonoBehaviour
     TextingAspectRatioFormat GetTextingFormatValues()
     {
         string ratio = Camera.main.aspect.ToString("#.00");
-        TextingAspectRatioFormat aspect = new TextingAspectRatioFormat();
+        TextingAspectRatioFormat aspect = null;
 
         if (TextingFormatDictionary.ContainsKey(ratio))
         {

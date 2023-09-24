@@ -88,7 +88,7 @@ public class TextingDialogueCanvas : MonoBehaviour
         DialogueController.SubscribeButtonEvents -= InitializeButtonEvents;
     }
 
-    void Start()
+    private void Start()
     {
         // Set up UI layout and visibility.
         LayoutRebuilder.ForceRebuildLayoutImmediate(textOptionsContainer.gameObject.transform as RectTransform);
@@ -125,7 +125,7 @@ public class TextingDialogueCanvas : MonoBehaviour
     /// <summary>
     /// Set the header text and icon on <see cref="Start"/>.
     /// </summary>
-    void GetHeaderText()
+    private void GetHeaderText()
     {
         headerIcon.sprite = DialogueController.Instance.CharactersDictionary[DialogueController.Instance.GlobalTagsDictionary["Conversation"]].IconSprite;
         headerText.text = DialogueController.Instance.GlobalTagsDictionary["Conversation"];
@@ -138,7 +138,7 @@ public class TextingDialogueCanvas : MonoBehaviour
     /// <summary>
     /// Show dialogue UI after delay on <see cref="Start"/>.
     /// </summary>
-    void ShowDialogueUI()
+    private void ShowDialogueUI()
     {
         ContinueDialogueButton.interactable = false;
         phoneContainerCanvasGroup.DOFade(1f, canvasFadeDuration);
@@ -225,7 +225,7 @@ public class TextingDialogueCanvas : MonoBehaviour
     /// </summary>
     /// <param name="bubblesBeforeChoice"></param>
     /// <param name="currentBubbleIndex"></param>
-    void ShowNextTextBubble(List<TextBubbleUI> bubblesBeforeChoice, int currentBubbleIndex)
+    private void ShowNextTextBubble(List<TextBubbleUI> bubblesBeforeChoice, int currentBubbleIndex)
     {
         StartCoroutine(InputDelay());
 
@@ -235,7 +235,7 @@ public class TextingDialogueCanvas : MonoBehaviour
         // Check the current index of the shown bubble, and set it to true.
         bubblesBeforeChoice[currentBubbleIndex].gameObject.SetActive(true);
         bubblesBeforeChoice[currentBubbleIndex].CanvasGroup.DOFade(1f, TextingDialogueController.TextingUI.BubbleFadeDuration);
-        //TextingDialogueController.TextingUI.FadeInUI(bubblesBeforeChoice[currentBubbleIndex].CanvasGroup, TextingDialogueController.TextingUI.BubbleFadeDuration);
+
         bodyScrollRect.verticalNormalizedPosition = 0f; // Scroll to the bottom of the container.
 
         DialogueController.Instance.CurrentLineIndex++;
@@ -265,7 +265,6 @@ public class TextingDialogueCanvas : MonoBehaviour
         TextTypingUI typingBubble = TextingDialogueController.TextingUI.RightTypingBubble;
         typingBubble.gameObject.SetActive(true);
         typingBubble.CanvasGroup.DOFade(1f, TextingDialogueController.TextingUI.BubbleFadeDuration);
-        //TextingDialogueController.TextingUI.FadeInUI(typingBubble.CanvasGroup, TextingDialogueController.TextingUI.BubbleFadeDuration);
 
         ContinueDialogueButton.gameObject.SetActive(false);
         
@@ -285,9 +284,6 @@ public class TextingDialogueCanvas : MonoBehaviour
 
             dialogueOptions[i].OptionCanvasGroup.DOFade(1f,
                 TextingDialogueController.TextingUI.BubbleFadeDuration + dialogueOptions[i].OptionIndex * 0.15f);
-
-            //TextingDialogueController.TextingUI.FadeInUI(dialogueOptions[i].OptionCanvasGroup,
-            //    TextingDialogueController.TextingUI.BubbleFadeDuration + dialogueOptions[i].OptionIndex * 0.15f);
         }
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(textOptionsContainer.transform as RectTransform);

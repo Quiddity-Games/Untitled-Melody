@@ -53,7 +53,7 @@ public class DialogueController : MonoBehaviour
         InkStory = new Story(inkTextAsset.text);
         CurrentLineIndex = 0;
         MainCharacterName = mainCharacterName.Value;
-        GetCharactersDictionary();
+        InitializeCharacterDictionary();
 
         InitializeDialogue += GetLinesBeforeChoice;
     }
@@ -65,9 +65,9 @@ public class DialogueController : MonoBehaviour
         InitializeDialogue?.Invoke();
     }
 
-    private void GetCharactersDictionary()
+    private void InitializeCharacterDictionary()
     {
-        // Get character UI elements.
+        // Create dictionary of character UI elements.
         for (int i = 0; i < CharactersInStory.Count; i++)
         {
             CharactersDictionary.Add(CharactersInStory[i].CharacterName, CharactersInStory[i].Info);
@@ -96,18 +96,17 @@ public class DialogueController : MonoBehaviour
             if (!string.IsNullOrEmpty(parsedLine))
             {
                 LinesBeforeChoice.Add(parsedLine);
-                OnLoadNextChunk?.Invoke(parsedLine);
+                OnLoadNextChunk?.Invoke(parsedLine); // If action has subscriptions, invoke. Create text bubbles.
             }
         }
 
-        LastLineIndex = LinesBeforeChoice.Count - 1;
+        LastLineIndex = LinesBeforeChoice.Count - 1; // Get the index of the last line.
     }
 
     /// <summary>
     /// Get the speaker of a given line.
     /// </summary>
     /// <param name="currentLine"></param>
-    /// <param name="globalTags"></param>
     /// <returns></returns>
     public string ParseSpeaker(string currentLine)
     {
@@ -145,6 +144,11 @@ public class DialogueController : MonoBehaviour
         return currentLine;
     }
 
+    /// <summary>
+    /// Remove the tags from the parsed line.
+    /// </summary>
+    /// <param name="currentLine"></param>
+    /// <returns></returns>
     public string RemoveTags(string currentLine)
     {
         // Remove tags from lines. Searches for "#TAGNAME: X".

@@ -41,7 +41,6 @@ public class TextingDialogueController : DialogueController
     [HideInInspector] public List<TextOptionUI> CurrentOptions = new();
     #endregion
 
-    // Start is called before the first frame update
     public override void Awake()
     {
         base.Awake();
@@ -79,7 +78,7 @@ public class TextingDialogueController : DialogueController
     /// Create dictionary of <see cref="CharacterUIElements"/> items.
     /// Called on <see cref="Awake"/>.
     /// </summary>
-    void GetConversationTags()
+    private void GetConversationTags()
     {
         // Get global tags.
         for (int i = 0; i < InkStory.globalTags.Count; i++)
@@ -95,7 +94,7 @@ public class TextingDialogueController : DialogueController
     /// Create a text bubble using the parsed text.
     /// </summary>
     /// <param name="line"></param>
-    void CreateTextBubble(string line)
+    private void CreateTextBubble(string line)
     {
         TextBubbleUI textBubble = Instantiate(TextBubblePrefab, dialogueCanvas.BodyScrollContent.transform).GetComponent<TextBubbleUI>();
         BubblesBeforeChoice.Add(textBubble);
@@ -223,6 +222,8 @@ public class TextingDialogueController : DialogueController
         return CurrentTypingBubble;
     }
 
+    #region Old/Unused Methods
+    /* Coroutine to fade CanvasGroup passed through. Currently replaced by DOTween functionality, and thus unused.
     /// <summary>
     /// Used to fade in UI with a CanvasGroup component attached.
     /// </summary>
@@ -245,5 +246,6 @@ public class TextingDialogueController : DialogueController
 
             canvasGroup.alpha = 1f;
         }
-    }
+    }*/
+    #endregion
 }

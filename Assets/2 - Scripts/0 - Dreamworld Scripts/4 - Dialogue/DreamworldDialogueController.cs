@@ -18,12 +18,13 @@ using UnityEngine.InputSystem;
 
 public class DreamworldDialogueController : DialogueController
 {
+    #region Variables
     public static DreamworldDialogueController DreamworldUI;
     public int MostRecentLineIndex;
-
     private PlayerControl _playerControl;
 
     private enum TextBoxState { Message, Typing }
+    #endregion
 
     public override void Awake()
     {
@@ -59,13 +60,17 @@ public class DreamworldDialogueController : DialogueController
 
     private void InitializeUI()
     {
-        ShowLine();
+        ShowLine(); // Set the first textbox's UI.
 
         string speakerName = ParseSpeaker(LinesBeforeChoice[0]);
         DreamworldDialogueCanvas.Instance.SetTextBoxUI(LinesBeforeChoice[0], speakerName);
         ResizeTextBox(speakerName, true, TextBoxState.Typing);
     }
 
+    /// <summary>
+    /// Click to start the dialogue. Unsubscribes the event from input, and fades the canvas in.
+    /// </summary>
+    /// <param name="ctx"></param>
     private void StartDialogue(InputAction.CallbackContext ctx)
     {
         _playerControl.Dreamworld.Dash.performed -= StartDialogue;
@@ -75,6 +80,7 @@ public class DreamworldDialogueController : DialogueController
 
     public void PlayDialogue(bool forward)
     {
+        // Finish the dialogue if playing forwards.
         if (forward && CurrentLineIndex >= LastLineIndex)
         {
             DreamworldDialogueCanvas.Instance.FinishButton.gameObject.SetActive(false);
@@ -85,6 +91,7 @@ public class DreamworldDialogueController : DialogueController
             return;
         }
 
+        // Adjust the current line index.
         if (forward)
             CurrentLineIndex++;
         else
@@ -99,18 +106,17 @@ public class DreamworldDialogueController : DialogueController
 
         IEnumerator PlayDialogue(float typingDuration)
         {
-            if (CurrentLineIndex > MostRecentLineIndex)
-                MostRecentLineIndex = CurrentLineIndex;
-
             CanPrintDialogue = false;
             string speakerName = ParseSpeaker(LinesBeforeChoice[CurrentLineIndex]);
-            ResizeTextBox(speakerName, forward && MostRecentLineIndex <= CurrentLineIndex ? false : true, TextBoxState.Typing);
 
-            if (forward && MostRecentLineIndex <= CurrentLineIndex)
+            // Change the textbox to the typing animation.
+            ResizeTextBox(speakerName, CurrentLineIndex > MostRecentLineIndex ? false : true, TextBoxState.Typing);
+
+            // If playing forwards and not seen all lines, disable button interactions and wait for typing duration.
+            if (forward && CurrentLineIndex > MostRecentLineIndex)
             {
                 float time = 0f;
-                ResizeTextBox(speakerName, false, TextBoxState.Typing);
-                DreamworldDialogueCanvas.Instance.SetButtonsInteractable(false);
+                DreamworldDialogueCanvas.Instance.SetButtonsInteractable(CanPrintDialogue);
 
                 while (time < typingDuration)
                 {
@@ -120,7 +126,9 @@ public class DreamworldDialogueController : DialogueController
             }
 
             DreamworldDialogueCanvas.Instance.MessageText.DOFade(0f, 0f);
-            ResizeTextBox(speakerName, forward && MostRecentLineIndex <= CurrentLineIndex ? false : true, TextBoxState.Message);
+
+            // Show the full message in the textbox.
+            ResizeTextBox(speakerName, CurrentLineIndex > MostRecentLineIndex ? false : true, TextBoxState.Message);
             OnLineShown?.Invoke();
         }
     }
@@ -129,7 +137,7 @@ public class DreamworldDialogueController : DialogueController
     {
         MostRecentLineIndex = LastLineIndex;
 
-        DreamworldDialogueCanvas.Instance.SetButtonsInteractable(false);
+        DreamworldDialogueCanvas.Instance.SetButtonsInteractable(CanPrintDialogue);
         DreamworldDialogueCanvas.Instance.AutoplayOnButton.interactable = false;
 
         if (AutoplayEnabled)
@@ -145,7 +153,7 @@ public class DreamworldDialogueController : DialogueController
             yield return null;
         }
 
-        DreamworldDialogueCanvas.Instance.SetButtonsInteractable(true);
+        DreamworldDialogueCanvas.Instance.SetButtonsInteractable(CanPrintDialogue);
         yield break;
     }
 
@@ -182,21 +190,35 @@ public class DreamworldDialogueController : DialogueController
         yield break;
     }
 
+    /// <summary>
+    /// Method to call animation/tweening methods from <see cref="DreamworldDialogueCanvas"/>.
+    /// </summary>
     private void ShowLine()
     {
         CanPrintDialogue = true;
-        DreamworldDialogueCanvas.Instance.SetButtonsInteractable(true);
+        DreamworldDialogueCanvas.Instance.SetButtonsInteractable(CanPrintDialogue);
 
+        // On the last line, show the finish button.
         if (CurrentLineIndex >= LastLineIndex)
         {
-            DreamworldDialogueCanvas.Instance.ShowLineUI(false);
+            DreamworldDialogueCanvas.Instance.ShowFinishButton(false);
         } else if (DreamworldDialogueCanvas.Instance.FinishButton.gameObject.activeSelf)
         {
-            DreamworldDialogueCanvas.Instance.ShowLineUI(true);
+            DreamworldDialogueCanvas.Instance.ShowFinishButton(true);
+        }
+
+        // Adjust the current line index.
+        if (CurrentLineIndex > MostRecentLineIndex)
+        {
+            MostRecentLineIndex = CurrentLineIndex;
+            return;
         }
 
         if (MostRecentLineIndex == LastLineIndex)
+        {
             MostRecentLineIndex = LinesBeforeChoice.Count;
+            return;
+        }
     }
 
     private void ResizeTextBox(string speakerName, bool noDelay, TextBoxState state)

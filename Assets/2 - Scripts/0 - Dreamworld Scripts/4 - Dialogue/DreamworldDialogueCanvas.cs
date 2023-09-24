@@ -106,12 +106,6 @@ public class DreamworldDialogueCanvas : MonoBehaviour
         skipButton.onClick.AddListener(() => StartCoroutine(DreamworldDialogueController.DreamworldUI.SkipDialogue()));
         FinishButton.onClick.AddListener(() => DreamworldDialogueController.DreamworldUI.PlayDialogue(true));
 
-        previousButton.interactable = false;
-        continueButton.interactable = false;
-        AutoplayOnButton.interactable = false;
-        AutoplayOffButton.interactable = false;
-        skipButton.interactable = false;
-
         AutoplayOnButton.gameObject.SetActive(true);
         AutoplayOffButton.gameObject.SetActive(false);
     }
@@ -123,7 +117,7 @@ public class DreamworldDialogueCanvas : MonoBehaviour
             Insert(1.25f, textContainerTransform.gameObject.GetComponent<CanvasGroup>().DOFade(1f, 0.15f));
     }
 
-    public void ShowLineUI(bool finished)
+    public void ShowFinishButton(bool finished)
     {
         if (finished)
         {
@@ -141,15 +135,17 @@ public class DreamworldDialogueCanvas : MonoBehaviour
         }
     }
 
-    public void SetButtonsInteractable(bool on)
+    public void SetButtonsInteractable(bool buttonState)
     {
+        continueButton.interactable = buttonState;
+
+        // Disable previous button if on first line (or less).
         if (dialogueController.CurrentLineIndex <= 0)
             previousButton.interactable = false;
         else
-            previousButton.interactable = on;
+            previousButton.interactable = buttonState;
 
-        continueButton.interactable = on;
-
+        // Disable autoplay and skip button if seen all lines.
         if (dialogueController.MostRecentLineIndex >= dialogueController.LastLineIndex)
         {
             AutoplayOnButton.interactable = false;
@@ -163,9 +159,9 @@ public class DreamworldDialogueCanvas : MonoBehaviour
         }
         else
         {
-            AutoplayOnButton.interactable = true;
-            AutoplayOffButton.interactable = true;
-            skipButton.interactable = true;
+            AutoplayOnButton.interactable = buttonState;
+            AutoplayOffButton.interactable = buttonState;
+            skipButton.interactable = buttonState;
         }
     }
 
