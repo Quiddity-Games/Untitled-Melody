@@ -208,8 +208,8 @@ MonoBehaviour:
   BubbleLayoutGroup: {fileID: 788471599005641472}
   MessageLayoutGroup: {fileID: 9055680634586785616}
   CanvasGroup: {fileID: 8878041515910069906}
-  previewAlignment: 0
   currentAlignment: 0
+  previewAlignment: 0
 --- !u!225 &8878041515910069906
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -489,8 +489,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Dialogue text goes here! Dialogue text goes here! Dialogue text goes here! '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ddcc2f999d219e648a6b7708e6b51fa4, type: 2}
+  m_sharedMaterial: {fileID: 1585240743998146488, guid: ddcc2f999d219e648a6b7708e6b51fa4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -514,8 +514,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 39
+  m_fontSizeBase: 39
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -724,8 +724,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7c8df2e7ba41980499f04d17e8652f9f, type: 2}
+  m_sharedMaterial: {fileID: 936193477026644800, guid: 7c8df2e7ba41980499f04d17e8652f9f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -759,7 +759,7 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 4096
   m_textAlignment: 65535
-  m_characterSpacing: 0
+  m_characterSpacing: 2
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

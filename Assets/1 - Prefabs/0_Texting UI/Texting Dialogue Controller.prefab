@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 7950313736048024309}
   - component: {fileID: 7950313736048024308}
   m_Layer: 0
-  m_Name: Dialogue Controller
+  m_Name: Texting Dialogue Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f77510fb010c1546aa3d288bc5696a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onDialogueEnd: {fileID: 11400000, guid: 9bfb6b33cbd651e49b38d3469a75f875, type: 2}
+  OnDialogueEnd: {fileID: 11400000, guid: 9bfb6b33cbd651e49b38d3469a75f875, type: 2}
   inkTextAsset: {fileID: 0}
   mainCharacterName: {fileID: 11400000, guid: cb9314072a940174690c87c9718f035f, type: 2}
   MainCharacterName: Amika
@@ -698,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842449047433, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 72.5
+      value: 79.16
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842449047433, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -722,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842565913735, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 87.445
+      value: 100.025
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842565913735, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -838,7 +838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842765320890, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 122.445
+      value: 135.025
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842765320890, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -894,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842924462583, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 397.39
+      value: 429.21
       objectReference: {fileID: 0}
     - target: {fileID: 8874099842924462583, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -910,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8874099843101602348, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 65
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 8874099843101602348, guid: 37d3a378ddb9dc34593277b38c6274c5, type: 3}
       propertyPath: m_SizeDelta.y

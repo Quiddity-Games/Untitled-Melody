@@ -24,7 +24,7 @@ public class DialogueController : MonoBehaviour
 
     public Action<string> OnLoadNextChunk; // Does something when the next chunk is parsed (i.e. make text bubbles)
 
-    [SerializeField] public GameEvent OnDialogueEnd;
+    public GameEvent OnDialogueEnd;
 
     [Header("Ink & Characters")]
     public Story InkStory;

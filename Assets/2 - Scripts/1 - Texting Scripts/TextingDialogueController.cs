@@ -44,6 +44,7 @@ public class TextingDialogueController : DialogueController
     // Start is called before the first frame update
     public override void Awake()
     {
+        base.Awake();
         TextingUI = this;
     }
 

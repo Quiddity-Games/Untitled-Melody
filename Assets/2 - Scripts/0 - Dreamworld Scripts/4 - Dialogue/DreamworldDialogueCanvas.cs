@@ -11,9 +11,7 @@ public class DreamworldDialogueCanvas : MonoBehaviour
     public static DreamworldDialogueCanvas Instance;
 
     [SerializeField] Button previousButton;
-    [FormerlySerializedAs("autoplayOnButton")]
     public Button AutoplayOnButton;
-    [FormerlySerializedAs("autoplayOffButton")]
     public Button AutoplayOffButton;
     [SerializeField] Button skipButton;
     [SerializeField] Button continueButton;
@@ -21,7 +19,6 @@ public class DreamworldDialogueCanvas : MonoBehaviour
     [Space(10)]
     [SerializeField] RectTransform finishButtonTransform;
     [SerializeField] RectTransform finishButtonMidSection;
-    [FormerlySerializedAs("finishButton")]
     public Button FinishButton;
 
     [Space(15)]
@@ -29,16 +26,16 @@ public class DreamworldDialogueCanvas : MonoBehaviour
     [SerializeField] Image leftPortrait;
     [SerializeField] Image rightPortrait;
     [SerializeField] CanvasGroup ellipsesContainer;
+    [SerializeField] Image[] ellipsesImages;
 
     [Space(10)]
-    [FormerlySerializedAs("contentCanvasGroup")]
+    public CanvasGroup GradientCanvasGroup;
     public CanvasGroup ContentCanvasGroup;
     [SerializeField] RectTransform textContainerTransform;
     [SerializeField] Vector2 textContainerBaseSize;
     [SerializeField] Vector2 textContainerTypingSize;
     [SerializeField] Image textBoxImage;
     [SerializeField] TextMeshProUGUI senderNameText;
-    [FormerlySerializedAs("messageText")]
     public TextMeshProUGUI MessageText;
 
     private Vector2 finishButtonOriginalPosition;
@@ -69,6 +66,7 @@ public class DreamworldDialogueCanvas : MonoBehaviour
     {
         dialogueController = GetComponent<DreamworldDialogueController>();
         ContentCanvasGroup.alpha = 0f;
+        GradientCanvasGroup.alpha = 0f;
 
         foreach (CharacterUIInfo info in dialogueController.CharactersInStory)
         {
@@ -120,8 +118,9 @@ public class DreamworldDialogueCanvas : MonoBehaviour
 
     public void FadeInInitialDialogue()
     {
-        DOTween.Sequence().Join(ContentCanvasGroup.DOFade(1f, 0.5f)).
-            Insert(1f, textContainerTransform.gameObject.GetComponent<CanvasGroup>().DOFade(1f, 0.15f));
+        DOTween.Sequence().Join(GradientCanvasGroup.DOFade(1f, 0.5f)).
+            Append(ContentCanvasGroup.DOFade(1f, 0.5f)).
+            Insert(1.25f, textContainerTransform.gameObject.GetComponent<CanvasGroup>().DOFade(1f, 0.15f));
     }
 
     public void ShowLineUI(bool finished)
@@ -176,6 +175,7 @@ public class DreamworldDialogueCanvas : MonoBehaviour
 
         senderNameText.text = speakerName;
         senderNameText.color = dialogueController.CharactersDictionary[speakerName].FontColor;
+        senderNameText.outlineColor = dialogueController.CharactersDictionary[speakerName].TextBoxColor;
 
         MessageText.text = currentLine;
         MessageText.color = dialogueController.CharactersDictionary[speakerName].FontColor;
@@ -186,8 +186,7 @@ public class DreamworldDialogueCanvas : MonoBehaviour
     public void ShowMessageUI(bool isRightAligned, float fadeDuration, float textBoxDuration, float insertDelay)
     {
         DOTween.Sequence().
-                    Join(ellipsesContainer.DOFade(0f, fadeDuration)).
-                    Join(senderNameText.DOFade(0f, 0f));
+                    Join(ellipsesContainer.DOFade(0f, fadeDuration));
 
         // Play sequence immediately after initial sequence; disable ellipses, fade name, fade and animate portraits, move/resize text box.
         DOTween.Sequence().
@@ -207,10 +206,13 @@ public class DreamworldDialogueCanvas : MonoBehaviour
 
     public void ShowTypingUI(bool isRightAligned, float fadeDuration, float textBoxDuration, float insertDelay, string speakerName, int lineIndex)
     {
+        foreach (Image img in ellipsesImages)
+            img.color = dialogueController.CharactersDictionary[speakerName].FontColor;
+
         // Play sequence immediately; fades portraits and animates in Y axis, fades message text.
         DOTween.Sequence().
             Join(ellipsesContainer.DOFade(0f, 0f)).
-            Join(senderNameText.DOFade(0f, 0.15f)).
+            Join(senderNameText.DOFade(0f, fadeDuration)).
             Join(leftPortraitCanvasGroup.DOFade(0f, fadeDuration)).Join(leftPortraitRect.DOAnchorPosY(-30f, fadeDuration)).
             Join(rightPortraitCanvasGroup.DOFade(0f, fadeDuration)).Join(rightPortraitRect.DOAnchorPosY(-30f, fadeDuration)).
             Join(MessageText.DOFade(0f, fadeDuration));

@@ -78,7 +78,10 @@ public class DreamworldDialogueController : DialogueController
         if (forward && CurrentLineIndex >= LastLineIndex)
         {
             DreamworldDialogueCanvas.Instance.FinishButton.gameObject.SetActive(false);
-            DOTween.Sequence().Join(DreamworldDialogueCanvas.Instance.ContentCanvasGroup.DOFade(0f, 1.5f)).InsertCallback(3f, () => OnDialogueEnd.Raise());
+            DOTween.Sequence().
+                Join(DreamworldDialogueCanvas.Instance.GradientCanvasGroup.DOFade(0f, 1.25f)).
+                Join(DreamworldDialogueCanvas.Instance.ContentCanvasGroup.DOFade(0f, 1.25f)).
+                InsertCallback(3f, () => OnDialogueEnd.Raise());
             return;
         }
 
