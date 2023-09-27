@@ -15,4 +15,10 @@ public class SongParser : MonoBehaviour
         _NoteTracker.bpm = _song.bpm;
         _NoteTracker.totalTime = _song.song.length;
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }
