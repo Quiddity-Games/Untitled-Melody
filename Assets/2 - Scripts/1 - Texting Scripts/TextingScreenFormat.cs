@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine.Serialization;
@@ -8,13 +7,15 @@ public class TextingScreenFormat : ScriptableObject
 {
     [FormerlySerializedAs("TextingFormatting")]
     public List<TextingAspectRatioFormat> TextingFormatList = new List<TextingAspectRatioFormat>();
+
+    [SerializeField] List<TextingAspectRatioFormat> unusedFormatList;
 }
 
 /// <summary>
 /// An inspector-friendly and editable class used to reference and set values for each screen size.
 /// </summary>
 [Serializable]
-public struct TextingAspectRatioFormat
+public class TextingAspectRatioFormat
 {
     enum ScreenSize { Landscape, Portrait }
 
@@ -58,12 +59,16 @@ public struct TextingAspectRatioFormat
         AutoplayMenuPivotX = autoplayPivot;
         AutoplayMenuAnchorX = autoplayAnchor;
 
+#if UNITY_EDITOR
         GetInspectorInformation(aspectRatio);
+#endif
     }
 
+#if UNITY_EDITOR
     public void GetInspectorInformation(Vector2 aspectRatio)
     {
         aspectRatioName = aspectRatio.x + ":" + aspectRatio.y;
         screenSize = aspectRatio.x > aspectRatio.y ? ScreenSize.Landscape : ScreenSize.Portrait;
     }
+#endif
 }

@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 /// <summary>
 /// Grabs information for resizing the UI to suit other screens.
@@ -15,8 +14,9 @@ public class ScreenAspectRatio : MonoBehaviour
 
     [SerializeField] CanvasType canvasType;
     public ScriptableObject CanvasInformation;
-
-    private Camera mainCamera;
+    [Space(15)]
+    [SerializeField] bool previewAspectRatio;
+    [SerializeField] Vector2 aspectRatio;
 
     [Serializable]
     enum CanvasType { Dreamworld, Dialogue }
@@ -32,17 +32,11 @@ public class ScreenAspectRatio : MonoBehaviour
                     TextingFormatDictionary.Add((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00"), CreateDictionaryEntry(txt));
                 break;
         }
-    }
-
-    private void Start()
-    {
-        mainCamera = GetComponent<Camera>();
 
         switch (canvasType)
         {
             case CanvasType.Dialogue:
                 AspectRatio = GetTextingFormatValues();
-                DialogueController.InitializeDialogue.Invoke();
                 break;
         }
     }
@@ -54,7 +48,7 @@ public class ScreenAspectRatio : MonoBehaviour
     /// <returns></returns>
     TextingAspectRatioFormat CreateDictionaryEntry(TextingAspectRatioFormat text)
     {
-        TextingAspectRatioFormat format = new TextingAspectRatioFormat();
+        TextingAspectRatioFormat format = null;
 
         format.AspectRatio = text.AspectRatio;
         format.BackgroundOffsetMax = text.BackgroundOffsetMax;
@@ -82,8 +76,8 @@ public class ScreenAspectRatio : MonoBehaviour
     /// <returns></returns>
     TextingAspectRatioFormat GetTextingFormatValues()
     {
-        string ratio = mainCamera.aspect.ToString("#.00");
-        TextingAspectRatioFormat aspect = new TextingAspectRatioFormat();
+        string ratio = Camera.main.aspect.ToString("#.00");
+        TextingAspectRatioFormat aspect = null;
 
         if (TextingFormatDictionary.ContainsKey(ratio))
         {
@@ -92,4 +86,26 @@ public class ScreenAspectRatio : MonoBehaviour
 
         return aspect;
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        if (!Application.isPlaying)
+        {
+            if (previewAspectRatio)
+            {
+                for (int i = 0; i < TextingFormatting.TextingFormatList.Count; i++)
+                {
+                    if (aspectRatio == TextingFormatting.TextingFormatList[i].AspectRatio)
+                    {
+                        FindObjectOfType<TextingDialogueCanvas>().ResizeCanvasForPlatform(TextingFormatting.TextingFormatList[i]);
+                        FindObjectOfType<AutoplaySkipUI>().ResizeMenuForPlatform(TextingFormatting.TextingFormatList[i]);
+                    }
+                }
+
+                previewAspectRatio = false;
+            }
+        }
+    }
+#endif
 }
