@@ -12,7 +12,7 @@ using System.Text.RegularExpressions;
 
 public class TextBubbleUI : MonoBehaviour
 {
-    [SerializeField] LayoutElement iconMaskLayout;
+    [SerializeField] LayoutElement iconLayout;
     public Image IconImage;
     public Image BubbleImage;
     [Header("Text Objects")]
@@ -23,18 +23,17 @@ public class TextBubbleUI : MonoBehaviour
     public LayoutGroup MessageLayoutGroup;
     public CanvasGroup CanvasGroup;
 
-    [Space(10)]
-    [SerializeField] bool previewAlignment;
-    [Tooltip("Only for inspector use.")]
-    [SerializeField] BubbleAlignment currentAlignment;
-
     // Start is called before the first frame update
     void Start()
     {
         CanvasGroup.alpha = 0f;
-        //gameObject.SetActive(false);
     }
 
+#if UNITY_EDITOR
+    [Space(10)]
+    [Tooltip("Only for inspector use.")]
+    [SerializeField] BubbleAlignment currentAlignment;
+    [SerializeField] bool previewAlignment;
     private void OnValidate()
     {
         if (previewAlignment)
@@ -52,6 +51,7 @@ public class TextBubbleUI : MonoBehaviour
             previewAlignment = false;
         }
     }
+#endif
 
     void GetBubbleFormatting(TextingAspectRatioFormat aspect, TextAnchor textAnchor)
     {
@@ -67,10 +67,10 @@ public class TextBubbleUI : MonoBehaviour
         }
 
         // Set icon size
-        iconMaskLayout.minWidth = aspect.IconSize;
-        iconMaskLayout.minHeight = aspect.IconSize;
-        iconMaskLayout.preferredWidth = aspect.IconSize;
-        iconMaskLayout.preferredHeight = aspect.IconSize;
+        iconLayout.minWidth = aspect.IconSize;
+        iconLayout.minHeight = aspect.IconSize;
+        iconLayout.preferredWidth = aspect.IconSize;
+        iconLayout.preferredHeight = aspect.IconSize;
 
         // Set font size
         SenderNameText.fontSize = aspect.SenderFontSize;
@@ -106,66 +106,26 @@ public class TextBubbleUI : MonoBehaviour
     /// Parse information for the text bubble and set the variables.
     /// </summary>
     /// <param name="currentLine"></param>
-    public void SetTextBubbleInformation(string currentLine, string mainCharacterName, CharacterUIElements senderUI)
+    public void SetTextBubbleInformation(string currentLine, string mainCharacterName, string speakerName)
     {
-        currentLine = RemoveTags(ParseEmojis(currentLine));
+        CharacterDialogueInfo senderUI = DialogueController.Instance.CharactersDictionary[speakerName];
+
+        currentLine = DialogueController.Instance.RemoveTags(DialogueController.Instance.ParseEmojis(currentLine));
 
         // Set bubble alignment (left or right).
-        if (senderUI.CharacterName.Contains(mainCharacterName))
+        if (speakerName.Contains(mainCharacterName))
             SetBubbleAlignment(TextAnchor.LowerRight);
         else
             SetBubbleAlignment(TextAnchor.LowerLeft);
 
         IconImage.sprite = senderUI.IconSprite;
-        SenderNameText.text = senderUI.CharacterName;
+        SenderNameText.text = speakerName;
         SenderNameText.color = senderUI.FontColor;
 
         MessageText.text = currentLine;
         MessageText.color = senderUI.FontColor;
 
         BubbleImage.color = senderUI.TextBoxColor;
-    }
-
-    /// <summary>
-    /// Get the speaker of a given line.
-    /// </summary>
-    /// <param name="currentLine"></param>
-    /// <param name="globalTags"></param>
-    /// <returns></returns>
-    public string ParseSpeaker(string currentLine)
-    {
-        string speakerName = "";
-
-        // Parse speaker name. Searches for "#Speaker: X" tag.
-        if (Regex.IsMatch(currentLine, @"\#[Ss]peaker\:.*"))
-        {
-            Regex speakerRx = new Regex(@"[Ss]peaker\:\s(\w+)");
-            MatchCollection speakerMatch = speakerRx.Matches(currentLine);
-            foreach (Match m in speakerMatch)
-            {
-                speakerName = m.Groups[1].Value;
-            }
-
-            #region Parse Alias (unused)
-            /*
-            // If there is a "#Speaker: X" tag, use the alias instead.
-            if (globalTags.ContainsKey("Alias") && !string.IsNullOrEmpty(globalTags["Alias"]))
-            {
-                speakerName = globalTags["Alias"];
-            }
-            else
-            {
-                MatchCollection speakerMatch = speakerRx.Matches(currentLine);
-                foreach (Match m in speakerMatch)
-                {
-                    speakerName = m.Groups[1].Value;
-                }
-            }
-            */
-            #endregion
-        }
-
-        return speakerName;
     }
 
     string ParseEmojis(string currentLine)
@@ -204,7 +164,7 @@ public class TextBubbleUI : MonoBehaviour
 }
 
 [Serializable]
-public struct CharacterUIElements
+public class CharacterUIElements
 {
     public string CharacterName;
     public Sprite IconSprite;

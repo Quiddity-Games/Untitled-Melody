@@ -11,7 +11,7 @@ public class TextOptionUI : MonoBehaviour
 
     private void Start()
     {
-        OptionButton.onClick.AddListener(() => DialogueController.Instance.InkStory.ChooseChoiceIndex(OptionIndex));
-        OptionButton.onClick.AddListener(DialogueController.Instance.ChoiceMadeCallback);
+        OptionButton.onClick.AddListener(() => TextingDialogueController.TextingUI.InkStory.ChooseChoiceIndex(OptionIndex));
+        OptionButton.onClick.AddListener(TextingDialogueController.TextingUI.ChoiceMadeCallback);
     }
 }
