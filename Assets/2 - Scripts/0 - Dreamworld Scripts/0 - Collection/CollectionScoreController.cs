@@ -28,7 +28,10 @@ public class CollectionScoreController : MonoBehaviour
         numCollected = 0;
         tempNumCollected = 0;
         endInfo.ResetValues();
-        signal.Register += () => { numCollectables += 1; };
+        signal.Register += () => { 
+            numCollectables += 1;
+            UpdateInfo();
+         };
         signal.SendCollect += HandleCollection;
         checkpointSignal.OnCheckpointEnter += value =>
         {

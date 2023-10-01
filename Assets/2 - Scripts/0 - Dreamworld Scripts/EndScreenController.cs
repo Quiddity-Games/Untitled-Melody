@@ -14,6 +14,9 @@ public class EndScreenController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private Image memiImage;
 
+    [SerializeField] private Button continueButton;
+    [SerializeField] private Button restartButton;
+
     [SerializeField] private GameObject EndScreenMenu;
 
     [SerializeField] private CollectableInfo info;
@@ -42,24 +45,30 @@ public class EndScreenController : MonoBehaviour
         neededCollectableText.text = required.ToString();
         obtainedCollectableText.text = obtained.ToString();
         totalCollectableText.text = max.ToString();
+        restartButton.gameObject.SetActive(false);
+        continueButton.gameObject.SetActive(false);
 
         if (obtained < required)
         {
             titleText.text = "Try Again!";
             obtainedCollectableText.color = Color.yellow;
             memiImage.sprite = endSprites.badSprite;
+            restartButton.gameObject.SetActive(true);
+     
         }
         else if (obtained == required)
         {
             titleText.text = "Good Job!";
             obtainedCollectableText.color = Color.black;
             memiImage.sprite = endSprites.goodSprite;
+            continueButton.gameObject.SetActive(true);
         }
         else if (obtained > required)
         {
             titleText.text = "PERFECT!";
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
+            continueButton.gameObject.SetActive(true);
         }
         
         EndScreenMenu.SetActive(true);
