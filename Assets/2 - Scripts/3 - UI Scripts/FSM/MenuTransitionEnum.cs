@@ -1,7 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public delegate void VoidCallback(); 
+public enum MenuTransitionEnum 
+{
+    ENTER,
+    EXIT
+}
