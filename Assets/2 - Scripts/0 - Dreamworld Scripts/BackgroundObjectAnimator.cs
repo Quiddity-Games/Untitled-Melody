@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+
+public class BackgroundObjectAnimator : MonoBehaviour
+{
+    private enum AnimationBehaviour { None, Rotate }
+    [SerializeField] AnimationBehaviour _behaviour;
+
+    [Space(10)]
+    [Header("Animation Duration")]
+    [SerializeField] private float _minDuration;
+    [SerializeField] private float _maxDuration;
+    [SerializeField] private float _currentDuration;
+    
+    [Header("Angle")]
+    [SerializeField] private float _minAngle;
+    [SerializeField] private float _maxAngle;
+    [SerializeField] private float _currentAngle;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        _currentDuration = Random.Range(_minDuration, _maxDuration);
+        _currentAngle = Random.Range(_minAngle, _maxAngle);
+        StartRotation();
+    }
+
+    void StartRotation()
+    {
+        DOTween.Sequence().
+            Insert(0, transform.DOLocalRotate(new Vector3(0, 0, _currentAngle), _currentDuration/2, RotateMode.FastBeyond360).SetEase(Ease.Linear)).
+            Append(transform.DOLocalRotate(new Vector3(0, 0, 0), _currentDuration/2, _currentAngle >= 270 ? RotateMode.FastBeyond360 : RotateMode.Fast).SetEase(Ease.Linear)).
+            AppendCallback(() => transform.rotation = new Quaternion(0, 0, 0, 0)).
+            AppendCallback(() => StartRotation());
+    }
+}
