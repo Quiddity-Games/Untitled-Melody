@@ -13,7 +13,7 @@ public class BoolVariable : ScriptableObject
     {
         this.value = value;
     }
-    public bool Value
+    public virtual bool Value
     {
         set
         {

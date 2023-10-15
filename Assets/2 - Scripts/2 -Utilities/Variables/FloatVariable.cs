@@ -6,9 +6,9 @@ using UnityEngine;
 public class FloatVariable : ScriptableObject
 {
     public VoidCallback OnValueChange;
-    private float value;
+    protected float value;
 
-    public float Value
+    public virtual float Value
     {
         
         set

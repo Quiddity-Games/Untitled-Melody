@@ -374,6 +374,7 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 6395285395392444662}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  _variable: {fileID: 11400000, guid: 5d756fc296facb342b126133083d87f4, type: 2}
 --- !u!1 &6395285393531240519
 GameObject:
   m_ObjectHideFlags: 0
@@ -618,8 +619,8 @@ RectTransform:
   m_Father: {fileID: 6395285395490535866}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.8, y: 0}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0.00012207031, y: -0.000030517578}
   m_SizeDelta: {x: 25, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -822,7 +823,19 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BoolVariable, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!114 &6395285393642443480
 MonoBehaviour:
@@ -839,6 +852,7 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 6395285393531240518}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  _variable: {fileID: 11400000, guid: a0f25ea943099364a87ee3b885e70a14, type: 2}
 --- !u!1 &6395285393688285577
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +938,19 @@ MonoBehaviour:
   m_Group: {fileID: 6395285394663270535}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 3817170300140e34ea3b1a6c061cad3e, type: 2}
+        m_TargetAssemblyTypeName: MetronomeModeVariable, Assembly-CSharp
+        m_MethodName: SetAlways
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &6395285393718990406
 GameObject:
@@ -1699,7 +1725,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2403,7 +2429,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.8, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4015,6 +4041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6395285394277525750}
   - component: {fileID: 6395285394277525745}
+  - component: {fileID: 3920641418867646217}
   m_Layer: 5
   m_Name: Slider (2)
   m_TagString: Untagged
@@ -4098,6 +4125,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3920641418867646217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395285394277525751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04773d9ba3cf14b419d031278f765e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variable: {fileID: 11400000, guid: 5e952dd602551994da3509ac519dca2c, type: 2}
+  _slider: {fileID: 6395285394277525745}
 --- !u!1 &6395285394292491092
 GameObject:
   m_ObjectHideFlags: 0
@@ -6355,7 +6396,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -218.09491, y: -226.768}
+  m_AnchoredPosition: {x: 436.90503, y: -481.10028}
   m_SizeDelta: {x: 608.725, y: 453.536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6395285394934169892
@@ -7486,7 +7527,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 436.90503, y: -481.34778}
+  m_AnchoredPosition: {x: 436.90503, y: -481.10028}
   m_SizeDelta: {x: 608.725, y: 453.536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6395285395151454555
@@ -7525,7 +7566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 436.9049, y: -479.48413}
+  m_AnchoredPosition: {x: 436.9049, y: -481.10028}
   m_SizeDelta: {x: 608.725, y: 453.536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6395285395197569608
@@ -7613,7 +7654,19 @@ MonoBehaviour:
   m_Group: {fileID: 6395285394663270535}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 3817170300140e34ea3b1a6c061cad3e, type: 2}
+        m_TargetAssemblyTypeName: MetronomeModeVariable, Assembly-CSharp
+        m_MethodName: SetOccasional
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1 &6395285395247493425
 GameObject:
@@ -7998,6 +8051,7 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 6395285394149551645}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0, g: 0, b: 0, a: 1}
+  _variable: {fileID: 11400000, guid: 12f454507855f7f46a75997b60161eff, type: 2}
 --- !u!1 &6395285395320728801
 GameObject:
   m_ObjectHideFlags: 0
@@ -8100,6 +8154,7 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 6395285395060096951}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0, g: 0, b: 0, a: 1}
+  _variable: {fileID: 11400000, guid: eddeb0bb61ab41d4f9b4f968478348bb, type: 2}
 --- !u!1 &6395285395349100760
 GameObject:
   m_ObjectHideFlags: 0
@@ -8309,6 +8364,7 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 6395285394590728048}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0, g: 0, b: 0, a: 1}
+  _variable: {fileID: 11400000, guid: 22014f00e99c5e543b9aa1705e7a7512, type: 2}
 --- !u!1 &6395285395374649988
 GameObject:
   m_ObjectHideFlags: 0
@@ -8342,8 +8398,8 @@ RectTransform:
   m_Father: {fileID: 6395285395511489539}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.00012207031, y: -0.000030517578}
   m_SizeDelta: {x: 25, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8470,7 +8526,19 @@ MonoBehaviour:
   m_Group: {fileID: 6395285394663270535}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 3817170300140e34ea3b1a6c061cad3e, type: 2}
+        m_TargetAssemblyTypeName: MetronomeModeVariable, Assembly-CSharp
+        m_MethodName: SetNone
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 1
 --- !u!1 &6395285395392444663
 GameObject:
@@ -8558,6 +8626,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6395285395411871447}
   - component: {fileID: 6395285395411871446}
+  - component: {fileID: 3536236254591591750}
   m_Layer: 5
   m_Name: Slider (2)
   m_TagString: Untagged
@@ -8642,6 +8711,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3536236254591591750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395285395411871444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04773d9ba3cf14b419d031278f765e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variable: {fileID: 11400000, guid: d08212f921865b344be6eb0fddbfed26, type: 2}
+  _slider: {fileID: 6395285395411871446}
 --- !u!1 &6395285395416044299
 GameObject:
   m_ObjectHideFlags: 0
@@ -8678,7 +8761,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -218.09491, y: -226.768}
+  m_AnchoredPosition: {x: 436.90503, y: -481.10028}
   m_SizeDelta: {x: 608.725, y: 453.536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6395285395417648035
@@ -9227,6 +9310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6395285395504396223}
   - component: {fileID: 6395285395504396222}
+  - component: {fileID: 5398851714501622555}
   m_Layer: 5
   m_Name: Slider (2)
   m_TagString: Untagged
@@ -9304,10 +9388,24 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5398851714501622555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395285395504396220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04773d9ba3cf14b419d031278f765e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variable: {fileID: 11400000, guid: dbe9913dd5b1f2d4aac9187e46de6e46, type: 2}
+  _slider: {fileID: 6395285395504396222}
 --- !u!1 &6395285395511489536
 GameObject:
   m_ObjectHideFlags: 0
