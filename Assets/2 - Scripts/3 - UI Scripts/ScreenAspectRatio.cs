@@ -48,24 +48,19 @@ public class ScreenAspectRatio : MonoBehaviour
     /// <returns></returns>
     TextingAspectRatioFormat CreateDictionaryEntry(TextingAspectRatioFormat text)
     {
-        TextingAspectRatioFormat format = null;
-
-        format.AspectRatio = text.AspectRatio;
-        format.BackgroundOffsetMax = text.BackgroundOffsetMax;
-
-        format.IconSize = text.IconSize;
-        format.IconEdgePadding = text.IconEdgePadding;
-        format.BubbleEdgePadding = text.BubbleEdgePadding;
-
-        format.SenderFontSize = text.SenderFontSize;
-        format.MessageFontSize = text.MessageFontSize;
-        format.LayoutSpacing = text.LayoutSpacing;
-
-        format.PhoneContainerOffsetMin = text.PhoneContainerOffsetMin;
-        format.PhoneContainerOffsetMax = text.PhoneContainerOffsetMax;
-
-        format.AutoplayMenuPivotX = text.AutoplayMenuPivotX;
-        format.AutoplayMenuAnchorX = text.AutoplayMenuAnchorX;
+        TextingAspectRatioFormat format = new(
+            text.AspectRatio,
+            text.BackgroundOffsetMax,
+            text.BubbleEdgePadding,
+            text.IconEdgePadding,
+            text.IconSize,
+            text.SenderFontSize,
+            text.MessageFontSize,
+            text.LayoutSpacing,
+            text.PhoneContainerOffsetMin,
+            text.PhoneContainerOffsetMax,
+            text.AutoplayMenuPivotX,
+            text.AutoplayMenuAnchorX);
 
         return format;
     }
