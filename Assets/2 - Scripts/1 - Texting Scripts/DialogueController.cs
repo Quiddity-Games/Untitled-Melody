@@ -43,6 +43,7 @@ public class DialogueController : MonoBehaviour
 
     public int CurrentLineIndex;
     public int LastLineIndex;
+    [HideInInspector] public bool LastChunkLoaded;
 
     public bool CanPrintDialogue;
     public bool AutoplayEnabled;
@@ -89,7 +90,14 @@ public class DialogueController : MonoBehaviour
 
             foreach (string tag in currentTags)
             {
-                parsedLine += ("#" + tag + "\n");
+                if (!tag.ToLower().Contains("end"))
+                {
+                    parsedLine += ("#" + tag + "\n");
+                }
+                else
+                {
+                    LastChunkLoaded = true;
+                }
             }
             parsedLine += currentLine;
 

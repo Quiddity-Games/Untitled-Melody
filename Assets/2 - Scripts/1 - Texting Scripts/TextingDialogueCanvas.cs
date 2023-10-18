@@ -21,7 +21,6 @@ public class TextingDialogueCanvas : MonoBehaviour
     #region Variables: Buttons
     [Header("Buttons")]
     [SerializeField] Button autoskipMenuButton;
-    [SerializeField] Button startDialogueButton;
     public Button ContinueDialogueButton;
     [SerializeField] TextOptionUI[] dialogueOptions;
     #endregion
@@ -71,6 +70,7 @@ public class TextingDialogueCanvas : MonoBehaviour
     private float textContainerLeft;
     private float textContainerBottom;
     private float currentTypingDelayDuration;
+    private bool loadedLastChunk;
     #endregion
 
     private void Awake()
@@ -96,6 +96,9 @@ public class TextingDialogueCanvas : MonoBehaviour
 
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
+
+        // Show the phone UI after 4 seconds.
+        DOTween.Sequence().InsertCallback(4f, ShowDialogueUI);
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
@@ -117,7 +120,6 @@ public class TextingDialogueCanvas : MonoBehaviour
     private void InitializeButtonEvents()
     {
         // Give functions to buttons.
-        startDialogueButton.onClick.AddListener(ShowDialogueUI);
         ContinueDialogueButton.onClick.AddListener(PlayDialogue);
         autoskipMenuButton.onClick.AddListener(delegate { AutoplaySkipUI.Instance.DisplayAutoplayMenu(true); });
     }
@@ -143,7 +145,6 @@ public class TextingDialogueCanvas : MonoBehaviour
         ContinueDialogueButton.interactable = false;
         phoneContainerCanvasGroup.DOFade(1f, canvasFadeDuration);
         GetHeaderText();
-        startDialogueButton.gameObject.SetActive(false);
         DialogueController.Instance.CanPrintDialogue = false;
 
         DOTween.Sequence().InsertCallback(canvasFadeDuration + startDelayDuration, () =>
@@ -154,6 +155,11 @@ public class TextingDialogueCanvas : MonoBehaviour
             else
                 PlayDialogue();
         });
+    }
+
+    private void EndDialogue()
+    {
+        Debug.Log("END TEXTING SCENE");
     }
 
     /// <summary>
@@ -227,8 +233,6 @@ public class TextingDialogueCanvas : MonoBehaviour
     /// <param name="currentBubbleIndex"></param>
     private void ShowNextTextBubble(List<TextBubbleUI> bubblesBeforeChoice, int currentBubbleIndex)
     {
-        StartCoroutine(InputDelay());
-
         if (TextingDialogueController.TextingUI.CurrentTypingBubble.gameObject.activeInHierarchy)
             TextingDialogueController.TextingUI.CurrentTypingBubble.gameObject.SetActive(false);
 
@@ -240,10 +244,17 @@ public class TextingDialogueCanvas : MonoBehaviour
 
         DialogueController.Instance.CurrentLineIndex++;
 
-        IEnumerator InputDelay()
+        if (DialogueController.Instance.LastChunkLoaded
+            && DialogueController.Instance.CurrentLineIndex > DialogueController.Instance.LastLineIndex)
         {
-            yield return new WaitForSeconds(TextingDialogueController.TextingUI.BubbleFadeDuration);
-            DialogueController.Instance.CanPrintDialogue = true;
+            ContinueDialogueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Finish";
+            ContinueDialogueButton.onClick.RemoveAllListeners();
+            ContinueDialogueButton.onClick.AddListener(EndDialogue);
+            DialogueController.Instance.OnDialogueEnd.Raise();
+            return;
+        } else
+        {
+            DOTween.Sequence().InsertCallback(TextingDialogueController.TextingUI.BubbleFadeDuration + 0.1f, () => DialogueController.Instance.CanPrintDialogue = true);
         }
     }
 
