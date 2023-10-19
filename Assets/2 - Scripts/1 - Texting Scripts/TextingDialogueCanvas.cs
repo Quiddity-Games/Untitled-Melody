@@ -98,7 +98,7 @@ public class TextingDialogueCanvas : MonoBehaviour
         headerCanvasGroup.alpha = 0f;
 
         // Show the phone UI after 4 seconds.
-        DOTween.Sequence().InsertCallback(4f, ShowDialogueUI);
+        DOTween.Sequence().InsertCallback(3f, ShowDialogueUI);
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
@@ -129,8 +129,8 @@ public class TextingDialogueCanvas : MonoBehaviour
     /// </summary>
     private void GetHeaderText()
     {
-        headerIcon.sprite = DialogueController.Instance.CharactersDictionary[DialogueController.Instance.GlobalTagsDictionary["Conversation"]].IconSprite;
-        headerText.text = DialogueController.Instance.GlobalTagsDictionary["Conversation"];
+        headerIcon.sprite = DialogueController.Instance.CharactersDictionary[DialogueController.Instance.GlobalTagsDictionary["With"]].IconSprite;
+        headerText.text = DialogueController.Instance.GlobalTagsDictionary["With"];
 
         LayoutRebuilder.ForceRebuildLayoutImmediate(headerCanvasGroup.gameObject.transform as RectTransform);
         headerCanvasGroup.DOFade(1f, TextingDialogueController.TextingUI.BubbleFadeDuration);
