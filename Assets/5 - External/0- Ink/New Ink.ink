@@ -1,4 +1,4 @@
-#Conversation: Emerald
+#With: Emerald
 -> Scene_1
 === Scene_1 ===
 This is a right-side dialogue bubble! #Speaker: Amika
@@ -17,5 +17,5 @@ And more dialogue! With emojis! [emoji:hearteyes] [emoji:smiling] #Speaker: Emer
         This is choice 3A! #Speaker: Emerald
     ** Choice 3B? #Speaker: Amika
         You can have a choice 4B! #Speaker: Emerald
-- Every choice loops back to this section. #Speaker: Amika
+- Every choice loops back to this section. #Speaker: Amika #End
 -> END
