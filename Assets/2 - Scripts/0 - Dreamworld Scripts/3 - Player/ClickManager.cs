@@ -42,6 +42,7 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Dash _dash;
     [SerializeField] private float dashForceMultiplier;
     [SerializeField] private float maxDashDistanceMultiplier;
+    [SerializeField] private BoolVariable _isFacingRight;
 
     [SerializeField] private ParticleSystem ps;
         
@@ -142,6 +143,11 @@ public class ClickManager : MonoBehaviour
 
     private async void HandleDash(NoteTracker.HitInfo hitInfo)
     {
+        if (_dash.Direction.x > 0)
+            _isFacingRight.Value = true;
+        else if (_dash.Direction.x < 0)
+            _isFacingRight.Value = false;
+
         float dashScale = 1f;
 
         switch (hitInfo.rating)
