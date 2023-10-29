@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _behaviour: 1
-  _minDuration: 10
-  _maxDuration: 21.666666
+  _minDuration: 30
+  _maxDuration: 65
   _currentDuration: 0
   _minAngle: 90
   _maxAngle: 360
