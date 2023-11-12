@@ -19,3 +19,8 @@ And more dialogue! With emojis! [emoji:hearteyes] [emoji:smiling] #Speaker: Emer
         You can have a choice 4B! #Speaker: Emerald
 - Every choice loops back to this section. #Speaker: Amika #End
 -> END
+
+=== Scene_2 ===
+This is a placeholder for the second scene! #Speaker: Amika
+This is a left-aligned second scene placeholder bubble! #Speaker: Emerald #End
+-> END
