@@ -48,7 +48,7 @@ public class ParallaxScroller : MonoBehaviour
                 transform.position += deltaMove * _scrollMultiplier;
                 _previousCameraPos = _cameraTransform.position;
                 break;
-            case ScrollBehaviour.Follow:
+            case ScrollBehaviour.Follow: // Behaviours follows the camera 1-for-1
                 cameraX = Camera.main.transform.position.x;
                 cameraY = Camera.main.transform.position.y;
                 transform.position = new Vector3(cameraX, cameraY, transform.position.z);
