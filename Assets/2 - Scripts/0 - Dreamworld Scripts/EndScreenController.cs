@@ -83,4 +83,9 @@ public class EndScreenController : MonoBehaviour
     {
         EndScreenMenu.SetActive(false);
     }
+
+    public void Pause()
+    {
+        Time.timeScale = 0;
+    }
 }
