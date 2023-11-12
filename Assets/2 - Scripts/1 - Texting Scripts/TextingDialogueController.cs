@@ -83,9 +83,9 @@ public class TextingDialogueController : DialogueController
         // Get global tags.
         for (int i = 0; i < InkStory.globalTags.Count; i++)
         {
-            if (InkStory.globalTags[i].Contains("Conversation: "))
+            if (InkStory.globalTags[i].Contains("With: "))
             {
-                GlobalTagsDictionary.Add("Conversation", InkStory.globalTags[i].Replace("Conversation: ", ""));
+                GlobalTagsDictionary.Add("With", InkStory.globalTags[i].Replace("With: ", ""));
             }
         }
     }

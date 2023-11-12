@@ -6,7 +6,7 @@ using UnityEngine;
 public class FloatVariable : ScriptableObject
 {
     public VoidCallback OnValueChange;
-    protected float value;
+    [SerializeField] private float value;
 
     public virtual float Value
     {
