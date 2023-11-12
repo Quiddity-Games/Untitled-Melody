@@ -14,17 +14,14 @@ public class AudioMixerVariable : FloatVariable
         
         set
         {
-            Debug.Log("SET: " + value + ", " + Mathf.Log10(value)*20);
             mixer.SetFloat(mixerField, Mathf.Log10(value)*20);
-            this.value = value;
-            OnValueChange?.Invoke();        
+            base.Value = value;
         }
 
         get
         {
-            mixer.GetFloat(mixerField, out value);
-            Debug.Log("RESULT: " + Mathf.Pow(value/20,10) + ", " + value);
-            return Mathf.Pow(10, value/20);
+            mixer.GetFloat(mixerField, out float returnValue);
+            return Mathf.Pow(10, returnValue/20);
         }
     }
 }
