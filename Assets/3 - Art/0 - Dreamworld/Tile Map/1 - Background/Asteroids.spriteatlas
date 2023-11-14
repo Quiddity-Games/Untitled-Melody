@@ -33,38 +33,17 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 21300000, guid: 6b373962fc667c0449ac3e6a095e21ef, type: 3}
-    - {fileID: 21300000, guid: ec99ab058900fba49aca0fcd5abeeaa7, type: 3}
-    - {fileID: 21300000, guid: 861c4a7692fa2424b88a8f89a12083a6, type: 3}
-    - {fileID: 21300000, guid: 579a6be2bbd795849b889415b58a782d, type: 3}
-    - {fileID: 21300000, guid: a44e07e856b05e7489aab621455b3d44, type: 3}
-    - {fileID: 21300000, guid: 6411b6213c5c2154385411064b263d8b, type: 3}
-    - {fileID: 21300000, guid: 015b053e4edfb7e4b957327bb17e135e, type: 3}
     - {fileID: 21300000, guid: 53cd5d0d52a977c46a34b9882b9d0778, type: 3}
-    - {fileID: 21300000, guid: a210a290c1b866a458c8fc17ecca2e1c, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: a210a290c1b866a458c8fc17ecca2e1c, type: 3}
-  - {fileID: 21300000, guid: 6411b6213c5c2154385411064b263d8b, type: 3}
   - {fileID: 21300000, guid: 6b373962fc667c0449ac3e6a095e21ef, type: 3}
-  - {fileID: 21300000, guid: 579a6be2bbd795849b889415b58a782d, type: 3}
-  - {fileID: 21300000, guid: ec99ab058900fba49aca0fcd5abeeaa7, type: 3}
-  - {fileID: 21300000, guid: 861c4a7692fa2424b88a8f89a12083a6, type: 3}
-  - {fileID: 21300000, guid: a44e07e856b05e7489aab621455b3d44, type: 3}
   - {fileID: 21300000, guid: 53cd5d0d52a977c46a34b9882b9d0778, type: 3}
-  - {fileID: 21300000, guid: 015b053e4edfb7e4b957327bb17e135e, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Asteroid
-  - Asteroid 7
   - Asteroid 1
-  - Asteroid 5
-  - Asteroid 3
-  - Asteroid 4
-  - Asteroid 6
   - Asteroid 9
-  - Asteroid 8
   m_RenderDataMap: {}
   m_Tag: Asteroids
   m_IsVariant: 0

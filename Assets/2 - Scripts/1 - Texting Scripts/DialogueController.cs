@@ -50,6 +50,7 @@ public class DialogueController : MonoBehaviour
 
     public virtual void Awake()
     {
+        DOTween.Init();
         Instance = this;
         InkStory = new Story(inkTextAsset.text);
         CurrentLineIndex = 0;
