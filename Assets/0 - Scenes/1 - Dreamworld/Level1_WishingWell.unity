@@ -5130,7 +5130,7 @@ PrefabInstance:
       objectReference: {fileID: 1211173198127417280, guid: 9c58ce4d53c02f2488d71a529f06e59d, type: 3}
     - target: {fileID: 5448848607272641547, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: pulseRadius
-      value: 40
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5448848607272641547, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: _noteTracker
@@ -5245,7 +5245,7 @@ MonoBehaviour:
   signal: {fileID: 11400000, guid: 81420cf3e35355e4db904fe7b5da09fb, type: 2}
   numCollected: 0
   tempNumCollected: 0
-  requiredNumCollected: 30
+  requiredNumCollected: 80
   sound: {fileID: 860600547}
   _ui: {fileID: 614438202}
   resetter: {fileID: 860600541}
@@ -6875,11 +6875,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2551276248396823950, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.5
+      value: -24
       objectReference: {fileID: 0}
     - target: {fileID: 2551276248396823950, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.0349
+      value: 1.2757263
       objectReference: {fileID: 0}
     - target: {fileID: 2551276248396823950, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: m_LocalPosition.z
