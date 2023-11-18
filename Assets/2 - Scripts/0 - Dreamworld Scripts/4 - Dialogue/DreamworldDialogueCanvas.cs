@@ -49,6 +49,7 @@ public class DreamworldDialogueCanvas : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        dialogueController = GetComponent<DreamworldDialogueController>();
     }
 
     private void OnEnable()
@@ -64,7 +65,6 @@ public class DreamworldDialogueCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueController = GetComponent<DreamworldDialogueController>();
         ContentCanvasGroup.alpha = 0f;
         GradientCanvasGroup.alpha = 0f;
 
@@ -87,10 +87,12 @@ public class DreamworldDialogueCanvas : MonoBehaviour
     {
         leftPortrait.sprite = dialogueController.CharactersDictionary[conversationPartner].IconSprite;
         leftPortraitCanvasGroup = leftPortrait.gameObject.GetComponent<CanvasGroup>();
+        leftPortraitCanvasGroup.alpha = 0f;
         leftPortraitRect = leftPortrait.gameObject.GetComponent<RectTransform>();
 
         rightPortrait.sprite = dialogueController.CharactersDictionary[dialogueController.MainCharacterName].IconSprite;
         rightPortraitCanvasGroup = rightPortrait.gameObject.GetComponent<CanvasGroup>();
+        rightPortraitCanvasGroup.alpha = 0f;
         rightPortraitRect = rightPortrait.gameObject.GetComponent<RectTransform>();
 
         textContainerOriginalPosition = new Vector2(textContainerTransform.anchoredPosition.x, textContainerTransform.anchoredPosition.y);

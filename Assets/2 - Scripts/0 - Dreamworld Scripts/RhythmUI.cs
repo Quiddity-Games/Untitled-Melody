@@ -74,7 +74,7 @@ public class RhythmUI : MonoBehaviour
 
                 GameObject countdownText3 = Instantiate(fadingMessageTextObject,
                     dreamworldUICanvas.transform);
-                (countdownText3.transform as RectTransform).localPosition = new Vector3(0, 64, 0);
+                (countdownText3.transform as RectTransform).localPosition = new Vector3(0, 0, 0);
                 countdownText3.GetComponent<TMP_Text>().text = "3...";
             }
 
@@ -89,7 +89,7 @@ public class RhythmUI : MonoBehaviour
 
                 GameObject countdownText2 = Instantiate(fadingMessageTextObject,
                     dreamworldUICanvas.transform);
-                (countdownText2.transform as RectTransform).localPosition = new Vector3(0, 64, 0);
+                (countdownText2.transform as RectTransform).localPosition = new Vector3(0, 0, 0);
                 countdownText2.GetComponent<TMP_Text>().text = "2...";
             }
 
@@ -105,7 +105,7 @@ public class RhythmUI : MonoBehaviour
 
                 GameObject countdownText1 = Instantiate(fadingMessageTextObject,
                     dreamworldUICanvas.transform);
-                (countdownText1.transform as RectTransform).localPosition = new Vector3(0, 64, 0);
+                (countdownText1.transform as RectTransform).localPosition = new Vector3(0, 0, 0);
                 countdownText1.GetComponent<TMP_Text>().text = "1...";
             }
 
@@ -126,10 +126,10 @@ public class RhythmUI : MonoBehaviour
                     CollectableTutorialText countdownFinishedText = Instantiate(collectableTutorialTextObject,
                         dreamworldUICanvas.transform);
                     (countdownFinishedText.gameObject.transform as RectTransform).localPosition =
-                        new Vector3(0, 120, 0);
+                        new Vector3(0, 250, 0);
                 });
                 (countdownFinishedText.gameObject.transform as RectTransform).localPosition =
-                    new Vector3(0, 120, 0);
+                    new Vector3(0, 250, 0);
                 countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
                 _NoteTracker.onTimeUpdate -= HandleCountdown;
                 countdownOver.Raise();
