@@ -97,6 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ab9b953fdf3fe0438d8a53ebb331739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contrastLayerEnabled: {fileID: 11400000, guid: ee7ff1a5c99a11545967a5d7f39a13a0, type: 2}
-  isContrastLayerBlack: {fileID: 11400000, guid: a6652c604288f834aad2c3220bae6f60, type: 2}
-  opacity: {fileID: 11400000, guid: 52329e28319cad440bf3979fbc46ad33, type: 2}
+  _contrastLayerEnabled: {fileID: 11400000, guid: ee7ff1a5c99a11545967a5d7f39a13a0, type: 2}
+  _contrastLayerColors:
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 1, g: 1, b: 1, a: 1}
