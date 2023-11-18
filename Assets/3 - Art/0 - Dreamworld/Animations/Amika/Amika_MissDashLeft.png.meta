@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ba6ac8801a96610419aac76a7c932529
+guid: d5072008293b95943a212f1ce03dc759
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,96 +104,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Amika_BonkRight_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1698
-        width: 434
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4a675b9629a027a47a220e69f5f6c4eb
-      internalID: 68719178
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_BonkRight_1
-      rect:
-        serializedVersion: 2
-        x: 434
-        y: 1698
-        width: 434
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f67dfb8c5ca87134ea1327b49e7e68a1
-      internalID: 239803369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_BonkRight_2
-      rect:
-        serializedVersion: 2
-        x: 868
-        y: 1698
-        width: 434
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e9ba2692ffea8fc4dbe04333b87aef20
-      internalID: -134264269
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_BonkRight_3
-      rect:
-        serializedVersion: 2
-        x: 1302
-        y: 1698
-        width: 434
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fad5736f3733a3d468d1484c359cf0de
-      internalID: 554569229
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_BonkRight_4
+      name: Amika_MissDashLeft_0
       rect:
         serializedVersion: 2
         x: 0
         y: 849
-        width: 434
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -202,19 +118,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 108b9edf7bb37cd4eb8a06dde8c643dd
-      internalID: 1982781522
+      spriteID: e8f1df7e9a8895e4d9aed8fe3a4983a7
+      internalID: -1231118315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_BonkRight_5
+      name: Amika_MissDashLeft_1
       rect:
         serializedVersion: 2
-        x: 434
+        x: 574
         y: 849
-        width: 434
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -223,19 +139,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a689e69b7ff876e41aaa01e1d1d85541
-      internalID: -186074643
+      spriteID: 9a27890ad3d1c4d45a26e9a656297823
+      internalID: 947822380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_BonkRight_6
+      name: Amika_MissDashLeft_2
       rect:
         serializedVersion: 2
-        x: 868
+        x: 1148
         y: 849
-        width: 434
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -244,19 +160,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01ab056d0030e6b428a3b44e07e2d9a8
-      internalID: -1678251366
+      spriteID: 467297abc1fa9a64d8c3e6dbf25ae662
+      internalID: -1400313586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_BonkRight_7
+      name: Amika_MissDashLeft_3
       rect:
         serializedVersion: 2
-        x: 1302
+        x: 1722
         y: 849
-        width: 434
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -265,19 +181,82 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26b97d2b07c1acd479fa804dd1ea6dd1
-      internalID: 1135754252
+      spriteID: d742ecddc06761147b4fcc17bbd68b83
+      internalID: -1194711019
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_BonkRight_8
+      name: Amika_MissDashLeft_4
+      rect:
+        serializedVersion: 2
+        x: 2296
+        y: 849
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0be9d94cc66a7241a479be66ed74b7c
+      internalID: 115848977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_MissDashLeft_5
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 849
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747f97a638b8fce4ba07091ca39354d7
+      internalID: -88922291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_MissDashLeft_6
+      rect:
+        serializedVersion: 2
+        x: 3444
+        y: 849
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd4fb2ff3762a6f44bc02d77b615c29f
+      internalID: 381244911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_MissDashLeft_7
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 434
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -286,19 +265,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 843ed61bf7b5d5e4eb43afd4c9029013
-      internalID: 1402610893
+      spriteID: 1cd09904cefffbf41a34dd55f90182fa
+      internalID: 571216131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_BonkRight_9
+      name: Amika_MissDashLeft_8
       rect:
         serializedVersion: 2
-        x: 434
+        x: 574
         y: 0
-        width: 434
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -307,19 +286,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e932802f18e4e748aa66f8d04ed9dcb
-      internalID: 1657611615
+      spriteID: f60c96a433b05ec4dade1a1ca447473b
+      internalID: 2063897491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_BonkRight_10
+      name: Amika_MissDashLeft_9
       rect:
         serializedVersion: 2
-        x: 868
+        x: 1148
         y: 0
-        width: 434
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -328,19 +307,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1183e63eb0f59f44f8014563930368a1
-      internalID: 394836516
+      spriteID: e0a6571f5747daa4f8dd1a5b85131e75
+      internalID: -2043085168
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_BonkRight_11
+      name: Amika_MissDashLeft_10
       rect:
         serializedVersion: 2
-        x: 1302
+        x: 1722
         y: 0
-        width: 434
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -349,8 +328,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20f62c9d351b07d4b8a29ba249e4e162
-      internalID: -1037686222
+      spriteID: 29beaf9edf81b384f9fdd7345a44d790
+      internalID: 1087673217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_MissDashLeft_11
+      rect:
+        serializedVersion: 2
+        x: 2296
+        y: 0
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0675de994ec922e4ba1ae3a6713c7c44
+      internalID: -1073188476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_MissDashLeft_12
+      rect:
+        serializedVersion: 2
+        x: 2870
+        y: 0
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fea58dfcabac5ca4e87c8200dd71676e
+      internalID: -1794210670
       vertices: []
       indices: 
       edges: []
@@ -366,18 +387,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Amika_BonkRight_11: -1037686222
-      Amika_BonkRight_3: 554569229
-      Amika_BonkRight_10: 394836516
-      Amika_BonkRight_8: 1402610893
-      Amika_BonkRight_6: -1678251366
-      Amika_BonkRight_9: 1657611615
-      Amika_BonkRight_4: 1982781522
-      Amika_BonkRight_5: -186074643
-      Amika_BonkRight_2: -134264269
-      Amika_BonkRight_1: 239803369
-      Amika_BonkRight_0: 68719178
-      Amika_BonkRight_7: 1135754252
+      Amika_MissDashLeft_3: -1194711019
+      Amika_MissDashLeft_0: -1231118315
+      Amika_MissDashLeft_4: 115848977
+      Amika_MissDashLeft_7: 571216131
+      Amika_MissDashLeft_11: -1073188476
+      Amika_MissDashLeft_1: 947822380
+      Amika_MissDashLeft_6: 381244911
+      Amika_MissDashLeft_8: 2063897491
+      Amika_MissDashLeft_9: -2043085168
+      Amika_MissDashLeft_5: -88922291
+      Amika_MissDashLeft_10: 1087673217
+      Amika_MissDashLeft_12: -1794210670
+      Amika_MissDashLeft_2: -1400313586
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

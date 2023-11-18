@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 40a028e1a9aa8824ca5e628bfbc6a9bc
+guid: 3ed41aeb38e466e4ebd8c3ec317849e4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -66,8 +66,8 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
+    maxTextureSize: 4096
+    resizeAlgorithm: 1
     textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
@@ -104,12 +104,138 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Amika_MissDash_Left_0
+      name: Amika_GoodDashLeft_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2547
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e82b0ed95c209040b8654afec85b119
+      internalID: 509210380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_GoodDashLeft_1
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 2547
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2147a196f020bda43a1c75044e6203ba
+      internalID: 776635518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_GoodDashLeft_2
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 2547
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e149663cce305354199b0ba2c2a6a212
+      internalID: 692083451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_GoodDashLeft_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1698
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d3e61b4a9e4afe4d86a4596dc08a337
+      internalID: -1649321496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_GoodDashLeft_4
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 1698
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b050277ba2e90154fb69a84d13cf4628
+      internalID: 828736375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_GoodDashLeft_5
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 1698
+        width: 574
+        height: 849
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da40ebadabce117478a3b50b41f5a318
+      internalID: -1471714044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Amika_GoodDashLeft_6
       rect:
         serializedVersion: 2
         x: 0
         y: 849
-        width: 593
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -118,19 +244,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 228435fece0028346820d33160acb80c
-      internalID: 990982142
+      spriteID: a88bfbbfffa0e7c4596634d090e0da32
+      internalID: 1073946709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_MissDash_Left_1
+      name: Amika_GoodDashLeft_7
       rect:
         serializedVersion: 2
-        x: 593
+        x: 574
         y: 849
-        width: 593
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -139,19 +265,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 299e1acf3f8cbf2479f36fa70ba4e23c
-      internalID: -959131110
+      spriteID: c96a83cf9fbd5c042987498f89025e68
+      internalID: 2126307391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_MissDash_Left_2
+      name: Amika_GoodDashLeft_8
       rect:
         serializedVersion: 2
-        x: 1186
+        x: 1148
         y: 849
-        width: 593
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -160,82 +286,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1e217db9c625a24ba44faf2aac2f83f
-      internalID: 1619544373
+      spriteID: 6a6874b860fa41f49b14775b8f9c317a
+      internalID: -1441924027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_MissDash_Left_3
-      rect:
-        serializedVersion: 2
-        x: 1779
-        y: 849
-        width: 593
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eb671a39ffe095546a787d3f6c8b084d
-      internalID: 1838486273
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_MissDash_Left_4
-      rect:
-        serializedVersion: 2
-        x: 2372
-        y: 849
-        width: 593
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9fe18719ac572ec46aaa209303d52b51
-      internalID: -1297765903
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_MissDash_Left_5
-      rect:
-        serializedVersion: 2
-        x: 2965
-        y: 849
-        width: 593
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db99b82d947377b4fb8f653878d73d30
-      internalID: -197196316
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_MissDash_Left_6
+      name: Amika_GoodDashLeft_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 593
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -244,19 +307,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9bc02c5a045bd5c45aac853398651af7
-      internalID: 2051147773
+      spriteID: e5c43e1006371c54aa0d761e524d3c9e
+      internalID: -25702703
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_MissDash_Left_7
+      name: Amika_GoodDashLeft_10
       rect:
         serializedVersion: 2
-        x: 593
+        x: 574
         y: 0
-        width: 593
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -265,19 +328,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef5833d47fe79f14eb1103af95092998
-      internalID: 1829688158
+      spriteID: e84049e7a1b8db14cb2b750cfab83407
+      internalID: -805066705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Amika_MissDash_Left_8
+      name: Amika_GoodDashLeft_11
       rect:
         serializedVersion: 2
-        x: 1186
+        x: 1148
         y: 0
-        width: 593
+        width: 574
         height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -286,71 +349,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a33f5c7a08d802e4eba2e1a8d67c93a5
-      internalID: 181173641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_MissDash_Left_9
-      rect:
-        serializedVersion: 2
-        x: 1779
-        y: 0
-        width: 593
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d67741c2b5e4e0a48af3178f6b9d683b
-      internalID: 2059085356
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_MissDash_Left_10
-      rect:
-        serializedVersion: 2
-        x: 2372
-        y: 0
-        width: 593
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 845ca118803cb0847a402fd687f1ce50
-      internalID: 2025848611
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Amika_MissDash_Left_11
-      rect:
-        serializedVersion: 2
-        x: 2965
-        y: 0
-        width: 593
-        height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1a3e96ac60c3b9e4587f03a92743ff9b
-      internalID: 410367440
+      spriteID: 07982d069a123fd4884df518ad791c78
+      internalID: 2111548339
       vertices: []
       indices: 
       edges: []
@@ -366,18 +366,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Amika_MissDash_Left_2: 1619544373
-      Amika_MissDash_Left_0: 990982142
-      Amika_MissDash_Left_11: 410367440
-      Amika_MissDash_Left_10: 2025848611
-      Amika_MissDash_Left_5: -197196316
-      Amika_MissDash_Left_9: 2059085356
-      Amika_MissDash_Left_1: -959131110
-      Amika_MissDash_Left_4: -1297765903
-      Amika_MissDash_Left_8: 181173641
-      Amika_MissDash_Left_3: 1838486273
-      Amika_MissDash_Left_7: 1829688158
-      Amika_MissDash_Left_6: 2051147773
+      Amika_GoodDashLeft_0: 509210380
+      Amika_GoodDashLeft_8: -1441924027
+      Amika_GoodDashLeft_4: 828736375
+      Amika_GoodDashLeft_7: 2126307391
+      Amika_GoodDashLeft_11: 2111548339
+      Amika_GoodDashLeft_1: 776635518
+      Amika_GoodDashLeft_3: -1649321496
+      Amika_GoodDashLeft_2: 692083451
+      Amika_GoodDashLeft_6: 1073946709
+      Amika_GoodDashLeft_10: -805066705
+      Amika_GoodDashLeft_9: -25702703
+      Amika_GoodDashLeft_5: -1471714044
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class AmikaAnimationController : MonoBehaviour
 {
-    [SerializeField] private bool _facingRight;
-    [SerializeField] private BoolVariable _isFacingRight;
-    [SerializeField] private NoteTracker.BeatRating _beatRating;
-
     [Space(10)]
     [SerializeField] private NoteTracker _noteTracker;
 
@@ -19,49 +15,42 @@ public class AmikaAnimationController : MonoBehaviour
     private static readonly int DashMissL = Animator.StringToHash("Dash - Miss (Left)");
     private static readonly int DashGreatR = Animator.StringToHash("Dash - Great (Right)");
     private static readonly int DashGreatL = Animator.StringToHash("Dash - Great (Left)");
-
-    private void OnEnable()
-    {
-        _noteTracker.HitCallback += SetDashRating;
-    }
-
-    private void OnDestroy()
-    {
-        _noteTracker.HitCallback -= SetDashRating;
-    }
+    private static readonly int DashPerfectR = Animator.StringToHash("Dash - Perfect (Right)");
+    private static readonly int DashPerfectL = Animator.StringToHash("Dash - Perfect (Left)");
 
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
-        _isFacingRight.Value = true;
     }
 
-    void PlayAnimation(int animHashR, int animHashL)
+    public void SetDashRating(NoteTracker.HitInfo hitInfo, bool facingRight)
     {
-        if (_isFacingRight.Value)
-            _animator.CrossFade(animHashR, 0, 0);
-        else
-            _animator.CrossFade(animHashL, 0, 0);
-    }
-
-    void SetDashRating(NoteTracker.HitInfo hitInfo)
-    {
-        _facingRight = _isFacingRight.Value;
-
         switch (hitInfo.rating)
         {
             case NoteTracker.BeatRating.MISS:
-                PlayAnimation(IdleR, DashMissL);
+                if (facingRight)
+                    _animator.CrossFade(DashMissR, 0, 0);
+                else
+                    _animator.CrossFade(DashMissL, 0, 0);
                 break;
             case NoteTracker.BeatRating.GOOD:
-                PlayAnimation(DashGreatR, DashGreatL);
+                if (facingRight)
+                    _animator.CrossFade(DashGreatR, 0, 0);
+                else
+                    _animator.CrossFade(DashGreatL, 0, 0);
                 break;
             case NoteTracker.BeatRating.GREAT:
-                PlayAnimation(DashGreatR, DashGreatL);
+                if (facingRight)
+                    _animator.CrossFade(DashGreatR, 0, 0);
+                else
+                    _animator.CrossFade(DashGreatL, 0, 0);
                 break;
             case NoteTracker.BeatRating.PERFECT:
-                PlayAnimation(IdleR, IdleL);
+                if (facingRight)
+                    _animator.CrossFade(DashPerfectR, 0, 0);
+                else
+                    _animator.CrossFade(DashPerfectL, 0, 0);
                 break;
         }
     }

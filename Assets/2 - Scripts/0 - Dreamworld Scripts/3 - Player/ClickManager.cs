@@ -42,7 +42,7 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Dash _dash;
     [SerializeField] private float dashForceMultiplier;
     [SerializeField] private float maxDashDistanceMultiplier;
-    [SerializeField] private BoolVariable _isFacingRight;
+    [SerializeField] private AmikaAnimationController _playerAnim;
 
     [SerializeField] private ParticleSystem ps;
         
@@ -143,11 +143,6 @@ public class ClickManager : MonoBehaviour
 
     private async void HandleDash(NoteTracker.HitInfo hitInfo)
     {
-        if (_dash.Direction.x > 0)
-            _isFacingRight.Value = true;
-        else if (_dash.Direction.x < 0)
-            _isFacingRight.Value = false;
-
         float dashScale = 1f;
 
         switch (hitInfo.rating)
@@ -205,6 +200,11 @@ public class ClickManager : MonoBehaviour
         {
             Vector2 actualDashDirection = _dash.Direction * dashDistance;
             cursorPrefab.transform.position = _rigidbody2D.position + actualDashDirection;
+
+            if (actualDashDirection.x > 0)
+                _playerAnim.SetDashRating(hitInfo, true);
+            else if (actualDashDirection.x < 0)
+                _playerAnim.SetDashRating(hitInfo, false);
         }
 
         cursorPrefab.SetActive(true);
@@ -221,7 +221,7 @@ public class ClickManager : MonoBehaviour
         StartCoroutine(ResetGravity());
     }
 
-    public  void HandleClick()
+    public void HandleClick()
     {
         if (!_NoteTracker.onBeat)
         {

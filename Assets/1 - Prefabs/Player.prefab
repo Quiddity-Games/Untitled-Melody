@@ -599,7 +599,7 @@ MonoBehaviour:
   _rigidbody2D: {fileID: 2551276248396823949}
   dashForceMultiplier: 6
   maxDashDistanceMultiplier: 6
-  _isFacingRight: {fileID: 0}
+  _playerAnim: {fileID: 7924770680862837554}
   ps: {fileID: 0}
   CursorTransform: {fileID: 8964921491702891917}
   _NoteTracker: {fileID: 0}
@@ -1297,12 +1297,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2136587574, guid: 950ab668461fa3441baa76ffdc90cda8, type: 3}
+  m_Sprite: {fileID: 1982425617, guid: 53af9ef64f04f19438d184c2a818e24e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.4399998, y: 8.570705}
+  m_Size: {x: 3.44, y: 8.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1340,8 +1340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607c46cf7ac4eb246a00ea5325249d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _facingRight: 0
-  _isFacingRight: {fileID: 11400000, guid: 84108a19da951d94c8ff9c30f4636ef0, type: 2}
+  FacingRight: 0
   _beatRating: 0
   _noteTracker: {fileID: 0}
 --- !u!1 &8544294930808137126
