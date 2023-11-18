@@ -60,8 +60,6 @@ public class ClickManager : MonoBehaviour
 
     [SerializeField] private bool dashEnabled = false;
 
-    [SerializeField] private Vector2 _currentPosition;
-
     private void Awake()
     {
         _NoteTracker.offBeatTrigger += () => { canDash = true; };
@@ -82,8 +80,6 @@ public class ClickManager : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
         _playerControl.Dreamworld.Enable();
-
-        GetCurrentPosition();
     }
 
     private void OnDestroy()
@@ -116,11 +112,6 @@ public class ClickManager : MonoBehaviour
     public void EnableDash()
     {
         dashEnabled = true;
-    }
-    
-    void GetCurrentPosition()
-    {
-        _currentPosition = _rigidbody2D.transform.position;
     }
 
     private IEnumerator VanishClickAfterImage(GameObject cursorPrefab)

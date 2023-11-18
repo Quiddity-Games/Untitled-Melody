@@ -2,11 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(AudioSource))]
 public class DashSoundController : MonoBehaviour
 {
-    [SerializeField] private AudioSource soundControl;
-
+    [SerializeField] private AudioSource _dashSource;
+    [SerializeField] private AudioSource _bonkSource;
     [SerializeField] private NoteTracker _noteTracker;
     
     [Serializable]
@@ -20,6 +19,7 @@ public class DashSoundController : MonoBehaviour
 
 
     [SerializeField] private DashSounds sounds;
+    [SerializeField] private AudioClip bonkSound;
 
     private void Start()
     {
@@ -31,21 +31,29 @@ public class DashSoundController : MonoBehaviour
         switch (hitInfo.rating)
         {
             case NoteTracker.BeatRating.MISS:
-                soundControl.PlayOneShot(sounds.badSound);
+                _dashSource.PlayOneShot(sounds.badSound);
                 break;
             case NoteTracker.BeatRating.GOOD:
-                soundControl.PlayOneShot(sounds.goodSound);
+                _dashSource.PlayOneShot(sounds.goodSound);
                 break;
             case NoteTracker.BeatRating.GREAT:
-                soundControl.PlayOneShot(sounds.greatSound);
+                _dashSource.PlayOneShot(sounds.greatSound);
                 break;
             case NoteTracker.BeatRating.PERFECT:
-                soundControl.PlayOneShot(sounds.perfectSound);
+                _dashSource.PlayOneShot(sounds.perfectSound);
                 break;
             default:
-                soundControl.PlayOneShot(sounds.badSound);
+                _dashSource.PlayOneShot(sounds.badSound);
                 break;
         }
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Wall"))
+        {
+            _bonkSource.PlayOneShot(bonkSound);
+        }
     }
 }
