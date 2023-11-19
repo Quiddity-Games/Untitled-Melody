@@ -42,7 +42,7 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Dash _dash;
     [SerializeField] private float dashForceMultiplier;
     [SerializeField] private float maxDashDistanceMultiplier;
-    [SerializeField] private AmikaAnimationController _playerAnim;
+    [SerializeField] private PlayerAnimationController _playerAnim;
 
     [SerializeField] private ParticleSystem ps;
         

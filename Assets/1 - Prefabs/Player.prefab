@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 2551276248396823949}
   - component: {fileID: 2551276248396823947}
   - component: {fileID: 2551276248396823944}
-  - component: {fileID: 9075673305512610946}
+  - component: {fileID: 4075416629321209146}
   - component: {fileID: 4307713534392126169}
   - component: {fileID: 6529547541257442817}
   - component: {fileID: 6529547541257442816}
@@ -295,7 +295,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 2.971849
---- !u!114 &9075673305512610946
+--- !u!114 &4075416629321209146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -304,18 +304,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2551276248396823953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c91dec62258fe418c1d4896b83e5b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 96ba4b9cfe3287c42a4a28e4d0d35c11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _dashSource: {fileID: 4679845377381216543}
-  _bonkSource: {fileID: 3844147961925535668}
+  _wallBumpSource: {fileID: 3844147961925535668}
   _noteTracker: {fileID: 0}
+  _animationControl: {fileID: 7924770680862837554}
   sounds:
     badSound: {fileID: 8300000, guid: 625ddd5705371d644aa8d11492f11e9a, type: 3}
     goodSound: {fileID: 8300000, guid: 9562791e41726cc42b5624b3531aba37, type: 3}
     greatSound: {fileID: 8300000, guid: 2aabd205c517f794187d935f511e3f6d, type: 3}
     perfectSound: {fileID: 8300000, guid: 24c3714731960d14f91b43f29db5810b, type: 3}
-  bonkSound: {fileID: 8300000, guid: ebfd26780ceb1c2419706b94a5fed6b5, type: 3}
+  wallBumpSound: {fileID: 8300000, guid: ebfd26780ceb1c2419706b94a5fed6b5, type: 3}
 --- !u!114 &4307713534392126169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,51 +444,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &2551276248485106568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2551276248485106567}
-  - component: {fileID: 2551276248485106566}
-  m_Layer: 0
-  m_Name: DashTracker
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2551276248485106567
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551276248485106568}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 380.31122, y: 2.7998376, z: -0.40018445}
-  m_LocalScale: {x: 0.6671057, y: 0.6671057, z: 1.3342113}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2551276249977706050}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2551276248485106566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551276248485106568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ba4b9cfe3287c42a4a28e4d0d35c11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _NoteTracker: {fileID: 0}
 --- !u!1 &2551276248831310367
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +559,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2551276249977706050}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2551276249000161898
 MonoBehaviour:
@@ -1056,7 +1012,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2551276248485106567}
   - {fileID: 2551276249000161897}
   - {fileID: 8964921491702891917}
   m_Father: {fileID: 2551276248396823950}
@@ -1078,7 +1033,7 @@ MonoBehaviour:
   _noteTracker: {fileID: 0}
   sprites:
     defaultSprite: {fileID: 21300000, guid: 441de27c3df3e1849adf44e87c573445, type: 3}
-    missSprite: {fileID: 21300000, guid: 441de27c3df3e1849adf44e87c573445, type: 3}
+    missSprite: {fileID: 21300000, guid: 48c266d059cc6be43803db1d751bae53, type: 3}
     goodSprite: {fileID: 21300000, guid: 95f2182946e2aec4f92adf38720c399f, type: 3}
     greatSprite: {fileID: 21300000, guid: 98553314cbd190f49adb46295b49fc60, type: 3}
     perfectSprite: {fileID: 21300000, guid: e7081daf155909740a594d07a608ee88, type: 3}
@@ -1278,7 +1233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607c46cf7ac4eb246a00ea5325249d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _noteTracker: {fileID: 0}
 --- !u!1 &4571667109851309605
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,7 +1244,7 @@ GameObject:
   - component: {fileID: 1409985435618318956}
   - component: {fileID: 3844147961925535668}
   m_Layer: 0
-  m_Name: Bonk Audio Source
+  m_Name: Wall Bump Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1568,7 +1522,7 @@ Transform:
   - {fileID: 696892412500021908}
   - {fileID: 4757164177661882471}
   m_Father: {fileID: 2551276249977706050}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3649569308250844711
 SpriteRenderer:
