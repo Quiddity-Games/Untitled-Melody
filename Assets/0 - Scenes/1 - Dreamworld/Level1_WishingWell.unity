@@ -5151,7 +5151,7 @@ PrefabInstance:
     - target: {fileID: 5448848607272641547, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: pulseArray.Array.data[2].location
       value: 
-      objectReference: {fileID: 1278636056}
+      objectReference: {fileID: 0}
     - target: {fileID: 5574876304252287979, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: m_Name
       value: PerfectPulseController
@@ -7400,11 +7400,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1278636056 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2551276248485106567, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
-  m_PrefabInstance: {fileID: 2551276249761637279}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1279919913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10605,6 +10600,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4075416629321209146, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: _noteTracker
+      value: 
+      objectReference: {fileID: 1369963775}
     - target: {fileID: 4757164176868499557, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: noteTracker
       value: 
