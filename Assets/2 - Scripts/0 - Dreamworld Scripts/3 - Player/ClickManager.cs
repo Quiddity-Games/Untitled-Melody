@@ -42,6 +42,7 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private Dash _dash;
     [SerializeField] private float dashForceMultiplier;
     [SerializeField] private float maxDashDistanceMultiplier;
+    [SerializeField] private PlayerAnimationController _playerAnim;
 
     [SerializeField] private ParticleSystem ps;
         
@@ -58,8 +59,6 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private bool canDash;
 
     [SerializeField] private bool dashEnabled = false;
-
-    [SerializeField] private Vector2 _currentPosition;
 
     private void Awake()
     {
@@ -81,8 +80,6 @@ public class ClickManager : MonoBehaviour
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
         _playerControl.Dreamworld.Enable();
-
-        GetCurrentPosition();
     }
 
     private void OnDestroy()
@@ -115,11 +112,6 @@ public class ClickManager : MonoBehaviour
     public void EnableDash()
     {
         dashEnabled = true;
-    }
-    
-    void GetCurrentPosition()
-    {
-        _currentPosition = _rigidbody2D.transform.position;
     }
 
     private IEnumerator VanishClickAfterImage(GameObject cursorPrefab)
@@ -199,6 +191,11 @@ public class ClickManager : MonoBehaviour
         {
             Vector2 actualDashDirection = _dash.Direction * dashDistance;
             cursorPrefab.transform.position = _rigidbody2D.position + actualDashDirection;
+
+            if (actualDashDirection.x > 0)
+                _playerAnim.SetDashRating(hitInfo, true);
+            else if (actualDashDirection.x < 0)
+                _playerAnim.SetDashRating(hitInfo, false);
         }
 
         cursorPrefab.SetActive(true);
@@ -215,7 +212,7 @@ public class ClickManager : MonoBehaviour
         StartCoroutine(ResetGravity());
     }
 
-    public  void HandleClick()
+    public void HandleClick()
     {
         if (!_NoteTracker.onBeat)
         {
