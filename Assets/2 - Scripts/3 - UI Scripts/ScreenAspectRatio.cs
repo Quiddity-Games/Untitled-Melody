@@ -94,7 +94,6 @@ public class ScreenAspectRatio : MonoBehaviour
                     if (aspectRatio == TextingFormatting.TextingFormatList[i].AspectRatio)
                     {
                         FindObjectOfType<TextingDialogueCanvas>().ResizeCanvasForPlatform(TextingFormatting.TextingFormatList[i]);
-                        FindObjectOfType<AutoplaySkipUI>().ResizeMenuForPlatform(TextingFormatting.TextingFormatList[i]);
                     }
                 }
 
