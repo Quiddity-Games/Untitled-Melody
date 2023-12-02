@@ -23,6 +23,10 @@ public class DreamworldDialogueController : DialogueController
     public int MostRecentLineIndex;
     private PlayerControl _playerControl;
 
+    [Header("Show On Dialogue End")]
+    [SerializeField] CanvasGroup welcomeMessage;
+    [SerializeField] GameObject timerBar;
+
     private enum TextBoxState { Message, Typing }
     #endregion
 
@@ -34,27 +38,44 @@ public class DreamworldDialogueController : DialogueController
 
     private void OnEnable()
     {
-        InitializeDialogue += InitializeUI;
-        OnLineShown += ShowLine;
+        if (PlayDialogueOnStart.Value)
+        {
+            InitializeDialogue += InitializeUI;
+            OnLineShown += ShowLine;
+        }
     }
 
     private void OnDestroy()
     {
-        InitializeDialogue -= InitializeUI;
-        OnLineShown -= ShowLine;
+        if (PlayDialogueOnStart.Value)
+        {
+            InitializeDialogue -= InitializeUI;
+            OnLineShown -= ShowLine;
+        }
     }
 
     // Start is called before the first frame update
-    public void Start()
+    public override void Start()
     {
-        CurrentLineIndex = -1;
-        MostRecentLineIndex = -1;
-
+        base.Start();
         _playerControl = new();
-        _playerControl.Dreamworld.Dash.performed += StartDialogue;
         _playerControl.Enable();
+        _playerControl.Dreamworld.Dash.performed += StartDialogue;
 
-        AutoplayEnabled = false;
+        if (PlayDialogueOnStart.Value)
+        {
+            CurrentLineIndex = -1;
+            MostRecentLineIndex = -1;
+
+            AutoplayEnabled = false;
+
+            welcomeMessage.alpha = 0f;
+            timerBar.SetActive(false);
+        } else
+        {
+            welcomeMessage.alpha = 1f;
+            timerBar.SetActive(true);
+        }
     }
 
     private void InitializeUI()
@@ -73,8 +94,15 @@ public class DreamworldDialogueController : DialogueController
     private void StartDialogue(InputAction.CallbackContext ctx)
     {
         _playerControl.Dreamworld.Dash.performed -= StartDialogue;
-        DOTween.Sequence().AppendCallback(() => DreamworldDialogueCanvas.Instance.FadeInInitialDialogue()).
+
+        if (PlayDialogueOnStart.Value)
+        {
+            DOTween.Sequence().AppendCallback(() => DreamworldDialogueCanvas.Instance.FadeInInitialDialogue()).
             InsertCallback(0.85f, () => PlayDialogue(true));
+        } else
+        {
+            OnDialogueEnd.Raise();
+        }
     }
 
     public void PlayDialogue(bool forward)
@@ -86,7 +114,12 @@ public class DreamworldDialogueController : DialogueController
             DOTween.Sequence().
                 Join(DreamworldDialogueCanvas.Instance.GradientCanvasGroup.DOFade(0f, 1.25f)).
                 Join(DreamworldDialogueCanvas.Instance.ContentCanvasGroup.DOFade(0f, 1.25f)).
-                InsertCallback(3f, () => OnDialogueEnd.Raise());
+                InsertCallback(3f, () =>
+                {
+                    OnDialogueEnd.Raise();
+                    welcomeMessage.alpha = 1f;
+                    timerBar.SetActive(true);
+                });
             return;
         }
 
