@@ -31,6 +31,7 @@ public class SceneManagerUtils : ScriptableObject
     }
     public void SetCurrLevel(int level)
     {
+        data.SetCurrentLevel(level);
         PlayerPrefs.SetInt("Level", level);
         PlayerPrefs.Save();
     }
