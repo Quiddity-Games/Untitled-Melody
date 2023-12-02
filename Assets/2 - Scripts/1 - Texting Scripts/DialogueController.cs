@@ -65,7 +65,7 @@ public class DialogueController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public void Initialize(string startingScene = "")
+    public virtual void Initialize(string startingScene = "")
     {
         if (startingScene != "")
         {
