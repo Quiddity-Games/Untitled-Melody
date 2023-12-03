@@ -8,7 +8,7 @@ public class ContrastLayer : MonoBehaviour
     [SerializeField] private BoolVariable _contrastLayerEnabled;
     [SerializeField] private Color[] _contrastLayerColors;
     private int _savedColor;
-    private int _savedOpacity;
+    private float _savedOpacity;
     private SpriteRenderer layerRenderer;
 
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class ContrastLayer : MonoBehaviour
         // Feel free to change it to a number that's easier to save out--I figured whole numbers worked best!
 
         _savedColor = 0;
-        _savedOpacity = 100;
+        _savedOpacity = 60;
 
         layerRenderer.color = new Color
         (
