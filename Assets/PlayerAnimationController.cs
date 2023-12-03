@@ -44,6 +44,7 @@ public class PlayerAnimationController : MonoBehaviour
         _animator.SetBool("Facing Right", spawnRight);
     }
 
+    // Called as a method on the respawn animation clips.
     void FinishRespawnClip()
     {
         RespawnManager.Instance.isRespawning = false;
