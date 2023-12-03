@@ -5011,6 +5011,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1419537991528159929, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457476200865936510, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: spawnFacingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457476201462360081, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: spawnFacingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457476202330194929, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: spawnFacingRight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3431240953116036020, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 3698375941989120677, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3698375942567757152, guid: 14edda66c04767a499174b44908e463d, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -5063,6 +5087,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4230207643599593947, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
     - target: {fileID: 6790578215211028976, guid: 14edda66c04767a499174b44908e463d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5090,6 +5118,30 @@ PrefabInstance:
     - target: {fileID: 6790578216507168172, guid: 14edda66c04767a499174b44908e463d, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7941860176898251660, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327233257189322203, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327233257433862882, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327233257691430769, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8327233258609456607, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
+      objectReference: {fileID: 0}
+    - target: {fileID: 8394417347196194032, guid: 14edda66c04767a499174b44908e463d, type: 3}
+      propertyPath: m_TagString
+      value: Hazard
       objectReference: {fileID: 0}
     - target: {fileID: 8875514550902835673, guid: 14edda66c04767a499174b44908e463d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5264,7 +5316,7 @@ PrefabInstance:
     - target: {fileID: 5448848607272641547, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: pulseArray.Array.data[2].location
       value: 
-      objectReference: {fileID: 1278636056}
+      objectReference: {fileID: 0}
     - target: {fileID: 5574876304252287979, guid: db8d80b228000474281e63751584966c, type: 3}
       propertyPath: m_Name
       value: PerfectPulseController
@@ -5393,18 +5445,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 860600544}
-        m_TargetAssemblyTypeName: RespawnManager, Assembly-CSharp
-        m_MethodName: RespawnPlayer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 860600542}
         m_TargetAssemblyTypeName: CollectionScoreController, Assembly-CSharp
         m_MethodName: HandleDeath
@@ -5430,6 +5470,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 11400000, guid: fb9dc2ba5cbe7f3408e7ba7ba0cf04a4, type: 2}
+  currentCheckpointPosition: {x: 0, y: 0, z: 0}
+  spawnFacingRight: 0
+  isRespawning: 0
 --- !u!4 &860600545
 Transform:
   m_ObjectHideFlags: 0
@@ -5613,11 +5656,6 @@ MonoBehaviour:
 Camera:
   m_CorrespondingSourceObject: {fileID: 3552932544076443333, guid: 21accf9b178a21b439c3d8e8e38da004, type: 3}
   m_PrefabInstance: {fileID: 7846954487564656372}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1278636056 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2551276248485106567, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
-  m_PrefabInstance: {fileID: 2551276249761637279}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1279919913
 PrefabInstance:
@@ -5944,7 +5982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1404364434802123803, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 262.5
       objectReference: {fileID: 0}
     - target: {fileID: 1404364434802123803, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6152,7 +6190,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1685248524722507086, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 1685248524722507086, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6320,7 +6358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1685248525561706782, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 1685248525561706782, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6508,7 +6546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5345494662293511635, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 420
       objectReference: {fileID: 0}
     - target: {fileID: 5345494662293511635, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6528,7 +6566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6713829828938347003, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1660
       objectReference: {fileID: 0}
     - target: {fileID: 6713829828938347003, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7003,6 +7041,10 @@ PrefabInstance:
       propertyPath: _NoteTracker
       value: 
       objectReference: {fileID: 1369963775}
+    - target: {fileID: 2551276249000161898, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: _playerTransform
+      value: 
+      objectReference: {fileID: 1400610321}
     - target: {fileID: 2551276249870710372, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: m_Camera
       value: 
@@ -7027,6 +7069,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4075416629321209146, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: _noteTracker
+      value: 
+      objectReference: {fileID: 1369963775}
     - target: {fileID: 4757164176868499557, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: noteTracker
       value: 
