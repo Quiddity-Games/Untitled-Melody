@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using DG.Tweening;
 
 public class ClickManager : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private float dashForceMultiplier;
     [SerializeField] private float maxDashDistanceMultiplier;
     [SerializeField] private PlayerAnimationController _playerAnim;
+    [SerializeField] private Transform _playerTransform;
 
     [SerializeField] private ParticleSystem ps;
         
@@ -155,10 +157,12 @@ public class ClickManager : MonoBehaviour
         _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
 
         Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
-        Vector3 dashLocation = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 5));
+        Vector2 dashLocation = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
 
         float dashDistance = Mathf.Min(_dash.MaxDashDistance, dashScale * Vector2.Distance(dashLocation, _rigidbody2D.position));
-        float dashForce = dashForceMultiplier * maxDashDistanceMultiplier * dashScale;
+        //float dashForce = dashForceMultiplier * maxDashDistanceMultiplier * dashScale;
+        float dashForce = (dashScale - 0.3f) * Vector2.Distance(dashLocation, _playerTransform.position);
+        float dashEnd = dashScale * Vector2.Distance(dashLocation, _playerTransform.position);
 
         /// Left out intentionally for August 2nd, 2023 (-ish) build. May return to it eventually?
         /// If not, delete entire comment block below and this commented section as well.
@@ -204,7 +208,12 @@ public class ClickManager : MonoBehaviour
 
         _rigidbody2D.gravityScale = 0f;
         _rigidbody2D.velocity = Vector2.zero;
-        _rigidbody2D.AddForce(_dash.Direction * dashForce, ForceMode2D.Impulse);
+        //_rigidbody2D.AddForce(_dash.Direction * dashForce, ForceMode2D.Impulse);
+
+        Vector3 newPosition = _playerTransform.position + new Vector3(_dash.Direction.x * dashForce, _dash.Direction.y * dashForce, 0);
+        Vector3 easePosition = _playerTransform.position + new Vector3(_dash.Direction.x * dashEnd, _dash.Direction.y * dashEnd, 0);
+
+        DOTween.Sequence().Prepend(_rigidbody2D.DOMove(newPosition, 0.1f).SetEase(Ease.InSine)).Append(_rigidbody2D.DOMove(easePosition, 0.25f).SetEase(Ease.OutSine));
 
         _trailRenderer.startColor = Color.yellow;
         _trailRenderer.endColor = Color.yellow;
