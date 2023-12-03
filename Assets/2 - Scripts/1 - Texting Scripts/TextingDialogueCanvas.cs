@@ -64,6 +64,8 @@ public class TextingDialogueCanvas : MonoBehaviour
     public TextMeshProUGUI autoplayText;
     #endregion
 
+    [SerializeField] CanvasGroup fadeCanvasGroup;
+
     #region Hidden Variables
     private float textContainerTop;
     private float textContainerRight;
@@ -96,9 +98,10 @@ public class TextingDialogueCanvas : MonoBehaviour
 
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
+        fadeCanvasGroup.alpha = 1f;
 
         // Show the phone UI after 4 seconds.
-        DOTween.Sequence().InsertCallback(delayBeforeFadeInDuration, ShowDialogueUI);
+        DOTween.Sequence().Insert(1, fadeCanvasGroup.DOFade(0, 1)).InsertCallback(delayBeforeFadeInDuration + 2, ShowDialogueUI);
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
@@ -161,7 +164,7 @@ public class TextingDialogueCanvas : MonoBehaviour
 
     private void EndDialogue()
     {
-        Debug.Log("END TEXTING SCENE");
+        DOTween.Sequence().Insert(0.5f, fadeCanvasGroup.DOFade(1, 1)).AppendCallback(() => TextingLevelLoader.Instance._sceneManagerUtils.AdvanceLevel());
     }
 
     /// <summary>
@@ -250,6 +253,7 @@ public class TextingDialogueCanvas : MonoBehaviour
             && DialogueController.Instance.CurrentLineIndex > DialogueController.Instance.LastLineIndex)
         {
             ContinueDialogueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Finish";
+            autoplaySkipContainer.SetActive(false);
             ContinueDialogueButton.onClick.RemoveAllListeners();
             ContinueDialogueButton.onClick.AddListener(EndDialogue);
             DialogueController.Instance.OnDialogueEnd.Raise();
