@@ -5,27 +5,32 @@ using UnityEngine;
 
 public class RespawnManager : MonoBehaviour
 {
+    public static RespawnManager Instance;
     [SerializeField] private CheckpointSignal checkpoint;
 
-    private Vector3 currentCheckpointPosition;
+    public Vector3 currentCheckpointPosition;
+    public bool spawnFacingRight;
+    public bool isRespawning;
     
     private GameObject _player;
 
     private void Awake()
     {
-        checkpoint.OnCheckpointEnter += UpdateCheckpointPosition;
+        Instance = this;
         _player = GameObject.FindGameObjectWithTag("Player");
-
     }
 
-    public void UpdateCheckpointPosition(Vector3 position)
+    public void UpdateCheckpointPosition(Vector3 position, bool spawnRight)
     {
         currentCheckpointPosition = position;
+        spawnFacingRight = spawnRight;
     }
 
     public void RespawnPlayer()
     {
-        _player.transform.position = new Vector2(Checkpoint.currentCheckpoint.transform.position.x, Checkpoint.currentCheckpoint.transform.position.y);    //Respawns the player at their most recent checkpoint
+        isRespawning = true;
+        _player.transform.position = currentCheckpointPosition; //Respawns the player at their most recent checkpoint
         _player.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        PlayerAnimationController.Instance.PlayRespawn(spawnFacingRight);
     }
 }

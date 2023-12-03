@@ -23,6 +23,7 @@ public class DashTracker : MonoBehaviour
 
     [SerializeField] private DashSounds sounds;
     [SerializeField] private AudioClip wallBumpSound;
+    [SerializeField] private AudioClip deathSound;
 
     private void Start()
     {
@@ -32,23 +33,13 @@ public class DashTracker : MonoBehaviour
 
     private void Awake()
     {
-        //_noteTracker.HitCallback += info => {MoveTracker();};
         _noteTracker.HitCallback += PlaySound;
     }
 
     private void OnDestroy()
     {
-        //_noteTracker.HitCallback -= info => { MoveTracker(); };
         _noteTracker.HitCallback -= PlaySound;
     }
-
-    /*private void MoveTracker()
-    {
-        Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
-        Vector2 dashLocation =
-            Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
-        this.transform.position = dashLocation;
-    }*/
 
     private void PlaySound(NoteTracker.HitInfo hitInfo)
     {
@@ -74,10 +65,14 @@ public class DashTracker : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Wall"))
+        if (!RespawnManager.Instance.isRespawning && col.gameObject.CompareTag("Wall"))
         {
             _wallBumpSource.PlayOneShot(wallBumpSound);
             _animationControl.PlayWallBump();
+        } else if (col.gameObject.tag.Contains("Hazard"))
+        {
+            _wallBumpSource.PlayOneShot(deathSound);
+            RespawnManager.Instance.RespawnPlayer();
         }
     }
 }

@@ -7,8 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Checkpoint : MonoBehaviour
 {
-    public static GameObject currentCheckpoint; //Tracks the player's most recent checkpoint
     ParticleSystem checkPointBurst; //Used to emit a pulse when the player touches a checkpoint
+    public bool spawnFacingRight;
 
     [SerializeField] private CheckpointSignal _checkpointSignal;
 
@@ -29,10 +29,11 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !_used)
         {
-            currentCheckpoint = gameObject; //Sets this checkpoint as the player's most recent checkpoint
             checkPointBurst.Emit(20);
             _used = true;
-            _checkpointSignal.OnCheckpointEnter(transform.position);
+            RespawnManager.Instance.currentCheckpointPosition = transform.position;
+            RespawnManager.Instance.spawnFacingRight = spawnFacingRight;
+
             //"Saves" the progress the player has made in acquiring collectables up until this checkpoint
 
             //GameManager.instance.tempScore = 0; //Scoring/points funtionality removed for now; otherwise, resets the player's "temporary score," meaning they won't lose these points the next time they die
