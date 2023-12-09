@@ -7,34 +7,33 @@ public class PauseController : MonoBehaviour
 {
     private PlayerControl _playerControl;
 
-    [SerializeField] private GameEvent onPause;
-    [SerializeField] private GameEvent onUnpause;
 
-    [SerializeField] private BoolVariable pause;
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        pause.Set(false);
-        pause.OnValueChange += Pause;
-    }
+    [SerializeField] private Rigidbody2D playerBody;
+    [SerializeField] private ClickManager _clickManager;
 
     private void Start()
     {
+        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.PAUSE, Pause);
+
         if (Time.timeScale == 0)
+        {
             Time.timeScale = 1;
+        }
     }
 
-    public void Pause()
+    public void Pause(bool isPaused)
     {
-        if(pause.Value)
+        if(isPaused)
         { 
             Time.timeScale = 0;
-            onPause.Raise();
+            playerBody.Sleep();
         }
         else
         { 
             Time.timeScale = 1;
-            onUnpause.Raise();
+            playerBody.WakeUp();
         }
+        
+        _clickManager.ToggleControls(isPaused);
     }
 }

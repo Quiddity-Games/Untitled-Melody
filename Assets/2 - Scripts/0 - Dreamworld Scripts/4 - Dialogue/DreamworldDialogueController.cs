@@ -60,7 +60,7 @@ public class DreamworldDialogueController : DialogueController
         base.Start();
         _playerControl = new();
         _playerControl.Enable();
-        _playerControl.Dreamworld.Dash.performed += StartDialogue;
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
 
         if (PlayDialogueOnStart.Value)
         {
@@ -91,9 +91,9 @@ public class DreamworldDialogueController : DialogueController
     /// Click to start the dialogue. Unsubscribes the event from input, and fades the canvas in.
     /// </summary>
     /// <param name="ctx"></param>
-    private void StartDialogue(InputAction.CallbackContext ctx)
+    private void StartDialogue()
     {
-        _playerControl.Dreamworld.Dash.performed -= StartDialogue;
+        DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
 
         if (PlayDialogueOnStart.Value)
         {
@@ -101,7 +101,7 @@ public class DreamworldDialogueController : DialogueController
             InsertCallback(0.85f, () => PlayDialogue(true));
         } else
         {
-            OnDialogueEnd.Raise();
+            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.DIALOGUE_END);
         }
     }
 
@@ -116,7 +116,7 @@ public class DreamworldDialogueController : DialogueController
                 Join(DreamworldDialogueCanvas.Instance.ContentCanvasGroup.DOFade(0f, 1.25f)).
                 InsertCallback(3f, () =>
                 {
-                    OnDialogueEnd.Raise();
+                    DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.DIALOGUE_END);
                     welcomeMessage.alpha = 1f;
                     timerBar.SetActive(true);
                 });

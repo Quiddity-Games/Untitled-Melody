@@ -9,9 +9,6 @@ public class Checkpoint : MonoBehaviour
 {
     public static GameObject currentCheckpoint; //Tracks the player's most recent checkpoint
     ParticleSystem checkPointBurst; //Used to emit a pulse when the player touches a checkpoint
-
-    [SerializeField] private CheckpointSignal _checkpointSignal;
-
     private bool _used;
     
     // Start is called before the first frame update
@@ -32,7 +29,8 @@ public class Checkpoint : MonoBehaviour
             currentCheckpoint = gameObject; //Sets this checkpoint as the player's most recent checkpoint
             checkPointBurst.Emit(20);
             _used = true;
-            _checkpointSignal.OnCheckpointEnter(transform.position);
+            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.CHECKPOINT_ENTER);
+            DreamworldEventManager.Instance.CallVector3Event(DreamworldVector3EventEnum.CHECKPOINT_POSITION, transform.position);
             //"Saves" the progress the player has made in acquiring collectables up until this checkpoint
 
             //GameManager.instance.tempScore = 0; //Scoring/points funtionality removed for now; otherwise, resets the player's "temporary score," meaning they won't lose these points the next time they die

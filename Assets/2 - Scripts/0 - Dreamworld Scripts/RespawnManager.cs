@@ -5,17 +5,23 @@ using UnityEngine;
 
 public class RespawnManager : MonoBehaviour
 {
-    [SerializeField] private CheckpointSignal checkpoint;
 
     private Vector3 currentCheckpointPosition;
     
     private GameObject _player;
 
+    [SerializeField] private AudioSource onDeathSound;
+
     private void Awake()
     {
-        checkpoint.OnCheckpointEnter += UpdateCheckpointPosition;
         _player = GameObject.FindGameObjectWithTag("Player");
+    }
 
+    public void Start()
+    {
+        DreamworldEventManager.Instance.RegisterVector3EventResponse(DreamworldVector3EventEnum.CHECKPOINT_POSITION, UpdateCheckpointPosition);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, RespawnPlayer);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, onDeathSound.Play);
     }
 
     public void UpdateCheckpointPosition(Vector3 position)

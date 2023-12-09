@@ -36,6 +36,8 @@ public class ParallaxScroller : MonoBehaviour
             case ScrollBehaviour.None:
                 break;
         }
+        
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.GAME_START, StartScrollY);
     }
 
     // Update is called once per frame

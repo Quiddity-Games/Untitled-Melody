@@ -10,13 +10,10 @@ public class AudioPlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        songPlayer.volume = .5f;
-        volume.OnValueChange += UpdateVolume;
-    }
-
-    public void UpdateVolume()
-    {
-        songPlayer.volume = Mathf.Clamp(volume.Value, 0, 1);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(
+            DreamworldVoidEventEnum.GAME_START, Play);
+        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.PAUSE,
+            TogglePause);
     }
 
     public void Play()
@@ -24,8 +21,15 @@ public class AudioPlayerController : MonoBehaviour
         songPlayer.Play();
     }
 
-    public void Pause()
+    public void TogglePause(bool isPaused)
     {
-        songPlayer.Pause();
+        if (isPaused)
+        {
+            songPlayer.Pause();
+        }
+        else
+        {
+            songPlayer.UnPause();
+        }
     }
 }

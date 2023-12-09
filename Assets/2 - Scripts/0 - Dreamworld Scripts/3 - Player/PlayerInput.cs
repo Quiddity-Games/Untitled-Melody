@@ -9,20 +9,29 @@ public class PlayerInput : MonoBehaviour
 {
     private PlayerControl _playerControl;
 
-    [SerializeField] private BoolVariable PauseValue;
 
     private void Start()
     {
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Pause.performed += PauseOnPerformed;
+        _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
         _playerControl.Enable();
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_PAUSE, HandlePause);
     }
 
+    public void HandlePause()
+    {
+        DreamworldEventManager.Instance.CallBoolEvent(DreamworldBoolEventEnum.PAUSE, true);
+    }
+
+    private void DashOnPerformed(InputAction.CallbackContext obj)
+    {
+        DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_DASH);
+    }
     private void PauseOnPerformed(InputAction.CallbackContext obj)
     {
-  
-            PauseValue.Value = !PauseValue.Value;
-          }
+        DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
+    }
 
     private void OnDestroy()
     {

@@ -7,8 +7,6 @@ using UnityEngine;
 public class CollectionScoreController : MonoBehaviour
 {
 
-    [SerializeField] private CheckpointSignal checkpointSignal;
-    [SerializeField] private CollectionSignal signal;
     // Start is called before the first frame update
     
     private int numCollectables = 0; //Total number of collectables in the level
@@ -20,48 +18,47 @@ public class CollectionScoreController : MonoBehaviour
     [SerializeField] private CollectableUI _ui;
     [SerializeField] private CollectionResetter resetter;
     [SerializeField] private EndScreenController endScreen;
-    [SerializeField] private CollectableInfo endInfo;
-    [SerializeField] private GameEvent onGameEnd;
+    private CollectableInfo endInfo;
     void Awake()
     {
+        endInfo = new CollectableInfo();
         numCollectables = 0;
         numCollected = 0;
         tempNumCollected = 0;
         endInfo.ResetValues();
-        signal.Register += () => { 
+    }
+
+    public CollectableInfo GetCollectionStats()
+    {
+        return endInfo;
+    }
+    
+    public void Start()
+    {
+       
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, HandleDeath);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.REGISTER_COLLECTABLE, () => { 
             numCollectables += 1;
             UpdateInfo();
-         };
-        signal.SendCollect += HandleCollection;
-        checkpointSignal.OnCheckpointEnter += value =>
-        {
-            RecordCurrentCollection();
-        };
-    }
+        });
+      
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COLLECT, HandleCollection);
 
-    private void OnDestroy()
-    {
-        signal.SendCollect = collectable => { };
-        signal.Register = () => {  };
-        checkpointSignal.OnCheckpointEnter = value => { };
-
-    }
-
-    private void Start()
-    {
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(
+            DreamworldVoidEventEnum.CHECKPOINT_ENTER, RecordCurrentCollection);
         UpdateInfo();
     }
 
-    void HandleCollection(Collectable collect)
+    void HandleCollection()
     {
         UpdateCount();
         UpdateInfo();
         sound.PlaySound();
-        resetter.RegisterTemp(collect);
         if (numCollected + tempNumCollected >= numCollectables)
         {
             RecordCurrentCollection();
-            onGameEnd.Raise();
+            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
+            DreamworldEventManager.Instance.CallBoolEvent(DreamworldBoolEventEnum.PAUSE, true);
         }
     }
 

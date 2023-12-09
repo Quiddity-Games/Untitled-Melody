@@ -66,7 +66,7 @@ public class ClickManager : MonoBehaviour
         _NoteTracker.HitCallback += HandleDash;
 
     }
-    private void Start()
+    public void Start()
     {
         _dash = new Dash(_rigidbody2D);
         _cameraFollow = Camera.main.GetComponent<CameraFollow>();
@@ -78,24 +78,28 @@ public class ClickManager : MonoBehaviour
             return obj;
         }, item => { item.SetActive(false); });
         _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, DashOnPerformed);
         _playerControl.Dreamworld.Enable();
+        
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COUNTDOWN_FINISH, EnableDash);
     }
 
     private void OnDestroy()
     {
-        _playerControl.Dreamworld.Dash.performed -= DashOnPerformed;
+        if(DreamworldEventManager.Instance != null)
+        {
+            DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, DashOnPerformed);
+        }
     }
 
-    private void DashOnPerformed(InputAction.CallbackContext obj)
+    private void DashOnPerformed()
     {
         if(canDash && dashEnabled){
             HandleClick();
             canDash = false;
         }
     }
-
-
+    
     public void ToggleControls(bool value)
     {
         if(value)
@@ -109,6 +113,7 @@ public class ClickManager : MonoBehaviour
             _playerControl.Dreamworld.Disable();
         }
     }
+    
     public void EnableDash()
     {
         dashEnabled = true;

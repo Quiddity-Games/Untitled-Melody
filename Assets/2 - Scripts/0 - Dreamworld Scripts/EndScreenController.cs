@@ -19,7 +19,7 @@ public class EndScreenController : MonoBehaviour
 
     [SerializeField] private GameObject EndScreenMenu;
 
-    [SerializeField] private CollectableInfo info;
+    [SerializeField] private CollectionScoreController collectionScore;
     
     [Serializable] 
     private struct EndScreenSprites
@@ -34,10 +34,12 @@ public class EndScreenController : MonoBehaviour
     private void Start()
     {
         EndScreenMenu.SetActive(false);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.GAME_END, LoadEndScreen);
     }
-
+    
     public void LoadEndScreen()
     {
+        CollectableInfo info = collectionScore.GetCollectionStats();
         int required = info.requiredCollectables;
         int max = info.totalCollectables;
         int obtained = info.obtainedCollectables;
@@ -77,10 +79,5 @@ public class EndScreenController : MonoBehaviour
     public void HideLoadScreen()
     {
         EndScreenMenu.SetActive(false);
-    }
-
-    public void Pause()
-    {
-        Time.timeScale = 0;
-    }
+    } 
 }
