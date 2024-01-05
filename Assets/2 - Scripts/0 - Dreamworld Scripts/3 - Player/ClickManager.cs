@@ -104,13 +104,13 @@ public class ClickManager : MonoBehaviour
     {
         if(value)
         {
-            CursorTransform.gameObject.SetActive(true);
-            _playerControl.Dreamworld.Enable();
+            CursorTransform.gameObject.SetActive(false);
+            _playerControl.Dreamworld.Disable();
         }
         else
         {
-            CursorTransform.gameObject.SetActive(false);
-            _playerControl.Dreamworld.Disable();
+            CursorTransform.gameObject.SetActive(true);
+            _playerControl.Dreamworld.Enable();
         }
     }
     
