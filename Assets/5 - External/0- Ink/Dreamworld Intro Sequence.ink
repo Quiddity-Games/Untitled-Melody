@@ -1,6 +1,7 @@
 -> Scene_1
 === Scene_1 ===
 ... #Speaker: Amika
+Where am I? #Speaker: Amika
 This looks like outer space... #Speaker: Amika
 Hi, Amika! Do you remember me? #Speaker: Memi
 Memi? But you’re not real! Is this a dream? #Speaker: Amika
