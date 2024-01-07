@@ -20,7 +20,6 @@ public class TextingDialogueCanvas : MonoBehaviour
 
     #region Variables: Buttons
     [Header("Buttons")]
-    [SerializeField] Button autoskipMenuButton;
     public Button ContinueDialogueButton;
     [SerializeField] TextOptionUI[] dialogueOptions;
     #endregion
@@ -49,6 +48,7 @@ public class TextingDialogueCanvas : MonoBehaviour
     [Header("Phone UI: Timers")]
     [SerializeField] float canvasFadeDuration;
     [SerializeField] float startDelayDuration;
+    [SerializeField] float delayBeforeFadeInDuration;
     #endregion
 
     #region Variables: Typing Bubbles
@@ -98,7 +98,7 @@ public class TextingDialogueCanvas : MonoBehaviour
         headerCanvasGroup.alpha = 0f;
 
         // Show the phone UI after 4 seconds.
-        DOTween.Sequence().InsertCallback(3f, ShowDialogueUI);
+        DOTween.Sequence().InsertCallback(delayBeforeFadeInDuration, ShowDialogueUI);
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
@@ -121,7 +121,6 @@ public class TextingDialogueCanvas : MonoBehaviour
     {
         // Give functions to buttons.
         ContinueDialogueButton.onClick.AddListener(PlayDialogue);
-        autoskipMenuButton.onClick.AddListener(delegate { AutoplaySkipUI.Instance.DisplayAutoplayMenu(true); });
     }
 
     /// <summary>
@@ -154,6 +153,9 @@ public class TextingDialogueCanvas : MonoBehaviour
                 AutoplayDialogue();
             else
                 PlayDialogue();
+
+            AutoplaySkipUI.Instance.autoplayToggleButton.interactable = true;
+            AutoplaySkipUI.Instance.skipToChoiceButton.interactable = true;
         });
     }
 

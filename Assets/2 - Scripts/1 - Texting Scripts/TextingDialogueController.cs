@@ -71,7 +71,6 @@ public class TextingDialogueController : DialogueController
     public void SelectPlatform()
     {
         dialogueCanvas.ResizeCanvasForPlatform(ScreenAspectRatio.AspectRatio);
-        autoplaySkipUI.ResizeMenuForPlatform(ScreenAspectRatio.AspectRatio);
     }
 
     /// <summary>
@@ -187,7 +186,6 @@ public class TextingDialogueController : DialogueController
     {
         List<TextBubbleUI> bubblesBeforeChoice = BubblesBeforeChoice;
         Story inkStory = InkStory;
-        AutoplaySkipUI.Instance.DisplayAutoplayMenu(false);
 
         if (bubblesBeforeChoice.Count > 0)
         {

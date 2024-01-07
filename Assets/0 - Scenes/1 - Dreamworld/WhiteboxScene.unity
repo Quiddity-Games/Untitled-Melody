@@ -5944,7 +5944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1404364434802123803, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 262.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1404364434802123803, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6152,7 +6152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1685248524722507086, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 420
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1685248524722507086, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6320,7 +6320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1685248525561706782, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 420
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1685248525561706782, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6508,7 +6508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5345494662293511635, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 420
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5345494662293511635, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6528,7 +6528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6713829828938347003, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1660
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6713829828938347003, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6582,6 +6582,11 @@ Transform:
 --- !u!1 &1456286030 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1685248524836998104, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
+  m_PrefabInstance: {fileID: 1279919913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1456286032 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 6473419014288494393, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
   m_PrefabInstance: {fileID: 1279919913}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1459675651
@@ -7473,6 +7478,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 5d756fc296facb342b126133083d87f4, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9fe4e2201ab83641b9e33c979e9c132, type: 3}
+--- !u!1 &1503258367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1685248524637018023, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
+  m_PrefabInstance: {fileID: 1279919913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1549230973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1511328370157309602, guid: 61163b962390de94aa1cfe4b07277ee9, type: 3}
@@ -8315,6 +8325,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8659275533931986210, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
+      propertyPath: timerBar
+      value: 
+      objectReference: {fileID: 1503258367}
+    - target: {fileID: 8659275533931986210, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
+      propertyPath: welcomeMessage
+      value: 
+      objectReference: {fileID: 1456286032}
+    - target: {fileID: 8659275533931986210, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
+      propertyPath: PlayDialogueOnStart
+      value: 
+      objectReference: {fileID: 11400000, guid: 1de38bef54c64c846b80e7fb965fe6bf, type: 2}
     - target: {fileID: 8659275533931986233, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_Name
       value: Dreamworld Dialogue Canvas
