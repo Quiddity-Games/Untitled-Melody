@@ -12,7 +12,7 @@ public class AudioPlayerController : MonoBehaviour
     {
         DreamworldEventManager.Instance.RegisterVoidEventResponse(
             DreamworldVoidEventEnum.GAME_START, Play);
-        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.PAUSE,
+        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED,
             TogglePause);
     }
 

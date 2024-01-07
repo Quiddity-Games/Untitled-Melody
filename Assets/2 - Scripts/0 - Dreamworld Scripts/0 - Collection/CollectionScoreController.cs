@@ -58,7 +58,7 @@ public class CollectionScoreController : MonoBehaviour
         {
             RecordCurrentCollection();
             DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
-            DreamworldEventManager.Instance.CallBoolEvent(DreamworldBoolEventEnum.PAUSE, true);
+            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
         }
     }
 

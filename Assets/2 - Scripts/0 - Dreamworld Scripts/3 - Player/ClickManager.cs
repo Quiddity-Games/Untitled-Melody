@@ -19,7 +19,7 @@ public class ClickManager : MonoBehaviour
         {
             get
             {
-                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(_playerControl.Dreamworld.MousePosition.ReadValue<Vector2>()) - _rigidbody2D.position;
+                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(PlayerInput.GetMousePosition()) - _rigidbody2D.position;
                 dashDirection.Normalize();
                 return dashDirection;
             }

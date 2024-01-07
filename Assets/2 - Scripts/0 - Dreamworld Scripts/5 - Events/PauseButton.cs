@@ -17,6 +17,8 @@ public class PauseButton : MonoBehaviour
     // Update is called once per frame
     void Pause()
     {
-        DreamworldEventManager.Instance.CallBoolEvent(DreamworldBoolEventEnum.PAUSE,value);
+        DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
     }
+
+  
 }

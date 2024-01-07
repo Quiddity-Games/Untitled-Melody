@@ -32,7 +32,7 @@ public class BeatTracker : MonoBehaviour
         countdownStarted = false;
         enableCount = true;
         instance = this;
-        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.PAUSE, Pause);
+        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, Pause);
         DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DIALOGUE_END, SetGameReady);
     }
 
@@ -66,7 +66,7 @@ public class BeatTracker : MonoBehaviour
             if (_noteTracker.timeTracker >= _noteTracker.totalTime)
             {
                 DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
-                DreamworldEventManager.Instance.CallBoolEvent(DreamworldBoolEventEnum.PAUSE, true);
+                DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
                 enableCount = false;
                 return;
             }

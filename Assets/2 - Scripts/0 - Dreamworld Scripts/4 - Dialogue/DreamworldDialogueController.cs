@@ -21,7 +21,6 @@ public class DreamworldDialogueController : DialogueController
     #region Variables
     public static DreamworldDialogueController DreamworldUI;
     public int MostRecentLineIndex;
-    private PlayerControl _playerControl;
 
     [Header("Show On Dialogue End")]
     [SerializeField] CanvasGroup welcomeMessage;
@@ -58,8 +57,7 @@ public class DreamworldDialogueController : DialogueController
     public override void Start()
     {
         base.Start();
-        _playerControl = new();
-        _playerControl.Enable();
+
         DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
 
         if (PlayDialogueOnStart.Value)

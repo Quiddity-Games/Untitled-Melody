@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using RoboRyanTron.Unite2017.Events;
 using UnityEngine;
 
-public class PauseController : MonoBehaviour
+public class PlayerPause : MonoBehaviour
 {
-    private PlayerControl _playerControl;
 
 
     [SerializeField] private Rigidbody2D playerBody;
@@ -13,7 +12,7 @@ public class PauseController : MonoBehaviour
 
     private void Start()
     {
-        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.PAUSE, Pause);
+        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, Pause);
 
         if (Time.timeScale == 0)
         {
@@ -27,11 +26,13 @@ public class PauseController : MonoBehaviour
         { 
             Time.timeScale = 0;
             playerBody.Sleep();
+            PlayerInput.ToggleInput(false);
         }
         else
         { 
             Time.timeScale = 1;
             playerBody.WakeUp();
+            PlayerInput.ToggleInput(true);
         }
         
         _clickManager.ToggleControls(isPaused);

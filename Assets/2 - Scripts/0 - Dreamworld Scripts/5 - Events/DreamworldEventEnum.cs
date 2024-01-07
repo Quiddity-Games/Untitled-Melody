@@ -10,7 +10,8 @@ public enum DreamworldVoidEventEnum
     COUNTDOWN_FINISH,
     INPUT_DASH,
     INPUT_PAUSE,
-    REGISTER_COLLECTABLE
+    REGISTER_COLLECTABLE,
+    INPUT_RELOAD
 }
 
 public enum DreamworldVector3EventEnum
@@ -20,7 +21,7 @@ public enum DreamworldVector3EventEnum
 
 public enum DreamworldBoolEventEnum
 {
-    PAUSE
+    ISPAUSED
 }
 
 public enum DreamworldEventResponseType

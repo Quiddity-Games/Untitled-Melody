@@ -5525,6 +5525,7 @@ GameObject:
   - component: {fileID: 860600541}
   - component: {fileID: 860600546}
   - component: {fileID: 860600547}
+  - component: {fileID: 860600548}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -5700,6 +5701,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectionSound: {fileID: 8300000, guid: f73431488f33ff74bad31d3d2ca97a07, type: 3}
+--- !u!114 &860600548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860600540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49490a5dc7c0fa547a2ddf79153febf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &869773155
 GameObject:
   m_ObjectHideFlags: 0
@@ -10045,6 +10058,7 @@ GameObject:
   - component: {fileID: 1685248524848619120}
   - component: {fileID: 8757279503748531367}
   - component: {fileID: 8757279503748531366}
+  - component: {fileID: 8757279503748531368}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -11767,7 +11781,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1400610318}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c51ee1fbc488b49a2763d5d88e79fe, type: 3}
+  m_Script: {fileID: 11500000, guid: d76c15f39fb341a48acaf9b91ce6cbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1400610322}
@@ -14210,35 +14224,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 292492122866583111, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 292492122866583111, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 292492122866583111, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 292492122866583111, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 337265794943542063, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 337265794943542063, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 337265794943542063, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 337265794943542063, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5222081029957902575, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -14266,19 +14280,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5229559635060946420, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5229559635060946420, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5229559635060946420, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5229559635060946420, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8553811746568072374, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: m_SizeDelta.x
@@ -14504,6 +14518,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_button: {fileID: 1685248524848619120}
   value: 1
+--- !u!114 &8757279503748531368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1685248524848619022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1a0cce874679c14d81e69fc5953dee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8789452933911328152
 MonoBehaviour:
   m_ObjectHideFlags: 0
