@@ -37,8 +37,12 @@ public class Checkpoint : MonoBehaviour
 
             checkPointBurst.Emit(20);
             _used = true;
+
+            CollectionScoreController.Instance.RecordCurrentCollection();
+
             RespawnManager.Instance.currentCheckpoint = this;
             RespawnManager.Instance.spawnFacingRight = spawnFacingRight;
+
             curtainAnimator.SetTrigger("Activated");
             DOTween.Sequence().InsertCallback(2f, () => curtainAnimator.gameObject.SetActive(false));
         }

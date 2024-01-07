@@ -9,6 +9,7 @@ using DG.Tweening;
 public class ScoreBubbleUI : MonoBehaviour
 {
     [SerializeField] NoteTracker noteTracker;
+    [SerializeField] HitRatingColorSet hitRatingColors;
 
     [SerializeField] TextMeshProUGUI ratingText;
     [SerializeField] TextMeshProUGUI timingText;
@@ -27,16 +28,13 @@ public class ScoreBubbleUI : MonoBehaviour
     {
         scoreBubbleAnimator = GetComponent<Animator>();
         scoreBubbleImage = GetComponent<Image>();
-        //originalPos = (transform as RectTransform).anchoredPosition;
         timingObject = timingText.gameObject;
     }
 
 
     void ShowScoreBubble(NoteTracker.HitInfo hitInfo)
     {
-        //(transform as RectTransform).anchoredPosition = originalPos; // Set bubble to original position.
-
-        // Reset the animation triggers on dash.
+        // Play the animation on dash.
         scoreBubbleAnimator.SetTrigger("PopIn");
 
         // Set timing text. If PERFECT, do not display text.
@@ -44,11 +42,11 @@ public class ScoreBubbleUI : MonoBehaviour
         {
             case NoteTracker.BeatTiming.EARLY:
                 timingText.text = "(Early)";
-                timingObject.SetActive(true);
+                //timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatTiming.LATE:
                 timingText.text = "(Late)";
-                timingObject.SetActive(true);
+                //timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatTiming.PERFECT:
                 break;
@@ -59,18 +57,27 @@ public class ScoreBubbleUI : MonoBehaviour
         {
             case NoteTracker.BeatRating.MISS:
                 ratingText.text = "Miss...";
+                ratingText.color = hitRatingColors.MissTextColor;
+                scoreBubbleImage.color = hitRatingColors.MissBackgroundColor;
+                timingText.color = hitRatingColors.MissTimingTextColor;
                 timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatRating.GOOD:
                 ratingText.text = "Good!";
+                ratingText.color = hitRatingColors.GoodTextColor;
+                scoreBubbleImage.color = hitRatingColors.GoodBackgroundColor;
                 timingObject.SetActive(false);
                 break;
             case NoteTracker.BeatRating.GREAT:
                 ratingText.text = "Great!!";
+                ratingText.color = hitRatingColors.GreatTextColor;
+                scoreBubbleImage.color = hitRatingColors.GreatBackgroundColor;
                 timingObject.SetActive(false);
                 break;
             case NoteTracker.BeatRating.PERFECT:
                 ratingText.text = "Perfect!!!";
+                ratingText.color = hitRatingColors.PerfectTextColor;
+                scoreBubbleImage.color = hitRatingColors.PerfectBackgroundColor;
                 timingObject.SetActive(false);
                 break;
         }
