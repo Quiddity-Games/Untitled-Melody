@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d4213af3c18b3e489cc689739ef1b87, type: 3}
   m_Name: AccSettings
   m_EditorClassIdentifier: 
-  Constant: 0
-  Occasional: 1
-  Off: 0
-  SecondaryBars: 0
+  metronomeMode: 0
+  SecondaryBars: 1
   MetronomeBlink: 0

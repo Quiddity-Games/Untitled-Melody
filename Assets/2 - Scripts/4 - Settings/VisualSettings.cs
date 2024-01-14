@@ -10,12 +10,15 @@ public class VisualSettings : ScriptableObject
     public bool Shake;
     public bool AnimatedBackground;
     public float Contrast;
+
+    public OnSettingUpdate onUpdate;
    
    public void ApplySettings()
    {
         //TODO: ScreenShakeManager
         //TODO: AnimatedBackgroundManager
         Screen.fullScreen = !Windowed;
+        onUpdate?.Invoke();
    }
 
    public void SaveSettings()

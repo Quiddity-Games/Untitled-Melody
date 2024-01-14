@@ -8,9 +8,12 @@ public class AccSettings : ScriptableObject
     public MetronomeMode metronomeMode;
     public bool SecondaryBars;
     public bool MetronomeBlink;
+
+    public OnSettingUpdate onUpdate;
+
     public void ApplySettings()
     {
-        
+        onUpdate?.Invoke();
     }
 
    public void SaveSettings()

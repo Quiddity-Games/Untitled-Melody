@@ -19,6 +19,16 @@ public class BlinkController : MonoBehaviour
     void Start()
     {
         originalMaterial = cursor.material;
+        SettingsManager.Instance().GetAccSettings().onUpdate += HandleBlinkSetting;
+        HandleBlinkSetting();
+
+    }
+
+ 
+
+    void HandleBlinkSetting()
+    {
+        Toggle(SettingsManager.Instance().GetAccSettings().MetronomeBlink);
     }
 
     // Start is called before the first frame update

@@ -41,8 +41,18 @@ public class MetronomeBarController : MonoBehaviour
     void Awake()
     {
         _NoteTracker.onLoad += Init;
+        SettingsManager.Instance().GetAccSettings().onUpdate += HandleBarSetting;
     }
 
+    void Start()
+    {
+        HandleBarSetting();
+    }
+
+    public void HandleBarSetting()
+    {
+        Toggle(SettingsManager.Instance().GetAccSettings().SecondaryBars);
+    }
     public void Toggle(bool enabled)
     {
         if (enabled)
