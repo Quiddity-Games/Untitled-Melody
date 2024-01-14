@@ -27,6 +27,7 @@ public class AVSettingsMenu : MonoBehaviour
         this.avSettings.musicVol = this.bgm.value;
         this.avSettings.sfxVol = this.sfx.value; 
         this.avSettings.ApplySettings();
+        SaveSettings();
     }
 
       public void SaveSettings()

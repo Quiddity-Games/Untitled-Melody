@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0b6b3caee0baa4e9cb02e75f4a799a, type: 3}
   m_Name: VisualSettings
   m_EditorClassIdentifier: 
-  Windowed: 0
-  Shake: 0
-  AnimatedBackground: 0
-  Contrast: 0
+  Windowed: 1
+  Shake: 1
+  AnimatedBackground: 1
+  Contrast: 0.5

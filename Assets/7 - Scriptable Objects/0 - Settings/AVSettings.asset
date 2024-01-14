@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 739365c4eac6f6e44be8843145b6d6f9, type: 3}
   m_Name: AVSettings
   m_EditorClassIdentifier: 
-  musicVol: 1
-  sfxVol: 1
+  musicVol: 0.45011574
+  sfxVol: 0.4217009
+  audioMixer: {fileID: 24100000, guid: fbe4116ad5e163945a8493ce0951b54e, type: 2}

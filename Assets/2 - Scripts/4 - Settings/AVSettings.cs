@@ -11,13 +11,12 @@ public class AVSettings : ScriptableObject
   public float musicVol = 1f;
   [Range(0.0f, 1f)]
   public float sfxVol = 1f;
-    [SerializeField] private AudioMixer sfxMixer;
-    [SerializeField] private AudioMixer musicMixer;
+    [SerializeField] private AudioMixer audioMixer;
 
     public void ApplySettings()
     {
-      musicMixer.SetFloat("musicVol", Mathf.Log10(musicVol)*20);
-      sfxMixer.SetFloat("soundVol", Mathf.Log10(sfxVol)*20);
+      audioMixer.SetFloat("musicVol", Mathf.Log10(musicVol)*20);
+      audioMixer.SetFloat("soundVol", Mathf.Log10(sfxVol)*20);
     }
 
     public void SaveSettings()

@@ -36,6 +36,7 @@ public class VisualSettingsMenu : MonoBehaviour
         visual.AnimatedBackground = AnimatedBackgroundToggle.isOn;
         visual.Contrast = ContrastSlider.value;
         this.visual.ApplySettings();
+        SaveSettings();
     }
 
       public void SaveSettings()
