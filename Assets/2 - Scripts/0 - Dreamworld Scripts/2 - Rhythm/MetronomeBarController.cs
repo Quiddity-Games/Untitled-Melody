@@ -41,11 +41,11 @@ public class MetronomeBarController : MonoBehaviour
     void Awake()
     {
         _NoteTracker.onLoad += Init;
-        SettingsManager.Instance().GetAccSettings().onUpdate += HandleBarSetting;
     }
 
     void Start()
     {
+        SettingsManager.Instance().GetAccSettings().onUpdate += HandleBarSetting;
         HandleBarSetting();
     }
 
