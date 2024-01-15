@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class CollectionScoreController : MonoBehaviour
 {
+    public static CollectionScoreController Instance;
 
     // Start is called before the first frame update
     
@@ -22,6 +23,8 @@ public class CollectionScoreController : MonoBehaviour
     void Awake()
     {
         endInfo = new CollectableInfo();
+        Instance = this;
+
         numCollectables = 0;
         numCollected = 0;
         tempNumCollected = 0;
@@ -51,7 +54,7 @@ public class CollectionScoreController : MonoBehaviour
 
     void HandleCollection()
     {
-        UpdateCount();
+        tempNumCollected++;
         UpdateInfo();
         sound.PlaySound();
         if (numCollected + tempNumCollected >= numCollectables)
@@ -73,10 +76,6 @@ public class CollectionScoreController : MonoBehaviour
     {
         endInfo.UpdateValues(numCollected + tempNumCollected, requiredNumCollected, numCollectables);
         _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables, tempNumCollected);
-    }
-    void UpdateCount()
-    {
-        tempNumCollected += 1;
     }
 
     public void RecordCurrentCollection()

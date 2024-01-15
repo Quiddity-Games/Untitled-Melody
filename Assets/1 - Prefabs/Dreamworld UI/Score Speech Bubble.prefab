@@ -389,8 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteTracker: {fileID: 0}
-  offsetDuration: 0.8
-  verticalOffset: 110
+  hitRatingColors: {fileID: 11400000, guid: 76095062567336f4c8c6e1d1ec3a91f7, type: 2}
   ratingText: {fileID: 7017491841843185736}
   timingText: {fileID: 5890495262372042232}
 --- !u!1 &8119958455621005231

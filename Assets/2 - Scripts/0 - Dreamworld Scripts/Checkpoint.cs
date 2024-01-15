@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 /// <summary>
 /// Responsible for the behavior of -- and attached to -- checkpoints.
 /// </summary>
 public class Checkpoint : MonoBehaviour
 {
-    public static GameObject currentCheckpoint; //Tracks the player's most recent checkpoint
     ParticleSystem checkPointBurst; //Used to emit a pulse when the player touches a checkpoint
+    public bool spawnFacingRight;
+
+    [SerializeField] private CheckpointSignal _checkpointSignal;
+    [SerializeField] private Animator curtainAnimator;
+    [SerializeField] private SpriteRenderer starsSprite;
+
     private bool _used;
     
     // Start is called before the first frame update
@@ -26,14 +32,30 @@ public class Checkpoint : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !_used)
         {
-            currentCheckpoint = gameObject; //Sets this checkpoint as the player's most recent checkpoint
+            if (RespawnManager.Instance.currentCheckpoint != null)
+                RespawnManager.Instance.currentCheckpoint.DisableStars();
+
             checkPointBurst.Emit(20);
             _used = true;
             DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.CHECKPOINT_ENTER);
             DreamworldEventManager.Instance.CallVector3Event(DreamworldVector3EventEnum.CHECKPOINT_POSITION, transform.position);
             //"Saves" the progress the player has made in acquiring collectables up until this checkpoint
 
-            //GameManager.instance.tempScore = 0; //Scoring/points funtionality removed for now; otherwise, resets the player's "temporary score," meaning they won't lose these points the next time they die
+            CollectionScoreController.Instance.RecordCurrentCollection();
+
+            RespawnManager.Instance.currentCheckpoint = this;
+            RespawnManager.Instance.spawnFacingRight = spawnFacingRight;
+
+            curtainAnimator.SetTrigger("Activated");
+            DOTween.Sequence().InsertCallback(2f, () => curtainAnimator.gameObject.SetActive(false));
         }
+    }
+
+    /// <summary>
+    /// Disable the stars animation when a new checkpoint overwrites the current one.
+    /// </summary>
+    public void DisableStars()
+    {
+        DOTween.Sequence().Append(starsSprite.DOFade(0, 0.6f)).AppendCallback(() => starsSprite.gameObject.SetActive(false));
     }
 }
