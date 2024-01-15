@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicVol: 0.45011574
   sfxVol: 0.4217009
-  audioMixer: {fileID: 24100000, guid: fbe4116ad5e163945a8493ce0951b54e, type: 2}
+  musicMixer: {fileID: 24100000, guid: ddbebed5f24d3bc4b924e9cedc83681c, type: 2}
+  sfxMixer: {fileID: 24100000, guid: 2037481768562b14190a08d61e4d05ff, type: 2}

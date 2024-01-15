@@ -7957,10 +7957,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3844147961925535668, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2037481768562b14190a08d61e4d05ff, type: 2}
     - target: {fileID: 4075416629321209146, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: _noteTracker
       value: 
       objectReference: {fileID: 1369963775}
+    - target: {fileID: 4679845377381216543, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2037481768562b14190a08d61e4d05ff, type: 2}
     - target: {fileID: 4757164176868499557, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: noteTracker
       value: 
@@ -8097,7 +8105,7 @@ PrefabInstance:
     - target: {fileID: 6253987248133151832, guid: 2b4410d038db77c4487f73ae2bded5bc, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
-      objectReference: {fileID: 24300002, guid: fbe4116ad5e163945a8493ce0951b54e, type: 2}
+      objectReference: {fileID: 24300002, guid: ddbebed5f24d3bc4b924e9cedc83681c, type: 2}
     - target: {fileID: 6253987248133151834, guid: 2b4410d038db77c4487f73ae2bded5bc, type: 3}
       propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

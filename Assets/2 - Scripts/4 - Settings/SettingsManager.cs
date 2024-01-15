@@ -21,6 +21,10 @@ public class SettingsManager : MonoBehaviour
         { 
             _Instance = this; 
         } 
+
+        accSettings.ApplySettings();
+        aVSettings.ApplySettings();
+        visual.ApplySettings();
     }
     public static SettingsManager Instance()
     {
