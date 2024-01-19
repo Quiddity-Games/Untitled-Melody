@@ -580,6 +580,7 @@ MonoBehaviour:
   dashForceMultiplier: 6
   maxDashDistanceMultiplier: 6
   _playerAnim: {fileID: 7924770680862837554}
+  _playerTransform: {fileID: 2551276248396823950}
   ps: {fileID: 0}
   CursorTransform: {fileID: 8964921491702891917}
   _NoteTracker: {fileID: 0}
