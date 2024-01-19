@@ -108,11 +108,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1698
-        width: 502
+        y: 849
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -128,12 +128,12 @@ TextureImporter:
       name: Amika_RespawnLeft_1
       rect:
         serializedVersion: 2
-        x: 502
-        y: 1698
-        width: 502
+        x: 600
+        y: 849
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -149,12 +149,12 @@ TextureImporter:
       name: Amika_RespawnLeft_2
       rect:
         serializedVersion: 2
-        x: 1004
-        y: 1698
-        width: 502
+        x: 1200
+        y: 849
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -170,12 +170,12 @@ TextureImporter:
       name: Amika_RespawnLeft_3
       rect:
         serializedVersion: 2
-        x: 1506
-        y: 1698
-        width: 502
+        x: 1800
+        y: 849
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -191,12 +191,12 @@ TextureImporter:
       name: Amika_RespawnLeft_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 2400
         y: 849
-        width: 502
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: Amika_RespawnLeft_5
       rect:
         serializedVersion: 2
-        x: 502
+        x: 3000
         y: 849
-        width: 502
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,12 +233,12 @@ TextureImporter:
       name: Amika_RespawnLeft_6
       rect:
         serializedVersion: 2
-        x: 1004
-        y: 849
-        width: 502
+        x: 0
+        y: 0
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,12 +254,12 @@ TextureImporter:
       name: Amika_RespawnLeft_7
       rect:
         serializedVersion: 2
-        x: 1506
-        y: 849
-        width: 502
+        x: 600
+        y: 0
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: Amika_RespawnLeft_8
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1200
         y: 0
-        width: 502
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,12 +296,12 @@ TextureImporter:
       name: Amika_RespawnLeft_9
       rect:
         serializedVersion: 2
-        x: 502
+        x: 1800
         y: 0
-        width: 502
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,12 +317,12 @@ TextureImporter:
       name: Amika_RespawnLeft_10
       rect:
         serializedVersion: 2
-        x: 1004
+        x: 2400
         y: 0
-        width: 502
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -338,12 +338,12 @@ TextureImporter:
       name: Amika_RespawnLeft_11
       rect:
         serializedVersion: 2
-        x: 1506
+        x: 3000
         y: 0
-        width: 502
+        width: 600
         height: 849
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.58, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
