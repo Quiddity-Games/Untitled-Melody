@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class ScoreBubbleUI : MonoBehaviour
 {
     [SerializeField] NoteTracker noteTracker;
+    [SerializeField] HitRatingColorSet hitRatingColors;
 
-    [SerializeField] float offsetDuration;
-    [SerializeField] float verticalOffset;
     [SerializeField] TextMeshProUGUI ratingText;
     [SerializeField] TextMeshProUGUI timingText;
 
     private Animator scoreBubbleAnimator;
     private Image scoreBubbleImage;
-    private Vector2 originalPos;
     private GameObject timingObject;
 
     private void Awake()
@@ -29,33 +28,25 @@ public class ScoreBubbleUI : MonoBehaviour
     {
         scoreBubbleAnimator = GetComponent<Animator>();
         scoreBubbleImage = GetComponent<Image>();
-        originalPos = (transform as RectTransform).anchoredPosition;
         timingObject = timingText.gameObject;
     }
 
 
     void ShowScoreBubble(NoteTracker.HitInfo hitInfo)
     {
-        (transform as RectTransform).anchoredPosition = originalPos; // Set bubble to original position.
-
-        // Reset the animation triggers on dash.
-        scoreBubbleAnimator.ResetTrigger("FadeIn");
-        scoreBubbleAnimator.ResetTrigger("FadeOut");
-
-        // Reset the animation if currently animating on dash.
-        if (scoreBubbleAnimator.GetBool("Fading"))
-            scoreBubbleAnimator.SetBool("Fading", false);
+        // Play the animation on dash.
+        scoreBubbleAnimator.SetTrigger("PopIn");
 
         // Set timing text. If PERFECT, do not display text.
         switch (hitInfo.timing)
         {
             case NoteTracker.BeatTiming.EARLY:
                 timingText.text = "(Early)";
-                timingObject.SetActive(true);
+                //timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatTiming.LATE:
                 timingText.text = "(Late)";
-                timingObject.SetActive(true);
+                //timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatTiming.PERFECT:
                 break;
@@ -66,39 +57,29 @@ public class ScoreBubbleUI : MonoBehaviour
         {
             case NoteTracker.BeatRating.MISS:
                 ratingText.text = "Miss...";
+                ratingText.color = hitRatingColors.MissTextColor;
+                scoreBubbleImage.color = hitRatingColors.MissBackgroundColor;
+                timingText.color = hitRatingColors.MissTimingTextColor;
                 timingObject.SetActive(true);
                 break;
             case NoteTracker.BeatRating.GOOD:
                 ratingText.text = "Good!";
+                ratingText.color = hitRatingColors.GoodTextColor;
+                scoreBubbleImage.color = hitRatingColors.GoodBackgroundColor;
                 timingObject.SetActive(false);
                 break;
             case NoteTracker.BeatRating.GREAT:
                 ratingText.text = "Great!!";
+                ratingText.color = hitRatingColors.GreatTextColor;
+                scoreBubbleImage.color = hitRatingColors.GreatBackgroundColor;
                 timingObject.SetActive(false);
                 break;
             case NoteTracker.BeatRating.PERFECT:
                 ratingText.text = "Perfect!!!";
+                ratingText.color = hitRatingColors.PerfectTextColor;
+                scoreBubbleImage.color = hitRatingColors.PerfectBackgroundColor;
                 timingObject.SetActive(false);
                 break;
         }
-
-        StartCoroutine(FadeScoreBubble(offsetDuration, verticalOffset));
-    }
-
-    IEnumerator FadeScoreBubble(float duration, float offsetY)
-    {
-        Vector2 currentPos = (transform as RectTransform).anchoredPosition;
-        scoreBubbleAnimator.SetBool("Fading", true);
-        scoreBubbleAnimator.SetTrigger("FadeIn");
-        float time = 0f;
-
-        while (time < duration)
-        {
-            (transform as RectTransform).anchoredPosition = Vector2.Lerp(currentPos, new Vector2(currentPos.x, currentPos.y + offsetY), time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-
-        scoreBubbleAnimator.SetTrigger("FadeOut");
     }
 }
