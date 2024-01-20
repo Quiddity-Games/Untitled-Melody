@@ -18,23 +18,15 @@ public class RespawnManager : MonoBehaviour
 
     private void Awake()
     {
+        Instance = this;
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     public void Start()
     {
-        DreamworldEventManager.Instance.RegisterVector3EventResponse(DreamworldVector3EventEnum.CHECKPOINT_POSITION, UpdateCheckpointPosition);
         DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, RespawnPlayer);
         DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, onDeathSound.Play);
     }
-
-    public void UpdateCheckpointPosition(Vector3 position)
-    {
-        currentCheckpointPosition = position;
-        Instance = this;
-        _player = GameObject.FindGameObjectWithTag("Player");
-    }
-
     public void RespawnPlayer()
     {
         isRespawning = true;
