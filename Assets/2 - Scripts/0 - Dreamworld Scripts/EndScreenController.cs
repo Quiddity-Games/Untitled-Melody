@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class EndScreenController : MonoBehaviour
@@ -20,6 +21,8 @@ public class EndScreenController : MonoBehaviour
     [SerializeField] private GameObject EndScreenMenu;
 
     [SerializeField] private CollectableInfo info;
+
+    [SerializeField] private UnityEvent onClear;
     
     [Serializable] 
     private struct EndScreenSprites
@@ -62,6 +65,7 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.black;
             memiImage.sprite = endSprites.goodSprite;
             continueButton.gameObject.SetActive(true);
+            onClear?.Invoke();
         }
         else if (obtained > required)
         {
@@ -69,6 +73,7 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
+            onClear?.Invoke();
         }
         
         EndScreenMenu.SetActive(true);
