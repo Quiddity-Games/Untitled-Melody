@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class CollectionScoreController : MonoBehaviour
 {
+    public static CollectionScoreController Instance;
 
     [SerializeField] private CheckpointSignal checkpointSignal;
     [SerializeField] private CollectionSignal signal;
@@ -24,6 +25,8 @@ public class CollectionScoreController : MonoBehaviour
     [SerializeField] private GameEvent onGameEnd;
     void Awake()
     {
+        Instance = this;
+
         numCollectables = 0;
         numCollected = 0;
         tempNumCollected = 0;
@@ -33,10 +36,11 @@ public class CollectionScoreController : MonoBehaviour
             UpdateInfo();
          };
         signal.SendCollect += HandleCollection;
-        checkpointSignal.OnCheckpointEnter += value =>
+        
+        /*checkpointSignal.OnCheckpointEnter += value =>
         {
             RecordCurrentCollection();
-        };
+        };*/
     }
 
     private void OnDestroy()
@@ -54,7 +58,7 @@ public class CollectionScoreController : MonoBehaviour
 
     void HandleCollection(Collectable collect)
     {
-        UpdateCount();
+        tempNumCollected++;
         UpdateInfo();
         sound.PlaySound();
         resetter.RegisterTemp(collect);
@@ -76,10 +80,6 @@ public class CollectionScoreController : MonoBehaviour
     {
         endInfo.UpdateValues(numCollected + tempNumCollected, requiredNumCollected, numCollectables);
         _ui.UpdateUI(Math.Min(numCollected + tempNumCollected, numCollectables), numCollectables, tempNumCollected);
-    }
-    void UpdateCount()
-    {
-        tempNumCollected += 1;
     }
 
     public void RecordCurrentCollection()
