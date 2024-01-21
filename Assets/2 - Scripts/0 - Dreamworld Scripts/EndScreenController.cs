@@ -56,20 +56,21 @@ public class EndScreenController : MonoBehaviour
             restartButton.gameObject.SetActive(true);
      
         }
-        else if (obtained == required)
-        {
-            titleText.text = "Good Job!";
-            obtainedCollectableText.color = Color.black;
-            memiImage.sprite = endSprites.goodSprite;
-            continueButton.gameObject.SetActive(true);
-        }
-        else if (obtained > required)
+        else if (obtained == max)
         {
             titleText.text = "PERFECT!";
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
         }
+        else if (obtained >= required)
+        {
+            titleText.text = "Good Job!";
+            obtainedCollectableText.color = Color.black;
+            memiImage.sprite = endSprites.goodSprite;
+            continueButton.gameObject.SetActive(true);
+        }
+
         
         EndScreenMenu.SetActive(true);
     }
