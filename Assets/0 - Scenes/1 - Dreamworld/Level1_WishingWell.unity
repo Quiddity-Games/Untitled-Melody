@@ -6019,6 +6019,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1685248524637018023, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1685248524722507085, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -6109,7 +6113,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1685248524959711089, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -9.499939
+      value: -9.499908
       objectReference: {fileID: 0}
     - target: {fileID: 1685248525090240530, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6530,6 +6534,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1685248524836998104, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
   m_PrefabInstance: {fileID: 1279919913}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &1456286032 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 6473419014288494393, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
+  m_PrefabInstance: {fileID: 1279919913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1459675651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6687,6 +6696,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &1610123662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1685248524637018023, guid: fdc5a0bcb2512134485989ce9ca8756c, type: 3}
+  m_PrefabInstance: {fileID: 1279919913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &1720794696 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 6253987248133151832, guid: 2b4410d038db77c4487f73ae2bded5bc, type: 3}
@@ -6939,6 +6953,10 @@ PrefabInstance:
       propertyPath: _NoteTracker
       value: 
       objectReference: {fileID: 1369963775}
+    - target: {fileID: 2551276249000161898, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: _playerTransform
+      value: 
+      objectReference: {fileID: 1400610321}
     - target: {fileID: 2551276249870710372, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: m_Camera
       value: 
@@ -7465,6 +7483,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8659275533931986210, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
+      propertyPath: timerBar
+      value: 
+      objectReference: {fileID: 1610123662}
+    - target: {fileID: 8659275533931986210, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
+      propertyPath: welcomeMessage
+      value: 
+      objectReference: {fileID: 1456286032}
     - target: {fileID: 8659275533931986210, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
       propertyPath: PlayDialogueOnStart
       value: 
