@@ -113,7 +113,6 @@ public class NoteTracker : MonoBehaviour
     {
         set
         {
-            Debug.Log("NEW BPM");
             totalTime = 0;
             twoBeatsLength = (60f / value);
             nextBeatTime = twoBeatsLength;    //Added to have the "matchable rhythm" land on the second and fourth beats of each measure
