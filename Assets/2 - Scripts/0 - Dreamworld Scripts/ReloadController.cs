@@ -5,17 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class ReloadController : MonoBehaviour
 {
-    
-    private PlayerControl _playerControl;
-
-    // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Reload.performed += context =>
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        };
-        _playerControl.Enable();
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_RELOAD,
+            ReloadScene
+            );
+    }
+
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    void OnDisable()
+    {
+        DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_RELOAD,
+            ReloadScene
+        );
     }
 }

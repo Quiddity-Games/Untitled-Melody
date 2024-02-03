@@ -5,31 +5,14 @@ using UnityEngine;
 
 public class CollectionResetter : MonoBehaviour
 {
-    
-     private List<Collectable> tempCollectables;
-
-     private void Start()
-     {
-         tempCollectables = new List<Collectable>();
-     }
-
-     public void RegisterTemp(Collectable collect)
-    {
-        tempCollectables.Add(collect);
-    }
-
     public void ResetTempCollectables()
     {
-        foreach (Collectable collectable in tempCollectables)
-        {
-            collectable.ResetDisplay();
-        }
-
+        DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.RESET_TEMP_COLLECT);
         ClearTemp();
     }
 
     public void ClearTemp()
     {
-        tempCollectables.Clear();
+        DreamworldEventManager.Instance.ResetVoidEvent(DreamworldVoidEventEnum.RESET_TEMP_COLLECT);
     }
 }

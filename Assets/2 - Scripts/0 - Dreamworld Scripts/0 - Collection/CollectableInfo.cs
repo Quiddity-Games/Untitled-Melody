@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-[CreateAssetMenu]
-public class CollectableInfo : ScriptableObject
+public class CollectableInfo
 {
     public void UpdateValues(int obtained, int required, int total)
     {

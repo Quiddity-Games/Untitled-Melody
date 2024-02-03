@@ -24,44 +24,37 @@ public class BeatTracker : MonoBehaviour
 
     private bool countdownStarted;
 
-    public GameEvent onGameStart;
-    [SerializeField] private GameEvent OnGameEnd;
-    [SerializeField] private GameEvent onDialogueEnd;
 
     [SerializeField] private NoteTracker _noteTracker;
-    private PlayerControl _playerControl;
     // Start is called before the first frame update
     void Start()
     {
         countdownStarted = false;
         enableCount = true;
-        _playerControl = new PlayerControl();
-        //_playerControl.Dreamworld.Dash.performed +=  StartGame;
-            _playerControl.Enable();
         instance = this;
+        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, Pause);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DIALOGUE_END, SetGameReady);
     }
 
- 
-
-    private void StartGame(InputAction.CallbackContext ctx) 
+    private void StartGame() 
     {
         if (!countdownStarted && enableCount)
         {   
-            onGameStart.Raise();
+            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_START);
             welcomeMessage.SetActive(false);
             countdownStarted = true;
-            _playerControl.Dreamworld.Dash.performed -= StartGame;
+            DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartGame);
         }
     }
 
     public void SetGameReady()
     {
-        _playerControl.Dreamworld.Dash.performed += StartGame;
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartGame);
     }
 
     public void Pause(bool value)
     {
-        enableCount = value;
+        enableCount = !value;
     }
 
     // Update is called once per frame
@@ -72,7 +65,8 @@ public class BeatTracker : MonoBehaviour
         {
             if (_noteTracker.timeTracker >= _noteTracker.totalTime)
             {
-                OnGameEnd.Raise();
+                DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
+                DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
                 enableCount = false;
                 return;
             }
