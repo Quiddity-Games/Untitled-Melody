@@ -160,25 +160,8 @@ public class ClickManager : MonoBehaviour
         Vector2 dashLocation = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
 
         float dashDistance = Mathf.Min(_dash.MaxDashDistance, dashScale * Vector2.Distance(dashLocation, _rigidbody2D.position));
-        //float dashForce = dashForceMultiplier * maxDashDistanceMultiplier * dashScale;
-        float dashForce = (dashScale - 0.3f) * Vector2.Distance(dashLocation, _playerTransform.position);
-        float dashEnd = dashScale * Vector2.Distance(dashLocation, _playerTransform.position);
 
-        /// Left out intentionally for August 2nd, 2023 (-ish) build. May return to it eventually?
-        /// If not, delete entire comment block below and this commented section as well.
-        /// See comment for details on where it's going wrong:
-        /// <see cref="https://discord.com/channels/738438082147254283/738438438365298738/1134927541564608522"/>
-
-        // float dashForce = 5f * dashDistance;
-        // Adjusts the player's dash distance based on how far away the cursor is from the player
-        // if (Vector3.Distance(dashLocation, _currentPosition) <= maxDashDistanceMultiplier)
-        //{
-        //    dashForce = dashForceMultiplier * Vector3.Distance(dashLocation, _currentPosition);
-        //} else
-        //{
-        //    //Restricts the dash distance to the max radius when necessary
-        //    dashForce = dashForceMultiplier * maxDashDistanceMultiplier;
-        //}
+        float dashForce = (dashScale + 0.2f) * Vector2.Distance(dashLocation, _playerTransform.position);
 
         // Get object from the pool
         GameObject cursorPrefab = await _cursorAfterImagePrefabPool.GetFromPoolAsync();
@@ -206,17 +189,14 @@ public class ClickManager : MonoBehaviour
 
         StartCoroutine(VanishClickAfterImage(cursorPrefab));
 
-        _rigidbody2D.gravityScale = 0f;
-        _rigidbody2D.velocity = Vector2.zero;
-        //_rigidbody2D.AddForce(_dash.Direction * dashForce, ForceMode2D.Impulse);
-
-        Vector3 newPosition = _playerTransform.position + new Vector3(_dash.Direction.x * dashForce, _dash.Direction.y * dashForce, 0);
-        Vector3 easePosition = _playerTransform.position + new Vector3(_dash.Direction.x * dashEnd, _dash.Direction.y * dashEnd, 0);
-
-        DOTween.Sequence().Prepend(_rigidbody2D.DOMove(newPosition, 0.1f).SetEase(Ease.InSine)).Append(_rigidbody2D.DOMove(easePosition, 0.25f).SetEase(Ease.OutSine));
+        Vector3 velocity = _rigidbody2D.velocity;
+        Vector3.SmoothDamp(_rigidbody2D.position, dashLocation, ref velocity, 0.1f, 10f, Time.fixedDeltaTime);
+        _rigidbody2D.velocity = velocity;
 
         _trailRenderer.startColor = Color.yellow;
         _trailRenderer.endColor = Color.yellow;
+
+        _rigidbody2D.AddForce(_dash.Direction * dashForce, ForceMode2D.Impulse);
 
         StartCoroutine(ResetGravity());
     }

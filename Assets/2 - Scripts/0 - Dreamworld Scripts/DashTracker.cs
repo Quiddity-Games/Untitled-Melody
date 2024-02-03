@@ -1,6 +1,7 @@
 
 using System;
 using UnityEngine;
+using DG.Tweening;
 
 public class DashTracker : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class DashTracker : MonoBehaviour
     [SerializeField] private AudioSource _wallBumpSource;
     [SerializeField] private NoteTracker _noteTracker;
     [SerializeField] private PlayerAnimationController _animationControl;
+    [SerializeField] private ClickManager _clickManager;
 
     [Serializable]
     private struct DashSounds
