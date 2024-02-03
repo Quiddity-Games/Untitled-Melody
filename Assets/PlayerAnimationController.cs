@@ -7,6 +7,7 @@ public class PlayerAnimationController : MonoBehaviour
 {
     public static PlayerAnimationController Instance;
 
+    [SerializeField] Animator _memiAnimator;
     private Animator _animator;
     private bool _facingRight;
     public SpriteRenderer spriteRenderer;
@@ -28,6 +29,9 @@ public class PlayerAnimationController : MonoBehaviour
         _animator.SetInteger("Dash Rating", ((int)hitInfo.rating));
         _animator.SetBool("Facing Right", facingRight);
         _animator.SetTrigger("Dash");
+
+        _memiAnimator.SetInteger("Dash Rating", ((int)hitInfo.rating));
+        _memiAnimator.SetTrigger("Dash");
     }
 
     public void PlayWallBump()
