@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class DashTracker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private PlayerControl _playerControl;
 
     [SerializeField] private AudioSource _dashSource;
     [SerializeField] private AudioSource _wallBumpSource;
@@ -25,11 +23,6 @@ public class DashTracker : MonoBehaviour
     [SerializeField] private AudioClip wallBumpSound;
     [SerializeField] private AudioClip deathSound;
 
-    private void Start()
-    {
-        _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Enable();
-    }
 
     private void Awake()
     {

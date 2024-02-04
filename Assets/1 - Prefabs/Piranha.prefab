@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 2374018208580354045}
   - component: {fileID: 2374018208580354017}
   - component: {fileID: 2374018208580354019}
-  - component: {fileID: 8179786842726407018}
   m_Layer: 7
   m_Name: Piranha
   m_TagString: Moving Hazard
@@ -139,74 +138,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07a0dbee2f38a54b8b18a1646517892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnCollision: {fileID: 11400000, guid: 9ce2de03aa914724aa0f6c2e9c1dc315, type: 2}
   rb: {fileID: 2374018208580354017}
   startingPosition: {x: 0, y: 0, z: 0}
   speed: 400
---- !u!114 &8179786842726407018
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2374018208580354044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 9ce2de03aa914724aa0f6c2e9c1dc315, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2374018208580354019}
-        m_TargetAssemblyTypeName: MovingHazardBase, Assembly-CSharp
-        m_MethodName: ToggleMovement
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2374018208580354019}
-        m_TargetAssemblyTypeName: MovingHazardBase, Assembly-CSharp
-        m_MethodName: ResetVelocity
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2374018208580354019}
-        m_TargetAssemblyTypeName: MovingHazardBase, Assembly-CSharp
-        m_MethodName: ResetPosition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2374018208580354019}
-        m_TargetAssemblyTypeName: MovingHazardBase, Assembly-CSharp
-        m_MethodName: ToggleMovement
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!1 &2374018209213480798
 GameObject:
   m_ObjectHideFlags: 0

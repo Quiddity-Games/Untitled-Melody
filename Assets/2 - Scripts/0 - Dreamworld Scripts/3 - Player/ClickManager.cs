@@ -19,7 +19,7 @@ public class ClickManager : MonoBehaviour
         {
             get
             {
-                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(_playerControl.Dreamworld.MousePosition.ReadValue<Vector2>()) - _rigidbody2D.position;
+                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(PlayerInput.GetMousePosition()) - _rigidbody2D.position;
                 dashDirection.Normalize();
                 return dashDirection;
             }
@@ -66,7 +66,7 @@ public class ClickManager : MonoBehaviour
         _NoteTracker.HitCallback += HandleDash;
 
     }
-    private void Start()
+    public void Start()
     {
         _dash = new Dash(_rigidbody2D);
         _cameraFollow = Camera.main.GetComponent<CameraFollow>();
@@ -78,37 +78,42 @@ public class ClickManager : MonoBehaviour
             return obj;
         }, item => { item.SetActive(false); });
         _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, DashOnPerformed);
         _playerControl.Dreamworld.Enable();
+        
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COUNTDOWN_FINISH, EnableDash);
     }
 
     private void OnDestroy()
     {
-        _playerControl.Dreamworld.Dash.performed -= DashOnPerformed;
+        if(DreamworldEventManager.Instance != null)
+        {
+            DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, DashOnPerformed);
+        }
     }
 
-    private void DashOnPerformed(InputAction.CallbackContext obj)
+    private void DashOnPerformed()
     {
         if(canDash && dashEnabled){
             HandleClick();
             canDash = false;
         }
     }
-
-
+    
     public void ToggleControls(bool value)
     {
         if(value)
         {
-            CursorTransform.gameObject.SetActive(true);
-            _playerControl.Dreamworld.Enable();
-        }
-        else
-        {
             CursorTransform.gameObject.SetActive(false);
             _playerControl.Dreamworld.Disable();
         }
+        else
+        {
+            CursorTransform.gameObject.SetActive(true);
+            _playerControl.Dreamworld.Enable();
+        }
     }
+    
     public void EnableDash()
     {
         dashEnabled = true;
