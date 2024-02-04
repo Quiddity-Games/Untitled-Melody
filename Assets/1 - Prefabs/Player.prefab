@@ -14,11 +14,7 @@ GameObject:
   - component: {fileID: 2551276248396823947}
   - component: {fileID: 2551276248396823944}
   - component: {fileID: 4075416629321209146}
-  - component: {fileID: 4307713534392126169}
-  - component: {fileID: 6529547541257442817}
-  - component: {fileID: 6529547541257442816}
-  - component: {fileID: 500500664803127517}
-  - component: {fileID: 6598721983075859689}
+  - component: {fileID: 3270163683576487098}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -266,7 +262,7 @@ MonoBehaviour:
     perfectSound: {fileID: 8300000, guid: 24c3714731960d14f91b43f29db5810b, type: 3}
   wallBumpSound: {fileID: 8300000, guid: ebfd26780ceb1c2419706b94a5fed6b5, type: 3}
   deathSound: {fileID: 8300000, guid: 1a3f395ebab0b894f91d73410bc81eb2, type: 3}
---- !u!114 &4307713534392126169
+--- !u!114 &3270163683576487098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,124 +271,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2551276248396823953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a4c51ee1fbc488b49a2763d5d88e79fe, type: 3}
+  m_Script: {fileID: 11500000, guid: d76c15f39fb341a48acaf9b91ce6cbd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onPause: {fileID: 11400000, guid: 81ea8b1d5f786464b83e3de6dfa49c94, type: 2}
-  onUnpause: {fileID: 11400000, guid: 5c66d71f86413d44cb4a3a7b170cb362, type: 2}
-  pause: {fileID: 11400000, guid: 9216c0a1c57110246b27447447708a36, type: 2}
---- !u!114 &6529547541257442817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551276248396823953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5c66d71f86413d44cb4a3a7b170cb362, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2551276248396823949}
-        m_TargetAssemblyTypeName: UnityEngine.Rigidbody2D, UnityEngine
-        m_MethodName: WakeUp
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &6529547541257442816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551276248396823953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 81ea8b1d5f786464b83e3de6dfa49c94, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2551276248396823949}
-        m_TargetAssemblyTypeName: UnityEngine.Rigidbody2D, UnityEngine
-        m_MethodName: Sleep
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &500500664803127517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551276248396823953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 5c66d71f86413d44cb4a3a7b170cb362, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2551276249000161898}
-        m_TargetAssemblyTypeName: ClickManager, Assembly-CSharp
-        m_MethodName: ToggleControls
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
---- !u!114 &6598721983075859689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551276248396823953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 81ea8b1d5f786464b83e3de6dfa49c94, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2551276249000161898}
-        m_TargetAssemblyTypeName: ClickManager, Assembly-CSharp
-        m_MethodName: ToggleControls
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  playerBody: {fileID: 0}
+  _clickManager: {fileID: 0}
 --- !u!1 &2551276248831310367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1230,17 +1113,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
---- !u!114 &2551276249000161898 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5046396297516204517, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
-  m_PrefabInstance: {fileID: 7309221837970830223}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8eb3c22e3a1b478c80bfca6c73c19ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2551276249977706050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5046396298484819405, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}

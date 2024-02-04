@@ -6,8 +6,6 @@ using UnityEngine;
 public class RespawnManager : MonoBehaviour
 {
     public static RespawnManager Instance;
-    [SerializeField] private CheckpointSignal checkpoint;
-
     public Checkpoint currentCheckpoint;
     public bool spawnFacingRight;
     public bool isRespawning;
