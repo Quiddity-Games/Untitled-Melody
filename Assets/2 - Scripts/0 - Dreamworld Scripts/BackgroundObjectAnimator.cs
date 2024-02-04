@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class BackgroundObjectAnimator : MonoBehaviour
 {
@@ -19,8 +20,7 @@ public class BackgroundObjectAnimator : MonoBehaviour
     [SerializeField] private float _maxAngle;
     [SerializeField] private float _currentAngle;
 
-    [Header("Config")] 
-    [SerializeField] private BoolVariable animationEnabled;
+
 
     private Sequence currentSequence;
 
@@ -30,14 +30,14 @@ public class BackgroundObjectAnimator : MonoBehaviour
         // On start, randomize the duration of the animation and the rotation angle.
         _currentDuration = Random.Range(_minDuration, _maxDuration);
         _currentAngle = Random.Range(_minAngle, _maxAngle);
-        animationEnabled.OnValueChange += ToggleAnimation;
+        SettingsManager.Instance().GetVisualSettings().onUpdate += ToggleAnimation;
         StartRotation();
     }
 
     private void ToggleAnimation()
     {
 
-        if (animationEnabled.Value)
+        if (SettingsManager.Instance().GetVisualSettings().AnimatedBackground)
         {
             if(currentSequence == null)
             {

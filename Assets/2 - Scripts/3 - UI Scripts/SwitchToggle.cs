@@ -7,8 +7,6 @@ public class SwitchToggle : MonoBehaviour {
    [SerializeField] Color backgroundActiveColor ;
    [SerializeField] Color handleActiveColor ;
 
-   [SerializeField] private BoolVariable _variable;
-
    Image backgroundImage, handleImage ;
 
    Color backgroundDefaultColor, handleDefaultColor ;
@@ -30,11 +28,6 @@ public class SwitchToggle : MonoBehaviour {
 
       toggle.onValueChanged.AddListener (OnSwitch) ;
 
-      if(_variable != null){
-         toggle.onValueChanged.AddListener (delegate(bool value) { _variable.Value = value;});
-         toggle.isOn = _variable.Value;
-      }
-
       if (toggle.isOn)
       {
          uiHandleRectTransform.anchoredPosition =  handlePosition * -1; // no anim
@@ -48,6 +41,8 @@ public class SwitchToggle : MonoBehaviour {
    
    
    void OnSwitch (bool on) {
+
+      Debug.Log("ON SWITCH CALLED: " + (on ? "OFF" : "ON"));
       //uiHandleRectTransform.anchoredPosition = on ? handlePosition * -1 : handlePosition ; // no anim
       uiHandleRectTransform.DOAnchorPos (on ? handlePosition * -1 : handlePosition, .4f).SetEase (Ease.InOutBack) ;
 

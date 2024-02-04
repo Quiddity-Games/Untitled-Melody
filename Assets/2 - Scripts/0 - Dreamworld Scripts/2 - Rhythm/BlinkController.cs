@@ -50,7 +50,7 @@ public class BlinkController : MonoBehaviour
         {
             StopCoroutine(BlinkRoutine());
         }
-
+        Debug.Log("Flash");
         StartCoroutine(BlinkRoutine());
     }
 
