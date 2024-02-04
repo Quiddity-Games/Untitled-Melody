@@ -11,7 +11,6 @@ public class Checkpoint : MonoBehaviour
     ParticleSystem checkPointBurst; //Used to emit a pulse when the player touches a checkpoint
     public bool spawnFacingRight;
 
-    [SerializeField] private CheckpointSignal _checkpointSignal;
     [SerializeField] private Animator curtainAnimator;
     [SerializeField] private SpriteRenderer starsSprite;
 

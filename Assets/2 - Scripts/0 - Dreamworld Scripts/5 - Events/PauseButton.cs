@@ -7,7 +7,6 @@ public class PauseButton : MonoBehaviour
 {
     [SerializeField] private Button m_button;
 
-    [SerializeField] private bool value;
     // Start is called before the first frame update
     void Start()
     {
