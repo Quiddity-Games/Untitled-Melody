@@ -34,7 +34,6 @@ public class PiranhaDetectionRadius : MonoBehaviour
         
             if(other.gameObject.CompareTag("Player"))
             {
-                Debug.Log("FOUND YOU");
                 source.PlayOneShot(chaseSound);
             }
     }

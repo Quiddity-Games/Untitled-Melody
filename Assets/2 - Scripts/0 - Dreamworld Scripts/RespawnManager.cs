@@ -14,12 +14,19 @@ public class RespawnManager : MonoBehaviour
     
     private GameObject _player;
 
+    [SerializeField] private AudioSource onDeathSound;
+
     private void Awake()
     {
         Instance = this;
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    public void Start()
+    {
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, RespawnPlayer);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, onDeathSound.Play);
+    }
     public void RespawnPlayer()
     {
         isRespawning = true;

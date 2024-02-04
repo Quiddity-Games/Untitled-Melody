@@ -36,6 +36,7 @@ public class ParallaxScroller : MonoBehaviour
             case ScrollBehaviour.None:
                 break;
         }
+        
     }
 
     // Update is called once per frame

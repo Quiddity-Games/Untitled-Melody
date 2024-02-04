@@ -9,7 +9,12 @@ public class PiranhaCore : MovingHazardBase
 {
     public float speed; //Speed at which the piranha can move
 
-    
+    public override void Start()
+    {
+        base.Start();
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, OnKill);
+    }
+
     /// <summary>
     /// Used to move the piranha towards the player.
     /// </summary>
@@ -31,6 +36,4 @@ public class PiranhaCore : MovingHazardBase
         rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(velocityXComponent * speed * Time.deltaTime,
             velocityYComponent * speed * Time.deltaTime), Time.deltaTime);
     }
-
-   
 }
