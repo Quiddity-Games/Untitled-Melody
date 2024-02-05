@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu(fileName = "VisualSettings", menuName = "ScriptableObjects/VisualSettings", order = 1)]
 public class VisualSettings : ScriptableObject
@@ -18,6 +19,7 @@ public class VisualSettings : ScriptableObject
         //TODO: ScreenShakeManager
         //TODO: AnimatedBackgroundManager
         Screen.fullScreen = !Windowed;
+        PlayerSettings.resizableWindow = Windowed; 
         onUpdate?.Invoke();
    }
 
