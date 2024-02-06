@@ -4001,7 +4001,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6362674440555462082}
   - component: {fileID: 6362674440555462083}
-  - component: {fileID: 6362674440555462080}
   m_Layer: 0
   m_Name: Black Hole Background
   m_TagString: Untagged
@@ -4042,34 +4041,6 @@ MonoBehaviour:
   _scrollMultiplier: 1.6
   songObject: {fileID: 11400000, guid: 6945a4401f1c0e24e8e74e24d14f5229, type: 2}
   _endYPosition: 47
---- !u!114 &6362674440555462080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6362674440555462087}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b2e532bd2f8e3f84fa9ec5603fbdeb65, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6362674440555462083}
-        m_TargetAssemblyTypeName: ParallaxScroller, Assembly-CSharp
-        m_MethodName: StartScrollY
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6362674440595033902
 GameObject:
   m_ObjectHideFlags: 0
@@ -4164,7 +4135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6362674440606951922}
   - component: {fileID: 6362674440606951932}
-  - component: {fileID: 6362674440606951923}
   m_Layer: 0
   m_Name: Floating Background
   m_TagString: Untagged
@@ -4205,34 +4175,6 @@ MonoBehaviour:
   _scrollMultiplier: 2
   songObject: {fileID: 11400000, guid: 6945a4401f1c0e24e8e74e24d14f5229, type: 2}
   _endYPosition: 450
---- !u!114 &6362674440606951923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6362674440606951921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b2e532bd2f8e3f84fa9ec5603fbdeb65, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6362674440606951932}
-        m_TargetAssemblyTypeName: ParallaxScroller, Assembly-CSharp
-        m_MethodName: StartScrollY
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6362674440698604241
 GameObject:
   m_ObjectHideFlags: 0
@@ -4664,7 +4606,6 @@ GameObject:
   - component: {fileID: 6362674441053804622}
   - component: {fileID: 6362674441053804621}
   - component: {fileID: 6362674441053804623}
-  - component: {fileID: 6362674441053804616}
   m_Layer: 0
   m_Name: Space Background
   m_TagString: Untagged
@@ -4755,34 +4696,6 @@ MonoBehaviour:
   _scrollMultiplier: 2.3
   songObject: {fileID: 11400000, guid: 6945a4401f1c0e24e8e74e24d14f5229, type: 2}
   _endYPosition: 44
---- !u!114 &6362674441053804616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6362674441053804620}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e839e4c12473014b9b3d3faccc0f61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: b2e532bd2f8e3f84fa9ec5603fbdeb65, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6362674441053804623}
-        m_TargetAssemblyTypeName: ParallaxScroller, Assembly-CSharp
-        m_MethodName: StartScrollY
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &6656303441356066412
 GameObject:
   m_ObjectHideFlags: 0
