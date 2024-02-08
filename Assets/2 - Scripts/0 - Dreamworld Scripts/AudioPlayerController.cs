@@ -5,7 +5,6 @@ using UnityEngine;
 public class AudioPlayerController : MonoBehaviour
 {
 
-    [SerializeField] private FloatVariable volume;
     [SerializeField] private AudioSource songPlayer;
     // Start is called before the first frame update
     void Start()

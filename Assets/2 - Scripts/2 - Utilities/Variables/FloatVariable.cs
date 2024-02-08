@@ -8,7 +8,7 @@ public class FloatVariable : ScriptableObject
     public VoidCallback OnValueChange;
     [SerializeField] private float value;
 
-    public float Value
+    public virtual float Value
     {
         
         set

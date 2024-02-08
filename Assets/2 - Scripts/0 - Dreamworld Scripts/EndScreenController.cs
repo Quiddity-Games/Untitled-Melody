@@ -21,6 +21,8 @@ public class EndScreenController : MonoBehaviour
     [SerializeField] private GameObject EndScreenMenu;
 
     [SerializeField] private CollectionScoreController collectionScore;
+
+    [SerializeField] private LevelData levelManager;
     
     [Serializable] 
     private struct EndScreenSprites
@@ -65,7 +67,7 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.black;
             memiImage.sprite = endSprites.goodSprite;
             continueButton.gameObject.SetActive(true);
-            onClear?.Invoke();
+            levelManager.SetCurrentLevel(3);
         }
         else if (obtained > required)
         {
@@ -73,7 +75,7 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
-            onClear?.Invoke();
+            levelManager.SetCurrentLevel(3);
         }
         
         EndScreenMenu.SetActive(true);

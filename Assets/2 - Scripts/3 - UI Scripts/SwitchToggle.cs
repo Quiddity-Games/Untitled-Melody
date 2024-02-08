@@ -29,10 +29,20 @@ public class SwitchToggle : MonoBehaviour {
       toggle.onValueChanged.AddListener (OnSwitch) ;
 
       if (toggle.isOn)
-         OnSwitch (true) ;
-   }
+      {
+         uiHandleRectTransform.anchoredPosition =  handlePosition * -1; // no anim
+         backgroundImage.color = backgroundActiveColor; // no anim
+         handleImage.color = handleActiveColor; // no anim
+      }
 
+
+   }
+   
+   
+   
    void OnSwitch (bool on) {
+
+      Debug.Log("ON SWITCH CALLED: " + (on ? "OFF" : "ON"));
       //uiHandleRectTransform.anchoredPosition = on ? handlePosition * -1 : handlePosition ; // no anim
       uiHandleRectTransform.DOAnchorPos (on ? handlePosition * -1 : handlePosition, .4f).SetEase (Ease.InOutBack) ;
 
