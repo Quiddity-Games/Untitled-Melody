@@ -19,7 +19,6 @@ public class VisualSettings : ScriptableObject
         //TODO: ScreenShakeManager
         //TODO: AnimatedBackgroundManager
         Screen.fullScreen = !Windowed;
-        PlayerSettings.resizableWindow = Windowed; 
         onUpdate?.Invoke();
    }
 
