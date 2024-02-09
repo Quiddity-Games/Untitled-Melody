@@ -173,8 +173,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 11400000, guid: f3704b1175e2faf42b56590a9a739e64, type: 2}
         m_TargetAssemblyTypeName: SceneManagerUtils, Assembly-CSharp
-        m_MethodName: AdvanceLevel
-        m_Mode: 1
+        m_MethodName: InitializeLevel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

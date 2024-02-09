@@ -11,6 +11,8 @@ public class PauseMenuManager : MonoBehaviour
     private void Start()
     {
         DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, OnGamePause);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.GAME_END,
+        ()=>{DreamworldEventManager.Instance.DeregisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, OnGamePause);});
     }
     
     public void OnGamePause(bool isPaused)

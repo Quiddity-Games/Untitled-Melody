@@ -37,7 +37,7 @@ MonoBehaviour:
       m_keys:
       - conversation
       m_values:
-      - Scene_1
+      - Texting_Sequence_1
   - label: Dreamworld Level 1
     index: 2
     type: 0
@@ -55,7 +55,7 @@ MonoBehaviour:
   - label: Texting Sequence 2
     index: 3
     type: 1
-    buildIndex: 1
+    buildIndex: 3
     nextLevel: 0
     properties:
       m_keys: []
@@ -64,5 +64,18 @@ MonoBehaviour:
       m_keys:
       - conversation
       m_values:
-      - Scene_2
-  currLevelIndex: 0
+      - Texting_Sequence_2
+  - label: Main Menu
+    index: 4
+    type: 1
+    buildIndex: 0
+    nextLevel: 0
+    properties:
+      m_keys: []
+      m_values: 
+    stringProprties:
+      m_keys:
+      - conversation
+      m_values:
+      - Texting_Sequence_2
+  currLevelIndex: 1

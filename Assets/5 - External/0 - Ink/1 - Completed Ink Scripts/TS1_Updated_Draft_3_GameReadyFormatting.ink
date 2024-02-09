@@ -147,8 +147,10 @@ but I really do have to go now, you should look up the song! #Speaker: Emerald
 *   sure, I'd love to! :D #Speaker: Amika
         I'll give it a listen tonight #Speaker: Amika
         oh awesome!! lmk what you think! #Speaker: Emerald
+        #end
         ->END
 
 *   I’ll see if I have time #Speaker: Amika
         hope you do :) #Speaker: Emerald
+        #end
         ->END
