@@ -35,7 +35,7 @@ hey Emerald I listened to wishing well last night! #Speaker: Amika
         I’m not used to that kind of sound #Speaker: Amika
         ahh no worries! #Speaker: Emerald
         I hope it was at least interesting to listen to #Speaker: Emerald
-        oh yeah it was for sure! #Speaker: Emerald
+        oh yeah it was for sure! #Speaker: Amika
         
 - the song made me think a little, actually #Speaker: Amika
 nice! what about? #Speaker: Emerald
@@ -175,7 +175,8 @@ I think I get what you mean. To me the song is about #Speaker: Amika
         	    yeah, that’s what I feel #Speaker: Emerald
         	
         **  I’m not so sure #Speaker: Amika
-                 I guess that’s true #Speaker: Emerald
+                sometimes maybe, but other people can also offer an outside perspective you hadn’t considered before #Speaker: Amika
+                I guess that’s true #Speaker: Emerald
         
 *   trying to move on #Speaker: Amika
         the person is moving on from the past to an uncertain future #Speaker: Amika
