@@ -11,7 +11,6 @@ public class Checkpoint : MonoBehaviour
     ParticleSystem checkPointBurst; //Used to emit a pulse when the player touches a checkpoint
     public bool spawnFacingRight;
 
-    [SerializeField] private CheckpointSignal _checkpointSignal;
     [SerializeField] private Animator curtainAnimator;
     [SerializeField] private SpriteRenderer starsSprite;
 
@@ -37,6 +36,9 @@ public class Checkpoint : MonoBehaviour
 
             checkPointBurst.Emit(20);
             _used = true;
+            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.CHECKPOINT_ENTER);
+            DreamworldEventManager.Instance.CallVector3Event(DreamworldVector3EventEnum.CHECKPOINT_POSITION, transform.position);
+            //"Saves" the progress the player has made in acquiring collectables up until this checkpoint
 
             CollectionScoreController.Instance.RecordCurrentCollection();
 

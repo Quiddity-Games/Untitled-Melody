@@ -32,7 +32,6 @@ public class PerfectPulse : MonoBehaviour
 
         foreach (Collider2D puzzle in puzzleColliders)
         {
-            Debug.Log("COLLECTED");
             ICollectable collectable = puzzle.gameObject.GetComponent<ICollectable>();
             if (collectable != null)
             {

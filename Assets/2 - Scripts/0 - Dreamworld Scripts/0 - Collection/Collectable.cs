@@ -10,20 +10,34 @@ public interface ICollectable
 
 public class Collectable : MonoBehaviour, ICollectable
 {
-    [SerializeField] private CollectionSignal OnCollect;
 
     private Vector3 startingLocation;
     [SerializeField] private GameObject display;
     [SerializeField] private Collider2D collider;
+
+    private bool initialize = false;
     private void Start()
     {
         startingLocation = transform.position;
-        OnCollect.Register?.Invoke();
+    }
+
+    public void Update()
+    {
+        if (initialize)
+        {
+            return;
+        }
+
+        DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum
+            .REGISTER_COLLECTABLE);
+        initialize = true;
+
     }
 
     public void Collect()
     {
-        OnCollect.SendCollect?.Invoke(this);
+        DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COLLECT);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.RESET_TEMP_COLLECT, ResetDisplay);
         display.SetActive(false);
         transform.position = startingLocation;
         collider.enabled = false;

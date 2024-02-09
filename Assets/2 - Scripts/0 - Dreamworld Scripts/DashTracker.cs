@@ -1,16 +1,16 @@
 
 using System;
 using UnityEngine;
+using DG.Tweening;
 
 public class DashTracker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private PlayerControl _playerControl;
 
     [SerializeField] private AudioSource _dashSource;
     [SerializeField] private AudioSource _wallBumpSource;
     [SerializeField] private NoteTracker _noteTracker;
     [SerializeField] private PlayerAnimationController _animationControl;
+    [SerializeField] private ClickManager _clickManager;
 
     [Serializable]
     private struct DashSounds
@@ -25,11 +25,6 @@ public class DashTracker : MonoBehaviour
     [SerializeField] private AudioClip wallBumpSound;
     [SerializeField] private AudioClip deathSound;
 
-    private void Start()
-    {
-        _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Enable();
-    }
 
     private void Awake()
     {

@@ -6,13 +6,13 @@ using UnityEngine;
 public class RespawnManager : MonoBehaviour
 {
     public static RespawnManager Instance;
-    [SerializeField] private CheckpointSignal checkpoint;
-
     public Checkpoint currentCheckpoint;
     public bool spawnFacingRight;
     public bool isRespawning;
     
     private GameObject _player;
+
+    [SerializeField] private AudioSource onDeathSound;
 
     private void Awake()
     {
@@ -20,6 +20,11 @@ public class RespawnManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    public void Start()
+    {
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, RespawnPlayer);
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, onDeathSound.Play);
+    }
     public void RespawnPlayer()
     {
         isRespawning = true;

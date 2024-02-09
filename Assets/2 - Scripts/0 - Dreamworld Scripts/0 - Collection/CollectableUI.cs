@@ -26,8 +26,8 @@ public class CollectableUI : MonoBehaviour
         tempDisplayTransform = (tempDisplayObject.transform as RectTransform);
         originalPos = tempDisplayTransform.anchoredPosition;
         tempDisplayObject.SetActive(false);
-
         LayoutRebuilder.ForceRebuildLayoutImmediate(gameObject.gameObject.transform as RectTransform);
+        ResetScoreUI();
     }
 
     public void ResetScoreUI()
