@@ -293,4 +293,5 @@ I really have to head out. but here’s another nsa song for you, it’s called 
 it’s one of my favorites #Speaker: Emerald
 did I do something wrong? #Speaker: Amika
 Emerald are you still there? #Speaker: Amika
+#END
 ->END
