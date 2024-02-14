@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b6fd75a16b79246a81ffa9dc83c24c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _modifier: 0
-  _speedModifier: 0
+  _modifier: 0.25
+  _speedModifier: 3
 --- !u!114 &5224013006852190118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +148,6 @@ MonoBehaviour:
   OnCollect: {fileID: 11400000, guid: 81420cf3e35355e4db904fe7b5da09fb, type: 2}
   display: {fileID: 4815849445409681828}
   collider: {fileID: 8486638284745595820}
-  _image: {fileID: 6388063532161296852}
 --- !u!61 &8486638284745595820
 BoxCollider2D:
   m_ObjectHideFlags: 0
