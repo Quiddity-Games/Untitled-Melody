@@ -37,4 +37,9 @@ public class PlayerPause : MonoBehaviour
         
         _clickManager.ToggleControls(isPaused);
     }
+
+    public void OnDisable()
+    {
+        Time.timeScale = 1;
+    }
 }

@@ -32,6 +32,11 @@ public class LevelData : ScriptableObject
         return levels[currLevelIndex].properties;
     }
 
+    public int GetCurrentLevelIndex()
+    {
+        return currLevelIndex;
+    }
+
     public Level GetCurrentLevel()
     {
         return levels[currLevelIndex];

@@ -9,12 +9,20 @@ public class PlayerInput : MonoBehaviour
 {
     private static PlayerControl _playerControl;
 
-    private void Start()
+    private void OnEnable()
     {
         _playerControl = new PlayerControl();
         _playerControl.Dreamworld.Pause.performed += PauseOnPerformed;
         _playerControl.Dreamworld.Dash.performed += DashOnPerformed;
         _playerControl.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerControl.Dreamworld.Pause.performed -= PauseOnPerformed;
+        _playerControl.Dreamworld.Dash.performed -= DashOnPerformed;
+        _playerControl.Disable();
+
     }
 
     public static void ToggleInput(bool value)

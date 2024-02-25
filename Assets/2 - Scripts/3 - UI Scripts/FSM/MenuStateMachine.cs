@@ -16,11 +16,13 @@ public class MenuStateMachine : MonoBehaviour
     public void SetState(MenuState menuValue)
     {
         if (menuValue != currentState)
-            {
-                currentState.onExit?.Invoke();
-                currentState = menuValue;
-                currentState.onEnter?.Invoke();
-                return;
-            }
+        {
+            currentState.onExit?.Invoke();
+            currentState = menuValue;
+            currentState.onEnter?.Invoke();
+            return;
         }
     }
+
+
+}
