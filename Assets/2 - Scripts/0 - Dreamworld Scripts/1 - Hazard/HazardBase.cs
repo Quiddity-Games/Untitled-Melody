@@ -5,27 +5,22 @@ using UnityEngine;
 
 public class HazardBase : MonoBehaviour
 {
-
-
-    
-
-    [SerializeField] private GameEvent OnCollision;
     protected bool canMove;
-    // Start is called before the first frame update
 
-   
-
- 
+    public virtual void OnKill()
+    {
+        
+    }
+    
     /// <summary>
     /// Checks if the Hazard has collided with the player.
     /// </summary>
     /// <param name="col"></param>
     private void OnCollisionEnter2D(Collision2D col)
     {
-
         if(col.gameObject.CompareTag("Player"))
         {
-            OnCollision.Raise();
+            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.DEATH);
         }
     }
 }
