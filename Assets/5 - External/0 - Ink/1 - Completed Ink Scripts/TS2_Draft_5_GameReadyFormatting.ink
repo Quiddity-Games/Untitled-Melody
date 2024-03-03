@@ -1,7 +1,14 @@
+EXTERNAL setVariable(varName, varState)
+EXTERNAL getVariable(varName)
+
 VAR player_said_they_were_busy = false
 VAR player_still_into_vocaloid = true
 VAR player_opened_up_about_directing = false
 VAR player_said_song_gets_them = false
+
+~ getVariable("player_said_they_were_busy")
+~ getVariable("player_still_into_vocaloid")
+~ getVariable("player_opened_up_about_directing")
 
 #Conversation: Emerald
 -> Texting_Sequence_2
@@ -26,8 +33,9 @@ hey Emerald I listened to wishing well last night! #Speaker: Amika
         yeah it’s one of my favorites! I’m listening to it all the time lately #Speaker: Emerald
         
 *   oh I LOVED it!! #Speaker: Amika
+        ~ player_said_song_gets_them = true
         it was honestly super-cool. I feel like it’s really my style of music #Speaker: Amika
-        it was like, this song gets met, lol [emoji:joy] #Speaker: Amika
+        it was like, this song gets me, lol [emoji:joy] #Speaker: Amika
         yeah, me too!!! #Speaker: Emerald
         
 *   it was OK #Speaker: Amika

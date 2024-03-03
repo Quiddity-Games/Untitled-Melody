@@ -22,6 +22,8 @@ public class DialogueController : MonoBehaviour
     public static VoidCallback OnLineShown;
     public static VoidCallback SubscribeButtonEvents;
 
+    public static Dictionary<string, bool> DialogueVariables = new Dictionary<string, bool>();
+
     public Action<string> OnLoadNextChunk; // Does something when the next chunk is parsed (i.e. make text bubbles)
 
     public GameEvent OnDialogueEnd;
@@ -59,6 +61,7 @@ public class DialogueController : MonoBehaviour
         CurrentLineIndex = 0;
         MainCharacterName = mainCharacterName.Value;
         InitializeCharacterDictionary();
+        BindExternalFunctions();
 
         InitializeDialogue += GetLinesBeforeChoice;
     }
@@ -68,6 +71,11 @@ public class DialogueController : MonoBehaviour
     {
         SubscribeButtonEvents?.Invoke();
         InitializeDialogue?.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        UnbindExternalFunctions();
     }
 
     private void InitializeCharacterDictionary()
@@ -175,6 +183,30 @@ public class DialogueController : MonoBehaviour
         }
 
         return currentLine;
+    }
+
+    public void BindExternalFunctions()
+    {
+        Debug.Log("bound external ink functions");
+
+        InkStory.BindExternalFunction("setVariable", (string varName, bool varState) => {
+            DialogueVariables.Add(varName, varState);
+            Debug.Log("added variable <b>" + varName + "</b> with value <b>" + varState + "</b> to dictionary");
+
+        });
+
+        InkStory.BindExternalFunction("getVariable", (string varName) => {
+            if (DialogueVariables.ContainsKey(varName))
+                InkStory.variablesState[varName] = DialogueVariables[varName];
+            else
+                Debug.Log("no variable with key <b>" + varName + "</b> was found");
+        });
+    }
+
+    public void UnbindExternalFunctions()
+    {
+        InkStory.UnbindExternalFunction("setVariable");
+        InkStory.UnbindExternalFunction("getVariable");
     }
 
 #if UNITY_EDITOR
