@@ -47,7 +47,10 @@ public class DreamworldEventManager : MonoBehaviour
         if (InputManager.Instance)
             InputManager.Instance.RegisterDreamworldEvents();
         if (PauseMenuManager.Instance)
-            InputManager.Instance.RegisterDreamworldEvents();
+        {
+            PauseMenuManager.Instance.RegisterDreamworldEvents();
+            PauseMenuManager.SetPausePosition?.Invoke();
+        }
     }
 
     private void OnDestroy()
@@ -55,6 +58,6 @@ public class DreamworldEventManager : MonoBehaviour
         if (InputManager.Instance)
             InputManager.Instance.DeregisterDreamworldEvents();
         if (PauseMenuManager.Instance)
-            InputManager.Instance.DeregisterDreamworldEvents();
+            PauseMenuManager.Instance.DeregisterDreamworldEvents();
     }
 }

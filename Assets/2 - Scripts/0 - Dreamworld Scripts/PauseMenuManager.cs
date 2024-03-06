@@ -16,6 +16,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private Button resumeButton;
 
     public static Action<bool> OnPaused;
+    public static Action SetPausePosition;
 
     private RectTransform pauseButtonTransform;
     private Vector2 initialOffsetMin;
@@ -30,12 +31,14 @@ public class PauseMenuManager : MonoBehaviour
     {
         OnPaused += OnGamePause;
         OnPaused += TogglePauseMenu;
+        SetPausePosition += SetButtonPosition;
     }
 
     private void OnDestroy()
     {
         OnPaused -= OnGamePause;
         OnPaused -= TogglePauseMenu;
+        SetPausePosition -= SetButtonPosition;
     }
 
     private void Start()
@@ -54,9 +57,6 @@ public class PauseMenuManager : MonoBehaviour
         initialOffsetMax = pauseButtonTransform.offsetMax;
 
         SetButtonPosition();
-
-        if (SceneManager.GetActiveScene().buildIndex < 1)
-            pauseButton.gameObject.SetActive(false);
     }
 
     private void SetButtonPosition()
@@ -70,6 +70,11 @@ public class PauseMenuManager : MonoBehaviour
             pauseButtonTransform.offsetMax = new Vector2(initialOffsetMax.x, initialOffsetMax.y);
             pauseButtonTransform.offsetMin = new Vector2(initialOffsetMin.x, initialOffsetMin.y);
         }
+
+        if (SceneManager.GetActiveScene().buildIndex < 1)
+            pauseButton.gameObject.SetActive(false);
+        else
+            pauseButton.gameObject.SetActive(true);
     }
 
     public void RegisterDreamworldEvents()

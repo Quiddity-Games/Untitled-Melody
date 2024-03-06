@@ -54,6 +54,7 @@ public class TextingDialogueController : DialogueController
         InitializeDialogue += GetConversationTags;
         InitializeDialogue += CreateTextTypingBubbles;
         InitializeDialogue += InputManager.Instance.SwitchToUI;
+        InitializeDialogue += () => PauseMenuManager.SetPausePosition?.Invoke();
     }
 
     private void OnDestroy()
@@ -63,6 +64,7 @@ public class TextingDialogueController : DialogueController
         InitializeDialogue -= GetConversationTags;
         InitializeDialogue -= CreateTextTypingBubbles;
         InitializeDialogue -= InputManager.Instance.SwitchToUI;
+        InitializeDialogue -= () => PauseMenuManager.SetPausePosition?.Invoke();
     }
 
     /// <summary>
