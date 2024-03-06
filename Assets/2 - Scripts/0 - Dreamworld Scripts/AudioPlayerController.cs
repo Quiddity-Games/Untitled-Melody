@@ -5,7 +5,6 @@ using UnityEngine;
 public class AudioPlayerController : MonoBehaviour
 {
 
-    [SerializeField] private FloatVariable volume;
     [SerializeField] private AudioSource songPlayer;
 
     private void OnEnable()

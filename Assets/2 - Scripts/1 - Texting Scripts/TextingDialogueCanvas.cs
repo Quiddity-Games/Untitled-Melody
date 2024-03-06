@@ -13,7 +13,6 @@ using DG.Tweening;
 /// Attached to the Dialogue UI Canvas gameObject.
 /// </summary>
 
-[Serializable]
 public class TextingDialogueCanvas : MonoBehaviour
 {
     public static TextingDialogueCanvas Instance;
@@ -21,6 +20,7 @@ public class TextingDialogueCanvas : MonoBehaviour
     #region Variables: Buttons
     [Header("Buttons")]
     public Button ContinueDialogueButton;
+    [SerializeField] TextMeshProUGUI continueButtonText;
     [SerializeField] TextOptionUI[] dialogueOptions;
     #endregion
 
@@ -64,6 +64,8 @@ public class TextingDialogueCanvas : MonoBehaviour
     public TextMeshProUGUI autoplayText;
     #endregion
 
+    [SerializeField] CanvasGroup fadeCanvasGroup;
+
     #region Hidden Variables
     private float textContainerTop;
     private float textContainerRight;
@@ -96,9 +98,10 @@ public class TextingDialogueCanvas : MonoBehaviour
 
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
+        fadeCanvasGroup.alpha = 1f;
 
         // Show the phone UI after 4 seconds.
-        DOTween.Sequence().InsertCallback(delayBeforeFadeInDuration, ShowDialogueUI);
+        DOTween.Sequence().Insert(1, fadeCanvasGroup.DOFade(0, 1)).InsertCallback(delayBeforeFadeInDuration + 2, ShowDialogueUI);
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
@@ -124,26 +127,15 @@ public class TextingDialogueCanvas : MonoBehaviour
     }
 
     /// <summary>
-    /// Set the header text and icon on <see cref="Start"/>.
-    /// </summary>
-    private void GetHeaderText()
-    {
-        headerIcon.sprite = DialogueController.Instance.CharactersDictionary[DialogueController.Instance.GlobalTagsDictionary["With"]].IconSprite;
-        headerText.text = DialogueController.Instance.GlobalTagsDictionary["With"];
-
-        LayoutRebuilder.ForceRebuildLayoutImmediate(headerCanvasGroup.gameObject.transform as RectTransform);
-        headerCanvasGroup.DOFade(1f, TextingDialogueController.TextingUI.BubbleFadeDuration);
-        //TextingDialogueController.TextingUI.FadeInUI(headerCanvasGroup, TextingDialogueController.TextingUI.BubbleFadeDuration);
-    }
-
-    /// <summary>
-    /// Show dialogue UI after delay on <see cref="Start"/>.
+    /// Show dialogue UI after delay on Start.
     /// </summary>
     private void ShowDialogueUI()
     {
         ContinueDialogueButton.interactable = false;
         phoneContainerCanvasGroup.DOFade(1f, canvasFadeDuration);
+
         GetHeaderText();
+
         DialogueController.Instance.CanPrintDialogue = false;
 
         DOTween.Sequence().InsertCallback(canvasFadeDuration + startDelayDuration, () =>
@@ -159,9 +151,22 @@ public class TextingDialogueCanvas : MonoBehaviour
         });
     }
 
+    /// <summary>
+    /// Set the header text and icon on Start.
+    /// </summary>
+    private void GetHeaderText()
+    {
+        headerIcon.sprite = DialogueController.Instance.CharactersDictionary[DialogueController.Instance.GlobalTagsDictionary["Conversation"]].IconSprite;
+        headerText.text = DialogueController.Instance.GlobalTagsDictionary["Conversation"];
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(headerCanvasGroup.gameObject.transform as RectTransform);
+        headerCanvasGroup.DOFade(1f, TextingDialogueController.TextingUI.BubbleFadeDuration);
+        //TextingDialogueController.TextingUI.FadeInUI(headerCanvasGroup, TextingDialogueController.TextingUI.BubbleFadeDuration);
+    }
+
     private void EndDialogue()
     {
-        Debug.Log("END TEXTING SCENE");
+        DOTween.Sequence().Insert(0.5f, fadeCanvasGroup.DOFade(1, 1)).AppendCallback(() => TextingLevelLoader.Instance._sceneManagerUtils.AdvanceLevel());
     }
 
     /// <summary>
@@ -250,6 +255,7 @@ public class TextingDialogueCanvas : MonoBehaviour
             && DialogueController.Instance.CurrentLineIndex > DialogueController.Instance.LastLineIndex)
         {
             ContinueDialogueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Finish";
+            autoplaySkipContainer.SetActive(false);
             ContinueDialogueButton.onClick.RemoveAllListeners();
             ContinueDialogueButton.onClick.AddListener(EndDialogue);
             DialogueController.Instance.OnDialogueEnd?.Invoke();

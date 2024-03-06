@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class EndScreenController : MonoBehaviour
@@ -20,6 +21,8 @@ public class EndScreenController : MonoBehaviour
     [SerializeField] private GameObject EndScreenMenu;
 
     [SerializeField] private CollectionScoreController collectionScore;
+
+    [SerializeField] private LevelData levelManager;
     
     [Serializable] 
     private struct EndScreenSprites
@@ -68,12 +71,20 @@ public class EndScreenController : MonoBehaviour
             restartButton.gameObject.SetActive(true);
      
         }
-        else if (obtained == required)
+        else if (obtained == max)
+        {
+            titleText.text = "PERFECT!";
+            obtainedCollectableText.color = Color.red;
+            memiImage.sprite = endSprites.perfectSprite;
+            continueButton.gameObject.SetActive(true);
+        }
+        else if (obtained >= required)
         {
             titleText.text = "Good Job!";
             obtainedCollectableText.color = Color.black;
             memiImage.sprite = endSprites.goodSprite;
             continueButton.gameObject.SetActive(true);
+            levelManager.SetCurrentLevel(3);
         }
         else if (obtained > required)
         {
@@ -81,6 +92,7 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
+            levelManager.SetCurrentLevel(3);
         }
         
         EndScreenMenu.SetActive(true);
