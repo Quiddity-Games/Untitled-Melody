@@ -18,6 +18,18 @@ public class ParallaxScroller : MonoBehaviour
     private float cameraX;
     private float cameraY;
 
+    private void OnEnable()
+    {
+        if (_behaviour == ScrollBehaviour.Parallax)
+            DreamworldEventManager.OnGameStart += StartScrollY;
+    }
+
+    private void OnDestroy()
+    {
+        if (_behaviour == ScrollBehaviour.Parallax)
+            DreamworldEventManager.OnGameStart -= StartScrollY;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

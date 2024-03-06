@@ -252,7 +252,7 @@ public class TextingDialogueCanvas : MonoBehaviour
             ContinueDialogueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Finish";
             ContinueDialogueButton.onClick.RemoveAllListeners();
             ContinueDialogueButton.onClick.AddListener(EndDialogue);
-            DialogueController.Instance.OnDialogueEnd.Raise();
+            DialogueController.Instance.OnDialogueEnd?.Invoke();
             return;
         } else
         {

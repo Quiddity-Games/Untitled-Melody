@@ -7,9 +7,11 @@ public class ReloadController : MonoBehaviour
 {
     void OnEnable()
     {
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_RELOAD,
-            ReloadScene
-            );
+        //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_RELOAD,
+        //    ReloadScene
+        //    );
+
+        DreamworldEventManager.OnReload += ReloadScene;
     }
 
     void ReloadScene()
@@ -18,8 +20,10 @@ public class ReloadController : MonoBehaviour
     }
     void OnDisable()
     {
-        DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_RELOAD,
-            ReloadScene
-        );
+        //DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_RELOAD,
+        //    ReloadScene
+        //);
+
+        DreamworldEventManager.OnReload -= ReloadScene;
     }
 }

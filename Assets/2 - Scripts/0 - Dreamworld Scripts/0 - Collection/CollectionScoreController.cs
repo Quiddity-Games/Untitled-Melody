@@ -16,10 +16,10 @@ public class CollectionScoreController : MonoBehaviour
     [SerializeField] private int requiredNumCollected;
     [SerializeField] private CollectionSound sound;
     [SerializeField] private CollectableUI _ui;
-    [SerializeField] private CollectionResetter resetter;
+    [SerializeField] private CollectionResetter resetter; // not being used
     [SerializeField] private EndScreenController endScreen;
 
-    public Action RegisterCollectable;
+    private List<Collectable> currentCollectables = new List<Collectable>();
 
     public Sprite[] CollectableSprites;
 
@@ -34,7 +34,24 @@ public class CollectionScoreController : MonoBehaviour
         tempNumCollected = 0;
         endInfo.ResetValues();
 
-        RegisterCollectable += () => numCollectables += 1;
+        DreamworldEventManager.RegisterCollectable += () => numCollectables += 1;
+    }
+
+    private void OnEnable()
+    {
+        DreamworldEventManager.OnDeath += HandleDeath;
+        DreamworldEventManager.OnCollect += HandleCollection;
+        DreamworldEventManager.EnterCheckpoint += RecordCurrentCollection;
+        DreamworldEventManager.ResetTempCollection += ResetCollection;
+    }
+
+    private void OnDestroy()
+    {
+        DreamworldEventManager.RegisterCollectable -= () => numCollectables += 1;
+        DreamworldEventManager.OnDeath -= HandleDeath;
+        DreamworldEventManager.OnCollect -= HandleCollection;
+        DreamworldEventManager.EnterCheckpoint -= RecordCurrentCollection;
+        DreamworldEventManager.ResetTempCollection -= ResetCollection;
     }
 
     public CollectableInfo GetCollectionStats()
@@ -44,38 +61,45 @@ public class CollectionScoreController : MonoBehaviour
     
     public void Start()
     {
-        /*DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.REGISTER_COLLECTABLE, () => {
-            numCollectables += 1;
-            UpdateInfo();
-        });*/
-
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, HandleDeath);
-      
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COLLECT, HandleCollection);
-
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(
-            DreamworldVoidEventEnum.CHECKPOINT_ENTER, RecordCurrentCollection);
         UpdateInfo();
     }
 
-    void HandleCollection()
+    void HandleCollection(Collectable collected)
     {
+        currentCollectables.Add(collected);
         tempNumCollected++;
         UpdateInfo();
         sound.PlaySound();
         if (numCollected + tempNumCollected >= numCollectables)
         {
             RecordCurrentCollection();
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
+
+            DreamworldEventManager.OnGameEnd?.Invoke();
+
+            //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
+            //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
         }
+    }
+
+    private void ResetCollection()
+    {
+        foreach (Collectable collected in currentCollectables)
+        {
+            collected.ResetDisplay();
+        }
+
+        currentCollectables.Clear();
     }
 
     public void HandleDeath()
     {
         _ui.UpdateLostCount();
-        ClearTemp();
-        resetter.ResetTempCollectables();
+        //ClearTemp();
+        tempNumCollected = 0;
+        UpdateInfo();
+
+        DreamworldEventManager.ResetTempCollection?.Invoke();
+        //resetter.ResetTempCollectables();
     }
 
     private void UpdateInfo()
@@ -88,10 +112,11 @@ public class CollectionScoreController : MonoBehaviour
     {
         numCollected += tempNumCollected;
         tempNumCollected = 0;
-        resetter.ClearTemp();
+        //resetter.ClearTemp();
         UpdateInfo();
     }
 
+    // not being used
     public void ClearTemp()
     {
         tempNumCollected = 0;

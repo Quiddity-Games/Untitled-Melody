@@ -36,8 +36,9 @@ public class Checkpoint : MonoBehaviour
 
             checkPointBurst.Emit(20);
             _used = true;
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.CHECKPOINT_ENTER);
-            DreamworldEventManager.Instance.CallVector3Event(DreamworldVector3EventEnum.CHECKPOINT_POSITION, transform.position);
+            //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.CHECKPOINT_ENTER);
+            DreamworldEventManager.EnterCheckpoint?.Invoke();
+            //DreamworldEventManager.Instance.CallVector3Event(DreamworldVector3EventEnum.CHECKPOINT_POSITION, transform.position);
             //"Saves" the progress the player has made in acquiring collectables up until this checkpoint
 
             CollectionScoreController.Instance.RecordCurrentCollection();

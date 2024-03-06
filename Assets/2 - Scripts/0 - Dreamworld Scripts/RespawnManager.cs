@@ -20,11 +20,23 @@ public class RespawnManager : MonoBehaviour
         _player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    private void OnEnable()
+    {
+        DreamworldEventManager.OnDeath += RespawnPlayer;
+        DreamworldEventManager.OnDeath += onDeathSound.Play;
+    }
+
+    private void OnDisable()
+    {
+        DreamworldEventManager.OnDeath -= RespawnPlayer;
+        DreamworldEventManager.OnDeath -= onDeathSound.Play;
+    }
+
     public void Start()
     {
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, RespawnPlayer);
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, onDeathSound.Play);
+        
     }
+
     public void RespawnPlayer()
     {
         isRespawning = true;

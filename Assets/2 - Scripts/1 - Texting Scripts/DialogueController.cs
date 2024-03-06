@@ -8,23 +8,18 @@ using TMPro;
 using DG.Tweening;
 using Ink.Runtime;
 using System.Text.RegularExpressions;
-using System.Linq;
-using RoboRyanTron.Unite2017.Events;
-using UnityEngine.InputSystem;
 
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController Instance;
 
-    public static VoidCallback InitializeDialogue;
-    public static VoidCallback OnDialogueStart;
-    public static VoidCallback OnContinue;
-    public static VoidCallback OnLineShown;
-    public static VoidCallback SubscribeButtonEvents;
+    public static Action InitializeDialogue;
+    public static Action OnLineShown;
+    public static Action SubscribeButtonEvents;
 
     public Action<string> OnLoadNextChunk; // Does something when the next chunk is parsed (i.e. make text bubbles)
 
-    public GameEvent OnDialogueEnd;
+    public Action OnDialogueEnd;
 
     [Header("Ink & Characters")]
     public Story InkStory;

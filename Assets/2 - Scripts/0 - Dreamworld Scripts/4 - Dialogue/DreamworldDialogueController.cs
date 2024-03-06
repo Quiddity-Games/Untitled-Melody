@@ -42,6 +42,8 @@ public class DreamworldDialogueController : DialogueController
             InitializeDialogue += InitializeUI;
             OnLineShown += ShowLine;
         }
+
+        DreamworldEventManager.OnDialogueContinue += StartDialogue;
     }
 
     private void OnDestroy()
@@ -58,10 +60,12 @@ public class DreamworldDialogueController : DialogueController
     {
         base.Start();
 
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
+        //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
 
         if (PlayDialogueOnStart.Value)
         {
+            InputManager.Instance.ToggleDashAction(false);
+            InputManager.Instance.SwitchToUI();
             CurrentLineIndex = -1;
             MostRecentLineIndex = -1;
 
@@ -71,6 +75,7 @@ public class DreamworldDialogueController : DialogueController
             timerBar.SetActive(false);
         } else
         {
+            InputManager.Instance.ToggleDashAction(true);
             welcomeMessage.alpha = 1f;
             timerBar.SetActive(true);
         }
@@ -91,7 +96,8 @@ public class DreamworldDialogueController : DialogueController
     /// <param name="ctx"></param>
     private void StartDialogue()
     {
-        DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
+        //DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
+        DreamworldEventManager.OnDialogueContinue -= StartDialogue;
 
         if (PlayDialogueOnStart.Value)
         {
@@ -99,7 +105,8 @@ public class DreamworldDialogueController : DialogueController
             InsertCallback(0.85f, () => PlayDialogue(true));
         } else
         {
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.DIALOGUE_END);
+            //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.DIALOGUE_END);
+            DreamworldEventManager.OnDialogueEnd?.Invoke();
         }
     }
 
@@ -114,7 +121,8 @@ public class DreamworldDialogueController : DialogueController
                 Join(DreamworldDialogueCanvas.Instance.ContentCanvasGroup.DOFade(0f, 1.25f)).
                 InsertCallback(3f, () =>
                 {
-                    DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.DIALOGUE_END);
+                    //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.DIALOGUE_END);
+                    DreamworldEventManager.OnDialogueEnd?.Invoke();
                     welcomeMessage.alpha = 1f;
                     timerBar.SetActive(true);
                 });

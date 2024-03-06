@@ -31,10 +31,20 @@ public class EndScreenController : MonoBehaviour
     
     [SerializeField] private EndScreenSprites endSprites;
 
+    private void OnEnable()
+    {
+        DreamworldEventManager.OnGameEnd += LoadEndScreen;
+    }
+
+    private void OnDestroy()
+    {
+        DreamworldEventManager.OnGameEnd -= LoadEndScreen;
+    }
+
     private void Start()
     {
         EndScreenMenu.SetActive(false);
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.GAME_END, LoadEndScreen);
+        //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.GAME_END, LoadEndScreen);
     }
     
     public void LoadEndScreen()

@@ -79,20 +79,7 @@ public class Collectable : MonoBehaviour, ICollectable
         startingLocation = transform.position;
         activeMessages = genericMessages;
         InitializeDisplay();
-        CollectionScoreController.Instance.RegisterCollectable?.Invoke();
-    }
-
-    public void Update()
-    {
-        /*if (initialize)
-        {
-            return;
-        }
-
-        DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum
-            .REGISTER_COLLECTABLE);
-        initialize = true;*/
-
+        DreamworldEventManager.RegisterCollectable?.Invoke();
     }
 
     private void InitializeDisplay()
@@ -121,8 +108,7 @@ public class Collectable : MonoBehaviour, ICollectable
 
     public void Collect()
     {
-        DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COLLECT);
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.RESET_TEMP_COLLECT, ResetDisplay);
+        DreamworldEventManager.OnCollect?.Invoke(this);
         display.SetActive(false);
         textDisplay.gameObject.SetActive(false);
         transform.position = startingLocation;
