@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7168106095628208717
 RectTransform:
   m_ObjectHideFlags: 0
@@ -589,7 +589,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 092365dd3f8b2ed4fa8d1a0e0d63963d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca522dc9a4f63694e9e747ae3e88084d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -711,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3448280955690772773
 RectTransform:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Don\u2019t need nobody"
+  m_text: compromise
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 49c814372af288e43b882390ee532ef5, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 3788e4fde8245664f9831a470d67f6e3, type: 2}
@@ -821,11 +821,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 10.5
+  m_fontSize: 9.2
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 10
+  m_fontSizeMin: 9
   m_fontSizeMax: 15
   m_fontStyle: 0
   m_HorizontalAlignment: 2
