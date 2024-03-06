@@ -12,6 +12,9 @@ public class PlayerAnimationController : MonoBehaviour
     private bool _facingRight;
     public SpriteRenderer spriteRenderer;
 
+    private Vector3 _leftFacingScale = new Vector3(-1, 1, 1);
+    private Vector3 _rightFacingScale = new Vector3(1, 1, 1);
+
     private void Awake()
     {
         Instance = this;
@@ -32,6 +35,11 @@ public class PlayerAnimationController : MonoBehaviour
 
         _memiAnimator.SetInteger("Dash Rating", ((int)hitInfo.rating));
         _memiAnimator.SetTrigger("Dash");
+
+        if (_facingRight)
+            _memiAnimator.gameObject.transform.localScale = _rightFacingScale;
+        else
+            _memiAnimator.gameObject.transform.localScale = _leftFacingScale;
     }
 
     public void PlayWallBump()
