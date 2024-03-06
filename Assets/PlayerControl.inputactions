@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "MousePosition",
-                    "type": "Value",
-                    "id": "9a8485d6-bb82-48e1-a48e-fa0e943ad380",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -97,26 +88,74 @@
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Texting",
+            "id": "5d561337-b3e0-4029-9acc-e0694808030c",
+            "actions": [
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "d5de52ff-350e-442a-8ff2-8b639c74591a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
+                    "name": "Continue",
+                    "type": "Button",
+                    "id": "384b85f8-a65b-46d5-af12-4ba84b8a58f4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
                     "name": "",
-                    "id": "37a66909-d84b-4986-bb79-ac548eeb5ad8",
-                    "path": "<Mouse>/position",
+                    "id": "d6691b43-2e6f-45b5-add2-51d8028a4b94",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MousePosition",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "a928865c-00ff-4d62-a8c8-787e29e00dd3",
-                    "path": "<Touchscreen>/position",
+                    "id": "451bb8d0-54e3-4a75-a362-374bdacf1350",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "MousePosition",
+                    "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43f6809b-7c0c-4e98-964c-97e71b5e652f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "918e3a96-746b-477b-9cb4-7593455cb5bb",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

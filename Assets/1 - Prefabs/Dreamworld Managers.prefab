@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5499334589776104448}
   - component: {fileID: 5499334589776104511}
   - component: {fileID: 5499334589776104510}
-  - component: {fileID: 5499334589776104505}
   - component: {fileID: 5499334589776104504}
   m_Layer: 0
   m_Name: Dreamworld Managers
@@ -200,18 +199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectionSound: {fileID: 8300000, guid: f73431488f33ff74bad31d3d2ca97a07, type: 3}
---- !u!114 &5499334589776104505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5499334589776104449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49490a5dc7c0fa547a2ddf79153febf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5499334589776104504
 MonoBehaviour:
   m_ObjectHideFlags: 0

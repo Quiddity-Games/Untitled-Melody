@@ -53,15 +53,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MousePosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""9a8485d6-bb82-48e1-a48e-fa0e943ad380"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -119,26 +110,74 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Texting"",
+            ""id"": ""5d561337-b3e0-4029-9acc-e0694808030c"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""d5de52ff-350e-442a-8ff2-8b639c74591a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""384b85f8-a65b-46d5-af12-4ba84b8a58f4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
                     ""name"": """",
-                    ""id"": ""37a66909-d84b-4986-bb79-ac548eeb5ad8"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""d6691b43-2e6f-45b5-add2-51d8028a4b94"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MousePosition"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a928865c-00ff-4d62-a8c8-787e29e00dd3"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""id"": ""451bb8d0-54e3-4a75-a362-374bdacf1350"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MousePosition"",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""43f6809b-7c0c-4e98-964c-97e71b5e652f"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""918e3a96-746b-477b-9cb4-7593455cb5bb"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -152,7 +191,10 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         m_Dreamworld_Dash = m_Dreamworld.FindAction("Dash", throwIfNotFound: true);
         m_Dreamworld_Reload = m_Dreamworld.FindAction("Reload", throwIfNotFound: true);
         m_Dreamworld_Pause = m_Dreamworld.FindAction("Pause", throwIfNotFound: true);
-        m_Dreamworld_MousePosition = m_Dreamworld.FindAction("MousePosition", throwIfNotFound: true);
+        // Texting
+        m_Texting = asset.FindActionMap("Texting", throwIfNotFound: true);
+        m_Texting_Pause = m_Texting.FindAction("Pause", throwIfNotFound: true);
+        m_Texting_Continue = m_Texting.FindAction("Continue", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -215,7 +257,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Dreamworld_Dash;
     private readonly InputAction m_Dreamworld_Reload;
     private readonly InputAction m_Dreamworld_Pause;
-    private readonly InputAction m_Dreamworld_MousePosition;
     public struct DreamworldActions
     {
         private @PlayerControl m_Wrapper;
@@ -223,7 +264,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Dreamworld_Dash;
         public InputAction @Reload => m_Wrapper.m_Dreamworld_Reload;
         public InputAction @Pause => m_Wrapper.m_Dreamworld_Pause;
-        public InputAction @MousePosition => m_Wrapper.m_Dreamworld_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Dreamworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -242,9 +282,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
-                @MousePosition.started -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnMousePosition;
-                @MousePosition.performed -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnMousePosition;
-                @MousePosition.canceled -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_DreamworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -258,18 +295,60 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @MousePosition.started += instance.OnMousePosition;
-                @MousePosition.performed += instance.OnMousePosition;
-                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
     public DreamworldActions @Dreamworld => new DreamworldActions(this);
+
+    // Texting
+    private readonly InputActionMap m_Texting;
+    private ITextingActions m_TextingActionsCallbackInterface;
+    private readonly InputAction m_Texting_Pause;
+    private readonly InputAction m_Texting_Continue;
+    public struct TextingActions
+    {
+        private @PlayerControl m_Wrapper;
+        public TextingActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Texting_Pause;
+        public InputAction @Continue => m_Wrapper.m_Texting_Continue;
+        public InputActionMap Get() { return m_Wrapper.m_Texting; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TextingActions set) { return set.Get(); }
+        public void SetCallbacks(ITextingActions instance)
+        {
+            if (m_Wrapper.m_TextingActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_TextingActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_TextingActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_TextingActionsCallbackInterface.OnPause;
+                @Continue.started -= m_Wrapper.m_TextingActionsCallbackInterface.OnContinue;
+                @Continue.performed -= m_Wrapper.m_TextingActionsCallbackInterface.OnContinue;
+                @Continue.canceled -= m_Wrapper.m_TextingActionsCallbackInterface.OnContinue;
+            }
+            m_Wrapper.m_TextingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
+            }
+        }
+    }
+    public TextingActions @Texting => new TextingActions(this);
     public interface IDreamworldActions
     {
         void OnDash(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnMousePosition(InputAction.CallbackContext context);
+    }
+    public interface ITextingActions
+    {
+        void OnPause(InputAction.CallbackContext context);
+        void OnContinue(InputAction.CallbackContext context);
     }
 }
