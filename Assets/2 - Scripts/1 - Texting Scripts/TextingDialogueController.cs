@@ -53,6 +53,7 @@ public class TextingDialogueController : DialogueController
         InitializeDialogue += SelectPlatform;
         InitializeDialogue += GetConversationTags;
         InitializeDialogue += CreateTextTypingBubbles;
+        InitializeDialogue += InputManager.Instance.SwitchToUI;
     }
 
     private void OnDestroy()
@@ -61,6 +62,7 @@ public class TextingDialogueController : DialogueController
         InitializeDialogue -= SelectPlatform;
         InitializeDialogue -= GetConversationTags;
         InitializeDialogue -= CreateTextTypingBubbles;
+        InitializeDialogue -= InputManager.Instance.SwitchToUI;
     }
 
     /// <summary>

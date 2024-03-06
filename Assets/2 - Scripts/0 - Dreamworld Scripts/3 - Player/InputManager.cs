@@ -13,6 +13,7 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        _playerInput = GetComponent<PlayerInput>();
     }
 
     private void OnEnable()
@@ -50,8 +51,10 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        _playerInput = GetComponent<PlayerInput>();
         EnableInput();
+
+        if (SceneManager.GetActiveScene().buildIndex < 1 && _playerInput.currentActionMap.name == "Dreamworld")
+            DisableInput();
     }
 
     public void EnableInput()
@@ -72,6 +75,7 @@ public class InputManager : MonoBehaviour
     public void SwitchToUI()
     {
         _playerInput.SwitchCurrentActionMap("Texting");
+        Debug.Log(_playerInput.currentActionMap);
     }
 
     public void OnDash(InputAction.CallbackContext obj)
@@ -79,7 +83,6 @@ public class InputManager : MonoBehaviour
         if (PauseMenuManager.Instance.IsPaused)
             return;
 
-        Debug.Log("Dash is being called");
         //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_DASH);
         DreamworldEventManager.OnDash?.Invoke();
     }
@@ -91,19 +94,16 @@ public class InputManager : MonoBehaviour
         else
             PauseMenuManager.OnPaused?.Invoke(false);
 
-        Debug.Log("Reload called");
         DreamworldEventManager.OnReload?.Invoke();
     }
 
     public void OnPause(InputAction.CallbackContext obj)
     {
-        Debug.Log("Pause input called");
         PauseMenuManager.OnPaused?.Invoke(!PauseMenuManager.Instance.IsPaused);
     }
 
     public void OnContinue(InputAction.CallbackContext obj)
     {
-        Debug.Log("Continue dialogue called");
         if (DreamworldEventManager.Instance)
             DreamworldEventManager.OnDialogueContinue?.Invoke();
     }

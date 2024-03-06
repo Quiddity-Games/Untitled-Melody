@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// The script responsible for pulling up the pause menu.
@@ -15,6 +16,10 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private Button resumeButton;
 
     public static Action<bool> OnPaused;
+
+    private RectTransform pauseButtonTransform;
+    private Vector2 initialOffsetMin;
+    private Vector2 initialOffsetMax;
 
     private void Awake()
     {
@@ -42,6 +47,28 @@ public class PauseMenuManager : MonoBehaviour
         if (Time.timeScale == 0)
         {
             Time.timeScale = 1;
+        }
+
+        pauseButtonTransform = pauseButton.GetComponent<RectTransform>();
+        initialOffsetMin = pauseButtonTransform.offsetMin;
+        initialOffsetMax = pauseButtonTransform.offsetMax;
+
+        SetButtonPosition();
+
+        if (SceneManager.GetActiveScene().buildIndex < 1)
+            pauseButton.gameObject.SetActive(false);
+    }
+
+    private void SetButtonPosition()
+    {
+        if (TextingLevelLoader.Instance)
+        {
+            pauseButtonTransform.offsetMax = new Vector2(-initialOffsetMin.x, -initialOffsetMin.y);
+            pauseButtonTransform.offsetMin = new Vector2(-initialOffsetMax.x, -initialOffsetMax.y);
+        } else
+        {
+            pauseButtonTransform.offsetMax = new Vector2(initialOffsetMax.x, initialOffsetMax.y);
+            pauseButtonTransform.offsetMin = new Vector2(initialOffsetMin.x, initialOffsetMin.y);
         }
     }
 
