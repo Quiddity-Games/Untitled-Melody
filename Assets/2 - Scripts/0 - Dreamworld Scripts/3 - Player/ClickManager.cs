@@ -14,13 +14,11 @@ public class ClickManager : MonoBehaviour
 
         private readonly Rigidbody2D _rigidbody2D;
 
-        private PlayerControl _playerControl;
-
         public readonly Vector2 Direction
         {
             get
             {
-                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(PlayerInput.GetMousePosition()) - _rigidbody2D.position;
+                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - _rigidbody2D.position;
                 dashDirection.Normalize();
                 return dashDirection;
             }
@@ -28,12 +26,10 @@ public class ClickManager : MonoBehaviour
 
         public Dash(Rigidbody2D rigidbody2D, float dashForceMultiplier = 10f, float maxDashDistance = 5f, float dashingTime = 0.25f)
         {
-            _playerControl = new PlayerControl();
             _rigidbody2D = rigidbody2D;
             DashForceMultiplier = dashForceMultiplier;
             MaxDashDistance = maxDashDistance;
             DashingTime = dashingTime;
-            _playerControl.Enable();
         }
     }
 
@@ -49,7 +45,6 @@ public class ClickManager : MonoBehaviour
     [SerializeField] private ParticleSystem ps;
         
     private CameraFollow _cameraFollow;
-    private PlayerControl _playerControl;
 
     public Transform CursorTransform;
 
@@ -68,6 +63,23 @@ public class ClickManager : MonoBehaviour
         _NoteTracker.HitCallback += HandleDash;
 
     }
+
+    private void OnEnable()
+    {
+        DreamworldEventManager.OnCountdownFinish += () => dashEnabled = true;
+        DreamworldEventManager.OnDash += DashOnPerformed;
+        PauseMenuManager.OnPaused += ToggleControls;
+        DreamworldEventManager.OnGameEnd += () => ToggleControls(true);
+    }
+
+    private void OnDestroy()
+    {
+        DreamworldEventManager.OnCountdownFinish -= () => dashEnabled = true;
+        DreamworldEventManager.OnDash -= DashOnPerformed;
+        PauseMenuManager.OnPaused -= ToggleControls;
+        DreamworldEventManager.OnGameEnd -= () => ToggleControls(true);
+    }
+
     public void Start()
     {
         _dash = new Dash(_rigidbody2D);
@@ -79,19 +91,11 @@ public class ClickManager : MonoBehaviour
             obj.SetActive(false);
             return obj;
         }, item => { item.SetActive(false); });
-        _playerControl = new PlayerControl();
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, DashOnPerformed);
-        _playerControl.Dreamworld.Enable();
+        //_playerControl = new PlayerControl();
+        //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, DashOnPerformed);
+        //_playerControl.Dreamworld.Enable();
         
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COUNTDOWN_FINISH, EnableDash);
-    }
-
-    private void OnDestroy()
-    {
-        if(DreamworldEventManager.Instance != null)
-        {
-            DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, DashOnPerformed);
-        }
+        //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COUNTDOWN_FINISH, EnableDash);
     }
 
     private void DashOnPerformed()
@@ -107,12 +111,12 @@ public class ClickManager : MonoBehaviour
         if(value)
         {
             CursorTransform.gameObject.SetActive(false);
-            _playerControl.Dreamworld.Disable();
+            _rigidbody2D.Sleep();
         }
         else
         {
             CursorTransform.gameObject.SetActive(true);
-            _playerControl.Dreamworld.Enable();
+            _rigidbody2D.WakeUp();
         }
     }
     
@@ -161,7 +165,7 @@ public class ClickManager : MonoBehaviour
 
         _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
 
-        Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
+        Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector2 dashLocation = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
 
         float dashDistance = Mathf.Min(_dash.MaxDashDistance, dashScale * Vector2.Distance(dashLocation, _rigidbody2D.position));

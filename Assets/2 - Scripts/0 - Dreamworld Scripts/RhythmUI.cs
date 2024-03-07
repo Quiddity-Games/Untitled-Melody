@@ -128,7 +128,8 @@ public class RhythmUI : MonoBehaviour
                     new Vector3(0, 250, 0);
                 countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
                 _NoteTracker.onTimeUpdate -= HandleCountdown;
-                DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COUNTDOWN_FINISH);
+                DreamworldEventManager.OnCountdownFinish?.Invoke();
+                //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COUNTDOWN_FINISH);
                 _countdownFinished = true;
             }
 

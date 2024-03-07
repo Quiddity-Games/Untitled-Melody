@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe8ec0f14c8fe64ab0996b21e41c9f3, type: 3}
+  m_Name: musicVol
+  m_EditorClassIdentifier: 
+  mixerField: musicVol
+  mixer: {fileID: 24100000, guid: fbe4116ad5e163945a8493ce0951b54e, type: 2}

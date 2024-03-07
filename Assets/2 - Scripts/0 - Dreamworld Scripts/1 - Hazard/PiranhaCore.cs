@@ -9,10 +9,19 @@ public class PiranhaCore : MovingHazardBase
 {
     public float speed; //Speed at which the piranha can move
 
+    private void OnEnable()
+    {
+        DreamworldEventManager.OnDeath += OnKill;
+    }
+
+    private void OnDisable()
+    {
+        DreamworldEventManager.OnDeath -= OnKill;
+    }
+
     public override void Start()
     {
         base.Start();
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, OnKill);
     }
 
     /// <summary>

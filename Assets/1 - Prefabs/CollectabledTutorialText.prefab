@@ -70,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect 30      before the song ends!
+  m_text: Collect 112      before the song ends!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17eb7bfe9298a3d43abfe02bc72e8d00, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 676abbffcd5b6724fbcc8924d0f61faf, type: 2}
@@ -151,7 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5960c570f5052c840845eda9e5f0419b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collections: {fileID: 11400000, guid: 81420cf3e35355e4db904fe7b5da09fb, type: 2}
 --- !u!1 &759262585029218078
 GameObject:
   m_ObjectHideFlags: 0

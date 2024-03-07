@@ -29,18 +29,27 @@ public class SwitchToggle : MonoBehaviour {
       toggle.onValueChanged.AddListener (OnSwitch) ;
 
       if (toggle.isOn)
-         OnSwitch (true) ;
-   }
+      {
+         uiHandleRectTransform.anchoredPosition =  handlePosition * -1; // no anim
+         backgroundImage.color = backgroundActiveColor; // no anim
+         handleImage.color = handleActiveColor; // no anim
+      }
 
+
+   }
+   
+   
+   
    void OnSwitch (bool on) {
+
       //uiHandleRectTransform.anchoredPosition = on ? handlePosition * -1 : handlePosition ; // no anim
-      uiHandleRectTransform.DOAnchorPos (on ? handlePosition * -1 : handlePosition, .4f).SetEase (Ease.InOutBack) ;
+      uiHandleRectTransform.DOAnchorPos (on ? handlePosition * -1 : handlePosition, .4f).SetEase (Ease.InOutBack).SetUpdate(true) ;
 
       //backgroundImage.color = on ? backgroundActiveColor : backgroundDefaultColor ; // no anim
-      backgroundImage.DOColor (on ? backgroundActiveColor : backgroundDefaultColor, .6f) ;
+      backgroundImage.DOColor (on ? backgroundActiveColor : backgroundDefaultColor, .6f).SetUpdate(true);
 
       //handleImage.color = on ? handleActiveColor : handleDefaultColor ; // no anim
-      handleImage.DOColor (on ? handleActiveColor : handleDefaultColor, .4f) ;
+      handleImage.DOColor (on ? handleActiveColor : handleDefaultColor, .4f).SetUpdate(true) ;
    }
 
    void OnDestroy ( ) {
