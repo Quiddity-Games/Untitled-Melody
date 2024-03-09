@@ -9,14 +9,14 @@ public class InputDisableHover : MonoBehaviour, IPointerEnterHandler , IPointerE
     {
         if(this.gameObject.activeInHierarchy)
         {
-            PlayerInput.ToggleInput(false);
+            PlayerInputManager.ToggleInput(false);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     { 
         if(this.gameObject.activeInHierarchy) {
-            PlayerInput.ToggleInput(true);
+            PlayerInputManager.ToggleInput(true);
         }
     }
 }

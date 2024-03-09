@@ -26,13 +26,13 @@ public class PlayerPause : MonoBehaviour
         { 
             Time.timeScale = 0;
             playerBody.Sleep();
-            PlayerInput.ToggleInput(false);
+            PlayerInputManager.ToggleInput(false);
         }
         else
         { 
             Time.timeScale = 1;
             playerBody.WakeUp();
-            PlayerInput.ToggleInput(true);
+            PlayerInputManager.ToggleInput(true);
         }
         
         _clickManager.ToggleControls(isPaused);
