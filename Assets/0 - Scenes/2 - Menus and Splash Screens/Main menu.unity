@@ -1783,7 +1783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1075197004
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2193,7 +2193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1305127099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2210,9 +2210,9 @@ RectTransform:
   m_Father: {fileID: 56624447}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 80, y: -205}
   m_SizeDelta: {x: 640, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1305127100
@@ -2308,7 +2308,6 @@ GameObject:
   - component: {fileID: 1314072439}
   - component: {fileID: 1314072440}
   - component: {fileID: 1314072441}
-  - component: {fileID: 1314072442}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -2395,23 +2394,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   transition: 1
---- !u!114 &1314072442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314072438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fdaa08acadd83b4d976f11e633e0f13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aboveMenu: {fileID: 0}
-  firstButton: {fileID: 0}
-  aboveButton: {fileID: 0}
-  data: {fileID: 11400000, guid: 06c85de8ab9de8740b0d9fd45e9ed092, type: 2}
-  ContinueButton: {fileID: 1305127100}
 --- !u!1 &1434976258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2581,8 +2563,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: 28.07029}
-  m_SizeDelta: {x: 1000, y: 93.8594}
+  m_AnchoredPosition: {x: 500, y: -16.309}
+  m_SizeDelta: {x: 1000, y: 5.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1435948159
 MonoBehaviour:
@@ -2756,7 +2738,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: -1208.4896}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3206,7 +3188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1768120873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3256,18 +3238,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
-        m_MethodName: SetSelectedGameObject
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1726585116}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   transition: 1
 --- !u!114 &1768120875
 MonoBehaviour:
@@ -3295,30 +3265,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.EventSystems.EventSystem, UnityEngine.UI
-        m_MethodName: SetSelectedGameObject
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 79419197}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: Play
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: CreditsAnimation
           m_BoolArgument: 1
         m_CallState: 2
   transition: 0
