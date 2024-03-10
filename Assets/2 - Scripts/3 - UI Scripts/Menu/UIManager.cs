@@ -51,19 +51,18 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        pauseButton.onClick.AddListener(() => PauseMenuManager.OnPaused?.Invoke(true));
-        resumeButton.onClick.AddListener(() => PauseMenuManager.OnPaused?.Invoke(false));
+        pauseButton.onClick.AddListener((
+        ) => {
+            PauseMenuManager.OnPaused?.Invoke(true);
+            OpenPauseMenu(()=>{
+                Instance.pauseButton.gameObject.SetActive(true);
+                PauseMenuManager.OnPaused?.Invoke(false);});
+        });
         pauseButtonTransform = pauseButton.GetComponent<RectTransform>();
         initialOffsetMin = pauseButtonTransform.offsetMin;
         initialOffsetMax = pauseButtonTransform.offsetMax;
 
         SetButtonPosition();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void SetButtonPosition()
@@ -86,7 +85,6 @@ public class UIManager : MonoBehaviour
     
     public void TogglePauseMenu(bool isPaused)
     {
-        pauseButton.gameObject.SetActive(!isPaused);
 
         if(isPaused)
         {
@@ -101,6 +99,7 @@ public class UIManager : MonoBehaviour
 
     public static void OpenPauseMenu(Action callback)
     {
+        Instance.pauseButton.gameObject.SetActive(false);
         Instance.m_navigator.Reset();
         Instance.m_navigator.ChangeSubMenu(Instance.pauseMenu);
         Instance.m_navigator.onExitMenu += callback;
