@@ -49,7 +49,7 @@ public class DreamworldEventManager : MonoBehaviour
         if (PauseMenuManager.Instance)
         {
             PauseMenuManager.Instance.RegisterDreamworldEvents();
-            PauseMenuManager.SetPausePosition?.Invoke();
+            UIManager.SetPausePosition?.Invoke();
         }
     }
 

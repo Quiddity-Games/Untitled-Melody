@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class MenuManager : MonoBehaviour
+public class MenuNavigator : MonoBehaviour
 {
 
     [SerializeField] private EventSystem _eventSys;
@@ -13,8 +13,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private BaseSubMenu _currSubMenu;
 
     [SerializeField] private PlayerInput _input;
+
+    public Action onExitMenu;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         _input.actions["UI/Cancel"].started += new Action<InputAction.CallbackContext>(this.Back);
     }
@@ -28,6 +30,18 @@ public class MenuManager : MonoBehaviour
         return _input;
     }
 
+    public void Reset()
+    {
+        if(this._currSubMenu != (UnityEngine.Object)null)
+        {
+            this._currSubMenu.gameObject.SetActive(false);
+        }
+    
+        this._currSubMenu = null;
+        onExitMenu = null;
+
+    }
+
     public void Back()
     {
 
@@ -39,6 +53,9 @@ public class MenuManager : MonoBehaviour
             _input.actions["UI/Cancel"].started -= new Action<InputAction.CallbackContext>(this.Back);
             EventSystem.current.SetSelectedGameObject((GameObject) null);
             this._currSubMenu.gameObject.SetActive(false);
+            Debug.Log("Testing");
+            onExitMenu?.Invoke();
+            onExitMenu = null;
         }
         else
         {

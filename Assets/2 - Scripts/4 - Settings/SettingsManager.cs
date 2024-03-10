@@ -10,8 +10,6 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private AccSettings accSettings;
     [SerializeField] private AVSettings aVSettings;
     [SerializeField] private VisualSettings visual;
-    [SerializeField] private Button backButton;
-    [SerializeField] private GameObject settingsPanel;
 
     private static SettingsManager _Instance;
 
@@ -31,36 +29,23 @@ public class SettingsManager : MonoBehaviour
         visual.ApplySettings();
     }
 
-    private void Start()
-    {
-        backButton.onClick.AddListener(TurnOffSettings);
-        settingsPanel.SetActive(false);
-    }
-
     public static SettingsManager Instance()
     {
         return _Instance;
     }
-    public  VisualSettings GetVisualSettings()
+    public VisualSettings GetVisualSettings()
     {
         return visual;
     }
 
-    public  AccSettings GetAccSettings()
+    public AccSettings GetAccSettings()
     {
         return accSettings;
     }
     
-    public  AVSettings GetAudioSettings()
+    public AVSettings GetAudioSettings()
     {
         return aVSettings;
     }
 
-    private void TurnOffSettings()
-    {
-        settingsPanel.SetActive(false);
-
-        if (SceneManager.GetActiveScene().buildIndex > 0)
-            PauseMenuManager.Instance.TogglePauseMenu(true);
-    }
 }
