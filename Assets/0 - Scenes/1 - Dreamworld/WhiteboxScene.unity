@@ -6354,9 +6354,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 696892412500021909, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: minRadius
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 696892412500021909, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: _NoteTracker
       value: 
       objectReference: {fileID: 1369963775}
+    - target: {fileID: 696892412500021909, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
+      propertyPath: defaultState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2551276248396823950, guid: 314c1c7adabce47438fa1d61c9866956, type: 3}
       propertyPath: m_RootOrder
       value: 2
