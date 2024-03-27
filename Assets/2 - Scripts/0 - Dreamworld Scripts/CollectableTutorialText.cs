@@ -11,27 +11,21 @@ public class CollectableTutorialText : MonoBehaviour
 {
     int numCollectable;  //Checks how many dashes the player has successfully pulled off so far
 
-    [SerializeField] private CollectionSignal _collections;
-
-
     public void Start()
     {
         numCollectable = 0;
-        _collections.SendCollect += HandleTutorial;
+        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COLLECT, HandleTutorial);
 
     }
 
     private void OnDestroy()
     {
-        _collections.SendCollect -= HandleTutorial;
+        DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.COLLECT, HandleTutorial);
     }
 
-    private void HandleTutorial(Collectable collectable)
+    private void HandleTutorial()
     {
-  
-            numCollectable++;
-
-        
+        numCollectable++;
         if (numCollectable >= 3)
         {
             StartCoroutine(FadeAndDestroy());

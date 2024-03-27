@@ -1,32 +1,73 @@
 
 using System;
 using UnityEngine;
+using DG.Tweening;
 
 public class DashTracker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public NoteTracker _NoteTracker;
-    private PlayerControl _playerControl;
 
-    private void Start()
+    [SerializeField] private AudioSource _dashSource;
+    [SerializeField] private AudioSource _wallBumpSource;
+    [SerializeField] private NoteTracker _noteTracker;
+    [SerializeField] private PlayerAnimationController _animationControl;
+    [SerializeField] private ClickManager _clickManager;
+
+    [Serializable]
+    private struct DashSounds
     {
-        _playerControl = new PlayerControl();
-        _playerControl.Dreamworld.Enable();
+        public AudioClip badSound;
+        public AudioClip goodSound;
+        public AudioClip greatSound;
+        public AudioClip perfectSound;
     }
+
+    [SerializeField] private DashSounds sounds;
+    [SerializeField] private AudioClip wallBumpSound;
+    [SerializeField] private AudioClip deathSound;
+
 
     private void Awake()
     {
-        _NoteTracker.HitCallback += info => {MoveTracker();};
+        _noteTracker.HitCallback += PlaySound;
     }
 
-
-    private void MoveTracker()
+    private void OnDestroy()
     {
-        Vector2 mousePos = _playerControl.Dreamworld.MousePosition.ReadValue<Vector2>();
-        Vector3 dashLocation =
-            Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 5));
-        this.transform.position = dashLocation;
+        _noteTracker.HitCallback -= PlaySound;
     }
 
+    private void PlaySound(NoteTracker.HitInfo hitInfo)
+    {
+        switch (hitInfo.rating)
+        {
+            case NoteTracker.BeatRating.MISS:
+                _dashSource.PlayOneShot(sounds.badSound);
+                break;
+            case NoteTracker.BeatRating.GOOD:
+                _dashSource.PlayOneShot(sounds.goodSound);
+                break;
+            case NoteTracker.BeatRating.GREAT:
+                _dashSource.PlayOneShot(sounds.greatSound);
+                break;
+            case NoteTracker.BeatRating.PERFECT:
+                _dashSource.PlayOneShot(sounds.perfectSound);
+                break;
+            default:
+                _dashSource.PlayOneShot(sounds.badSound);
+                break;
+        }
+    }
 
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if (!RespawnManager.Instance.isRespawning && col.gameObject.CompareTag("Wall"))
+        {
+            _wallBumpSource.PlayOneShot(wallBumpSound);
+            _animationControl.PlayWallBump();
+        } else if (col.gameObject.tag.Contains("Hazard"))
+        {
+            _wallBumpSource.PlayOneShot(deathSound);
+            RespawnManager.Instance.RespawnPlayer();
+        }
+    }
 }

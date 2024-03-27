@@ -48,6 +48,9 @@ public class DialogueController : MonoBehaviour
     public bool CanPrintDialogue;
     public bool AutoplayEnabled;
 
+    [Header("Playtest Settings")]
+    public BoolVariable PlayDialogueOnStart;
+
     public virtual void Awake()
     {
         DOTween.Init();

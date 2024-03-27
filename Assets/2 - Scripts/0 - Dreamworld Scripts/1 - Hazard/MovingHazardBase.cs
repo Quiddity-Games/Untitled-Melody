@@ -8,16 +8,25 @@ public class MovingHazardBase : HazardBase
 
     [SerializeField] private Vector3 startingPosition;
     
-    void Start()
+    public virtual void Start()
     {
         startingPosition = transform.position;
         canMove = true;
     }
 
-     public void ToggleMovement(bool enableMovement)
+    public override void OnKill()
+    {
+        ToggleMovement(false);
+        ResetPosition();
+        ResetVelocity();
+        ToggleMovement(true);
+    }
+    
+    public void ToggleMovement(bool enableMovement)
      {
          canMove = enableMovement;
      }
+    
      public void ResetVelocity()
      {
          rb.velocity = new Vector2(0,0);

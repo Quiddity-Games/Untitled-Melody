@@ -18,7 +18,6 @@ public class RhythmUI : MonoBehaviour
     [SerializeField] private bool _countdownFinished;
     private GameObject dreamworldUICanvas;
 
-    public GameEvent countdownOver;
     public NoteTracker _NoteTracker;
     
     [SerializeField]
@@ -50,9 +49,7 @@ public class RhythmUI : MonoBehaviour
         _countdownTextDisplayed1 = false;
         _countdownFinished = false;
     }
-
-
-
+    
     /// <summary>
     /// Checks for, and triggers, any player-facing text UI messages when they're set to happen.
     /// </summary>
@@ -117,7 +114,6 @@ public class RhythmUI : MonoBehaviour
         {
             if (_countdownFinished == false)
             {
-                Debug.Log("CHECK");
                 DashTutorialText countdownFinishedText = Instantiate(dashTutorialTextObject,
                     dreamworldUICanvas.transform);
                 
@@ -132,7 +128,7 @@ public class RhythmUI : MonoBehaviour
                     new Vector3(0, 250, 0);
                 countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
                 _NoteTracker.onTimeUpdate -= HandleCountdown;
-                countdownOver.Raise();
+                DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COUNTDOWN_FINISH);
                 _countdownFinished = true;
             }
 
