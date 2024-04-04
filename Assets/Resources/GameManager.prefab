@@ -301,7 +301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6678219446688445445, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
       propertyPath: m_text
-      value: Are you sure? You will have to restart the story from the beginning
+      value: Are you sure? You will have to restart the story from the beginning.
       objectReference: {fileID: 0}
     - target: {fileID: 6960622911494409046, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -390,6 +390,10 @@ PrefabInstance:
     - target: {fileID: 6960622912677591204, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342760672289302336, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -230
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
