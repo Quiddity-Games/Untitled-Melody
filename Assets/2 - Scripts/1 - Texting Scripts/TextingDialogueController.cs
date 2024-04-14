@@ -197,9 +197,7 @@ public class TextingDialogueController : DialogueController
             {
                 if (!bubblesBeforeChoice[i].gameObject.activeInHierarchy)
                 {
-                    bubblesBeforeChoice[i].gameObject.SetActive(true);
-                    bubblesBeforeChoice[i].CanvasGroup.DOFade(1f, BubbleFadeDuration);
-                    //FadeInUI(bubblesBeforeChoice[i].CanvasGroup, BubbleFadeDuration);
+                    dialogueCanvas.ShowNextTextBubble(bubblesBeforeChoice, i);
                 }
             }
         }
