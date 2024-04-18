@@ -94,12 +94,10 @@ public class CollectionScoreController : MonoBehaviour
     public void HandleDeath()
     {
         _ui.UpdateLostCount();
-        //ClearTemp();
         tempNumCollected = 0;
         UpdateInfo();
 
         DreamworldEventManager.ResetTempCollection?.Invoke();
-        //resetter.ResetTempCollectables();
     }
 
     private void UpdateInfo()
@@ -112,6 +110,7 @@ public class CollectionScoreController : MonoBehaviour
     {
         numCollected += tempNumCollected;
         tempNumCollected = 0;
+        currentCollectables.Clear();
         //resetter.ClearTemp();
         UpdateInfo();
     }
