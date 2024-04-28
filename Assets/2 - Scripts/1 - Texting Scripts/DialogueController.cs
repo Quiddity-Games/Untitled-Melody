@@ -190,8 +190,16 @@ public class DialogueController : MonoBehaviour
         Debug.Log("bound external ink functions");
 
         InkStory.BindExternalFunction("setVariable", (string varName, bool varState) => {
-            DialogueVariables.Add(varName, varState);
-            Debug.Log("added variable <b>" + varName + "</b> with value <b>" + varState + "</b> to dictionary");
+            if (DialogueVariables.ContainsKey(varName))
+            {
+                DialogueVariables[varName] = varState;
+                InkStory.variablesState[varName] = varState;
+            }
+            else
+            {
+                DialogueVariables.Add(varName, varState);
+                Debug.Log("added variable <b>" + varName + "</b> with value <b>" + varState + "</b> to dictionary");
+            }
 
         });
 
