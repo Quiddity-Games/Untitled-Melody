@@ -82,9 +82,9 @@ public class TextingDialogueController : DialogueController
         // Get global tags.
         for (int i = 0; i < InkStory.globalTags.Count; i++)
         {
-            if (InkStory.globalTags[i].Contains("With: "))
+            if (InkStory.globalTags[i].Contains("Conversation: "))
             {
-                GlobalTagsDictionary.Add("With", InkStory.globalTags[i].Replace("With: ", ""));
+                GlobalTagsDictionary.Add("Conversation", InkStory.globalTags[i].Replace("Conversation: ", ""));
             }
         }
     }
@@ -220,30 +220,4 @@ public class TextingDialogueController : DialogueController
         return CurrentTypingBubble;
     }
 
-    #region Old/Unused Methods
-    /* Coroutine to fade CanvasGroup passed through. Currently replaced by DOTween functionality, and thus unused.
-    /// <summary>
-    /// Used to fade in UI with a CanvasGroup component attached.
-    /// </summary>
-    /// <param name="canvasGroup"></param>
-    /// <param name="duration"></param>
-    public void FadeInUI(CanvasGroup canvasGroup, float duration)
-    {
-        StartCoroutine(FadeIn(duration));
-
-        IEnumerator FadeIn(float duration)
-        {
-            float time = 0;
-
-            while (time < duration)
-            {
-                canvasGroup.alpha = Mathf.Lerp(0f, 1f, time / duration);
-                time += Time.deltaTime;
-                yield return null;
-            }
-
-            canvasGroup.alpha = 1f;
-        }
-    }*/
-    #endregion
 }
