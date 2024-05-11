@@ -26,6 +26,8 @@ public class DreamworldEventManager : MonoBehaviour
     public static Action OnCountdownFinish;
     public static Action OnGameStart;
     public static Action OnGameEnd;
+
+    public static Action OnDreamworldLeave;
     public static Action OnReload;
 
     void OnDisable() { Instance = null; }

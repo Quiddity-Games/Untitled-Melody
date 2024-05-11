@@ -46,8 +46,6 @@ public class SceneManagerUtils : ScriptableObject
         return PlayerPrefs.GetInt("Level", -1) != -1;
     }
     
-    
-
     public void Quit()
     {
         Application.Quit();

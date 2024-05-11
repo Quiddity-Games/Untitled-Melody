@@ -38,15 +38,19 @@ public class MetronomeBarController : MonoBehaviour
 
     private Coroutine spawner;
     // Start is called before the first frame update
-    void Awake()
-    {
-        _NoteTracker.onLoad += Init;
-    }
-
+ 
     void Start()
     {
+        _NoteTracker.Load();
+        Init();
         SettingsManager.Instance().GetAccSettings().onUpdate += HandleBarSetting;
         HandleBarSetting();
+    }
+
+    void OnDestroy()
+    {
+        SettingsManager.Instance().GetAccSettings().onUpdate -= HandleBarSetting;
+        _NoteTracker.onBeatEnter -= HandleBars;
     }
 
     public void HandleBarSetting()
@@ -55,6 +59,10 @@ public class MetronomeBarController : MonoBehaviour
     }
     public void Toggle(bool enabled)
     {
+        if(panel == null)
+        {
+
+        }
         if (enabled)
         {
             _NoteTracker.onBeatEnter += HandleBars;

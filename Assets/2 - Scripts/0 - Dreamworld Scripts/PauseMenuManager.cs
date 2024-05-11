@@ -40,6 +40,7 @@ public class PauseMenuManager : MonoBehaviour
     public void RegisterDreamworldEvents()
     {
         DreamworldEventManager.OnGameEnd += () => OnGamePause(true);
+        DreamworldEventManager.OnDreamworldLeave += () => OnGamePause(false);
     }
 
     public void DeregisterDreamworldEvents()
