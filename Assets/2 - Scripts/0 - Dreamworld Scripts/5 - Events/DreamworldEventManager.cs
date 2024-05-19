@@ -51,6 +51,10 @@ public class DreamworldEventManager : MonoBehaviour
         if (PauseMenuManager.Instance)
         {
             PauseMenuManager.Instance.RegisterDreamworldEvents();
+        }
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.RegisterDreamworldEvents();
             UIManager.SetPausePosition?.Invoke();
         }
     }
@@ -61,5 +65,7 @@ public class DreamworldEventManager : MonoBehaviour
             InputManager.Instance.DeregisterDreamworldEvents();
         if (PauseMenuManager.Instance)
             PauseMenuManager.Instance.DeregisterDreamworldEvents();
+        if (UIManager.Instance)
+            UIManager.Instance.DeregisterDreamworldEvents();
     }
 }

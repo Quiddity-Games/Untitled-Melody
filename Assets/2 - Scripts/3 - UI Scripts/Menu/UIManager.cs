@@ -111,4 +111,21 @@ public class UIManager : MonoBehaviour
         Instance.m_navigator.ChangeSubMenu(Instance.settingsMenu);
         Instance.m_navigator.onExitMenu += callback;
     }
+
+        public void RegisterDreamworldEvents()
+    {
+        DreamworldEventManager.OnGameEnd += () => TogglePauseButton(false);
+        DreamworldEventManager.OnDreamworldLeave += () => TogglePauseButton(true);
+    }
+
+    public void TogglePauseButton(bool value)
+    {
+        pauseButton.gameObject.SetActive(value);
+    }
+
+    public void DeregisterDreamworldEvents()
+    {
+        DreamworldEventManager.OnGameEnd -= () => TogglePauseButton(false);
+        DreamworldEventManager.OnDreamworldLeave -= () => TogglePauseButton(true);    
+    }
 }

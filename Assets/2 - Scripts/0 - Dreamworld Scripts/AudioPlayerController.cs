@@ -18,7 +18,7 @@ public class AudioPlayerController : MonoBehaviour
     {
         DreamworldEventManager.OnGameStart -= songPlayer.Play;
         PauseMenuManager.OnPaused -= TogglePause;
-        DreamworldEventManager.OnGameEnd -= () => TogglePause(false);
+        DreamworldEventManager.OnGameEnd -= () => TogglePause(true);
     }
 
     // Start is called before the first frame update
