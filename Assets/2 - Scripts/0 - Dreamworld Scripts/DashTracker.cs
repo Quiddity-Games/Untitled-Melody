@@ -29,11 +29,15 @@ public class DashTracker : MonoBehaviour
     private void Awake()
     {
         _noteTracker.HitCallback += PlaySound;
+        _clickManager.onDashInvalid.AddListener(() => {_dashSource.PlayOneShot(sounds.badSound);});
+
     }
 
     private void OnDestroy()
     {
         _noteTracker.HitCallback -= PlaySound;
+        _clickManager.onDashInvalid.RemoveListener(() => {_dashSource.PlayOneShot(sounds.badSound);});
+
     }
 
     private void PlaySound(NoteTracker.HitInfo hitInfo)

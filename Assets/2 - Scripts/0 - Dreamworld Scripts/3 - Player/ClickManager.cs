@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class ClickManager : MonoBehaviour
 {
@@ -62,12 +63,19 @@ public class ClickManager : MonoBehaviour
 
     [SerializeField] private bool dashEnabled = false;
 
+    public UnityEvent<bool> onDashEnableChange;
+
+    public UnityEvent onDashInvalid;
+
     private void Awake()
     {
-        _NoteTracker.offBeatTrigger += () => { canDash = true; };
+        _NoteTracker.offBeatTrigger += () => { 
+            canDash = true;
+            onDashEnableChange.Invoke(canDash);
+ };
         _NoteTracker.HitCallback += HandleDash;
-
     }
+
     public void Start()
     {
         _dash = new Dash(_rigidbody2D);
@@ -92,14 +100,27 @@ public class ClickManager : MonoBehaviour
         {
             DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, DashOnPerformed);
         }
+
+        _NoteTracker.offBeatTrigger -= () => { 
+            canDash = true;
+            onDashEnableChange.Invoke(canDash);
+        };
+        _NoteTracker.HitCallback -= HandleDash;
     }
 
     private void DashOnPerformed()
     {
-        if(canDash && dashEnabled){
+        if(dashEnabled){
+           if(!canDash)
+           {
+                onDashInvalid.Invoke();
+                return;
+           }
             HandleClick();
             canDash = false;
+            onDashEnableChange.Invoke(canDash);
         }
+
     }
     
     public void ToggleControls(bool value)
