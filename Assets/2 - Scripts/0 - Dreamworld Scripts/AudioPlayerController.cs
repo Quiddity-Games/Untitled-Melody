@@ -11,24 +11,17 @@ public class AudioPlayerController : MonoBehaviour
     {
         DreamworldEventManager.OnGameStart += songPlayer.Play;
         PauseMenuManager.OnPaused += TogglePause;
-        DreamworldEventManager.OnGameEnd += () => TogglePause(true);
+        DreamworldEventManager.OnGameEnd += songPlayer.Pause;
     }
 
     private void OnDestroy()
     {
         DreamworldEventManager.OnGameStart -= songPlayer.Play;
         PauseMenuManager.OnPaused -= TogglePause;
-        DreamworldEventManager.OnGameEnd -= () => TogglePause(true);
+        DreamworldEventManager.OnGameEnd -= songPlayer.Pause;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //DreamworldEventManager.Instance.RegisterVoidEventResponse(
-        //    DreamworldVoidEventEnum.GAME_START, Play);
-        //DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED,
-        //    TogglePause);
-    }
+
 
     public void TogglePause(bool isPaused)
     {

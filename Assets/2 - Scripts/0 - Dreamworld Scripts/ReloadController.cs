@@ -11,12 +11,6 @@ public class ReloadController : MonoBehaviour
         DreamworldEventManager.OnDreamworldLeave();
     }
 
-    public void ReloadScene()
-    {
-        DreamworldEventManager.OnDreamworldLeave();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
      public void Restart()
     {
         DreamworldEventManager.OnDreamworldLeave();
