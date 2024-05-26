@@ -6020,6 +6020,134 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: 2037481768562b14190a08d61e4d05ff, type: 2}
+    - target: {fileID: 2394596552236647367, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552321825058, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 141.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552321825058, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 112.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552374274627, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 64.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552374274627, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 110.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552374274632, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552459371233, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 74.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552459371233, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 99.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552812817009, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552830662160, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 48.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552830662160, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 97.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552868292843, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552914001036, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 136.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552914001036, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 35.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596552937437459, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553202531033, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553202531033, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 86.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553610675021, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553702223189, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 97.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553702223189, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 104.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553798841257, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553820706818, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553955384465, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553956222734, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 143.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553956222734, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553977708106, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 163.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596553977708106, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596554056010601, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596554056010601, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 115.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596554073707901, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596554073707901, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 72.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394596554173657199, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2997621906101573363, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
@@ -6032,169 +6160,437 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: 24300002, guid: 2037481768562b14190a08d61e4d05ff, type: 2}
-    - target: {fileID: 4782460536734168603, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4782460536695738105, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: walking sometimes
+      value: of
       objectReference: {fileID: 0}
-    - target: {fileID: 4782460536872842436, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4782460536727236725, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' hoping'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460536734168603, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
       value: I'm mystified
       objectReference: {fileID: 0}
+    - target: {fileID: 4782460536872842436, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: and the
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460536983258274, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: would be
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460536989155655, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537028894182, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: so kind...
+      objectReference: {fileID: 0}
     - target: {fileID: 4782460537066321617, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: someone would be so kind...
+      value: she goes
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537084274885, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: conversations
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537115483806, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537182029121, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537329654133, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4782460537336382626, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: 'Of your relations
-
-'
+      value: following
       objectReference: {fileID: 0}
     - target: {fileID: 4782460537352862057, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: 'Stuck in my mind
-
-'
+      value: the moonlight
       objectReference: {fileID: 0}
     - target: {fileID: 4782460537405291824, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm mystified I'm here
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537425396775, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537534727089, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: been
       objectReference: {fileID: 0}
     - target: {fileID: 4782460537639765574, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: Cuz I've been hoping
+      value: where
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537788945605, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: stuck in
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537850940669, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: cuz i've
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537893217438, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: my mind
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460537969694140, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ooh,
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460538087620384, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: someone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460538136074932, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460538181555375, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: relations
       objectReference: {fileID: 0}
     - target: {fileID: 4782460538283044563, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: With the long days
+      value: With the
       objectReference: {fileID: 0}
     - target: {fileID: 4782460538397682026, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: following
+      value: I'm still,
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460538546100878, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: of your
       objectReference: {fileID: 0}
     - target: {fileID: 4782460538555230552, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm here
+      value: long nights
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460538632120815, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460538675205532, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4782460538681434445, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: i'm tired
       objectReference: {fileID: 0}
     - target: {fileID: 4782460538718858159, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: and the long nights
+      value: long days
       objectReference: {fileID: 0}
     - target: {fileID: 4782460538775762323, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: where she goes
+      value: sometimes
       objectReference: {fileID: 0}
     - target: {fileID: 4782460538787983122, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: the moonlight
+      value: walking
+      objectReference: {fileID: 0}
+    - target: {fileID: 4796784438650012024, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706233657828, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: the moonlight
+      value: walking
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706233657828, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
-      value: 11.1
+      value: 14.6
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706246603621, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: where she goes
+      value: sometimes
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706246603621, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
-      value: 13.15
+      value: 10.45
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706302979417, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: and the long nights
+      value: long days
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706302979417, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
-      value: 10.2
+      value: 14.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132706341054395, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: i'm tired
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132706341054395, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 14.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132706347406186, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132706347406186, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132706425958169, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132706425958169, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706466475950, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm here
+      value: long nights
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706466475950, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
       value: 14.85
       objectReference: {fileID: 0}
+    - target: {fileID: 4834132706478349432, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: of your
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132706478349432, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4834132706657054620, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: following
+      value: I'm still,
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706657054620, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
-      value: 12.45
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706739578917, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: With the long days
+      value: With the
       objectReference: {fileID: 0}
     - target: {fileID: 4834132706739578917, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
-      value: 12.05
+      value: 14.85
       objectReference: {fileID: 0}
-    - target: {fileID: 4834132707383951536, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4834132706839417433, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: Cuz I've been hoping
+      value: relations
       objectReference: {fileID: 0}
-    - target: {fileID: 4834132707383951536, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
-      propertyPath: m_fontSize
-      value: 9.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834132707619240902, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
-      propertyPath: m_text
-      value: I'm mystified I'm here
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834132707619240902, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
-      propertyPath: m_fontSize
-      value: 9.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834132707684516436, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
-      propertyPath: m_text
-      value: 'Of your relations
-
-'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4834132707684516436, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4834132706839417433, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
       value: 13.35
       objectReference: {fileID: 0}
-    - target: {fileID: 4834132707705225119, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4834132706919767106, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: 'Stuck in my mind
-
-'
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 4834132707705225119, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4834132706919767106, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 4834132707955519527, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4834132706967779798, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: someone would be so kind...
+      value: someone
       objectReference: {fileID: 0}
-    - target: {fileID: 4834132707955519527, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4834132706967779798, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
-      value: 9.9
+      value: 12.55
       objectReference: {fileID: 0}
-    - target: {fileID: 4834132708147950130, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4834132707051148106, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm mystified
+      value: ooh,
       objectReference: {fileID: 0}
-    - target: {fileID: 4834132708147950130, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+    - target: {fileID: 4834132707051148106, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707163415144, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: my mind
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707163415144, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 14.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707171469835, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: cuz i've
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707171469835, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707268858419, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: stuck in
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707268858419, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 14.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707383951536, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: where
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707383951536, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707488597319, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: been
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707488597319, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707619240902, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707619240902, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707630957265, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707630957265, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707684516436, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: following
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707684516436, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
       value: 12.45
       objectReference: {fileID: 0}
+    - target: {fileID: 4834132707705225119, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: the moonlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707705225119, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 11.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707728154499, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707728154499, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707874128823, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707874128823, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707941800040, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707941800040, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707955519527, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: she goes
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707955519527, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 14.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707973475891, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: conversations
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132707973475891, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708027144976, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: so kind...
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708027144976, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 14.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708067133361, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708067133361, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708073816660, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: would be
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708073816660, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 14.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708147950130, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: and the
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708147950130, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4834132708290293997, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: walking sometimes
+      value: I'm mystified
       objectReference: {fileID: 0}
     - target: {fileID: 4834132708290293997, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_fontSize
-      value: 10.45
+      value: 12.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708327327759, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: of
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708327327759, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708329469571, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' hoping'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4834132708329469571, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889051676448343950, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4889051676448343950, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_fontSize
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5124295536081753724, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -6252,117 +6648,293 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level1_WishingWell_v2
       objectReference: {fileID: 0}
+    - target: {fileID: 8087655838953567555, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' '
+      objectReference: {fileID: 0}
     - target: {fileID: 8138581424572964195, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm here
+      value: long nights
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581424584715957, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: of your
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581424632913364, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8138581424669384596, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: and the long nights
+      value: long days
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581424713556391, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581424715715958, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: i'm tired
       objectReference: {fileID: 0}
     - target: {fileID: 8138581424743389993, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: the moonlight
+      value: walking
       objectReference: {fileID: 0}
     - target: {fileID: 8138581424747217320, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: where she goes
+      value: sometimes
       objectReference: {fileID: 0}
     - target: {fileID: 8138581424837286632, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: With the long days
+      value: With the
       objectReference: {fileID: 0}
     - target: {fileID: 8138581424856866129, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: following
+      value: I'm still,
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425126862479, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425166404379, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: someone
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425206681748, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: relations
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425332953342, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: stuck in
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425411995846, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: cuz i've
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425505505445, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: my mind
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425552761223, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ooh,
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425721915274, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: been
       objectReference: {fileID: 0}
     - target: {fileID: 8138581425759482493, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: Cuz I've been hoping
+      value: where
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581425934855502, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8138581426038000978, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: 'Stuck in my mind
-
-'
+      value: the moonlight
       objectReference: {fileID: 0}
     - target: {fileID: 8138581426060243097, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: 'Of your relations
-
-'
+      value: following
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426099154972, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8138581426128177419, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm mystified I'm here
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426132743548, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426139164825, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: would be
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426234042845, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: so kind...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426275379877, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426306063614, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: conversations
       objectReference: {fileID: 0}
     - target: {fileID: 8138581426321916650, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: someone would be so kind...
+      value: she goes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426340950394, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426403050574, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' hoping'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8138581426426165954, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: of
       objectReference: {fileID: 0}
     - target: {fileID: 8138581426530861600, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: walking sometimes
+      value: I'm mystified
       objectReference: {fileID: 0}
     - target: {fileID: 8138581426649612543, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm mystified
+      value: and the
+      objectReference: {fileID: 0}
+    - target: {fileID: 8823600859657122946, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 8844109476714186954, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm mystified I'm here
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109476743754205, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8844109476780372312, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: 'Of your relations
-
-'
+      value: following
       objectReference: {fileID: 0}
     - target: {fileID: 8844109476800171155, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: 'Stuck in my mind
-
-'
+      value: the moonlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109476839632015, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8844109477016581052, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: Cuz I've been hoping
+      value: where
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477121521227, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: been
       objectReference: {fileID: 0}
     - target: {fileID: 8844109477260788030, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm mystified
+      value: and the
       objectReference: {fileID: 0}
     - target: {fileID: 8844109477385307105, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: walking sometimes
+      value: I'm mystified
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477423119107, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: of
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477442078095, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' hoping'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477505773755, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477574421348, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8844109477587436331, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: someone would be so kind...
+      value: she goes
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477605137727, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: conversations
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477675591708, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: so kind...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477706510680, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: would be
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109477716866237, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ' '
       objectReference: {fileID: 0}
     - target: {fileID: 8844109477917416592, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: following
+      value: I'm still,
       objectReference: {fileID: 0}
     - target: {fileID: 8844109477998598953, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: With the long days
+      value: With the
       objectReference: {fileID: 0}
     - target: {fileID: 8844109478026002537, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: where she goes
+      value: sometimes
       objectReference: {fileID: 0}
     - target: {fileID: 8844109478030564072, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: the moonlight
+      value: walking
       objectReference: {fileID: 0}
     - target: {fileID: 8844109478099131989, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: and the long nights
+      value: long days
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478120166583, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: i'm tired
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478126526566, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478205266965, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478257733492, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: of your
       objectReference: {fileID: 0}
     - target: {fileID: 8844109478262660258, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
       propertyPath: m_text
-      value: I'm here
+      value: long nights
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478294675526, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: ooh,
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478406672740, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: my mind
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478430734599, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: cuz i've
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478511075647, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: stuck in
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478636298581, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: relations
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478715862862, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844109478747146970, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
+      propertyPath: m_text
+      value: someone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 101f4f9884a74f54ba75a20e161a1215, type: 3}
