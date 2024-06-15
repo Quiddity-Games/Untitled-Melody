@@ -5,21 +5,54 @@ using UnityEngine.SceneManagement;
 
 public class ReloadController : MonoBehaviour
 {
-    void OnEnable()
+    [SerializeField] private SceneManagerUtils manager;
+    public void OnSceneLeave()
     {
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_RELOAD,
-            ReloadScene
-            );
+        DreamworldEventManager.OnDreamworldLeave();
     }
 
-    void ReloadScene()
+     public void Restart()
     {
+        DreamworldEventManager.OnDreamworldLeave();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-    void OnDisable()
+
+    public void GoToLevel(int level)
     {
-        DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_RELOAD,
-            ReloadScene
-        );
+        DreamworldEventManager.OnDreamworldLeave();
+        manager.GoToLevel(level);
+    }
+
+    public void InitializeLevel(int level)
+    {
+        DreamworldEventManager.OnDreamworldLeave();
+        manager.InitializeLevel(level);
+    }
+
+    public void AdvanceLevel()
+    {
+        DreamworldEventManager.OnDreamworldLeave();
+        manager.AdvanceLevel();
+    }
+    public void SetCurrLevel(int level)
+    {
+        DreamworldEventManager.OnDreamworldLeave();
+        manager.SetCurrLevel(level);
+    }
+
+    public void LoadSavedLevel()
+    {
+        DreamworldEventManager.OnDreamworldLeave();
+        SceneManager.LoadScene(PlayerPrefs.GetInt("Level", 1));
+    }
+
+    public bool DoesSaveExist()
+    {
+        return PlayerPrefs.GetInt("Level", -1) != -1;
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

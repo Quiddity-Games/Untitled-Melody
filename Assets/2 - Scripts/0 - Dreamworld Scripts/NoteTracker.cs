@@ -6,7 +6,30 @@ using UnityEngine;
 public class NoteTracker : MonoBehaviour
 {
 
+    public SongObject _song;
 
+    bool _isLoaded = false;
+
+    void Start()
+    {
+        Load();
+    }
+    
+    public void Load()
+    {
+        if(!_isLoaded)
+        {
+            totalTime = _song.song.length;
+            twoBeatsLength = (60f / _song.bpm);
+            nextBeatTime = twoBeatsLength;    //Added to have the "matchable rhythm" land on the second and fourth beats of each measure
+            _bpm = _song.bpm;
+            _timeTracker = 0;
+            range.Enqueue(new BeatRange(nextBeatTime, perfectRange, BeatRating.PERFECT));
+            range.Enqueue(new BeatRange(nextBeatTime, greatRange, BeatRating.GREAT));
+            range.Enqueue(new BeatRange(nextBeatTime, goodRange, BeatRating.GOOD));
+            _isLoaded = true;
+        }
+    }
 
     public enum BeatTiming
     {
@@ -31,8 +54,6 @@ public class NoteTracker : MonoBehaviour
     public VoidCallback offBeatTrigger;
 
     public VoidCallback onTimeUpdate;
-
-
     [SerializeField] private float _timeTracker;
 
     public bool onBeat;
@@ -113,7 +134,6 @@ public class NoteTracker : MonoBehaviour
     {
         set
         {
-            totalTime = 0;
             twoBeatsLength = (60f / value);
             nextBeatTime = twoBeatsLength;    //Added to have the "matchable rhythm" land on the second and fourth beats of each measure
             _bpm = value;
@@ -121,8 +141,7 @@ public class NoteTracker : MonoBehaviour
             range.Enqueue(new BeatRange(nextBeatTime, perfectRange, BeatRating.PERFECT));
             range.Enqueue(new BeatRange(nextBeatTime, greatRange, BeatRating.GREAT));
             range.Enqueue(new BeatRange(nextBeatTime, goodRange, BeatRating.GOOD));
-            onLoad?.Invoke();
-        }
+       }
 
         get
         {

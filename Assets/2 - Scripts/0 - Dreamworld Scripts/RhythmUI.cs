@@ -33,12 +33,17 @@ public class RhythmUI : MonoBehaviour
 
     private void Awake()
     {
-        _NoteTracker.onLoad += Init;
         _NoteTracker.onTimeUpdate += HandleCountdown;
+    }
+
+    private void Start()
+    {
+        Init();
     }
 
     public void Init()
     {
+        _NoteTracker.Load();
         dreamworldUICanvas = DreamworldDialogueController.Instance.gameObject;
         countdownTextTriggerTime3 = (0.5f * _NoteTracker.GetTwoBeatsLength());
         countdownTextTriggerTime2 = (2.5f * _NoteTracker.GetTwoBeatsLength());
@@ -128,7 +133,8 @@ public class RhythmUI : MonoBehaviour
                     new Vector3(0, 250, 0);
                 countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
                 _NoteTracker.onTimeUpdate -= HandleCountdown;
-                DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COUNTDOWN_FINISH);
+                DreamworldEventManager.OnCountdownFinish?.Invoke();
+                //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COUNTDOWN_FINISH);
                 _countdownFinished = true;
             }
 

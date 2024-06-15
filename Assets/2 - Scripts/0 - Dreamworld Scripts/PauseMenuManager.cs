@@ -1,21 +1,60 @@
+using System;
 using UnityEngine;
 
 /// <summary>
-/// The script responsible for pulling up the pause menu.
+/// The script responsible for handling pause logic.
 /// </summary>
 public class PauseMenuManager : MonoBehaviour
 {
-    [SerializeField] private GameObject pauseMenu;
-    [SerializeField] private GameObject pauseButton;
+    public static PauseMenuManager Instance;
+
+    public bool IsPaused;
+
+
+    public static Action<bool> OnPaused;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void OnEnable()
+    {
+        OnPaused += OnGamePause;
+    }
+
+    private void OnDestroy()
+    {
+        OnPaused -= OnGamePause;
+    }
 
     private void Start()
     {
-        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, OnGamePause);
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+    }
+
+    
+    public void RegisterDreamworldEvents()
+    {
+        DreamworldEventManager.OnGameEnd += () => OnGamePause(true);
+        DreamworldEventManager.OnDreamworldLeave += () => OnGamePause(false);
+    }
+
+    public void DeregisterDreamworldEvents()
+    {
+        DreamworldEventManager.OnGameEnd -= () => OnGamePause(true);
     }
     
     public void OnGamePause(bool isPaused)
     {
-        pauseMenu.SetActive(isPaused);
-        pauseButton.SetActive(!isPaused);
+        IsPaused = isPaused;
+
+        if (isPaused)
+            Time.timeScale = 0;
+        else
+            Time.timeScale = 1;
     }
 }
