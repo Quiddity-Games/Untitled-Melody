@@ -10,6 +10,15 @@ public class PauseMenuManager : MonoBehaviour
 
     public bool IsPaused;
 
+    void OnApplicationFocus(bool hasFocus)
+    {
+        IsPaused = !hasFocus;
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        IsPaused = pauseStatus;
+    }
 
     public static Action<bool> OnPaused;
 
