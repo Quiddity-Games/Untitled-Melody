@@ -661,8 +661,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: This is a dialogue choice!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7c8df2e7ba41980499f04d17e8652f9f, type: 2}
-  m_sharedMaterial: {fileID: 936193477026644800, guid: 7c8df2e7ba41980499f04d17e8652f9f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ddcc2f999d219e648a6b7708e6b51fa4, type: 2}
+  m_sharedMaterial: {fileID: 1585240743998146488, guid: ddcc2f999d219e648a6b7708e6b51fa4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -693,7 +693,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: -2
