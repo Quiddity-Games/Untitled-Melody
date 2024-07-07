@@ -47,7 +47,7 @@ public class PiranhaDetectionRadius : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             player = collision.gameObject;
-            piranhaCore.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 165, 0);   //Visual cue to the player that the piranha has detected them
+            //piranhaCore.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 165, 0);   //Visual cue to the player that the piranha has detected them
         }
 
         //Piranha moves towards the player, but only if the player still exists within its awareness
@@ -66,6 +66,6 @@ public class PiranhaDetectionRadius : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         player = null;  //Used to prevent the piranha from following the player once they've left the detection radius
-        piranhaCore.gameObject.GetComponent<SpriteRenderer>().color = Color.white;  //Visual cue that piranha doesn't detect the player anymore
+        //piranhaCore.gameObject.GetComponent<SpriteRenderer>().color = Color.white;  //Visual cue that piranha doesn't detect the player anymore
     }
 }
