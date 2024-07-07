@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPos: {x: 0, y: 0, z: 0}
-  chaseSound: {fileID: 8300000, guid: 7c8dd875a1fa1d246a489ee0fce57ad9, type: 3}
+  chaseSound: {fileID: 8300000, guid: cc693a5a371857a49b9647e36e7581a2, type: 3}
 --- !u!82 &6326624510733928536
 AudioSource:
   m_ObjectHideFlags: 0
