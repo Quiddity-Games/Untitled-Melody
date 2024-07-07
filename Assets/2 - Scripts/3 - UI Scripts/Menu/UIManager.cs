@@ -49,6 +49,14 @@ public class UIManager : MonoBehaviour
 
     }
 
+    private void HandlePause()
+    {
+        OpenPauseMenu(()=>{
+                Instance.pauseButton.gameObject.SetActive(true);
+                PauseMenuManager.OnPaused?.Invoke(false);
+                });
+    }
+
     void Start()
     {
         pauseButton.onClick.AddListener((
@@ -88,11 +96,13 @@ public class UIManager : MonoBehaviour
 
         if(isPaused)
         {
-            m_navigator.Reset();
-            m_navigator.ChangeSubMenu(pauseMenu);
+     OpenPauseMenu(()=>{
+                Instance.pauseButton.gameObject.SetActive(true);
+                PauseMenuManager.OnPaused?.Invoke(false);});
         }
         else
         {
+            Instance.pauseButton.gameObject.SetActive(true);
             m_navigator.Reset();
         }
     }

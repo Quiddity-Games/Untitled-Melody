@@ -12,12 +12,19 @@ public class PauseMenuManager : MonoBehaviour
 
     void OnApplicationFocus(bool hasFocus)
     {
-        IsPaused = !hasFocus;
+        if(!hasFocus)
+        {
+            OnPaused?.Invoke(true);
+        }
+
     }
 
     void OnApplicationPause(bool pauseStatus)
     {
-        IsPaused = pauseStatus;
+        if(pauseStatus)
+        {   
+            OnPaused?.Invoke(pauseStatus);
+        }
     }
 
     public static Action<bool> OnPaused;
