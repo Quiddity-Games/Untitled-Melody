@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPos: {x: 0, y: 0, z: 0}
   chaseSound: {fileID: 8300000, guid: cc693a5a371857a49b9647e36e7581a2, type: 3}
+  piranhaAnimator: {fileID: 572865693681354813}
 --- !u!82 &6326624510733928536
 AudioSource:
   m_ObjectHideFlags: 0
@@ -346,7 +347,7 @@ GameObject:
   - component: {fileID: 2452583439231491613}
   - component: {fileID: 572865693681354813}
   m_Layer: 0
-  m_Name: pufferfish_0
+  m_Name: Animator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
