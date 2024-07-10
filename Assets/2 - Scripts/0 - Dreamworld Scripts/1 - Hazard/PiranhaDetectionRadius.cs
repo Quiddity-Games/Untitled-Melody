@@ -14,7 +14,8 @@ public class PiranhaDetectionRadius : MonoBehaviour
     public Vector3 playerPos;
     public AudioClip chaseSound;
     private AudioSource source;
-    [SerializeField] private Animator piranhaAnimator;
+    [SerializeField] private Animator piranhaSpriteAnimator;
+    [SerializeField] private Animator piranhaTextAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +38,7 @@ public class PiranhaDetectionRadius : MonoBehaviour
             if(other.gameObject.CompareTag("Player"))
             {
                 source.PlayOneShot(chaseSound);
-                piranhaAnimator.SetTrigger("Chasing Player");
+                piranhaSpriteAnimator.SetTrigger("Chasing Player");
             }
     }
 
@@ -60,10 +61,12 @@ public class PiranhaDetectionRadius : MonoBehaviour
 
             if (playerPos.x > piranhaCore.transform.position.x)
             {
-                piranhaAnimator.SetBool("Facing Right", true);
+                piranhaSpriteAnimator.SetBool("Facing Right", true);
+                piranhaTextAnimator.SetBool("Facing Right", true);
             } else
             {
-                piranhaAnimator.SetBool("Facing Right", false);
+                piranhaSpriteAnimator.SetBool("Facing Right", false);
+                piranhaTextAnimator.SetBool("Facing Right", false);
             }
 
             piranhaCore.GetComponent<PiranhaCore>().MovePiranhaCore(playerPos);
@@ -80,7 +83,7 @@ public class PiranhaDetectionRadius : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player = null;  //Used to prevent the piranha from following the player once they've left the detection radius
-            piranhaAnimator.SetTrigger("Lost Player");
+            piranhaSpriteAnimator.SetTrigger("Lost Player");
             //piranhaCore.gameObject.GetComponent<SpriteRenderer>().color = Color.white;  //Visual cue that piranha doesn't detect the player anymore
 
         }

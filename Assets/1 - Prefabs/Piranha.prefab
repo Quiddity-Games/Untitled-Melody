@@ -207,7 +207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPos: {x: 0, y: 0, z: 0}
   chaseSound: {fileID: 8300000, guid: cc693a5a371857a49b9647e36e7581a2, type: 3}
-  piranhaAnimator: {fileID: 572865693681354813}
+  piranhaSpriteAnimator: {fileID: 572865693681354813}
+  piranhaTextAnimator: {fileID: 9205389679426970088}
 --- !u!82 &6326624510733928536
 AudioSource:
   m_ObjectHideFlags: 0
@@ -347,7 +348,7 @@ GameObject:
   - component: {fileID: 2452583439231491613}
   - component: {fileID: 572865693681354813}
   m_Layer: 0
-  m_Name: Animator
+  m_Name: Pufferfish Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,6 +452,7 @@ GameObject:
   - component: {fileID: 5674060862600368568}
   - component: {fileID: 3629240427507624546}
   - component: {fileID: 726206447646388225}
+  - component: {fileID: 9205389679426970088}
   m_Layer: 6
   m_Name: Fish Text (TMP)
   m_TagString: Untagged
@@ -540,7 +542,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ...
+  m_text: "you\u2019re not special\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 49c814372af288e43b882390ee532ef5, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 3788e4fde8245664f9831a470d67f6e3, type: 2}
@@ -567,7 +569,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
+  m_fontSize: 11.5
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -612,3 +614,23 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 3629240427507624546}
   m_maskType: 0
+--- !u!95 &9205389679426970088
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7571607156155590414}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d5eba5a97d0790a409c2cd5dd9b62046, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
