@@ -116,22 +116,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Pufferfish Spritesheet, Right_0
+      name: Pufferfish Spritesheet, Right_2
       rect:
         serializedVersion: 2
-        x: 66
+        x: 0
         y: 714
-        width: 301
+        width: 302
         height: 310
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 484b24025e4a92847a7c53c0b6a3e026
-      internalID: 2114100633
+      spriteID: 545b84018bc3ab6498b447ea3a1c79ad
+      internalID: -752199201
       vertices: []
       indices: 
       edges: []
@@ -140,82 +140,40 @@ TextureImporter:
       name: Pufferfish Spritesheet, Right_1
       rect:
         serializedVersion: 2
-        x: 386
+        x: 321
         y: 767
         width: 303
-        height: 193
+        height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa7569ad6c0e3f94386fab593483af55
-      internalID: -655971655
+      spriteID: 2188dc230985e5b468c34fa4c95910c7
+      internalID: -1439505736
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Pufferfish Spritesheet, Right_2
+      name: Pufferfish Spritesheet, Right_0
       rect:
         serializedVersion: 2
-        x: 706
+        x: 641
         y: 780
         width: 300
         height: 156
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3aacb713cfefac4badfb46b7b24e2fe
-      internalID: -868208948
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pufferfish Spritesheet, Right_3
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 467
-        width: 303
-        height: 158
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c39e8d452012e384a88e7285e3d8b3e9
-      internalID: 1275755570
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Pufferfish Spritesheet, Right_4
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 438
-        width: 317
-        height: 233
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 305ce96b2ed868841ae9e2d60d984e54
-      internalID: 1603791088
+      spriteID: f7d6fe1994661e4499b3dd0ab905002d
+      internalID: -1947533068
       vertices: []
       indices: 
       edges: []
@@ -224,19 +182,61 @@ TextureImporter:
       name: Pufferfish Spritesheet, Right_5
       rect:
         serializedVersion: 2
-        x: 706
-        y: 430
-        width: 300
-        height: 259
+        x: 0
+        y: 467
+        width: 303
+        height: 158
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 505c7090d4e791b4eb4fb78515f25641
-      internalID: 1417997675
+      spriteID: 21bedd2e4e26e2349a192d6b76034201
+      internalID: 334380148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pufferfish Spritesheet, Right_4
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 438
+        width: 316
+        height: 233
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b491f6d74ff84ba499a4b0c5bd84f69f
+      internalID: 1087137781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pufferfish Spritesheet, Right_3
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 430
+        width: 301
+        height: 259
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea5d0ae265c35b94c9a39628fa914b95
+      internalID: -1459960637
       vertices: []
       indices: 
       edges: []
@@ -252,12 +252,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Pufferfish Spritesheet, Right_3: 1275755570
-      Pufferfish Spritesheet, Right_2: -868208948
-      Pufferfish Spritesheet, Right_0: 2114100633
-      Pufferfish Spritesheet, Right_1: -655971655
-      Pufferfish Spritesheet, Right_4: 1603791088
-      Pufferfish Spritesheet, Right_5: 1417997675
+      Pufferfish Spritesheet, Right_3: -1459960637
+      Pufferfish Spritesheet, Right_2: -752199201
+      Pufferfish Spritesheet, Right_1: 1087137781
+      Pufferfish Spritesheet, Right_0: -1947533068
+      Pufferfish Spritesheet, Right_4: -1459960637
+      Pufferfish Spritesheet, Right_5: 334380148
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
