@@ -238,7 +238,7 @@ public class TextingDialogueCanvas : MonoBehaviour
     /// </summary>
     /// <param name="bubblesBeforeChoice"></param>
     /// <param name="currentBubbleIndex"></param>
-    private void ShowNextTextBubble(List<TextBubbleUI> bubblesBeforeChoice, int currentBubbleIndex)
+    public void ShowNextTextBubble(List<TextBubbleUI> bubblesBeforeChoice, int currentBubbleIndex)
     {
         if (TextingDialogueController.TextingUI.CurrentTypingBubble.gameObject.activeInHierarchy)
             TextingDialogueController.TextingUI.CurrentTypingBubble.gameObject.SetActive(false);

@@ -17,16 +17,16 @@ public class ParallaxScroller : MonoBehaviour
     private Vector3 _previousCameraPos;
     private float cameraX;
     private float cameraY;
-
+    [SerializeField] bool _float;
     private void OnEnable()
     {
-        if (_behaviour == ScrollBehaviour.Parallax)
+        if (_float)
             DreamworldEventManager.OnGameStart += StartScrollY;
     }
 
     private void OnDestroy()
     {
-        if (_behaviour == ScrollBehaviour.Parallax)
+        if (_float)
             DreamworldEventManager.OnGameStart -= StartScrollY;
     }
 

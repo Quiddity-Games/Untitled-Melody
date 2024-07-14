@@ -82,8 +82,10 @@ public class InputManager : MonoBehaviour
     {
         if (PauseMenuManager.Instance.IsPaused)
             return;
-
-        //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_DASH);
+        if(!obj.performed)
+        {
+            return;
+        }
         DreamworldEventManager.OnDash?.Invoke();
     }
 
