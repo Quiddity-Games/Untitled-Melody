@@ -70,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Collect 80     before the song ends!
+  m_text: Collect 70     before the song ends!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17eb7bfe9298a3d43abfe02bc72e8d00, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 676abbffcd5b6724fbcc8924d0f61faf, type: 2}
@@ -262,7 +262,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 80, y: 51}
+  m_AnchoredPosition: {x: 82.9, y: 51}
   m_SizeDelta: {x: 114.29204, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1701166913534508602
