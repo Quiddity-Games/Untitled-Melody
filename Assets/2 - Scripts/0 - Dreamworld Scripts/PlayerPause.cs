@@ -12,7 +12,7 @@ public class PlayerPause : MonoBehaviour
 
     private void Start()
     {
-        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, Pause);
+        PauseMenuManager.OnPaused += Pause;
 
         if (Time.timeScale == 0)
         {
@@ -26,13 +26,11 @@ public class PlayerPause : MonoBehaviour
         { 
             Time.timeScale = 0;
             playerBody.Sleep();
-            PlayerInput.ToggleInput(false);
         }
         else
         { 
             Time.timeScale = 1;
             playerBody.WakeUp();
-            PlayerInput.ToggleInput(true);
         }
         
         _clickManager.ToggleControls(isPaused);

@@ -9,7 +9,6 @@ public class FloatingBackground : MonoBehaviour
     public ParallaxScroller scroller;
     void Start()
     {
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.GAME_START, scroller.StartScrollY);
 
     }
 

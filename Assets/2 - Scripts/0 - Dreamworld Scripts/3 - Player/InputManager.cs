@@ -108,6 +108,13 @@ public class InputManager : MonoBehaviour
             DreamworldEventManager.OnDialogueContinue?.Invoke();
     }
 
+    public void OnContinue()
+    {
+        Debug.Log("Continue dialogue called");
+        if (DreamworldEventManager.Instance)
+            DreamworldEventManager.OnDialogueContinue?.Invoke();
+    }
+
     private void ToggleInputOnPause(bool paused)
     {
         if (paused)

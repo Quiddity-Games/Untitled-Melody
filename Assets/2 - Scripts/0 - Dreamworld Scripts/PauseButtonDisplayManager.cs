@@ -9,7 +9,6 @@ public class PauseButtonDisplayManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, ToggleDisplay);
     }
 
     // Update is called once per frame

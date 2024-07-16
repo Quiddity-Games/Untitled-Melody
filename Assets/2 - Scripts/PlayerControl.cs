@@ -53,6 +53,15 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Direction"",
+                    ""type"": ""Value"",
+                    ""id"": ""475799ce-ba4c-40b2-9c0f-1ce42685407d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,28 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6850a05b-f984-43c5-8c8f-d01ea57d1b00"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""897a97a3-e98d-4285-adba-7bfbe68c9bf2"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -191,6 +222,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         m_Dreamworld_Dash = m_Dreamworld.FindAction("Dash", throwIfNotFound: true);
         m_Dreamworld_Reload = m_Dreamworld.FindAction("Reload", throwIfNotFound: true);
         m_Dreamworld_Pause = m_Dreamworld.FindAction("Pause", throwIfNotFound: true);
+        m_Dreamworld_Direction = m_Dreamworld.FindAction("Direction", throwIfNotFound: true);
         // Texting
         m_Texting = asset.FindActionMap("Texting", throwIfNotFound: true);
         m_Texting_Pause = m_Texting.FindAction("Pause", throwIfNotFound: true);
@@ -257,6 +289,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Dreamworld_Dash;
     private readonly InputAction m_Dreamworld_Reload;
     private readonly InputAction m_Dreamworld_Pause;
+    private readonly InputAction m_Dreamworld_Direction;
     public struct DreamworldActions
     {
         private @PlayerControl m_Wrapper;
@@ -264,6 +297,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Dreamworld_Dash;
         public InputAction @Reload => m_Wrapper.m_Dreamworld_Reload;
         public InputAction @Pause => m_Wrapper.m_Dreamworld_Pause;
+        public InputAction @Direction => m_Wrapper.m_Dreamworld_Direction;
         public InputActionMap Get() { return m_Wrapper.m_Dreamworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -282,6 +316,9 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
+                @Direction.started -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnDirection;
+                @Direction.performed -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnDirection;
+                @Direction.canceled -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnDirection;
             }
             m_Wrapper.m_DreamworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -295,6 +332,9 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Direction.started += instance.OnDirection;
+                @Direction.performed += instance.OnDirection;
+                @Direction.canceled += instance.OnDirection;
             }
         }
     }
@@ -345,6 +385,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnDirection(InputAction.CallbackContext context);
     }
     public interface ITextingActions
     {

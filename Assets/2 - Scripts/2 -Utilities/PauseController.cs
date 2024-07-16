@@ -12,13 +12,11 @@ public class PauseController : MonoBehaviour
     void Start()
     {
         m_isPaused = false;
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_PAUSE, TogglePause);
     }
 
     void TogglePause()
     {
         m_isPaused = !m_isPaused;
-        DreamworldEventManager.Instance.CallBoolEvent(DreamworldBoolEventEnum.ISPAUSED, m_isPaused);
     }
 
     // Update is called once per frame
