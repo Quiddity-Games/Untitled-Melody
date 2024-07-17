@@ -55,7 +55,6 @@ public class DreamworldEventManager : MonoBehaviour
         if (UIManager.Instance)
         {
             UIManager.Instance.RegisterDreamworldEvents();
-            UIManager.SetPausePosition?.Invoke();
         }
     }
 

@@ -67,20 +67,9 @@ public class UIManager : MonoBehaviour
 
     private void SetButtonPosition()
     {
-        if (TextingLevelLoader.Instance)
-        {
-            pauseButtonTransform.offsetMax = new Vector2(-initialOffsetMin.x, -initialOffsetMin.y);
-            pauseButtonTransform.offsetMin = new Vector2(-initialOffsetMax.x, -initialOffsetMax.y);
-        } else
-        {
-            pauseButtonTransform.offsetMax = new Vector2(initialOffsetMax.x, initialOffsetMax.y);
-            pauseButtonTransform.offsetMin = new Vector2(initialOffsetMin.x, initialOffsetMin.y);
-        }
+        
 
-        if (SceneManager.GetActiveScene().buildIndex < 1)
-            pauseButton.gameObject.SetActive(false);
-        else
-            pauseButton.gameObject.SetActive(true);
+
     }
     
     public void TogglePauseMenu(bool isPaused)

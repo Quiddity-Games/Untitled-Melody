@@ -13,36 +13,11 @@ MonoBehaviour:
   m_Name: LevelManager
   m_EditorClassIdentifier: 
   levels:
-  - label: Main Menu
+  - label: Dreamworld Level 1
     index: 0
-    type: 2
+    type: 0
     buildIndex: 0
     nextLevel: 1
-    properties:
-      m_keys:
-      - 
-      m_values: 00000000
-    stringProprties:
-      m_keys: []
-      m_values: []
-  - label: Texting Sequence 1
-    index: 1
-    type: 1
-    buildIndex: 1
-    nextLevel: 2
-    properties:
-      m_keys: []
-      m_values: 
-    stringProprties:
-      m_keys:
-      - conversation
-      m_values:
-      - Texting_Sequence_1
-  - label: Dreamworld Level 1
-    index: 2
-    type: 0
-    buildIndex: 2
-    nextLevel: 3
     properties:
       m_keys:
       - world
@@ -52,30 +27,4 @@ MonoBehaviour:
       - conversation
       m_values:
       - Scene_1
-  - label: Texting Sequence 2
-    index: 3
-    type: 1
-    buildIndex: 3
-    nextLevel: 0
-    properties:
-      m_keys: []
-      m_values: 
-    stringProprties:
-      m_keys:
-      - conversation
-      m_values:
-      - Texting_Sequence_2
-  - label: Main Menu
-    index: 4
-    type: 1
-    buildIndex: 0
-    nextLevel: 0
-    properties:
-      m_keys: []
-      m_values: 
-    stringProprties:
-      m_keys:
-      - conversation
-      m_values:
-      - Texting_Sequence_2
-  currLevelIndex: 1
+  currLevelIndex: 0
