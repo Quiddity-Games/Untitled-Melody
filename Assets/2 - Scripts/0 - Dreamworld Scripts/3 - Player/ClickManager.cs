@@ -66,18 +66,18 @@ public class ClickManager : MonoBehaviour
 
     private void OnEnable()
     {
-        DreamworldEventManager.OnCountdownFinish += () => dashEnabled = true;
+        DreamworldEventManager.OnCountdownFinish += EnableDash;
         DreamworldEventManager.OnDash += DashOnPerformed;
         PauseMenuManager.OnPaused += ToggleControls;
-        DreamworldEventManager.OnGameEnd += () => ToggleControls(true);
+        DreamworldEventManager.OnGameEnd += EnableControls;
     }
 
     private void OnDestroy()
     {
-        DreamworldEventManager.OnCountdownFinish -= () => dashEnabled = true;
+        DreamworldEventManager.OnCountdownFinish -= EnableDash;
         DreamworldEventManager.OnDash -= DashOnPerformed;
         PauseMenuManager.OnPaused -= ToggleControls;
-        DreamworldEventManager.OnGameEnd -= () => ToggleControls(true);
+        DreamworldEventManager.OnGameEnd -= EnableControls;
     }
 
     public void Start()
@@ -106,6 +106,10 @@ public class ClickManager : MonoBehaviour
         }
     }
     
+    public void EnableControls()
+    {
+        ToggleControls(true);
+    }
     public void ToggleControls(bool value)
     {
         if(value)
@@ -120,7 +124,7 @@ public class ClickManager : MonoBehaviour
         }
     }
     
-    public void EnableDash()
+    private void EnableDash()
     {
         dashEnabled = true;
     }

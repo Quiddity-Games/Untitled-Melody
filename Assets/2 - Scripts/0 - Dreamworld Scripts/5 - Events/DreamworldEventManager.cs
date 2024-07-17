@@ -26,6 +26,8 @@ public class DreamworldEventManager : MonoBehaviour
     public static Action OnCountdownFinish;
     public static Action OnGameStart;
     public static Action OnGameEnd;
+
+    public static Action OnDreamworldLeave;
     public static Action OnReload;
 
     void OnDisable() { Instance = null; }
@@ -47,7 +49,14 @@ public class DreamworldEventManager : MonoBehaviour
         if (InputManager.Instance)
             InputManager.Instance.RegisterDreamworldEvents();
         if (PauseMenuManager.Instance)
-            InputManager.Instance.RegisterDreamworldEvents();
+        {
+            PauseMenuManager.Instance.RegisterDreamworldEvents();
+        }
+        if (UIManager.Instance)
+        {
+            UIManager.Instance.RegisterDreamworldEvents();
+            UIManager.SetPausePosition?.Invoke();
+        }
     }
 
     private void OnDestroy()
@@ -55,6 +64,8 @@ public class DreamworldEventManager : MonoBehaviour
         if (InputManager.Instance)
             InputManager.Instance.DeregisterDreamworldEvents();
         if (PauseMenuManager.Instance)
-            InputManager.Instance.DeregisterDreamworldEvents();
+            PauseMenuManager.Instance.DeregisterDreamworldEvents();
+        if (UIManager.Instance)
+            UIManager.Instance.DeregisterDreamworldEvents();
     }
 }

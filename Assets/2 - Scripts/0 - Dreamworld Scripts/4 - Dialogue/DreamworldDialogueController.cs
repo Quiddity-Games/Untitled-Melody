@@ -56,9 +56,9 @@ public class DreamworldDialogueController : DialogueController
     }
 
     // Start is called before the first frame update
-    public override void Start()
+    public override void Initialize(string startingScene = "")
     {
-        base.Start();
+        base.Initialize();
 
         //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
 

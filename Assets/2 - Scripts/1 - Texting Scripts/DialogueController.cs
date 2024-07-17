@@ -25,6 +25,7 @@ public class DialogueController : MonoBehaviour
     public Story InkStory;
     [SerializeField] TextAsset inkTextAsset;
     [Space(10)]
+    
     [SerializeField] StringVariable mainCharacterName;
     [HideInInspector] public string MainCharacterName;
     public List<CharacterUIInfo> CharactersInStory = new();
@@ -48,7 +49,6 @@ public class DialogueController : MonoBehaviour
 
     public virtual void Awake()
     {
-        DOTween.Init();
         Instance = this;
         InkStory = new Story(inkTextAsset.text);
         CurrentLineIndex = 0;
@@ -59,8 +59,12 @@ public class DialogueController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public virtual void Start()
+    public virtual void Initialize(string startingScene = "")
     {
+        if (startingScene != "")
+        {
+            InkStory.ChoosePathString(startingScene);
+        }
         SubscribeButtonEvents?.Invoke();
         InitializeDialogue?.Invoke();
     }

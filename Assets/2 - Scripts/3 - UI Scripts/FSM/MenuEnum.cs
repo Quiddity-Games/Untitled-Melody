@@ -12,7 +12,8 @@ public enum MenuEnum
         Settings = 5,
         Sound = 6,
         Visuals = 7,
-        RhythmAssist = 8
+        RhythmAssist = 8,
+        Continue = 9
         
         
 }
