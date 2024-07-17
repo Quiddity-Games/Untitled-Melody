@@ -85,7 +85,8 @@ public class EndScreenController : MonoBehaviour
             titleText.text = "PERFECT!";
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
-            continueButton.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+            levelManager.SetCurrentLevel(3);
 
             audioSource.clip = collectedAllFragmentsSound;
         }
@@ -94,20 +95,10 @@ public class EndScreenController : MonoBehaviour
             titleText.text = "Good Job!";
             obtainedCollectableText.color = Color.black;
             memiImage.sprite = endSprites.goodSprite;
-            continueButton.gameObject.SetActive(true);
-            levelManager.SetCurrentLevel(3);
+            restartButton.gameObject.SetActive(true);
+          //  levelManager.SetCurrentLevel(3);
 
             audioSource.clip = collectedEnoughFragmentsSound;
-        }
-        else if (obtained > required)
-        {
-            titleText.text = "PERFECT!";
-            obtainedCollectableText.color = Color.red;
-            memiImage.sprite = endSprites.perfectSprite;
-            continueButton.gameObject.SetActive(true);
-            levelManager.SetCurrentLevel(3);
-
-            audioSource.clip = collectedAllFragmentsSound;
         }
         
         EndScreenMenu.SetActive(true);
