@@ -53,18 +53,17 @@ public class InputManager : MonoBehaviour
     {
         EnableInput();
 
-        if (SceneManager.GetActiveScene().buildIndex < 1 && _playerInput.currentActionMap.name == "Dreamworld")
-            DisableInput();
+           // DisableInput();
     }
 
     public void EnableInput()
     {
-        _playerInput.currentActionMap.Enable();
+        //_playerInput.currentActionMap.Enable();
     }
 
     public void DisableInput()
     {
-        _playerInput.currentActionMap.Disable();
+       // _playerInput.currentActionMap.Disable();
     }
 
     public void SwitchToGameplay()
