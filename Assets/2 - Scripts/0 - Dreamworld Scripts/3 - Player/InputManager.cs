@@ -75,13 +75,10 @@ public class InputManager : MonoBehaviour
     }
 
     public void OnDash(InputAction.CallbackContext obj)
-    {
-        if (PauseMenuManager.Instance.IsPaused)
-            return;
+{
 
         Debug.Log("Dash is being called");
-        //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_DASH);
-        DreamworldEventManager.OnDash?.Invoke();
+
     }
 
     public void OnReload(InputAction.CallbackContext obj)
@@ -111,8 +108,6 @@ public class InputManager : MonoBehaviour
     public void OnContinue()
     {
         Debug.Log("Continue dialogue called");
-        if (DreamworldEventManager.Instance)
-            DreamworldEventManager.OnDialogueContinue?.Invoke();
     }
 
     private void ToggleInputOnPause(bool paused)
