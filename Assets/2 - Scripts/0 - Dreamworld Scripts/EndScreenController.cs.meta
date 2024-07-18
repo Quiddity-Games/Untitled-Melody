@@ -3,7 +3,20 @@ guid: 073cf16a7c41f044e8ad3ee24391df0c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - neededCollectableText: {instanceID: 0}
+  - obtainedCollectableText: {instanceID: 0}
+  - totalCollectableText: {instanceID: 0}
+  - titleText: {instanceID: 0}
+  - memiImage: {instanceID: 0}
+  - continueButton: {instanceID: 0}
+  - restartButton: {instanceID: 0}
+  - EndScreenMenu: {instanceID: 0}
+  - collectionScore: {instanceID: 0}
+  - levelManager: {instanceID: 0}
+  - collectedAllFragmentsSound: {fileID: 8300000, guid: efb85c4f12dae7f449ec804a98f4a731, type: 3}
+  - collectedEnoughFragmentsSound: {fileID: 8300000, guid: 06d8070531d144b4fa995defd5aaf211, type: 3}
+  - levelFailedSound: {fileID: 8300000, guid: 1060092098b89e7449f2720877bf24fd, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

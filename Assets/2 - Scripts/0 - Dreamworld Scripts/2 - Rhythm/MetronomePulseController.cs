@@ -14,6 +14,7 @@ public class MetronomePulseController : MonoBehaviour
     private float twoBeatsLength;
 
     [SerializeField] private float maxRadius;
+    [SerializeField] private float minRadius;
 
     private float startRadius, endRadius;
 
@@ -44,7 +45,7 @@ public class MetronomePulseController : MonoBehaviour
             else if (state == PulseState.ONMIN)
             {
                 startRadius = maxRadius;
-                endRadius = 5;
+                endRadius = minRadius;
             }
         }
         
