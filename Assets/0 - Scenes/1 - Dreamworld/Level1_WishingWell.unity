@@ -5130,11 +5130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 073cf16a7c41f044e8ad3ee24391df0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &431667370 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3727340695081760701, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
-  m_PrefabInstance: {fileID: 1086937933}
-  m_PrefabAsset: {fileID: 0}
 --- !u!20 &519420031 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7846954487582779019, guid: 21accf9b178a21b439c3d8e8e38da004, type: 3}
@@ -5371,10 +5366,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2414404711797279450, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
-      propertyPath: audioSource
-      value: 
-      objectReference: {fileID: 431667370}
     - target: {fileID: 2414404711797279450, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
       propertyPath: collectionScore
       value: 

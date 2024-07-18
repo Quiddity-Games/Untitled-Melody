@@ -101,11 +101,6 @@ public class InputManager : MonoBehaviour
 
     public void OnPause(InputAction.CallbackContext obj)
     {
-
-        if(!obj.performed)
-        {
-            return;
-        }
         PauseMenuManager.OnPaused?.Invoke(!PauseMenuManager.Instance.IsPaused);
     }
 

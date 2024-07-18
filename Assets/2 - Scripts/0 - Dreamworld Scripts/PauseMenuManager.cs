@@ -8,7 +8,7 @@ public class PauseMenuManager : MonoBehaviour
 {
     public static PauseMenuManager Instance;
 
-    public bool IsPaused = false;
+    public bool IsPaused;
 
 
     public static Action<bool> OnPaused;
