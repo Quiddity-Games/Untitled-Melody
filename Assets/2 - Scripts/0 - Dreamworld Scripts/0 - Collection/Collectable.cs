@@ -23,7 +23,7 @@ public class Collectable : MonoBehaviour, ICollectable
     #region Thought Fragment Messages
     private string[] genericMessages = new string[]
     {
-	"bring me life",
+        "bring me life",
         "still wandering",
         "I might cry",
         "waiting for you",
@@ -56,7 +56,7 @@ public class Collectable : MonoBehaviour, ICollectable
 
     private string[] negativeMessages = new string[]
     {
-	"you can’t",
+        "you can’t",
         "why do I exist?",
         "just don’t",
         "falls apart",
