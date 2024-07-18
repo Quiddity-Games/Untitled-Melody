@@ -5163,6 +5163,10 @@ PrefabInstance:
       propertyPath: endScreen
       value: 
       objectReference: {fileID: 431667368}
+    - target: {fileID: 5499334589776104451, guid: e88580f52d7b165498f1efe3d4b9661f, type: 3}
+      propertyPath: requiredNumCollected
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 5499334589776104508, guid: e88580f52d7b165498f1efe3d4b9661f, type: 3}
       propertyPath: m_RootOrder
       value: 8
