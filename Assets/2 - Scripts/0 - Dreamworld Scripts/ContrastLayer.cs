@@ -18,6 +18,7 @@ public class ContrastLayer : MonoBehaviour
         Settings.Contrast.OnValueChanged.AddListener(UpdateContrast);
         Settings.ContrastEnabled.OnValueChanged.AddListener(ToggleContrast);
         ToggleContrast(Settings.ContrastEnabled.Value);
+        UpdateContrast(Settings.Contrast.Value)
         // For Justin + Save System: save out the index of the colours and set loadedColor to grab it on start.
         // For now, the default will always be 0/black.
         // Same thing with the opacity.Right now, it's taking a value between 0-100 and dividing it by 100 to get the alpha.
