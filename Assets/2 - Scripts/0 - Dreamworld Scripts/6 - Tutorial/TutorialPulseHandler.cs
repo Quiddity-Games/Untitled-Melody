@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class TutorialPulseHandler : MonoBehaviour
 {
 
-    [SerializeField] private Transform[] pulseLocations;
+    [SerializeField] private TutorialPulsePlacements[] pulseLocations;
 
     [SerializeField] private TutorialPulse pulsePrefab;
+
+    [Serializable] struct TutorialPulsePlacements
+    {
+        public Transform m_location;
+        public string m_text;
+    }
 
     private TutorialPulse tutorialPulse;
 
@@ -16,6 +22,16 @@ public class TutorialPulseHandler : MonoBehaviour
     private int index;
     // Start is called before the first frame update
     void Start()
+    {
+        DreamworldEventManager.OnGameStart += Initialize;
+    }
+
+    void OnDestroy()
+    {
+        DreamworldEventManager.OnGameStart -= Initialize;
+    }
+
+    private void Initialize()
     {
         tutorialPulse = Instantiate(pulsePrefab, transform);
         index = 0;
@@ -32,7 +48,9 @@ public class TutorialPulseHandler : MonoBehaviour
     {
         if(index < pulseLocations.Length)
         {
-            tutorialPulse.transform.position = pulseLocations[index++].position;
+            tutorialPulse.transform.position = pulseLocations[index].m_location.position;
+            tutorialPulse.text.text = pulseLocations[index].m_text;
+            index++;
         }
         else
         {

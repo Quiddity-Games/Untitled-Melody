@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class TutorialPulse : MonoBehaviour
 {
 
     private Action onCollideWithPulse;
+
+    public TextMeshPro text;
 
     [SerializeField] private MetronomePulseController controller;
     // Start is called before the first frame update
