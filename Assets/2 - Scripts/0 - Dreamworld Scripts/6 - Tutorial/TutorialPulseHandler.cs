@@ -37,6 +37,7 @@ public class TutorialPulseHandler : MonoBehaviour
         index = 0;
         tutorialPulse.Initialize(_tracker);
         tutorialPulse.RegisterOnCollide(AdvanceLocation);
+        AdvanceLocation();
     }
 
     void OnDisable()
