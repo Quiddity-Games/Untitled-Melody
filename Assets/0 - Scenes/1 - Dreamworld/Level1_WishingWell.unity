@@ -5742,6 +5742,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53938889b685b2d46a88ae9f66977c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &917857880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 917857881}
+  m_Layer: 0
+  m_Name: Location 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &917857881
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917857880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.3, y: 4.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1119660704}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1022388212 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8659275533931986210, guid: 268911a1b98b20a469953c010ff2950e, type: 3}
@@ -6715,11 +6746,11 @@ PrefabInstance:
       objectReference: {fileID: 1369963775}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[0].m_text
-      value: Tap here to the beat!
+      value: Match the beat!
       objectReference: {fileID: 0}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[1].m_text
@@ -6731,7 +6762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[3].m_text
-      value: ...And here!
+      value: ...Anywhere!
+      objectReference: {fileID: 0}
+    - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
+      propertyPath: pulseLocations.Array.data[4].m_text
+      value: Collect 70!
       objectReference: {fileID: 0}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[0].m_location
@@ -6749,6 +6784,10 @@ PrefabInstance:
       propertyPath: pulseLocations.Array.data[3].m_location
       value: 
       objectReference: {fileID: 1262511442}
+    - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
+      propertyPath: pulseLocations.Array.data[4].m_location
+      value: 
+      objectReference: {fileID: 917857881}
     - target: {fileID: 121393436222675776, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -70.899994
