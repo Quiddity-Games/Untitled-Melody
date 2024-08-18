@@ -82,12 +82,19 @@ public class Collectable : MonoBehaviour, ICollectable
         activeMessages = genericMessages;
         InitializeDisplay();
         DreamworldEventManager.RegisterCollectable?.Invoke();
-        DreamworldEventManager.OnGameStart += UpdateMessage;
+
+	if (isTutorialCollectable == true) 
+	{
+        	DreamworldEventManager.OnGameStart += UpdateMessage;
+	}
     }
 
     void OnDestroy()
     {
-        DreamworldEventManager.OnGameStart -= UpdateMessage;
+        if (isTutorialCollectable == true) 
+	{
+		DreamworldEventManager.OnGameStart -= UpdateMessage;
+	}
     }
 
     private void InitializeDisplay()
