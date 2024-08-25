@@ -42,9 +42,8 @@ public class MetronomeBarController : MonoBehaviour
     void Start()
     {
         _NoteTracker.Load();
-        Init();
-        SettingsManager.Instance().GetAccSettings().onUpdate += HandleBarSetting;
-        HandleBarSetting();
+
+        DreamworldEventManager.OnGameStart += Init;
     }
 
     void OnDestroy()
@@ -90,6 +89,8 @@ public class MetronomeBarController : MonoBehaviour
         rhythmIndicatorTimer -= ((8f * _NoteTracker.GetTwoBeatsLength())); //Offsets rhythmIndicatorTimer so that the "metronome bars" above the player's head don't start appearing until the percussion beats of the "wishing well" song begin, roughly four measures in
         panel = Instantiate(panelPrefab, dreamworldUICanvas.transform);
         panel.SetActive(false);
+        SettingsManager.Instance().GetAccSettings().onUpdate += HandleBarSetting;
+        HandleBarSetting();
     }
     
     /// <summary>
