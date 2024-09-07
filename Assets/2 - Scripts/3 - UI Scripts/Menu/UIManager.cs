@@ -39,13 +39,13 @@ public class UIManager : MonoBehaviour
     void OnEnable()
     {
         SetPausePosition += SetButtonPosition;
-        PauseMenuManager.OnPaused += TogglePauseMenu;
+        PauseManager.OnPaused += TogglePauseMenu;
     }
 
     private void OnDestroy()
     {
         SetPausePosition -= SetButtonPosition;
-        PauseMenuManager.OnPaused -= TogglePauseMenu;
+        PauseManager.OnPaused -= TogglePauseMenu;
 
     }
 
@@ -53,10 +53,10 @@ public class UIManager : MonoBehaviour
     {
         pauseButton.onClick.AddListener((
         ) => {
-            PauseMenuManager.OnPaused?.Invoke(true);
+            PauseManager.OnPaused?.Invoke(true);
             OpenPauseMenu(()=>{
                 Instance.pauseButton.gameObject.SetActive(true);
-                PauseMenuManager.OnPaused?.Invoke(false);});
+                PauseManager.OnPaused?.Invoke(false);});
         });
         pauseButtonTransform = pauseButton.GetComponent<RectTransform>();
         initialOffsetMin = pauseButtonTransform.offsetMin;

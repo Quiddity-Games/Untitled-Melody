@@ -4,9 +4,9 @@ using UnityEngine;
 /// <summary>
 /// The script responsible for handling pause logic.
 /// </summary>
-public class PauseMenuManager : MonoBehaviour
+public class PauseManager : MonoBehaviour
 {
-    public static PauseMenuManager Instance;
+    public static PauseManager Instance;
 
     public bool IsPaused;
 
@@ -51,7 +51,6 @@ public class PauseMenuManager : MonoBehaviour
     public void OnGamePause(bool isPaused)
     {
         IsPaused = isPaused;
-
         if (isPaused)
             Time.timeScale = 0;
         else

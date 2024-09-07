@@ -48,9 +48,9 @@ public class DreamworldEventManager : MonoBehaviour
     {
         if (InputManager.Instance)
             InputManager.Instance.RegisterDreamworldEvents();
-        if (PauseMenuManager.Instance)
+        if (PauseManager.Instance)
         {
-            PauseMenuManager.Instance.RegisterDreamworldEvents();
+            PauseManager.Instance.RegisterDreamworldEvents();
         }
         if (UIManager.Instance)
         {
@@ -63,8 +63,8 @@ public class DreamworldEventManager : MonoBehaviour
     {
         if (InputManager.Instance)
             InputManager.Instance.DeregisterDreamworldEvents();
-        if (PauseMenuManager.Instance)
-            PauseMenuManager.Instance.DeregisterDreamworldEvents();
+        if (PauseManager.Instance)
+            PauseManager.Instance.DeregisterDreamworldEvents();
         if (UIManager.Instance)
             UIManager.Instance.DeregisterDreamworldEvents();
     }
