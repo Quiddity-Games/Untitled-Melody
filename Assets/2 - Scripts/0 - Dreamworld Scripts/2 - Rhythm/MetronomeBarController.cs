@@ -26,7 +26,7 @@ public class MetronomeBarController : MonoBehaviour
 
     private float twoBeatsLength;
 
-    private float timeToMove;
+    private float startTime;
 
     private int delay;
     public GameObject panelPrefab;
@@ -104,23 +104,12 @@ public class MetronomeBarController : MonoBehaviour
         rhythmIndicatorTimer += Time.deltaTime;
 
         //Triggers when it's time for a new pair of metronome bars to appear
-        if(rhythmIndicatorTimer >= twoBeatsLength
+        if(rhythmIndicatorTimer >= _NoteTracker.GetNextBeatTime()
            && newMetronomeBarL == null
            && newMetronomeBarR == null)
         {
             SpawnNewMetronomeBars();
         }
-
-        //Triggers when it's time for those metronome bars to start moving towards each other
-        if(rhythmIndicatorTimer >= twoBeatsLength*2)
-        {
-            rhythmIndicatorTimer -= twoBeatsLength*2;
-
-        }
-
-      
-
- 
     }
     
      /// <summary>
@@ -130,7 +119,6 @@ public class MetronomeBarController : MonoBehaviour
     /// <returns></returns>
     IEnumerator MoveRhythmIndicatorBarVisual(GameObject bar)
      {
-         yield return new WaitForSeconds(twoBeatsLength/2);
         Vector3 startPos = bar.GetComponent<Transform>().localPosition;
         Vector3 endPos = new Vector3(0, startPos.y, 0);
 
@@ -138,29 +126,17 @@ public class MetronomeBarController : MonoBehaviour
 
         float t = 0;
 
-        while(t < 1)
+        while(t <= 1)
         {
             bar.GetComponent<RectTransform>().anchoredPosition = Vector3.LerpUnclamped(startPos, endPos, linearCurve.Evaluate(t));
-
-            t += Time.deltaTime / (twoBeatsLength/4);
+            
+            t = 1-((_NoteTracker.GetNextBeatTime() - _NoteTracker.timeTracker)) / (twoBeatsLength);
 
             //Changes bar color _before_ player clicks -- to give away if it will be a hit/not -- but only if debug mode is on
             if(metronomeBarDebugMode == true)
             {
                 bar.GetComponent<Image>().color = metronomeBarColor;
             }
-
-            /*
-            if(Input.GetMouseButtonDown(0))
-            {
-
-                bar.GetComponent<Image>().color = metronomeBarColor;    //Changes the bar's color after the player has clicked, so they can see whether/not they hit it
-
-                t = 1;
-
-                instaDestroyBar = false;
-            }
-            */
 
             yield return 0;
         }
