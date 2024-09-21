@@ -39,7 +39,9 @@ public class TextingAudioManager : MonoBehaviour
     /// </summary>
     void PlayAmikaMessageSound()
     {
+        audioSource.loop = false;
         audioSource.clip = amikaMessageSound;
+        audioSource.time = 0f;
         audioSource.Play();
     }
 
@@ -48,7 +50,9 @@ public class TextingAudioManager : MonoBehaviour
     /// </summary>
     void PlayEmeraldMessageSound()
     {
+        audioSource.loop = false;
         audioSource.clip = emeraldMessageSound;
+        audioSource.time = 0f;
         audioSource.Play();
     }
 
@@ -57,7 +61,9 @@ public class TextingAudioManager : MonoBehaviour
     /// </summary>
     void PlayAmikaTypingSound()
     {
+        audioSource.loop = true;
         audioSource.clip = amikaTypingSound;
+        audioSource.time = Random.Range(0f, audioSource.clip.length);
         audioSource.Play();
     }
 
