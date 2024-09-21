@@ -74,6 +74,9 @@ public class Collectable : MonoBehaviour, ICollectable
 
     private bool initialize = false;
 
+    [SerializeField] private GameObject lyricDrop;
+    private Vector3 collectablePos;
+
     private void Start()
     {
         displayRenderer = display.GetComponent<SpriteRenderer>();
@@ -83,6 +86,8 @@ public class Collectable : MonoBehaviour, ICollectable
         InitializeDisplay();
         DreamworldEventManager.RegisterCollectable?.Invoke();
 
+        collectablePos = this.GetComponent<Transform>().position;
+
 	if (isTutorialCollectable == true) 
 	{
         	DreamworldEventManager.OnGameStart += UpdateMessage;
@@ -90,7 +95,7 @@ public class Collectable : MonoBehaviour, ICollectable
     }
 
     void OnDestroy()
-    {
+    {   
         if (isTutorialCollectable == true) 
 	{
 		DreamworldEventManager.OnGameStart -= UpdateMessage;
@@ -123,6 +128,8 @@ public class Collectable : MonoBehaviour, ICollectable
 
     public void Collect()
     {
+        Instantiate(lyricDrop, collectablePos, Quaternion.identity);
+
         DreamworldEventManager.OnCollect?.Invoke(this);
         display.SetActive(false);
         textDisplay.gameObject.SetActive(false);
