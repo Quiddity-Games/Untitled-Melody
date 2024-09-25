@@ -7,6 +7,9 @@ using UnityEngine.InputSystem;
 
 public class MenuNavigator : MonoBehaviour
 {
+
+    [SerializeField] private EventSystem _eventSys;
+
     [SerializeField] private BaseSubMenu _currSubMenu;
 
     [SerializeField] private PlayerInput _input;
