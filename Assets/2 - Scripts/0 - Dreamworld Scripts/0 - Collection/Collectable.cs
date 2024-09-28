@@ -96,7 +96,7 @@ public class Collectable : MonoBehaviour, ICollectable
             {
                 textDisplay = textMeshes[i];
                 textMeshes[i].gameObject.SetActive(true);
-                InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
+                //InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
             } else
             {
                 Destroy(textMeshes[i]);
@@ -122,7 +122,7 @@ public class Collectable : MonoBehaviour, ICollectable
         display.SetActive(true);
         textDisplay.gameObject.SetActive(true);
         collider.enabled = true;
-        InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
+        //InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -135,9 +135,9 @@ public class Collectable : MonoBehaviour, ICollectable
 
     private void RandomizeMessage()
     {
-        int randomIndex = UnityEngine.Random.Range(0, activeMessages.Length - 1);
+        //int randomIndex = UnityEngine.Random.Range(0, activeMessages.Length - 1);
 
-        currentMessage = activeMessages[randomIndex];
-        textDisplay.text = activeMessages[randomIndex];
+        //currentMessage = activeMessages[randomIndex];
+        //textDisplay.text = activeMessages[randomIndex];
     }
 }
