@@ -42,9 +42,8 @@ public class MetronomeBarController : MonoBehaviour
     void Start()
     {
         _NoteTracker.Load();
-        Init();
-        Settings.SecondaryBars.OnValueChanged.AddListener(Toggle);
-        Toggle(Settings.SecondaryBars.Value);
+
+        DreamworldEventManager.OnGameStart += Init;
     }
 
     void OnDestroy()
@@ -53,6 +52,10 @@ public class MetronomeBarController : MonoBehaviour
         _NoteTracker.onBeatEnter -= HandleBars;
     }
 
+    public void HandleBarSetting(bool enable)
+    {
+        Toggle(enable);
+    }
     public void Toggle(bool enabled)
     {
         if(panel == null)
@@ -87,6 +90,8 @@ public class MetronomeBarController : MonoBehaviour
         panel = Instantiate(panelPrefab, dreamworldUICanvas.transform);
         panel.transform.SetAsFirstSibling();
         panel.SetActive(false);
+        Settings.SecondaryBars.OnValueChanged.AddListener(HandleBarSetting);
+        HandleBarSetting(Settings.SecondaryBars.Value);
     }
     
     /// <summary>
