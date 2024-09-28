@@ -86,6 +86,8 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+            levelManager.SetCurrentLevel(3);
 
             audioSource.clip = collectedAllFragmentsSound;
         }
@@ -95,6 +97,7 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.black;
             memiImage.sprite = endSprites.goodSprite;
             continueButton.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
             levelManager.SetCurrentLevel(3);
 
             audioSource.clip = collectedEnoughFragmentsSound;
@@ -105,6 +108,7 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
             levelManager.SetCurrentLevel(3);
 
             audioSource.clip = collectedAllFragmentsSound;
