@@ -52,9 +52,9 @@ public class MetronomeBarController : MonoBehaviour
         _NoteTracker.onBeatEnter -= HandleBars;
     }
 
-    public void HandleBarSetting()
+    public void HandleBarSetting(bool enable)
     {
-        Toggle(SettingsManager.Instance().GetAccSettings().SecondaryBars);
+        Toggle(enable);
     }
     public void Toggle(bool enabled)
     {
@@ -90,8 +90,8 @@ public class MetronomeBarController : MonoBehaviour
         panel = Instantiate(panelPrefab, dreamworldUICanvas.transform);
         panel.transform.SetAsFirstSibling();
         panel.SetActive(false);
-        SettingsManager.Instance().GetAccSettings().onUpdate += HandleBarSetting;
-        HandleBarSetting();
+        Settings.SecondaryBars.OnValueChanged.AddListener(HandleBarSetting);
+        HandleBarSetting(Settings.SecondaryBars.Value);
     }
     
     /// <summary>
