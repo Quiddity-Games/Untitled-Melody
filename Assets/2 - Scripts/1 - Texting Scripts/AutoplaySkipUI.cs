@@ -10,6 +10,10 @@ public class AutoplaySkipUI : MonoBehaviour
     public Toggle autoplayToggleButton;
     public Button skipToChoiceButton;
 
+    [SerializeField] AudioSource autoplaySkipSFXSource;
+    [SerializeField] AudioClip toggleOnAudioClip;
+    [SerializeField] AudioClip toggleOffAudioClip;
+
     private void Awake()
     {
         Instance = this;
@@ -20,8 +24,17 @@ public class AutoplaySkipUI : MonoBehaviour
     {
         autoplayToggleButton.onValueChanged.AddListener(delegate {
             TextingDialogueController.TextingUI.SetAutoplay();
+
             if (TextingDialogueController.TextingUI.AutoplayEnabled)
+            {
                 TextingDialogueCanvas.Instance.AutoplayDialogue();
+                autoplaySkipSFXSource.PlayOneShot(toggleOnAudioClip);
+            }
+            else
+            {
+                autoplaySkipSFXSource.PlayOneShot(toggleOffAudioClip);
+            }
+
         });
         skipToChoiceButton.onClick.AddListener(TextingDialogueController.TextingUI.SkipToChoice);
 
