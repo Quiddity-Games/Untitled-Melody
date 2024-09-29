@@ -667,6 +667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   display: {fileID: 4815849445409681828}
   collider: {fileID: 8486638284745595820}
+  isTutorialCollectable: 0
+  textDisplay: {fileID: 3049630549653637885}
   currentMessage: 
 --- !u!61 &8486638284745595820
 BoxCollider2D:
