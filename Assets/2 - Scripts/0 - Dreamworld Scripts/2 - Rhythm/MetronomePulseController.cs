@@ -59,6 +59,11 @@ public class MetronomePulseController : MonoBehaviour
         SetState(defaultState);
     }
 
+    void OnDisable()
+    {
+        _NoteTracker.onBeatTrigger -= HandlePulse;
+    }
+
     // Start is called before the first frame update
     void HandlePulse()
     {
