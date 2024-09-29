@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _NoteTracker: {fileID: 0}
+  keepOn: 1
   metronomePulse: {fileID: 5953961413062375547, guid: 2aa374fab40f986478277ccde61cdc4f, type: 3}
   maxRadius: 20
   minRadius: 0
