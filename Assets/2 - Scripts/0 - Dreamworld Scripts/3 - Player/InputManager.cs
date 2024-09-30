@@ -10,6 +10,8 @@ public class InputManager : MonoBehaviour
     public static InputManager Instance;
     private PlayerInput _playerInput;
 
+    InputActionMap m_pausedActionMap;
+
     private void Awake()
     {
         Instance = this;
@@ -18,12 +20,12 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        PauseMenuManager.OnPaused += ToggleInputOnPause;
+        PauseManager.OnPaused += ToggleInputOnPause;
     }
 
     private void OnDisable()
     {
-        PauseMenuManager.OnPaused -= ToggleInputOnPause;
+        PauseManager.OnPaused -= ToggleInputOnPause;
     }
 
     public void RegisterDreamworldEvents()
@@ -62,9 +64,15 @@ public class InputManager : MonoBehaviour
         _playerInput.currentActionMap.Enable();
     }
 
+    public void ReenableInput()
+    {
+        _playerInput.SwitchCurrentActionMap(m_pausedActionMap.name);
+    }
+
     public void DisableInput()
     {
-        _playerInput.currentActionMap.Disable();
+        m_pausedActionMap = _playerInput.currentActionMap;
+        SwitchToUniversal();
     }
 
     public void SwitchToGameplay()
@@ -72,15 +80,19 @@ public class InputManager : MonoBehaviour
         _playerInput.SwitchCurrentActionMap("Dreamworld");
     }
 
+    public void SwitchToUniversal()
+    {
+        _playerInput.SwitchCurrentActionMap("Universal");
+    }
+
     public void SwitchToUI()
     {
         _playerInput.SwitchCurrentActionMap("Texting");
-        Debug.Log(_playerInput.currentActionMap);
-    }
+        }
 
     public void OnDash(InputAction.CallbackContext obj)
     {
-        if (PauseMenuManager.Instance.IsPaused)
+        if (PauseManager.Instance.IsPaused)
             return;
         if(!obj.performed)
         {
@@ -91,17 +103,21 @@ public class InputManager : MonoBehaviour
 
     public void OnReload(InputAction.CallbackContext obj)
     {
-        if (PauseMenuManager.Instance.IsPaused)
+        if (PauseManager.Instance.IsPaused)
             return;
         else
-            PauseMenuManager.OnPaused?.Invoke(false);
+            PauseManager.OnPaused?.Invoke(false);
 
         DreamworldEventManager.OnReload?.Invoke();
     }
 
     public void OnPause(InputAction.CallbackContext obj)
     {
-        PauseMenuManager.OnPaused?.Invoke(!PauseMenuManager.Instance.IsPaused);
+        if(!obj.performed)
+        {
+            return;
+        }
+        PauseManager.OnPaused?.Invoke(!PauseManager.Instance.IsPaused);
     }
 
     public void OnContinue(InputAction.CallbackContext obj)
@@ -115,7 +131,7 @@ public class InputManager : MonoBehaviour
         if (paused)
             DisableInput();
         else
-            EnableInput();
+            ReenableInput();
     }
 
 }

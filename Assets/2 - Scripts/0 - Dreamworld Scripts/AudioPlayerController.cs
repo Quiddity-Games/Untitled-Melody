@@ -10,14 +10,14 @@ public class AudioPlayerController : MonoBehaviour
     private void OnEnable()
     {
         DreamworldEventManager.OnGameStart += songPlayer.Play;
-        PauseMenuManager.OnPaused += TogglePause;
+        PauseManager.OnPaused += TogglePause;
         DreamworldEventManager.OnGameEnd += songPlayer.Pause;
     }
 
     private void OnDestroy()
     {
         DreamworldEventManager.OnGameStart -= songPlayer.Play;
-        PauseMenuManager.OnPaused -= TogglePause;
+        PauseManager.OnPaused -= TogglePause;
         DreamworldEventManager.OnGameEnd -= songPlayer.Pause;
     }
 

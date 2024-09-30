@@ -17,7 +17,7 @@ public class PauseButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_button.onClick.AddListener(() => PauseMenuManager.OnPaused?.Invoke(true));
+        m_button.onClick.AddListener(() => PauseManager.OnPaused?.Invoke(true));
     }
 
 }
