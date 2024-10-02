@@ -15,12 +15,16 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] private SpriteRenderer starsSprite;
 
     private bool _used;
-    
+
+    private AudioSource activationSoundAudioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         _used = false; 
         checkPointBurst = gameObject.transform.GetChild(0).GetComponent<ParticleSystem>();
+
+        activationSoundAudioSource = this.GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -36,8 +40,9 @@ public class Checkpoint : MonoBehaviour
 
             checkPointBurst.Emit(20);
             _used = true;
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.CHECKPOINT_ENTER);
-            DreamworldEventManager.Instance.CallVector3Event(DreamworldVector3EventEnum.CHECKPOINT_POSITION, transform.position);
+            //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.CHECKPOINT_ENTER);
+            DreamworldEventManager.EnterCheckpoint?.Invoke();
+            //DreamworldEventManager.Instance.CallVector3Event(DreamworldVector3EventEnum.CHECKPOINT_POSITION, transform.position);
             //"Saves" the progress the player has made in acquiring collectables up until this checkpoint
 
             CollectionScoreController.Instance.RecordCurrentCollection();
@@ -47,6 +52,8 @@ public class Checkpoint : MonoBehaviour
 
             curtainAnimator.SetTrigger("Activated");
             DOTween.Sequence().InsertCallback(2f, () => curtainAnimator.gameObject.SetActive(false));
+
+            activationSoundAudioSource.Play();
         }
     }
 

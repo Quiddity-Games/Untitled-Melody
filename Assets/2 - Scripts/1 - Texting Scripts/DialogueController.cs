@@ -8,28 +8,24 @@ using TMPro;
 using DG.Tweening;
 using Ink.Runtime;
 using System.Text.RegularExpressions;
-using System.Linq;
-using RoboRyanTron.Unite2017.Events;
-using UnityEngine.InputSystem;
 
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController Instance;
 
-    public static VoidCallback InitializeDialogue;
-    public static VoidCallback OnDialogueStart;
-    public static VoidCallback OnContinue;
-    public static VoidCallback OnLineShown;
-    public static VoidCallback SubscribeButtonEvents;
+    public static Action InitializeDialogue;
+    public static Action OnLineShown;
+    public static Action SubscribeButtonEvents;
 
     public Action<string> OnLoadNextChunk; // Does something when the next chunk is parsed (i.e. make text bubbles)
 
-    public GameEvent OnDialogueEnd;
+    public Action OnDialogueEnd;
 
     [Header("Ink & Characters")]
     public Story InkStory;
     [SerializeField] TextAsset inkTextAsset;
     [Space(10)]
+    
     [SerializeField] StringVariable mainCharacterName;
     [HideInInspector] public string MainCharacterName;
     public List<CharacterUIInfo> CharactersInStory = new();
@@ -53,7 +49,6 @@ public class DialogueController : MonoBehaviour
 
     public virtual void Awake()
     {
-        DOTween.Init();
         Instance = this;
         InkStory = new Story(inkTextAsset.text);
         CurrentLineIndex = 0;
@@ -64,8 +59,12 @@ public class DialogueController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public virtual void Start()
+    public virtual void Initialize(string startingScene = "")
     {
+        if (startingScene != "")
+        {
+            InkStory.ChoosePathString(startingScene);
+        }
         SubscribeButtonEvents?.Invoke();
         InitializeDialogue?.Invoke();
     }

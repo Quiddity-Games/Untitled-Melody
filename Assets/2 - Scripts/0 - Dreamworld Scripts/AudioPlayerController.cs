@@ -5,21 +5,23 @@ using UnityEngine;
 public class AudioPlayerController : MonoBehaviour
 {
 
-    [SerializeField] private FloatVariable volume;
     [SerializeField] private AudioSource songPlayer;
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnEnable()
     {
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(
-            DreamworldVoidEventEnum.GAME_START, Play);
-        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED,
-            TogglePause);
+        DreamworldEventManager.OnGameStart += songPlayer.Play;
+        PauseManager.OnPaused += TogglePause;
+        DreamworldEventManager.OnGameEnd += songPlayer.Pause;
     }
 
-    public void Play()
+    private void OnDestroy()
     {
-        songPlayer.Play();
+        DreamworldEventManager.OnGameStart -= songPlayer.Play;
+        PauseManager.OnPaused -= TogglePause;
+        DreamworldEventManager.OnGameEnd -= songPlayer.Pause;
     }
+
+
 
     public void TogglePause(bool isPaused)
     {

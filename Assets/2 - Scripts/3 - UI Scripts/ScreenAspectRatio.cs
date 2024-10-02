@@ -29,7 +29,11 @@ public class ScreenAspectRatio : MonoBehaviour
             case CanvasType.Dialogue:
                 TextingFormatting = CanvasInformation as TextingScreenFormat;
                 foreach (TextingAspectRatioFormat txt in TextingFormatting.TextingFormatList)
-                    TextingFormatDictionary.Add((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00"), CreateDictionaryEntry(txt));
+                {
+                    if (!TextingFormatDictionary.ContainsKey((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00")))
+                        TextingFormatDictionary.Add((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00"), CreateDictionaryEntry(txt));
+                }
+
                 break;
         }
 

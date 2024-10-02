@@ -11,25 +11,33 @@ public class CollectableTutorialText : MonoBehaviour
 {
     int numCollectable;  //Checks how many dashes the player has successfully pulled off so far
 
-    public void Start()
+    private void OnEnable()
     {
-        numCollectable = 0;
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COLLECT, HandleTutorial);
+        DreamworldEventManager.OnCollect += HandleTutorial;
+    }
 
+    private void OnDisable()
+    {
+        DreamworldEventManager.OnCollect -= HandleTutorial;
     }
 
     private void OnDestroy()
     {
-        DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.COLLECT, HandleTutorial);
+        DreamworldEventManager.OnCollect -= HandleTutorial;
     }
 
-    private void HandleTutorial()
+    public void Start()
+    {
+        numCollectable = 0;
+    }
+
+    private void HandleTutorial(Collectable collected)
     {
         numCollectable++;
         if (numCollectable >= 3)
         {
             StartCoroutine(FadeAndDestroy());
-            this.GetComponent<Transform>().position = new Vector3(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y + (5 * Time.deltaTime), this.GetComponent<Transform>().position.z);
+            GetComponent<Transform>().position = new Vector3(GetComponent<Transform>().position.x, GetComponent<Transform>().position.y + (5 * Time.deltaTime), GetComponent<Transform>().position.z);
         }
     }
 
@@ -39,14 +47,14 @@ public class CollectableTutorialText : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ReturnToDefaultColor()
     {
-        Color startColor = this.GetComponent<TMP_Text>().color;
+        Color startColor = GetComponent<TMP_Text>().color;
 
         float t = 0f;
 
         while(t < 1)
         {
             Color lerpedColor = Color.Lerp(startColor, Color.white, t);
-            this.GetComponent<TMP_Text>().color = lerpedColor;
+            GetComponent<TMP_Text>().color = lerpedColor;
             t += Time.deltaTime;
 
             yield return 0;
@@ -59,16 +67,16 @@ public class CollectableTutorialText : MonoBehaviour
     /// <returns></returns>
     private IEnumerator FadeAndDestroy()
     {
-        float alpha = this.GetComponent<TMP_Text>().color.a;
+        float alpha = GetComponent<TMP_Text>().color.a;
 
         while(alpha >= 0)
         {
-            this.GetComponent<TMP_Text>().color = new Color(this.GetComponent<TMP_Text>().color.r, this.GetComponent<TMP_Text>().color.g, this.GetComponent<TMP_Text>().color.b, alpha);
+            GetComponent<TMP_Text>().color = new Color(GetComponent<TMP_Text>().color.r, GetComponent<TMP_Text>().color.g, GetComponent<TMP_Text>().color.b, alpha);
             alpha -= 0.01f;
 
             yield return 0;
         }
 
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 }

@@ -10,14 +10,18 @@ public class CollectionScoreController : MonoBehaviour
 
     // Start is called before the first frame update
     
-    private int numCollectables = 0; //Total number of collectables in the level
+    public int numCollectables = 0; //Total number of collectables in the level
     [SerializeField] private int numCollected;    //Number of collectables the player has acquired so far
     [SerializeField] private int tempNumCollected; //"Temporary" information about collectables the player has claimed since their last checkpoint; used to determine what collectables they should lose / that should be reset the next time the player dies
     [SerializeField] private int requiredNumCollected;
     [SerializeField] private CollectionSound sound;
     [SerializeField] private CollectableUI _ui;
-    [SerializeField] private CollectionResetter resetter;
+    [SerializeField] private CollectionResetter resetter; // not being used
     [SerializeField] private EndScreenController endScreen;
+
+    private List<Collectable> currentCollectables = new List<Collectable>();
+
+    public Sprite[] CollectableSprites;
 
     private CollectableInfo endInfo;
     void Awake()
@@ -29,6 +33,25 @@ public class CollectionScoreController : MonoBehaviour
         numCollected = 0;
         tempNumCollected = 0;
         endInfo.ResetValues();
+
+        DreamworldEventManager.RegisterCollectable += () => numCollectables += 1;
+    }
+
+    private void OnEnable()
+    {
+        DreamworldEventManager.OnDeath += HandleDeath;
+        DreamworldEventManager.OnCollect += HandleCollection;
+        DreamworldEventManager.EnterCheckpoint += RecordCurrentCollection;
+        DreamworldEventManager.ResetTempCollection += ResetCollection;
+    }
+
+    private void OnDestroy()
+    {
+        DreamworldEventManager.RegisterCollectable -= () => numCollectables += 1;
+        DreamworldEventManager.OnDeath -= HandleDeath;
+        DreamworldEventManager.OnCollect -= HandleCollection;
+        DreamworldEventManager.EnterCheckpoint -= RecordCurrentCollection;
+        DreamworldEventManager.ResetTempCollection -= ResetCollection;
     }
 
     public CollectableInfo GetCollectionStats()
@@ -38,38 +61,43 @@ public class CollectionScoreController : MonoBehaviour
     
     public void Start()
     {
-       
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DEATH, HandleDeath);
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.REGISTER_COLLECTABLE, () => { 
-            numCollectables += 1;
-            UpdateInfo();
-        });
-      
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.COLLECT, HandleCollection);
-
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(
-            DreamworldVoidEventEnum.CHECKPOINT_ENTER, RecordCurrentCollection);
         UpdateInfo();
     }
 
-    void HandleCollection()
+    void HandleCollection(Collectable collected)
     {
+        currentCollectables.Add(collected);
         tempNumCollected++;
         UpdateInfo();
         sound.PlaySound();
         if (numCollected + tempNumCollected >= numCollectables)
         {
             RecordCurrentCollection();
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
+
+            DreamworldEventManager.OnGameEnd?.Invoke();
+
+            //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
+            //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
         }
+    }
+
+    private void ResetCollection()
+    {
+        foreach (Collectable collected in currentCollectables)
+        {
+            collected.ResetDisplay();
+        }
+
+        currentCollectables.Clear();
     }
 
     public void HandleDeath()
     {
         _ui.UpdateLostCount();
-        ClearTemp();
-        resetter.ResetTempCollectables();
+        tempNumCollected = 0;
+        UpdateInfo();
+
+        DreamworldEventManager.ResetTempCollection?.Invoke();
     }
 
     private void UpdateInfo()
@@ -82,10 +110,12 @@ public class CollectionScoreController : MonoBehaviour
     {
         numCollected += tempNumCollected;
         tempNumCollected = 0;
-        resetter.ClearTemp();
+        currentCollectables.Clear();
+        //resetter.ClearTemp();
         UpdateInfo();
     }
 
+    // not being used
     public void ClearTemp()
     {
         tempNumCollected = 0;

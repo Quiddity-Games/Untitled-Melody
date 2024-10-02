@@ -16,14 +16,28 @@ public class BeatTracker : MonoBehaviour
 
     public GameObject welcomeMessage;   //Text message that greets the player before they start the level
 
-
-
     bool playerDashedThisBeat;  //States whether/not the player successfully dashed on the previous beat
 
     private bool enableCount;
 
     private bool countdownStarted;
 
+
+    private void OnEnable()
+    {
+        DreamworldEventManager.OnDialogueEnd += SetGameReady;
+        DreamworldEventManager.OnGameStart += () => DreamworldEventManager.OnDash -= StartGame;
+        PauseManager.OnPaused += Pause;
+        DreamworldEventManager.OnGameEnd += () => Pause(true);
+    }
+
+    private void OnDisable()
+    {
+        DreamworldEventManager.OnDialogueEnd -= SetGameReady;
+        DreamworldEventManager.OnGameStart -= () => DreamworldEventManager.OnDash -= StartGame;
+        PauseManager.OnPaused -= Pause;
+        DreamworldEventManager.OnGameEnd -= () => Pause(false);
+    }
 
     [SerializeField] private NoteTracker _noteTracker;
     // Start is called before the first frame update
@@ -32,24 +46,27 @@ public class BeatTracker : MonoBehaviour
         countdownStarted = false;
         enableCount = true;
         instance = this;
-        DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, Pause);
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DIALOGUE_END, SetGameReady);
+        //DreamworldEventManager.Instance.RegisterBoolEventResponse(DreamworldBoolEventEnum.ISPAUSED, Pause);
+        //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.DIALOGUE_END, SetGameReady);
     }
 
     private void StartGame() 
     {
         if (!countdownStarted && enableCount)
-        {   
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_START);
+        {
+            //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_START);
+            DreamworldEventManager.OnGameStart?.Invoke();
             welcomeMessage.SetActive(false);
             countdownStarted = true;
-            DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartGame);
+            //DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartGame);
         }
     }
 
     public void SetGameReady()
     {
-        DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartGame);
+        InputManager.Instance.SwitchToGameplay();
+        DreamworldEventManager.OnDash += StartGame;
+        //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartGame);
     }
 
     public void Pause(bool value)
@@ -65,8 +82,8 @@ public class BeatTracker : MonoBehaviour
         {
             if (_noteTracker.timeTracker >= _noteTracker.totalTime)
             {
-                DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.GAME_END);
-                DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
+                DreamworldEventManager.OnGameEnd?.Invoke();
+                //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.INPUT_PAUSE);
                 enableCount = false;
                 return;
             }
