@@ -19,6 +19,7 @@ public class EndScreenController : MonoBehaviour
     [SerializeField] private Button restartButton;
 
     [SerializeField] private GameObject EndScreenMenu;
+    [SerializeField] private Image ScorePanel;
 
     [SerializeField] private CollectionScoreController collectionScore;
 
@@ -31,7 +32,7 @@ public class EndScreenController : MonoBehaviour
         public Sprite goodSprite;
         public Sprite badSprite;
     }
-    
+
     [SerializeField] private EndScreenSprites endSprites;
 
     [SerializeField] private AudioSource audioSource;
@@ -39,6 +40,29 @@ public class EndScreenController : MonoBehaviour
     [SerializeField] private AudioClip collectedAllFragmentsSound;
     [SerializeField] private AudioClip collectedEnoughFragmentsSound;
     [SerializeField] private AudioClip levelFailedSound;
+
+    [SerializeField] private HitRatingColorSet colorSet;
+    /*
+    [SerializeField] private Color perfectColor;
+    [SerializeField] private Color goodColor;
+    [SerializeField] private Color badColor;
+    */
+    [SerializeField] private Material perfectTextMaterial;
+    [SerializeField] private Material goodTextMaterial;
+    [SerializeField] private Material badTextMaterial;
+
+    private List<TMP_Text> TextObjectsThatHaveOutlines = new List<TMP_Text>();
+    [SerializeField] private TMP_Text headerText;
+    [SerializeField] private TMP_Text scoreText;
+
+    private List<TMP_Text> TextObjectsNoOutlines = new List<TMP_Text>();
+    [SerializeField] private TMP_Text foundText;
+    [SerializeField] private TMP_Text neededText;
+    [SerializeField] private TMP_Text neededNumberText;
+    [SerializeField] private TMP_Text totalInLevelText;
+    [SerializeField] private TMP_Text totalInLevelNumberText;
+    [SerializeField] private TMP_Text continueText;
+    [SerializeField] private TMP_Text restartText;
 
     private void OnEnable()
     {
@@ -56,6 +80,17 @@ public class EndScreenController : MonoBehaviour
         //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.GAME_END, LoadEndScreen);
 
         audioSource = this.GetComponent<AudioSource>();
+
+        TextObjectsThatHaveOutlines.Add(headerText);
+        TextObjectsThatHaveOutlines.Add(scoreText);
+
+        TextObjectsNoOutlines.Add(foundText);
+        TextObjectsNoOutlines.Add(neededText);
+        TextObjectsNoOutlines.Add(neededNumberText);
+        TextObjectsNoOutlines.Add(totalInLevelText);
+        TextObjectsNoOutlines.Add(totalInLevelNumberText);
+        TextObjectsNoOutlines.Add(continueText);
+        TextObjectsNoOutlines.Add(restartText);
     }
     
     public void LoadEndScreen()
@@ -74,7 +109,19 @@ public class EndScreenController : MonoBehaviour
         if (obtained < required)
         {
             titleText.text = "Try Again!";
-            obtainedCollectableText.color = Color.yellow;
+            //obtainedCollectableText.color = Color.yellow;
+
+            foreach (TMP_Text t in TextObjectsThatHaveOutlines)
+            {
+                t.fontMaterial = badTextMaterial;
+            }
+
+            foreach (TMP_Text t in TextObjectsNoOutlines)
+            {
+                t.color = colorSet.MissTextColor;
+            }
+
+            ScorePanel.color = colorSet.MissBackgroundColor;
             memiImage.sprite = endSprites.badSprite;
             restartButton.gameObject.SetActive(true);
 
@@ -83,7 +130,19 @@ public class EndScreenController : MonoBehaviour
         else if (obtained == max)
         {
             titleText.text = "PERFECT!";
-            obtainedCollectableText.color = Color.red;
+            //obtainedCollectableText.color = Color.red;
+
+            foreach (TMP_Text t in TextObjectsThatHaveOutlines)
+            {
+                t.fontMaterial = perfectTextMaterial;
+            }
+
+            foreach (TMP_Text t in TextObjectsNoOutlines)
+            {
+                t.color = colorSet.GreatTextColor;
+            }
+
+            ScorePanel.color = colorSet.GreatBackgroundColor;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
@@ -94,7 +153,19 @@ public class EndScreenController : MonoBehaviour
         else if (obtained >= required)
         {
             titleText.text = "Good Job!";
-            obtainedCollectableText.color = Color.black;
+            //obtainedCollectableText.color = Color.black;
+
+            foreach (TMP_Text t in TextObjectsThatHaveOutlines)
+            {
+                t.fontMaterial = goodTextMaterial;
+            }
+
+            foreach (TMP_Text t in TextObjectsNoOutlines)
+            {
+                t.color = colorSet.GoodTextColor;
+            }
+
+            ScorePanel.color = colorSet.GoodBackgroundColor;
             memiImage.sprite = endSprites.goodSprite;
             continueButton.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
@@ -105,7 +176,19 @@ public class EndScreenController : MonoBehaviour
         else if (obtained > required)
         {
             titleText.text = "PERFECT!";
-            obtainedCollectableText.color = Color.red;
+            //obtainedCollectableText.color = Color.red;
+
+            foreach (TMP_Text t in TextObjectsThatHaveOutlines)
+            {
+                t.fontMaterial = perfectTextMaterial;
+            }
+
+            foreach (TMP_Text t in TextObjectsNoOutlines)
+            {
+                t.color = colorSet.GreatTextColor;
+            }
+
+            ScorePanel.color = colorSet.GreatBackgroundColor;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
