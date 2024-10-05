@@ -8893,6 +8893,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6395285395416044298}
   - component: {fileID: 1877327774}
+  - component: {fileID: 3375785918644021557}
   m_Layer: 5
   m_Name: VISUALS
   m_TagString: Untagged
@@ -8942,6 +8943,23 @@ MonoBehaviour:
   WindowedToggle: {fileID: 1441194724055589574}
   ContrastToggle: {fileID: 8398226256120752966}
   ContrastSlider: {fileID: 404706868429738731}
+--- !u!114 &3375785918644021557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395285395416044299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12fa898ffa3facd4f8c1e64dcfef9a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_hideOnMobile:
+  - {fileID: 6395285394557322043}
+  m_hideOnDesktop: []
+  m_toggleDesktop: 0
+  m_toggleMobile: 0
 --- !u!1 &6395285395417648035
 GameObject:
   m_ObjectHideFlags: 0
