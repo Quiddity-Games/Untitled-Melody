@@ -68,7 +68,7 @@ public class ClickManager : MonoBehaviour
     {
         DreamworldEventManager.OnCountdownFinish += EnableDash;
         DreamworldEventManager.OnDash += DashOnPerformed;
-        PauseMenuManager.OnPaused += ToggleControls;
+        PauseManager.OnPaused += ToggleControls;
         DreamworldEventManager.OnGameEnd += EnableControls;
     }
 
@@ -76,7 +76,7 @@ public class ClickManager : MonoBehaviour
     {
         DreamworldEventManager.OnCountdownFinish -= EnableDash;
         DreamworldEventManager.OnDash -= DashOnPerformed;
-        PauseMenuManager.OnPaused -= ToggleControls;
+        PauseManager.OnPaused -= ToggleControls;
         DreamworldEventManager.OnGameEnd -= EnableControls;
     }
 

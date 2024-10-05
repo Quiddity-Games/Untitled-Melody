@@ -3,49 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class SettingsManager : MonoBehaviour
 {
 
-    [SerializeField] private AccSettings accSettings;
-    [SerializeField] private AVSettings aVSettings;
-    [SerializeField] private VisualSettings visual;
+    [Header("Audio")]
+    [SerializeField] private AudioMixer musicMixer;
+    [SerializeField] private AudioMixer sfxMixer;
 
-    private static SettingsManager _Instance;
 
     private void Awake()
     {
-        if (_Instance != null && _Instance != this) 
-        { 
-            Destroy(this); 
-        } 
-        else 
-        { 
-            _Instance = this; 
-        } 
-
-        accSettings.ApplySettings();
-        aVSettings.ApplySettings();
-        visual.ApplySettings();
+        Settings.MusicVolume.OnValueChanged.AddListener(OnMusicVolumeChanged);
+        Settings.SoundVolume.OnValueChanged.AddListener(OnSoundVolumeChanged);
+        Settings.Windowed.OnValueChanged.AddListener(ToggleWindowed);
     }
 
-    public static SettingsManager Instance()
+    private void Start()
     {
-        return _Instance;
-    }
-    public VisualSettings GetVisualSettings()
-    {
-        return visual;
+        OnMusicVolumeChanged(Settings.MusicVolume.Value);
+        OnSoundVolumeChanged(Settings.SoundVolume.Value);
+        ToggleWindowed(Settings.Windowed.Value);
     }
 
-    public AccSettings GetAccSettings()
+    private void OnDestroy()
     {
-        return accSettings;
+        Settings.MusicVolume.OnValueChanged.RemoveListener(OnMusicVolumeChanged);
+        Settings.SoundVolume.OnValueChanged.RemoveListener(OnSoundVolumeChanged);
+        Settings.Windowed.OnValueChanged.RemoveListener(ToggleWindowed);
     }
-    
-    public AVSettings GetAudioSettings()
+
+    private void ToggleWindowed(bool value)
     {
-        return aVSettings;
+      Screen.fullScreen = !value;
+    }
+
+    public void OnMusicVolumeChanged(float volume)
+    {
+        musicMixer.SetFloat("Volume", Mathf.Log10(volume) * 20);
+    }
+
+    public void OnSoundVolumeChanged(float volume)
+    {
+      sfxMixer.SetFloat("Volume", Mathf.Log10(volume)*20);
     }
 
 }

@@ -30,26 +30,16 @@ public class BackgroundObjectAnimator : MonoBehaviour
         // On start, randomize the duration of the animation and the rotation angle.
         _currentDuration = Random.Range(_minDuration, _maxDuration);
         _currentAngle = Random.Range(_minAngle, _maxAngle);
-        SettingsManager.Instance().GetVisualSettings().onUpdate += ToggleAnimation;
         StartRotation();
     }
 
     private void ToggleAnimation()
     {
-
-        if (SettingsManager.Instance().GetVisualSettings().AnimatedBackground)
+        if(currentSequence == null)
         {
-            if(currentSequence == null)
-            {
-                StartRotation();    
-            }
-        }
-        else
-        {
-            currentSequence.Kill();
+            StartRotation();    
         }
     }
-    
     
 
     void StartRotation()

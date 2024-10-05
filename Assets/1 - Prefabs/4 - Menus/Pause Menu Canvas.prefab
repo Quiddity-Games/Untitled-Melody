@@ -457,6 +457,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6395285393430503768, guid: 6101b7aa9ca11f44da68c32688a624b8, type: 3}
+      propertyPath: m_text
+      value: 'Solid
+
+        Purple'
+      objectReference: {fileID: 0}
     - target: {fileID: 6395285394117215710, guid: 6101b7aa9ca11f44da68c32688a624b8, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
