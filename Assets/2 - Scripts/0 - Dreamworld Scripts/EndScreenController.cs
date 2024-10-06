@@ -41,12 +41,14 @@ public class EndScreenController : MonoBehaviour
     [SerializeField] private AudioClip collectedEnoughFragmentsSound;
     [SerializeField] private AudioClip levelFailedSound;
 
-    [SerializeField] private HitRatingColorSet colorSet;
-    /*
-    [SerializeField] private Color perfectColor;
-    [SerializeField] private Color goodColor;
-    [SerializeField] private Color badColor;
-    */
+    [SerializeField] private Color perfectModalColor;
+    [SerializeField] private Color goodModalColor;
+    [SerializeField] private Color badModalColor;
+
+    [SerializeField] private Color perfectTextColor;
+    [SerializeField] private Color goodTextColor;
+    [SerializeField] private Color badTextColor;
+
     [SerializeField] private Material perfectTextMaterial;
     [SerializeField] private Material goodTextMaterial;
     [SerializeField] private Material badTextMaterial;
@@ -118,10 +120,10 @@ public class EndScreenController : MonoBehaviour
 
             foreach (TMP_Text t in TextObjectsNoOutlines)
             {
-                t.color = colorSet.MissTextColor;
+                t.color = badTextColor;
             }
 
-            ScorePanel.color = colorSet.MissBackgroundColor;
+            ScorePanel.color = badModalColor;
             memiImage.sprite = endSprites.badSprite;
             restartButton.gameObject.SetActive(true);
 
@@ -139,10 +141,10 @@ public class EndScreenController : MonoBehaviour
 
             foreach (TMP_Text t in TextObjectsNoOutlines)
             {
-                t.color = colorSet.GreatTextColor;
+                t.color = perfectTextColor;
             }
 
-            ScorePanel.color = colorSet.GreatBackgroundColor;
+            ScorePanel.color = perfectModalColor;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
@@ -162,10 +164,10 @@ public class EndScreenController : MonoBehaviour
 
             foreach (TMP_Text t in TextObjectsNoOutlines)
             {
-                t.color = colorSet.GoodTextColor;
+                t.color = goodTextColor;
             }
 
-            ScorePanel.color = colorSet.GoodBackgroundColor;
+            ScorePanel.color = goodModalColor;
             memiImage.sprite = endSprites.goodSprite;
             continueButton.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
@@ -185,10 +187,10 @@ public class EndScreenController : MonoBehaviour
 
             foreach (TMP_Text t in TextObjectsNoOutlines)
             {
-                t.color = colorSet.GreatTextColor;
+                t.color = perfectTextColor;
             }
 
-            ScorePanel.color = colorSet.GreatBackgroundColor;
+            ScorePanel.color = perfectModalColor;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
             restartButton.gameObject.SetActive(true);
