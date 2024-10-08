@@ -1484,12 +1484,12 @@ MonoBehaviour:
   collectedAllFragmentsSound: {fileID: 8300000, guid: efb85c4f12dae7f449ec804a98f4a731, type: 3}
   collectedEnoughFragmentsSound: {fileID: 8300000, guid: 06d8070531d144b4fa995defd5aaf211, type: 3}
   levelFailedSound: {fileID: 8300000, guid: 1060092098b89e7449f2720877bf24fd, type: 3}
-  perfectModalColor: {r: 1, g: 0.7647059, b: 0.5019608, a: 0}
-  goodModalColor: {r: 1, g: 0.7647059, b: 0.5019608, a: 0}
-  badModalColor: {r: 0.91764706, g: 0.59607846, b: 0.5411765, a: 0}
-  perfectTextColor: {r: 0.34117648, g: 0.15294118, b: 0, a: 0}
-  goodTextColor: {r: 0.34117648, g: 0.15294118, b: 0, a: 0}
-  badTextColor: {r: 0.2627451, g: 0.047058824, b: 0.03529412, a: 0}
+  perfectModalColor: {r: 1, g: 0.7647059, b: 0.5019608, a: 1}
+  goodModalColor: {r: 1, g: 0.7647059, b: 0.5019608, a: 1}
+  badModalColor: {r: 0.91764706, g: 0.59607846, b: 0.5411765, a: 1}
+  perfectTextColor: {r: 0.34117648, g: 0.15294118, b: 0, a: 1}
+  goodTextColor: {r: 0.34117648, g: 0.15294118, b: 0, a: 1}
+  badTextColor: {r: 0.2627451, g: 0.047058824, b: 0.03529412, a: 1}
   perfectTextMaterial: {fileID: 2100000, guid: 4c1699995aad6b34cb3061c4b48d9b6e, type: 2}
   goodTextMaterial: {fileID: 2100000, guid: 4c1699995aad6b34cb3061c4b48d9b6e, type: 2}
   badTextMaterial: {fileID: 2100000, guid: 46c211de821e20b4cb39313b336498e2, type: 2}
