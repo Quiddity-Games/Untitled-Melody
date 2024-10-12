@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2800294051741530014}
   - component: {fileID: 2656456636240298724}
   - component: {fileID: 5892818787046318198}
+  - component: {fileID: 2098158529749790653}
   m_Layer: 0
   m_Name: TutorialPulse
   m_TagString: Untagged
@@ -83,6 +84,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 7856727471315071812}
   controller: {fileID: 2800294051741530014}
+  blinkController: {fileID: 2098158529749790653}
+--- !u!114 &2098158529749790653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2800294051741530000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d120ab54d1b83f42b5c08a0262e1804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NoteTracker: {fileID: 0}
+  duration: 0.2
+  meshRenderer: {fileID: 485093855739987719}
+  flashMaterial: {fileID: 2100000, guid: aa09343803feecb4ea501c4f71bb571c, type: 2}
 --- !u!1 &6180370918622463271
 GameObject:
   m_ObjectHideFlags: 0
