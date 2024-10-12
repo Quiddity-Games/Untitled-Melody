@@ -13,7 +13,7 @@ public class SettingsToggle : MonoBehaviour
     public void Setup(BoolSetting setting)
     {
         m_setting = setting;
-        OnSettingChange(m_setting.Value);
+        m_toggle.isOn = m_setting.Value;
         m_setting.OnValueChanged.AddListener(OnSettingChange);
     }
 
