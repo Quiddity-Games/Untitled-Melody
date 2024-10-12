@@ -222,6 +222,14 @@ PrefabInstance:
       propertyPath: m_DefaultControlScheme
       value: Touch
       objectReference: {fileID: 0}
+    - target: {fileID: 4060425549036295253, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
+      propertyPath: MetronomeBlinkToggle
+      value: 
+      objectReference: {fileID: 30740817844493652}
+    - target: {fileID: 4060425549036295253, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
+      propertyPath: MetronomeRingsToggle
+      value: 
+      objectReference: {fileID: 7293939271800392204}
     - target: {fileID: 5830975093818985020, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 3
@@ -433,8 +441,30 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4902368672620107967, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
+--- !u!114 &30740817844493652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1307551424066695154, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
+  m_PrefabInstance: {fileID: 1317423338174608038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773efd1b5158d194886effd4d4bfa331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &92808688127405791 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1369609448138710137, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
   m_PrefabInstance: {fileID: 1317423338174608038}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7293939271800392204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8606707180816300202, guid: 6604e0a4a6af8c942a23d6aa2315a47f, type: 3}
+  m_PrefabInstance: {fileID: 1317423338174608038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773efd1b5158d194886effd4d4bfa331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
