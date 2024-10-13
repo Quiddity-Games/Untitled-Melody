@@ -8,8 +8,10 @@ public class PlatformHider : MonoBehaviour
     [SerializeField] List<GameObject> m_hideOnMobile;
     [SerializeField] List<GameObject> m_hideOnDesktop;
 
-    [SerializeField] private bool m_toggleDesktop = false;
-    [SerializeField] private bool m_toggleMobile = false;
+    [SerializeField] DebugPlatformObj debugPlatform;
+
+    private bool m_toggleMobile = false;
+    private bool m_toggleDesktop = false;
 
     public void Start()
     {
@@ -21,14 +23,14 @@ public class PlatformHider : MonoBehaviour
             m_toggleDesktop = false;
         #endif
 
-        if(m_toggleDesktop)
+        if(m_toggleDesktop && !debugPlatform.simulateMobile)
         {
             foreach(GameObject obj in m_hideOnMobile)
             {
                 obj.SetActive(false);
             }
         }
-        if(m_toggleMobile)
+        if(m_toggleMobile || debugPlatform.simulateMobile)
         {
             foreach(GameObject obj in m_hideOnMobile)
             {

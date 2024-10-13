@@ -10154,8 +10154,7 @@ MonoBehaviour:
   - {fileID: 6395285394515087890}
   m_hideOnDesktop:
   - {fileID: 2146526267189798195}
-  m_toggleDesktop: 0
-  m_toggleMobile: 1
+  debugPlatform: {fileID: 11400000, guid: 2ea939b9c88ada84ab5a2261a8434733, type: 2}
 --- !u!1 &6395285395417648035
 GameObject:
   m_ObjectHideFlags: 0
