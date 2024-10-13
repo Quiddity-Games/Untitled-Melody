@@ -18,28 +18,18 @@ public class BlinkControllerText : MonoBehaviour
     void Start()
     {
         originalMaterial = meshRenderer.material;
-        Settings.MetronomeBlink.OnValueChanged.AddListener(Toggle);
-        Toggle(Settings.MetronomeBlink.Value);
+        _NoteTracker.onBeatTrigger += Blink;
+
     }
 
     void OnDestroy()
     {
-        Settings.MetronomeBlink.OnValueChanged.RemoveListener(Toggle);
         if(_NoteTracker != null)
         {
             _NoteTracker.onBeatTrigger -= Blink;
         }
     }
-    public void Toggle(bool onEnabled)
-    {
-        if(onEnabled){
-            _NoteTracker.onBeatTrigger += Blink;
-        }
-        else
-        {
-            _NoteTracker.onBeatTrigger -= Blink;
-        }
-    }
+    
    void Blink()
     {
         if (flashRoutine != null)
