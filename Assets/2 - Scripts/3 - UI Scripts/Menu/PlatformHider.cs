@@ -10,27 +10,23 @@ public class PlatformHider : MonoBehaviour
 
     [SerializeField] DebugPlatformObj debugPlatform;
 
-    private bool m_toggleMobile = false;
-    private bool m_toggleDesktop = false;
+    private bool m_isMobile = false;
 
     public void Start()
     {
-        #if UNITY_STANDALONE
-            m_toggleDesktop = true;
-            m_toggleMobile = false;
-        #elif UNITY_ANDROID || UNITY_IOS
-            m_toggleMobile = true;
-            m_toggleDesktop = false;
+
+        #if UNITY_EDITOR
+            m_isMobile = debugPlatform.simulateMobile;
         #endif
 
-        if(m_toggleDesktop && !debugPlatform.simulateMobile)
+        if(!m_isMobile)
         {
-            foreach(GameObject obj in m_hideOnMobile)
+            foreach(GameObject obj in m_hideOnDesktop)
             {
                 obj.SetActive(false);
             }
         }
-        if(m_toggleMobile || debugPlatform.simulateMobile)
+        if(m_isMobile)
         {
             foreach(GameObject obj in m_hideOnMobile)
             {
