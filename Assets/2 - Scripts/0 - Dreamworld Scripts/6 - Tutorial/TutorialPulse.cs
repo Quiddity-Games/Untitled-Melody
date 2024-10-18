@@ -12,11 +12,14 @@ public class TutorialPulse : MonoBehaviour
     public TextMeshPro text;
 
     [SerializeField] private MetronomePulseController controller;
+
+    [SerializeField] private BlinkControllerText blinkController;
     // Start is called before the first frame update
 
     public void Initialize(NoteTracker tracker)
     {
         controller._NoteTracker = tracker;
+        blinkController._NoteTracker = tracker;
     }
 
     public void RegisterOnCollide(Action callback)

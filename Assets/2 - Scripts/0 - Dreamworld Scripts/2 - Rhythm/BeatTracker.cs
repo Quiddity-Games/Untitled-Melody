@@ -27,7 +27,7 @@ public class BeatTracker : MonoBehaviour
     {
         DreamworldEventManager.OnDialogueEnd += SetGameReady;
         DreamworldEventManager.OnGameStart += () => DreamworldEventManager.OnDash -= StartGame;
-        PauseMenuManager.OnPaused += Pause;
+        PauseManager.OnPaused += Pause;
         DreamworldEventManager.OnGameEnd += () => Pause(true);
     }
 
@@ -35,7 +35,7 @@ public class BeatTracker : MonoBehaviour
     {
         DreamworldEventManager.OnDialogueEnd -= SetGameReady;
         DreamworldEventManager.OnGameStart -= () => DreamworldEventManager.OnDash -= StartGame;
-        PauseMenuManager.OnPaused -= Pause;
+        PauseManager.OnPaused -= Pause;
         DreamworldEventManager.OnGameEnd -= () => Pause(false);
     }
 
