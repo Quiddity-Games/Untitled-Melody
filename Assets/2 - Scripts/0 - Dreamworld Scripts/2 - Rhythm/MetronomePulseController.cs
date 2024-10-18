@@ -8,6 +8,8 @@ public class MetronomePulseController : MonoBehaviour
     
     public NoteTracker _NoteTracker;
 
+    [SerializeField] private bool keepOn;
+
     public MetronomePulse metronomePulse;
     private float rhythmIndicatorTimer; //Timer specifically dedicated to the rhythm indicator, aka the "metronome bars" above the player's head
 
@@ -56,7 +58,37 @@ public class MetronomePulseController : MonoBehaviour
 
     public void Start()
     {
-        SetState(defaultState);
+        if(keepOn)
+        {
+            SetState(PulseState.ONMIN);
+        }
+        else
+        {
+            SetState(PulseState.DISABLE);
+            Settings.MetronomeRings.OnValueChanged.AddListener(TogglePulse);
+        }
+    }
+
+
+    void OnDestroy()
+    {
+        SetState(PulseState.DISABLE);
+        if(!keepOn)
+        {
+            Settings.MetronomeRings.OnValueChanged.RemoveListener(TogglePulse);
+        }
+    }
+
+    private void TogglePulse(bool enabled)
+    {
+        if(enabled)
+        {
+            SetState(PulseState.ONMIN);
+        }
+        else
+        {
+            SetState(PulseState.DISABLE);
+        }
     }
 
     void OnDisable()
