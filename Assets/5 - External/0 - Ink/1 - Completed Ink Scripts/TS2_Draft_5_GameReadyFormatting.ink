@@ -104,13 +104,14 @@ there’s this one line that stuck with me . . . #Speaker: Amika
         I’m literally wearing my moon hoodie right now [emoji:joy] needed to feel some comfort #Speaker: Amika
         aw how come? #Speaker: Emerald
         
-        **  just feeling anxious about my upcoming performance review at work #Speaker: Amika
+        **  I'm anxious about work #Speaker: Amika
+                I've got a performance review coming up [emoji:grimace] #Speaker: Amika
                 no, don’t be anxious!! #Speaker: Emerald
                 you’re amazing, I know you’ll do great [emoji:heart] #Speaker: Emerald
                 just think about that big fat raise you’ll have in your pocket when you’re done ;) #Speaker: Emerald
                 aw, thanks!! Here’s hoping lol [emoji:crossed-fingers] #Speaker: Amika
                 
-        **  ah no reason just wanted to cozy up! #Speaker: Amika
+        **  just to be comfy! #Speaker: Amika
                 ah, ok! Yeah, it always looked super-cozy #Speaker: Emerald
                 i’m rocking a pair of comfy sweatpants right now [emoji:sunglasses-face] #Speaker: Emerald
                 an Emerald classic XD #Speaker: Amika
@@ -135,7 +136,7 @@ there’s this one line that stuck with me . . . #Speaker: Amika
 		        
         **  I’m just the follower #Speaker: Amika
                 I definitely need to take direction from someone else right now lol #Speaker: Amika
-                I definitely know what that feels like #Speaker: Emerald
+                I know what that feels like #Speaker: Emerald
                 
         -- hey didn’t you need some comfort this week too? #Speaker: Amika
         wdym? #Speaker: Emerald
@@ -147,7 +148,7 @@ there’s this one line that stuck with me . . . #Speaker: Amika
 *   I’m not that far gone! #Speaker: Amika
         I’ve still got some fight left in me yet, lol #Speaker: Amika
         that’s good! #Speaker: Emerald
-        hopefully I’ll never get as down in the dumps as the person in the song, it sounds like they have it pretty rough #Speaker: Amika
+        hopefully I’ll never get as down in the dumps as them, it sounds like they have it pretty rough #Speaker: Amika
         
 *   it feels like it sometimes #Speaker: Amika
 
@@ -267,7 +268,7 @@ I guess like you’re . . . #Speaker: Amika
         Emerald do you think things would be better if I hadn’t moved away? #Speaker: Amika
         
 - are you asking me if I feel abandoned? #Speaker: Emerald
-would you really tell me if I didn’t I ask? #Speaker: Amika
+would you really tell me if I didn’t ask? #Speaker: Amika
 I mean I do feel alone a lot. I still think of you as my best friend but once we went to college we couldn’t talk and hang out every day like we used to #Speaker: Emerald
 
 *   I didn’t realize that #Speaker: Amika
@@ -301,4 +302,5 @@ I really have to head out. but here’s another nsa song for you, it’s called 
 it’s one of my favorites #Speaker: Emerald
 did I do something wrong? #Speaker: Amika
 Emerald are you still there? #Speaker: Amika
+#end
 ->END

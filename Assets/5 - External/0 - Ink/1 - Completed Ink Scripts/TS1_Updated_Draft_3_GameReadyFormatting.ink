@@ -92,7 +92,7 @@ VAR player_opened_up_about_directing = false
 
 - I knew there wouldn't be snow this time of year but I'm still getting used to it haha #Speaker: Amika
 it feels so wrong for the month and the weather to not line up! #Speaker: Amika
-but hey you get the Burbank sunshine to make up for it! now that the hour changed it’s dark here at like 5:00 pm now #Speaker: Emerald
+but hey you get the Burbank sunshine to make up for it! now that the hour changed it’s dark here at like 5:00 pm #Speaker: Emerald
 yeah I guess that’s a plus. did you do anything fun during break? #Speaker: Amika
 break? #Speaker: Emerald
 you guys had fall break already right? #Speaker: Amika
@@ -156,9 +156,11 @@ but I really do have to go now, you should look up the song! #Speaker: Emerald
 *   sure, I'd love to! :D #Speaker: Amika
         I'll give it a listen tonight #Speaker: Amika
         oh awesome!! lmk what you think! #Speaker: Emerald
+        #end
         ->END
 
 *   I’ll see if I have time #Speaker: Amika
         ~ setVariable("player_said_they_were_busy", true)
         hope you do :) #Speaker: Emerald
+        #end
         ->END

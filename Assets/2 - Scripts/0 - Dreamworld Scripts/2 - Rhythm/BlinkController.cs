@@ -7,9 +7,7 @@ public class BlinkController : MonoBehaviour
     public NoteTracker _NoteTracker;
     
     [SerializeField] private float duration;
-    
     [SerializeField] private SpriteRenderer cursor;
-
     [SerializeField] private Material flashMaterial;
     
     private Material originalMaterial;
@@ -19,9 +17,15 @@ public class BlinkController : MonoBehaviour
     void Start()
     {
         originalMaterial = cursor.material;
+        Settings.MetronomeBlink.OnValueChanged.AddListener(Toggle);
+        Toggle(Settings.MetronomeBlink.Value);
+
     }
 
-    // Start is called before the first frame update
+    void OnDestroy()
+    {
+        Settings.MetronomeBlink.OnValueChanged.RemoveListener(Toggle);
+    }
     public void Toggle(bool onEnabled)
     {
         if(onEnabled){
@@ -32,15 +36,12 @@ public class BlinkController : MonoBehaviour
             _NoteTracker.onBeatTrigger -= Blink;
         }
     }
-
-    // Update is called once per frame
-    void Blink()
+   void Blink()
     {
         if (flashRoutine != null)
         {
             StopCoroutine(BlinkRoutine());
         }
-
         StartCoroutine(BlinkRoutine());
     }
 

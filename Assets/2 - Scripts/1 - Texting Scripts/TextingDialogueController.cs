@@ -53,6 +53,8 @@ public class TextingDialogueController : DialogueController
         InitializeDialogue += SelectPlatform;
         InitializeDialogue += GetConversationTags;
         InitializeDialogue += CreateTextTypingBubbles;
+        InitializeDialogue += InputManager.Instance.SwitchToUI;
+        InitializeDialogue += () => UIManager.SetPausePosition?.Invoke();
     }
 
     private void OnDestroy()
@@ -61,6 +63,8 @@ public class TextingDialogueController : DialogueController
         InitializeDialogue -= SelectPlatform;
         InitializeDialogue -= GetConversationTags;
         InitializeDialogue -= CreateTextTypingBubbles;
+        InitializeDialogue -= InputManager.Instance.SwitchToUI;
+        InitializeDialogue -= () => UIManager.SetPausePosition?.Invoke();
     }
 
     /// <summary>
@@ -193,9 +197,7 @@ public class TextingDialogueController : DialogueController
             {
                 if (!bubblesBeforeChoice[i].gameObject.activeInHierarchy)
                 {
-                    bubblesBeforeChoice[i].gameObject.SetActive(true);
-                    bubblesBeforeChoice[i].CanvasGroup.DOFade(1f, BubbleFadeDuration);
-                    //FadeInUI(bubblesBeforeChoice[i].CanvasGroup, BubbleFadeDuration);
+                    dialogueCanvas.ShowNextTextBubble(bubblesBeforeChoice, i);
                 }
             }
         }

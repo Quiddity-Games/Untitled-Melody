@@ -12,9 +12,13 @@ EditorBuildSettings:
     path: Assets/0 - Scenes/3 - Texting/Dialogue Scene #1.unity
     guid: 1fbc70c50ea862d45bd83cf21e4e06ce
   - enabled: 1
-    path: Assets/0 - Scenes/1 - Dreamworld/WhiteboxScene.unity
-    guid: ebce89b8ad4b72e4596592a0ce0048b8
+    path: Assets/0 - Scenes/1 - Dreamworld/Level1_WishingWell.unity
+    guid: 5dac308f4ea58984fa2e6c0575fd9f25
   - enabled: 1
     path: Assets/0 - Scenes/3 - Texting/Dialogue Scene #2.unity
     guid: 57a1bf68de66e8b409492da1a08055e2
-  m_configObjects: {}
+  - enabled: 0
+    path: Assets/0 - Scenes/UITest.unity
+    guid: 5b6d4feb959ff6a4c9a0ca3575aca806
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 0f261a9538589d046a5ba4cac4c8db1a, type: 2}

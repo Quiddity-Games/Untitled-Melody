@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 2551276248396823947}
   - component: {fileID: 2551276248396823944}
   - component: {fileID: 4075416629321209146}
-  - component: {fileID: 3270163683576487098}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -255,27 +254,14 @@ MonoBehaviour:
   _wallBumpSource: {fileID: 3844147961925535668}
   _noteTracker: {fileID: 0}
   _animationControl: {fileID: 7924770680862837554}
+  _clickManager: {fileID: 2551276249000161898}
   sounds:
     badSound: {fileID: 8300000, guid: 625ddd5705371d644aa8d11492f11e9a, type: 3}
     goodSound: {fileID: 8300000, guid: 9562791e41726cc42b5624b3531aba37, type: 3}
     greatSound: {fileID: 8300000, guid: 2aabd205c517f794187d935f511e3f6d, type: 3}
-    perfectSound: {fileID: 8300000, guid: 24c3714731960d14f91b43f29db5810b, type: 3}
+    perfectSound: {fileID: 8300000, guid: 8a656d46356cd3441aad866911d53d6c, type: 3}
   wallBumpSound: {fileID: 8300000, guid: ebfd26780ceb1c2419706b94a5fed6b5, type: 3}
   deathSound: {fileID: 8300000, guid: 1a3f395ebab0b894f91d73410bc81eb2, type: 3}
---- !u!114 &3270163683576487098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2551276248396823953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d76c15f39fb341a48acaf9b91ce6cbd7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerBody: {fileID: 2551276248396823949}
-  _clickManager: {fileID: 2551276249000161898}
 --- !u!1 &2551276248831310367
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,7 +288,7 @@ Transform:
   m_GameObject: {fileID: 2551276248831310367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0, z: 1}
-  m_LocalScale: {x: 5.933882, y: 5.933882, z: 5.933882}
+  m_LocalScale: {x: 0.369, y: 0.369, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2551276248396823950}
@@ -328,7 +314,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: efcb2d2b2a7bf354e80e8ff6a24d1c0d, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -349,8 +335,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 0, a: 0.34509805}
+  m_Sprite: {fileID: 21300000, guid: b2738310e8d0879418de4687c3055f64, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -727,6 +713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607c46cf7ac4eb246a00ea5325249d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _memiAnimator: {fileID: 8865511769201608758}
   spriteRenderer: {fileID: 701796186685428787}
 --- !u!95 &7827963053854802916
 Animator:
@@ -1011,6 +998,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2551276248396823950}
     m_Modifications:
+    - target: {fileID: 2559827270708077844, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2840439943264723941, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1030,6 +1021,10 @@ PrefabInstance:
     - target: {fileID: 2840439943264723941, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4129318377918456539, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5046396297516204517, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
       propertyPath: _playerAnim
@@ -1111,6 +1106,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5906547010851110714, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f78b56034f007c54bbde91a6c19659c5, type: 3}
     m_RemovedComponents:
     - {fileID: 5046396297516204519, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
@@ -1128,5 +1127,10 @@ MonoBehaviour:
 --- !u!4 &2551276249977706050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5046396298484819405, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
+  m_PrefabInstance: {fileID: 7309221837970830223}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8865511769201608758 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2190734529961524153, guid: f4687abd04b571b4cba1be41ec3b2a9e, type: 3}
   m_PrefabInstance: {fileID: 7309221837970830223}
   m_PrefabAsset: {fileID: 0}

@@ -48,20 +48,11 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
-                    ""id"": ""47f577fa-6cdd-4a91-9f06-08ca5019ea4b"",
+                    ""id"": ""f8b6ff4f-b4d0-4a27-a80c-a91c00c0315d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MousePosition"",
-                    ""type"": ""Value"",
-                    ""id"": ""9a8485d6-bb82-48e1-a48e-fa0e943ad380"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -111,7 +102,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ecdad4b4-9772-4a93-85b9-cd895b5b96c8"",
+                    ""id"": ""83947ae5-aaf9-40a3-8ced-d516de6ef9ae"",
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -119,26 +110,102 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Texting"",
+            ""id"": ""5d561337-b3e0-4029-9acc-e0694808030c"",
+            ""actions"": [
+                {
+                    ""name"": ""Continue"",
+                    ""type"": ""Button"",
+                    ""id"": ""384b85f8-a65b-46d5-af12-4ba84b8a58f4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""815f1faa-4628-42b1-96d4-7f6ee5ad4fe0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
                     ""name"": """",
-                    ""id"": ""37a66909-d84b-4986-bb79-ac548eeb5ad8"",
-                    ""path"": ""<Mouse>/position"",
+                    ""id"": ""451bb8d0-54e3-4a75-a362-374bdacf1350"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MousePosition"",
+                    ""action"": ""Continue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a928865c-00ff-4d62-a8c8-787e29e00dd3"",
-                    ""path"": ""<Touchscreen>/position"",
+                    ""id"": ""43f6809b-7c0c-4e98-964c-97e71b5e652f"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""MousePosition"",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""918e3a96-746b-477b-9cb4-7593455cb5bb"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Continue"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0fa30ce1-6e3b-4d94-b54a-be8ec1b79097"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Universal"",
+            ""id"": ""d818afec-a6a4-47fe-8b98-3c420c8808a4"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""c1737a55-a5ae-4ee3-90b0-fcdbee2cff29"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""201462d0-8697-4771-9b62-0bc3db1ed6ad"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -152,7 +219,13 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         m_Dreamworld_Dash = m_Dreamworld.FindAction("Dash", throwIfNotFound: true);
         m_Dreamworld_Reload = m_Dreamworld.FindAction("Reload", throwIfNotFound: true);
         m_Dreamworld_Pause = m_Dreamworld.FindAction("Pause", throwIfNotFound: true);
-        m_Dreamworld_MousePosition = m_Dreamworld.FindAction("MousePosition", throwIfNotFound: true);
+        // Texting
+        m_Texting = asset.FindActionMap("Texting", throwIfNotFound: true);
+        m_Texting_Continue = m_Texting.FindAction("Continue", throwIfNotFound: true);
+        m_Texting_Pause = m_Texting.FindAction("Pause", throwIfNotFound: true);
+        // Universal
+        m_Universal = asset.FindActionMap("Universal", throwIfNotFound: true);
+        m_Universal_Pause = m_Universal.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -215,7 +288,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Dreamworld_Dash;
     private readonly InputAction m_Dreamworld_Reload;
     private readonly InputAction m_Dreamworld_Pause;
-    private readonly InputAction m_Dreamworld_MousePosition;
     public struct DreamworldActions
     {
         private @PlayerControl m_Wrapper;
@@ -223,7 +295,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Dreamworld_Dash;
         public InputAction @Reload => m_Wrapper.m_Dreamworld_Reload;
         public InputAction @Pause => m_Wrapper.m_Dreamworld_Pause;
-        public InputAction @MousePosition => m_Wrapper.m_Dreamworld_MousePosition;
         public InputActionMap Get() { return m_Wrapper.m_Dreamworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -242,9 +313,6 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
-                @MousePosition.started -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnMousePosition;
-                @MousePosition.performed -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnMousePosition;
-                @MousePosition.canceled -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnMousePosition;
             }
             m_Wrapper.m_DreamworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -258,18 +326,97 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @MousePosition.started += instance.OnMousePosition;
-                @MousePosition.performed += instance.OnMousePosition;
-                @MousePosition.canceled += instance.OnMousePosition;
             }
         }
     }
     public DreamworldActions @Dreamworld => new DreamworldActions(this);
+
+    // Texting
+    private readonly InputActionMap m_Texting;
+    private ITextingActions m_TextingActionsCallbackInterface;
+    private readonly InputAction m_Texting_Continue;
+    private readonly InputAction m_Texting_Pause;
+    public struct TextingActions
+    {
+        private @PlayerControl m_Wrapper;
+        public TextingActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Continue => m_Wrapper.m_Texting_Continue;
+        public InputAction @Pause => m_Wrapper.m_Texting_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Texting; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(TextingActions set) { return set.Get(); }
+        public void SetCallbacks(ITextingActions instance)
+        {
+            if (m_Wrapper.m_TextingActionsCallbackInterface != null)
+            {
+                @Continue.started -= m_Wrapper.m_TextingActionsCallbackInterface.OnContinue;
+                @Continue.performed -= m_Wrapper.m_TextingActionsCallbackInterface.OnContinue;
+                @Continue.canceled -= m_Wrapper.m_TextingActionsCallbackInterface.OnContinue;
+                @Pause.started -= m_Wrapper.m_TextingActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_TextingActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_TextingActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_TextingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Continue.started += instance.OnContinue;
+                @Continue.performed += instance.OnContinue;
+                @Continue.canceled += instance.OnContinue;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public TextingActions @Texting => new TextingActions(this);
+
+    // Universal
+    private readonly InputActionMap m_Universal;
+    private IUniversalActions m_UniversalActionsCallbackInterface;
+    private readonly InputAction m_Universal_Pause;
+    public struct UniversalActions
+    {
+        private @PlayerControl m_Wrapper;
+        public UniversalActions(@PlayerControl wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_Universal_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_Universal; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UniversalActions set) { return set.Get(); }
+        public void SetCallbacks(IUniversalActions instance)
+        {
+            if (m_Wrapper.m_UniversalActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_UniversalActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_UniversalActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_UniversalActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_UniversalActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public UniversalActions @Universal => new UniversalActions(this);
     public interface IDreamworldActions
     {
         void OnDash(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnMousePosition(InputAction.CallbackContext context);
+    }
+    public interface ITextingActions
+    {
+        void OnContinue(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
+    }
+    public interface IUniversalActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

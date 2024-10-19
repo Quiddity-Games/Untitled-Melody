@@ -29,7 +29,11 @@ public class ScreenAspectRatio : MonoBehaviour
             case CanvasType.Dialogue:
                 TextingFormatting = CanvasInformation as TextingScreenFormat;
                 foreach (TextingAspectRatioFormat txt in TextingFormatting.TextingFormatList)
-                    TextingFormatDictionary.Add((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00"), CreateDictionaryEntry(txt));
+                {
+                    if (!TextingFormatDictionary.ContainsKey((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00")))
+                        TextingFormatDictionary.Add((txt.AspectRatio.x / txt.AspectRatio.y).ToString("#.00"), CreateDictionaryEntry(txt));
+                }
+
                 break;
         }
 
@@ -77,6 +81,11 @@ public class ScreenAspectRatio : MonoBehaviour
         if (TextingFormatDictionary.ContainsKey(ratio))
         {
             aspect = TextingFormatDictionary[ratio];
+        }
+        else
+        {
+            //Assigns the values of the 16:9 aspect ratio as a default if the user's actual aspect ratio is unrecognized
+            aspect = TextingFormatDictionary["1.78"];
         }
 
         return aspect;

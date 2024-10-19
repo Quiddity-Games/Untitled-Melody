@@ -18,8 +18,8 @@ TagManager:
   - Collectable
   - Enemy
   - 
-  - 
-  - 
+  - PauseUI
+  - MainMenuUi
   - 
   - 
   - 
@@ -42,6 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1773032521
+    locked: 0
+  - name: Background Filter
+    uniqueID: 966667515
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

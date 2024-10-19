@@ -64,6 +64,8 @@ public class TextingDialogueCanvas : MonoBehaviour
     public TextMeshProUGUI autoplayText;
     #endregion
 
+    [SerializeField] CanvasGroup fadeCanvasGroup;
+
     #region Hidden Variables
     private float textContainerTop;
     private float textContainerRight;
@@ -72,6 +74,12 @@ public class TextingDialogueCanvas : MonoBehaviour
     private float currentTypingDelayDuration;
     private bool loadedLastChunk;
     #endregion
+
+    public delegate void AudioTrigger();
+    public static event AudioTrigger AmikaMessageSound;
+    public static event AudioTrigger EmeraldMessageSound;
+    public static event AudioTrigger AmikaTypingSound;
+    public static event AudioTrigger StopSounds;
 
     private void Awake()
     {
@@ -96,9 +104,10 @@ public class TextingDialogueCanvas : MonoBehaviour
 
         phoneContainerCanvasGroup.alpha = 0f;
         headerCanvasGroup.alpha = 0f;
+        fadeCanvasGroup.alpha = 1f;
 
         // Show the phone UI after 4 seconds.
-        DOTween.Sequence().InsertCallback(delayBeforeFadeInDuration, ShowDialogueUI);
+        DOTween.Sequence().Insert(1, fadeCanvasGroup.DOFade(0, 1)).InsertCallback(delayBeforeFadeInDuration + 2, ShowDialogueUI);
     }
 
     public void ResizeCanvasForPlatform(TextingAspectRatioFormat format)
@@ -163,7 +172,7 @@ public class TextingDialogueCanvas : MonoBehaviour
 
     private void EndDialogue()
     {
-        GameManager.LoadNextScene("WhiteboxScene");
+        DOTween.Sequence().Insert(0.5f, fadeCanvasGroup.DOFade(1, 1)).AppendCallback(() => TextingLevelLoader.Instance._sceneManagerUtils.AdvanceLevel());
     }
 
     /// <summary>
@@ -191,6 +200,13 @@ public class TextingDialogueCanvas : MonoBehaviour
                     typingBubble.gameObject.transform.SetAsLastSibling();
 
                     typingBubble.gameObject.SetActive(true);
+
+                    //Plays typing sound, but only if the typing bubble belongs to the main character
+                    if (bubblesBeforeChoice[currentBubbleIndex].SenderNameText.text == "Amika") //Might be a more efficient way to do this than hardcoding the main character's name
+                    {
+                        AmikaTypingSound();
+                    }
+
                     typingBubble.CanvasGroup.DOFade(1f, TextingDialogueController.TextingUI.BubbleFadeDuration);
                     //TextingDialogueController.TextingUI.FadeInUI(typingBubble.CanvasGroup, TextingDialogueController.TextingUI.BubbleFadeDuration);
                     TMP_TextInfo info = bubblesBeforeChoice[currentBubbleIndex].MessageText.GetTextInfo(bubblesBeforeChoice[currentBubbleIndex].MessageText.text);
@@ -215,6 +231,8 @@ public class TextingDialogueCanvas : MonoBehaviour
                         yield return null;
                     }
 
+                    StopSounds();   //Stops "typing" sound from playing as the next line of dialogue appears
+
                     if (!bubblesBeforeChoice[currentBubbleIndex].gameObject.activeInHierarchy)
                         ShowNextTextBubble(TextingDialogueController.TextingUI.BubblesBeforeChoice, DialogueController.Instance.CurrentLineIndex);
                     
@@ -235,7 +253,7 @@ public class TextingDialogueCanvas : MonoBehaviour
     /// </summary>
     /// <param name="bubblesBeforeChoice"></param>
     /// <param name="currentBubbleIndex"></param>
-    private void ShowNextTextBubble(List<TextBubbleUI> bubblesBeforeChoice, int currentBubbleIndex)
+    public void ShowNextTextBubble(List<TextBubbleUI> bubblesBeforeChoice, int currentBubbleIndex)
     {
         if (TextingDialogueController.TextingUI.CurrentTypingBubble.gameObject.activeInHierarchy)
             TextingDialogueController.TextingUI.CurrentTypingBubble.gameObject.SetActive(false);
@@ -244,6 +262,16 @@ public class TextingDialogueCanvas : MonoBehaviour
         bubblesBeforeChoice[currentBubbleIndex].gameObject.SetActive(true);
         bubblesBeforeChoice[currentBubbleIndex].CanvasGroup.DOFade(1f, TextingDialogueController.TextingUI.BubbleFadeDuration);
 
+        //Plays a different "message appeared" sound effect based on which character is speaking
+        if (bubblesBeforeChoice[currentBubbleIndex].SenderNameText.text == "Amika") //Hardcoding name, might be better way
+        {
+            AmikaMessageSound();
+        }
+        else
+        {
+            EmeraldMessageSound();
+        }
+
         bodyScrollRect.verticalNormalizedPosition = 0f; // Scroll to the bottom of the container.
 
         DialogueController.Instance.CurrentLineIndex++;
@@ -251,9 +279,11 @@ public class TextingDialogueCanvas : MonoBehaviour
         if (DialogueController.Instance.LastChunkLoaded
             && DialogueController.Instance.CurrentLineIndex > DialogueController.Instance.LastLineIndex)
         {
-            continueButtonText.text = "Finish";
+            ContinueDialogueButton.GetComponentInChildren<TextMeshProUGUI>().text = "Finish";
+            autoplaySkipContainer.SetActive(false);
             ContinueDialogueButton.onClick.RemoveAllListeners();
             ContinueDialogueButton.onClick.AddListener(EndDialogue);
+            DialogueController.Instance.OnDialogueEnd?.Invoke();
             return;
         } else
         {

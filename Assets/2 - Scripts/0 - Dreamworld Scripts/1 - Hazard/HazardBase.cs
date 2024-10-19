@@ -20,7 +20,7 @@ public class HazardBase : MonoBehaviour
     {
         if(col.gameObject.CompareTag("Player"))
         {
-            DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.DEATH);
+            DreamworldEventManager.OnDeath?.Invoke();
         }
     }
 }

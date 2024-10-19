@@ -24,8 +24,5 @@ public class MenuStateMachine : MonoBehaviour
         }
     }
 
-    public void StartStory()
-    {
-        GameManager.LoadNextScene("Dialogue Scene #1");
-    }
+
 }
