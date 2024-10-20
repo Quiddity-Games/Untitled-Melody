@@ -19,7 +19,6 @@ public class BlinkController : MonoBehaviour
         originalMaterial = cursor.material;
         Settings.MetronomeBlink.OnValueChanged.AddListener(Toggle);
         Toggle(Settings.MetronomeBlink.Value);
-
     }
 
     void OnDestroy()
@@ -29,7 +28,7 @@ public class BlinkController : MonoBehaviour
     public void Toggle(bool onEnabled)
     {
         if(onEnabled){
-        _NoteTracker.onBeatTrigger += Blink;
+            _NoteTracker.onBeatTrigger += Blink;
         }
         else
         {
