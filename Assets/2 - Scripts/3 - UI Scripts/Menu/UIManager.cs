@@ -48,14 +48,6 @@ public class UIManager : MonoBehaviour
         PauseManager.OnPaused -= TogglePauseMenu;
     }
 
-    private void HandlePause()
-    {
-        OpenPauseMenu(()=>{
-                Instance.pauseButton.gameObject.SetActive(true);
-                PauseMenuManager.OnPaused?.Invoke(false);
-                });
-    }
-
     void Start()
     {
         pauseButton.onClick.AddListener(()=> {
