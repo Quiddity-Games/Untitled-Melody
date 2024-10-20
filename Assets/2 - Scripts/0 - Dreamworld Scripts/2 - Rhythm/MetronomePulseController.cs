@@ -8,12 +8,15 @@ public class MetronomePulseController : MonoBehaviour
     
     public NoteTracker _NoteTracker;
 
+    [SerializeField] private bool keepOn;
+
     public MetronomePulse metronomePulse;
     private float rhythmIndicatorTimer; //Timer specifically dedicated to the rhythm indicator, aka the "metronome bars" above the player's head
 
     private float twoBeatsLength;
 
     [SerializeField] private float maxRadius;
+    [SerializeField] private float minRadius;
 
     private float startRadius, endRadius;
 
@@ -44,7 +47,7 @@ public class MetronomePulseController : MonoBehaviour
             else if (state == PulseState.ONMIN)
             {
                 startRadius = maxRadius;
-                endRadius = 5;
+                endRadius = minRadius;
             }
         }
         
@@ -55,7 +58,42 @@ public class MetronomePulseController : MonoBehaviour
 
     public void Start()
     {
-        SetState(defaultState);
+        if(keepOn)
+        {
+            SetState(PulseState.ONMIN);
+        }
+        else
+        {
+            SetState(PulseState.DISABLE);
+            Settings.MetronomeRings.OnValueChanged.AddListener(TogglePulse);
+        }
+    }
+
+
+    void OnDestroy()
+    {
+        SetState(PulseState.DISABLE);
+        if(!keepOn)
+        {
+            Settings.MetronomeRings.OnValueChanged.RemoveListener(TogglePulse);
+        }
+    }
+
+    private void TogglePulse(bool enabled)
+    {
+        if(enabled)
+        {
+            SetState(PulseState.ONMIN);
+        }
+        else
+        {
+            SetState(PulseState.DISABLE);
+        }
+    }
+
+    void OnDisable()
+    {
+        _NoteTracker.onBeatTrigger -= HandlePulse;
     }
 
     // Start is called before the first frame update

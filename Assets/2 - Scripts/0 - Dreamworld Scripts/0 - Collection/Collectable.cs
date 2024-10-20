@@ -15,8 +15,10 @@ public class Collectable : MonoBehaviour, ICollectable
     [SerializeField] private GameObject display;
     [SerializeField] private Collider2D collider;
 
+    [SerializeField] bool isTutorialCollectable;
+
     private SpriteRenderer displayRenderer;
-    private TextMeshPro textDisplay;
+    [SerializeField] private TextMeshPro textDisplay;
     [SerializeField] private string currentMessage;
     private string[] activeMessages;
 
@@ -46,26 +48,26 @@ public class Collectable : MonoBehaviour, ICollectable
         "long nights",
         "bitter blue",
         "take my time",
-        "Don’t need nobody",
+        "Donï¿½t need nobody",
         "tell me right",
         "through hell",
-        "don’t have to",
+        "donï¿½t have to",
         "play pretend",
         "faking"
     };
 
     private string[] negativeMessages = new string[]
     {
-        "you can’t",
+        "you canï¿½t",
         "why do I exist?",
-        "just don’t",
+        "just donï¿½t",
         "falls apart",
-        "won’t work",
+        "wonï¿½t work",
         "never good",
         "it gets worse",
-        "you’re not special",
+        "youï¿½re not special",
         "waste of space",
-        "shouldn’t even"
+        "shouldnï¿½t even"
 
     };
     #endregion
@@ -80,6 +82,19 @@ public class Collectable : MonoBehaviour, ICollectable
         activeMessages = genericMessages;
         InitializeDisplay();
         DreamworldEventManager.RegisterCollectable?.Invoke();
+
+	if (isTutorialCollectable == true) 
+	{
+        	DreamworldEventManager.OnGameStart += UpdateMessage;
+	}
+    }
+
+    void OnDestroy()
+    {
+        if (isTutorialCollectable == true) 
+	{
+		DreamworldEventManager.OnGameStart -= UpdateMessage;
+	}
     }
 
     private void InitializeDisplay()
@@ -96,7 +111,7 @@ public class Collectable : MonoBehaviour, ICollectable
             {
                 textDisplay = textMeshes[i];
                 textMeshes[i].gameObject.SetActive(true);
-                InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
+                //InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
             } else
             {
                 Destroy(textMeshes[i]);
@@ -113,8 +128,6 @@ public class Collectable : MonoBehaviour, ICollectable
         textDisplay.gameObject.SetActive(false);
         transform.position = startingLocation;
         collider.enabled = false;
-
-        CancelInvoke(nameof(RandomizeMessage));
     }
 
     public void ResetDisplay()
@@ -122,7 +135,7 @@ public class Collectable : MonoBehaviour, ICollectable
         display.SetActive(true);
         textDisplay.gameObject.SetActive(true);
         collider.enabled = true;
-        InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
+        //InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -133,11 +146,8 @@ public class Collectable : MonoBehaviour, ICollectable
         }
     }
 
-    private void RandomizeMessage()
+    private void UpdateMessage()
     {
-        int randomIndex = UnityEngine.Random.Range(0, activeMessages.Length - 1);
-
-        currentMessage = activeMessages[randomIndex];
-        textDisplay.text = activeMessages[randomIndex];
+        textDisplay.text = "Collect Me!";
     }
 }

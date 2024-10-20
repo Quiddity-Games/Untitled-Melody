@@ -82,6 +82,11 @@ public class ScreenAspectRatio : MonoBehaviour
         {
             aspect = TextingFormatDictionary[ratio];
         }
+        else
+        {
+            //Assigns the values of the 16:9 aspect ratio as a default if the user's actual aspect ratio is unrecognized
+            aspect = TextingFormatDictionary["1.78"];
+        }
 
         return aspect;
     }

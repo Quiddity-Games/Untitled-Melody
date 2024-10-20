@@ -2,36 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Tools.Settings;
 
 public class AccSettingsMenu : BaseSubMenu
 {
-    public AccSettings accSettings;
 
-    public Toggle SecondaryBarsToggle;
-    public Toggle MetronomeBlinkToggle;
+    public SettingsToggle SecondaryBarsToggle;
+    public SettingsToggle MetronomeBlinkToggle;
+    public SettingsToggle MetronomeRingsToggle;
+
     // Start is called before the first frame update
      public void Start()
     {
-        LoadSettings();
-
-        SecondaryBarsToggle.onValueChanged.AddListener(delegate{ApplySettings();});
-        MetronomeBlinkToggle.onValueChanged.AddListener(delegate{ApplySettings();});
+        SecondaryBarsToggle.Setup(Settings.SecondaryBars);
+        MetronomeBlinkToggle.Setup(Settings.MetronomeBlink);
+        MetronomeRingsToggle.Setup(Settings.MetronomeRings);
     }
-     public void LoadSettings()
-    {
-        SecondaryBarsToggle.isOn = accSettings.SecondaryBars;
-        MetronomeBlinkToggle.isOn = accSettings.MetronomeBlink;
-    }
-
-    public void ApplySettings()
-    {
-        accSettings.SecondaryBars = SecondaryBarsToggle.isOn;
-        accSettings.MetronomeBlink = MetronomeBlinkToggle.isOn;
-        accSettings.ApplySettings();
-    }
-
-      public void SaveSettings()
-    {
-        this.accSettings.SaveSettings();
-    }
+   
 }

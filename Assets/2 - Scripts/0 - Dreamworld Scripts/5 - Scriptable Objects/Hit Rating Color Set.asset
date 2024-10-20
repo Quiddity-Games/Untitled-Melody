@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 114b3bee105788b4286b5121f7a3362a, type: 3}
   m_Name: Hit Rating Color Set
   m_EditorClassIdentifier: 
-  MissTextColor: {r: 0.8679245, g: 0.3234729, b: 0.2251691, a: 1}
-  MissTimingTextColor: {r: 0.5, g: 0.19284873, b: 0.13915095, a: 0.80784315}
-  MissBackgroundColor: {r: 1, g: 0.58938074, b: 0.504717, a: 1}
-  GoodTextColor: {r: 0.9433962, g: 0.45057213, b: 0.16464934, a: 1}
-  GoodBackgroundColor: {r: 1, g: 0.7711352, b: 0.6745283, a: 1}
-  GreatTextColor: {r: 0.9433962, g: 0.5671527, b: 0.13794944, a: 1}
-  GreatBackgroundColor: {r: 1, g: 0.7905288, b: 0.6462264, a: 1}
-  PerfectTextColor: {r: 1, g: 0.75489163, b: 0.24056602, a: 1}
-  PerfectBackgroundColor: {r: 1, g: 0.9320133, b: 0.7688679, a: 1}
+  MissTextColor: {r: 0.2627451, g: 0.047058824, b: 0.03529412, a: 1}
+  MissTimingTextColor: {r: 0.3882353, g: 0.10980392, b: 0.10980392, a: 1}
+  MissBackgroundColor: {r: 0.90588236, g: 0.5058824, b: 0.43529412, a: 1}
+  GoodTextColor: {r: 0.21960784, g: 0.05882353, b: 0, a: 1}
+  GoodBackgroundColor: {r: 0.95686275, g: 0.5568628, b: 0.32156864, a: 1}
+  GreatTextColor: {r: 0.34117648, g: 0.15294118, b: 0, a: 1}
+  GreatBackgroundColor: {r: 1, g: 0.7647059, b: 0.5019608, a: 1}
+  PerfectTextColor: {r: 0.5019608, g: 0.24313726, b: 0, a: 1}
+  PerfectBackgroundColor: {r: 1, g: 0.9529412, b: 0.8392157, a: 1}

@@ -39,14 +39,13 @@ public class UIManager : MonoBehaviour
     void OnEnable()
     {
         SetPausePosition += SetButtonPosition;
-        PauseMenuManager.OnPaused += TogglePauseMenu;
+        PauseManager.OnPaused += TogglePauseMenu;
     }
 
     private void OnDestroy()
     {
         SetPausePosition -= SetButtonPosition;
-        PauseMenuManager.OnPaused -= TogglePauseMenu;
-
+        PauseManager.OnPaused -= TogglePauseMenu;
     }
 
     private void HandlePause()
@@ -59,12 +58,8 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        pauseButton.onClick.AddListener((
-        ) => {
-            PauseMenuManager.OnPaused?.Invoke(true);
-            OpenPauseMenu(()=>{
-                Instance.pauseButton.gameObject.SetActive(true);
-                PauseMenuManager.OnPaused?.Invoke(false);});
+        pauseButton.onClick.AddListener(()=> {
+            PauseManager.OnPaused?.Invoke(true);
         });
         pauseButtonTransform = pauseButton.GetComponent<RectTransform>();
         initialOffsetMin = pauseButtonTransform.offsetMin;
@@ -93,26 +88,26 @@ public class UIManager : MonoBehaviour
     
     public void TogglePauseMenu(bool isPaused)
     {
-
         if(isPaused)
         {
-     OpenPauseMenu(()=>{
-                Instance.pauseButton.gameObject.SetActive(true);
-                PauseMenuManager.OnPaused?.Invoke(false);});
+            Instance.pauseButton.gameObject.SetActive(false);
+            m_navigator.Reset();
+            m_navigator.ChangeSubMenu(pauseMenu);
+            Instance.m_navigator.onExitMenu += () => PauseManager.OnPaused?.Invoke(false);
         }
         else
         {
             Instance.pauseButton.gameObject.SetActive(true);
             m_navigator.Reset();
+            Instance.m_navigator.onExitMenu = null;
+            Instance.pauseButton.gameObject.SetActive(true);
         }
     }
 
-    public static void OpenPauseMenu(Action callback)
+    public static void OpenPauseMenu()
     {
-        Instance.pauseButton.gameObject.SetActive(false);
         Instance.m_navigator.Reset();
         Instance.m_navigator.ChangeSubMenu(Instance.pauseMenu);
-        Instance.m_navigator.onExitMenu += callback;
     }
 
     public static void OpenSettingsMenu(Action callback)
@@ -122,7 +117,7 @@ public class UIManager : MonoBehaviour
         Instance.m_navigator.onExitMenu += callback;
     }
 
-        public void RegisterDreamworldEvents()
+    public void RegisterDreamworldEvents()
     {
         DreamworldEventManager.OnGameEnd += () => TogglePauseButton(false);
         DreamworldEventManager.OnDreamworldLeave += () => TogglePauseButton(true);

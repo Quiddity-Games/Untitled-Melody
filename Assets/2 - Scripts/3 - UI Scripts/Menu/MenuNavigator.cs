@@ -50,7 +50,6 @@ public class MenuNavigator : MonoBehaviour
             _input.actions["UI/Cancel"].started -= new Action<InputAction.CallbackContext>(this.Back);
             EventSystem.current.SetSelectedGameObject((GameObject) null);
             this._currSubMenu.gameObject.SetActive(false);
-            Debug.Log("Testing");
             onExitMenu?.Invoke();
             onExitMenu = null;
         }

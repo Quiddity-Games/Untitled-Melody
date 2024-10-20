@@ -22,8 +22,9 @@ but anyway that can’t really be Memi right? #Speaker: Emerald
 it looks just like him but it's street art! who would have found our vocaloid mascot from high school? XD #Speaker: Amika
 I mean I haven’t posted about him in a minute unless you have? #Speaker: Emerald
 oh yeah I saw that you’ve kept up your vocaloid blog! I actually let mine drop off oops 😫 #Speaker: Amika
-
+VAR scene1_choice2 = ""
 *   I'm not super into vocaloid anymore. #Speaker: Amika
+    ~ scene1_choice2 = "not into vocaloid"
     I just don’t have time for that kind of stuff now #Speaker: Amika
     totally, I'm super busy these days too! but always glad to keep you in the loop lol #Speaker: Emerald
     I appreciate it :) I'm pretty far out of the loop at this point though. like deep space #Speaker: Amika
@@ -31,6 +32,7 @@ oh yeah I saw that you’ve kept up your vocaloid blog! I actually let mine drop
     haha good to know you'll always catch me up. but wasn't I the one that got you into vocaloid in the first place?? #Speaker: Amika
     the mentor has become the student . . . how the turntables #Speaker: Emerald
 *   I wish I could keep up with vocaloid more! #Speaker: Amika
+    ~ scene1_choice2 = "can't keep up"
     I wouldn’t know any new songs unless you posted them haha #Speaker: Amika
     yeah I bet you’re busy living it up in LA! #Speaker: Emerald
     hardly lol more like busy trying to stay afloat #Speaker: Amika
@@ -39,14 +41,16 @@ oh yeah I saw that you’ve kept up your vocaloid blog! I actually let mine drop
     that's more than me! I haven't been to the beach in like 10 years #Speaker: Emerald
     I promise I am a total west coast fraud lol. can't relax #Speaker: Amika
 *   it’s nice you’re still active on there!
+    ~ scene1_choice2 = "you're still active"
     yeah there’s still a good community going! #Speaker: Emerald
     last time I logged on even more people had deactivated #Speaker: Amika
     we're a small but mighty group left! #Speaker: Emerald
 - I'm really sorry I haven’t messaged more often. #Speaker: Amika
 no worries haha #Speaker: Emerald
 how’s California so far? don't tell me you say "stoked" and "beggle" now :O #Speaker: Emerald
-
+VAR scene1_choice3 = ""
 *   it’s good! and no I don't lol #Speaker: Amika
+    ~ scene1_choice3 = "no I don't"
     so good you’ll never come back haha #Speaker: Emerald
     sorry, I wanted to make it over the summer! but I didn’t have enough days off as a new hire #Speaker: Amika
     I’m just giving you a hard time! maybe we can meet up over Thanksgiving? #Speaker: Emerald
@@ -54,6 +58,7 @@ how’s California so far? don't tell me you say "stoked" and "beggle" now :O #S
     oh that sounds fun. but I’m coming after you for that raincheck! #Speaker: Emerald
     absolutely! #Speaker: Amika
 *   it’s been a rush honestly. #Speaker: Amika
+    ~ scene1_choice3 = "been a rush"
     I haven’t been able to think straight or take a breath #Speaker: Amika
     aw man! hope you’re doing okay #Speaker: Emerald
     I’m alright, it’s just that work takes up so much mental space. I feel like I’m playing catch up with everyone else and just trying to make it till the next deadline #Speaker: Amika
@@ -65,6 +70,7 @@ how’s California so far? don't tell me you say "stoked" and "beggle" now :O #S
     oh my gosh! remember that blizzard on the way to sectionals?? #Speaker: Emerald
 
 *   not bad, I’m still getting in the groove #Speaker: Amika
+    ~ scene1_choice3 = "in the groove"
     getting in those California vibes 😎 #Speaker: Emerald
     oh my gosh no I have no chill lately #Speaker: Amika
     um when did you have chill to begin with?? #Speaker: Emerald
@@ -77,11 +83,15 @@ break? #Speaker: Emerald
 you guys had fall break already right? #Speaker: Amika
 oh yeah I didn’t do anything though lol #Speaker: Emerald
 really? #Speaker: Amika
+VAR scene1_choice4 = ""
 *   well catching up on rest is good too! #Speaker: Amika
+    ~ scene1_choice4 = "rest is good"
     LOL as if! sleep is for the weak #Speaker: Emerald
 *   there are no breaks after graduation, you know #Speaker: Amika
+    ~ scene1_choice4 = "no breaks"
     thanks mom LOL I just didn't feel like doing anything special #Speaker: Emerald
 *   you must have a lot on your plate with school then #Speaker: Amika
+    ~ scene1_choice4 = "on your plate"
     I guess. I'm keeping myself occupied #Speaker: Emerald
 - what else are you doing this semester? #Speaker: Amika
 not much #Speaker: Emerald
@@ -91,8 +101,9 @@ no no it’s not like that! I’m just a prop artist, I don’t get to meet the 
 you're closer to your dream than a lot of people get! you’re totally on your way to being a great director #Speaker: Emerald
 directing might not be my dream anymore actually #Speaker: Amika
 oh! did something happen? #Speaker: Emerald
-
+VAR scene1_choice5 = ""
 *   I’m just trying to be more realistic about things #Speaker: Amika
+    ~ scene1_choice5 = "be more realistic"
     harder to be disappointed if you reset your expectations #Speaker: Amika
     hmm. does giving up actually save yourself the disappointment or just front load it? #Speaker: Emerald
     what do you mean? #Speaker: Amika
@@ -101,12 +112,14 @@ oh! did something happen? #Speaker: Emerald
     oh wow that means the world to me!! I appreciate you saying that Emerald, you always know how to cheer me up :) #Speaker: Amika
 
 *   I'm nothing like the directors at my studio #Speaker: Amika
+    ~ scene1_choice5 = "like the directors"
     what do you mean? #Speaker: Emerald
     I know I'm only starting out but I just feel invisible sometimes. I don't know why anyone would care what I have to say #Speaker: Amika
     isn't it worth sharing your stories even if it feels like no one's listening? #Speaker: Emerald
     if you don’t want to anymore that’s totally your choice! plans change. but I hope you’re not counting yourself out because you think you CAN’T do it. you’re an amazing artist, Amika! you have so much to be proud of already. if it means anything, I’M proud of you :) #Speaker: Emerald
     oh wow that means the world to me!! I appreciate you saying that Emerald, you always know how to cheer me up :) #Speaker: Amika
 *   oh no nvm! I'm fine, don't worry #Speaker: Amika
+    ~ scene1_choice5 = "I'm fine"
 - sorry for bringing things down #Speaker: Amika
 you have nothing to be sorry for! #Speaker: Emerald
 well if I ever do make a film you’re my first choice for music! I know you would write a killer score #Speaker: Amika
@@ -123,9 +136,12 @@ bummer . . . maybe they’re hiring somewhere else on campus? #Speaker: Amika
 I checked but all the on campus jobs are taken actually #Speaker: Emerald
 all of them? that sucks. #Speaker: Amika
 but I really do have to go now, here is the link in case you want to hear the song! #Speaker: Emerald
+VAR scene1_choice6 = ""
 *   yeah I’ll give it a listen tonight :) #Speaker: Amika
+    ~ scene1_choice6 = "listen tonight"
     oh awesome!! lmk what you think! #Speaker: Emerald
     ->DONE
 *   I’ll see if I find some time for it #Speaker: Amika
+    ~ scene1_choice6 = "time for it"
     hope you do :) #Speaker: Emerald
     ->DONE

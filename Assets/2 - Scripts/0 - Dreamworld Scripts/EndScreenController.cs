@@ -34,6 +34,12 @@ public class EndScreenController : MonoBehaviour
     
     [SerializeField] private EndScreenSprites endSprites;
 
+    [SerializeField] private AudioSource audioSource;
+
+    [SerializeField] private AudioClip collectedAllFragmentsSound;
+    [SerializeField] private AudioClip collectedEnoughFragmentsSound;
+    [SerializeField] private AudioClip levelFailedSound;
+
     private void OnEnable()
     {
         DreamworldEventManager.OnGameEnd += LoadEndScreen;
@@ -48,6 +54,8 @@ public class EndScreenController : MonoBehaviour
     {
         EndScreenMenu.SetActive(false);
         //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.GAME_END, LoadEndScreen);
+
+        audioSource = this.GetComponent<AudioSource>();
     }
     
     public void LoadEndScreen()
@@ -69,7 +77,8 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.yellow;
             memiImage.sprite = endSprites.badSprite;
             restartButton.gameObject.SetActive(true);
-     
+
+            audioSource.clip = levelFailedSound;
         }
         else if (obtained == max)
         {
@@ -77,6 +86,10 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+            levelManager.SetCurrentLevel(3);
+
+            audioSource.clip = collectedAllFragmentsSound;
         }
         else if (obtained >= required)
         {
@@ -84,7 +97,10 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.black;
             memiImage.sprite = endSprites.goodSprite;
             continueButton.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
             levelManager.SetCurrentLevel(3);
+
+            audioSource.clip = collectedEnoughFragmentsSound;
         }
         else if (obtained > required)
         {
@@ -92,10 +108,15 @@ public class EndScreenController : MonoBehaviour
             obtainedCollectableText.color = Color.red;
             memiImage.sprite = endSprites.perfectSprite;
             continueButton.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
             levelManager.SetCurrentLevel(3);
+
+            audioSource.clip = collectedAllFragmentsSound;
         }
         
         EndScreenMenu.SetActive(true);
+
+        audioSource.Play();
     }
 
     public void HideLoadScreen()
