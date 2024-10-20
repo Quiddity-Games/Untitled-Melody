@@ -954,6 +954,7 @@ GameObject:
   - component: {fileID: 2414404711522707779}
   - component: {fileID: 2414404711522707778}
   - component: {fileID: 8013223814543633825}
+  - component: {fileID: 387453758426741513}
   m_Layer: 5
   m_Name: Welcome Message
   m_TagString: Untagged
@@ -1009,9 +1010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Click / Tap to Begin
-
-'
+  m_text: UNDEFINED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17eb7bfe9298a3d43abfe02bc72e8d00, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 676abbffcd5b6724fbcc8924d0f61faf, type: 2}
@@ -1092,6 +1091,22 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &387453758426741513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2414404711522707776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf9adf668cd16443a346a244beaf19d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_welcomeText: {fileID: 2414404711522707778}
+  m_desktopText: Click to Begin
+  m_mobileText: 'Tap to Begin '
+  debugPlatform: {fileID: 11400000, guid: 2ea939b9c88ada84ab5a2261a8434733, type: 2}
 --- !u!1 &2414404711637812661
 GameObject:
   m_ObjectHideFlags: 0

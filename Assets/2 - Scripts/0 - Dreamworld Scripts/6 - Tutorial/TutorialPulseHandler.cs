@@ -42,7 +42,10 @@ public class TutorialPulseHandler : MonoBehaviour
 
     void OnDisable()
     {
-        tutorialPulse.DeregisterOnCollide(AdvanceLocation);
+        if(tutorialPulse != null)
+        {
+            tutorialPulse.DeregisterOnCollide(AdvanceLocation);
+        }
     }
 
     public void AdvanceLocation()

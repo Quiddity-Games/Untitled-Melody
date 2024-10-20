@@ -17,6 +17,10 @@ public class PlatformHider : MonoBehaviour
 
         #if UNITY_EDITOR
             m_isMobile = debugPlatform.simulateMobile;
+        #elif UNITY_STANDALONE || UNITY_EDITOR
+            m_isMobile = false;
+        #elif UNITY_ANDROID || UNITY_IOS
+            m_isMobile = true;
         #endif
 
         if(!m_isMobile)
