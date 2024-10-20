@@ -19,7 +19,7 @@ public class PlatformUIText : MonoBehaviour
         bool isMobile = false;
         #if UNITY_EDITOR
             isMobile = debugPlatform.simulateMobile;
-        #elif UNITY_STANDALONE || UNITY_EDITOR
+        #elif UNITY_STANDALONE
             isMobile = false;
         #elif UNITY_ANDROID || UNITY_IOS
             isMobile = true;
