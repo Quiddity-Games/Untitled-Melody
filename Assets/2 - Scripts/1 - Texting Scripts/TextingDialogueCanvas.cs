@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine.Serialization;
@@ -116,8 +117,16 @@ public class TextingDialogueCanvas : MonoBehaviour
 
         phoneContainerTransform = phoneContainer.transform as RectTransform;
 
-        phoneContainerTransform.offsetMin = format.PhoneContainerOffsetMin;
-        phoneContainerTransform.offsetMax = format.PhoneContainerOffsetMax;
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            phoneContainerTransform.offsetMin = format.PhoneContainerOffsetMin;
+            phoneContainerTransform.offsetMax = format.PhoneContainerOffsetMax;
+
+        } else if (SceneManager.GetActiveScene().buildIndex == 3) //Accounts for Texting Sequence 2, where the positioning of the UI is horizontally flipped from how it is in TS1
+        {
+            phoneContainerTransform.offsetMin = new Vector2(1 - format.PhoneContainerOffsetMax.x, format.PhoneContainerOffsetMin.y);
+            phoneContainerTransform.offsetMax = new Vector2(1 - format.PhoneContainerOffsetMin.x, format.PhoneContainerOffsetMax.y);
+        }
 
         // Get current size of texting body container.
         textContainerLeft = bodyScrollViewTransform.offsetMin.x;
