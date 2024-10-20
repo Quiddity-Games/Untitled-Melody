@@ -147,9 +147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   display: {fileID: 4815849445409681828}
   collider: {fileID: 8486638284745595820}
-  isTutorialCollectable: 0
-  textDisplay: {fileID: 0}
-  currentMessage: 
   lyricDrop: {fileID: 2240199181331701314, guid: d420bf2cc3ce21c4f95bb61534aa59a7, type: 3}
 --- !u!61 &8486638284745595820
 BoxCollider2D:

@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3788e4fde8245664f9831a470d67f6e3, type: 2}
+  - {fileID: 2100000, guid: 71831c84deabcf24197a27183ab993e6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,8 +103,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lyrics go here
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 49c814372af288e43b882390ee532ef5, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 3788e4fde8245664f9831a470d67f6e3, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e2d914045e7b23c4995f48f348275788, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 71831c84deabcf24197a27183ab993e6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.85
+  m_fontSize: 15
   m_fontSizeBase: 12
   m_fontWeight: 400
   m_enableAutoSizing: 1
