@@ -148,6 +148,7 @@ MonoBehaviour:
   display: {fileID: 4815849445409681828}
   collider: {fileID: 8486638284745595820}
   lyricDrop: {fileID: 2240199181331701314, guid: d420bf2cc3ce21c4f95bb61534aa59a7, type: 3}
+  lyricDropText: Lyrics
 --- !u!61 &8486638284745595820
 BoxCollider2D:
   m_ObjectHideFlags: 0
