@@ -64,8 +64,17 @@ public class UIManager : MonoBehaviour
     {
         if (TextingLevelLoader.Instance)
         {
-            pauseButtonTransform.offsetMax = new Vector2(-initialOffsetMin.x, -initialOffsetMin.y);
-            pauseButtonTransform.offsetMin = new Vector2(-initialOffsetMax.x, -initialOffsetMax.y);
+            if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                pauseButtonTransform.offsetMax = new Vector2(-initialOffsetMin.x, -initialOffsetMin.y);
+                pauseButtonTransform.offsetMin = new Vector2(-initialOffsetMax.x, -initialOffsetMax.y);
+
+            } else if (SceneManager.GetActiveScene().buildIndex == 3)   //The UI of the second Texting sequence is arranged differently than the first, so the pause button is placed in a different location to accommodate it
+            {
+                pauseButtonTransform.offsetMax = new Vector2(initialOffsetMax.x, 1 - initialOffsetMin.y);
+                pauseButtonTransform.offsetMin = new Vector2(initialOffsetMin.x, 1 - initialOffsetMax.y);
+            }
+
         } else
         {
             pauseButtonTransform.offsetMax = new Vector2(initialOffsetMax.x, initialOffsetMax.y);
