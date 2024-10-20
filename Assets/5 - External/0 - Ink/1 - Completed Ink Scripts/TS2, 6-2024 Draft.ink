@@ -31,6 +31,9 @@ yeah! listening to it while falling asleep was REALLY trippy #Speaker: Amika
 }
 
 *   for sure! #Speaker: Amika
+        
+        ~ setVariable("player_said_song_gets_them", false)
+        
         it was really cool to listen to #Speaker: Amika
         yeah it’s one of my favorite nostraightanswer tracks! I’m listening to it all the time lately #Speaker: Emerald
         
@@ -43,6 +46,9 @@ yeah! listening to it while falling asleep was REALLY trippy #Speaker: Amika
         yeah, me too!!! I love nostraightanswer’s music #Speaker: Emerald
         
 *   it was OK #Speaker: Amika
+
+        ~ setVariable("player_said_song_gets_them", false)
+
         I think I need to get used to listening to Vocaloid again #Speaker: Amika
         I’m not used to that kind of sound #Speaker: Amika
         ahh no worries! #Speaker: Emerald
