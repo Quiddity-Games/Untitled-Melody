@@ -15,13 +15,14 @@ public class Collectable : MonoBehaviour, ICollectable
     [SerializeField] private GameObject display;
     [SerializeField] private Collider2D collider;
 
-    [SerializeField] bool isTutorialCollectable;
+    //[SerializeField] bool isTutorialCollectable;
 
     private SpriteRenderer displayRenderer;
-    [SerializeField] private TextMeshPro textDisplay;
-    [SerializeField] private string currentMessage;
-    private string[] activeMessages;
+    //[SerializeField] private TextMeshPro textDisplay;
+    //[SerializeField] private string currentMessage;
+    //private string[] activeMessages;
 
+    /*
     #region Thought Fragment Messages
     private string[] genericMessages = new string[]
     {
@@ -71,6 +72,7 @@ public class Collectable : MonoBehaviour, ICollectable
 
     };
     #endregion
+    */
 
     private bool initialize = false;
 
@@ -82,18 +84,21 @@ public class Collectable : MonoBehaviour, ICollectable
         displayRenderer = display.GetComponent<SpriteRenderer>();
 
         startingLocation = transform.position;
-        activeMessages = genericMessages;
+        //activeMessages = genericMessages;
         InitializeDisplay();
         DreamworldEventManager.RegisterCollectable?.Invoke();
 
         collectablePos = this.GetComponent<Transform>().position;
-
+    
+        /*
 	if (isTutorialCollectable == true) 
 	{
         	DreamworldEventManager.OnGameStart += UpdateMessage;
 	}
+    */
     }
 
+    /*
     void OnDestroy()
     {   
         if (isTutorialCollectable == true) 
@@ -101,6 +106,7 @@ public class Collectable : MonoBehaviour, ICollectable
 		DreamworldEventManager.OnGameStart -= UpdateMessage;
 	}
     }
+    */
 
     private void InitializeDisplay()
     {
@@ -108,6 +114,7 @@ public class Collectable : MonoBehaviour, ICollectable
         int randomIndex = UnityEngine.Random.Range(0, spritesList.Length);
         displayRenderer.sprite = spritesList[randomIndex];
 
+        /*
         TextMeshPro[] textMeshes = GetComponentsInChildren<TextMeshPro>(true);
 
         for (int i = 0; i < textMeshes.Length; i++)
@@ -122,6 +129,7 @@ public class Collectable : MonoBehaviour, ICollectable
                 Destroy(textMeshes[i]);
             }
         }
+        */
 
         //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.REGISTER_COLLECTABLE);
     }
@@ -132,7 +140,7 @@ public class Collectable : MonoBehaviour, ICollectable
 
         DreamworldEventManager.OnCollect?.Invoke(this);
         display.SetActive(false);
-        textDisplay.gameObject.SetActive(false);
+        //textDisplay.gameObject.SetActive(false);
         transform.position = startingLocation;
         collider.enabled = false;
     }
@@ -140,7 +148,7 @@ public class Collectable : MonoBehaviour, ICollectable
     public void ResetDisplay()
     {
         display.SetActive(true);
-        textDisplay.gameObject.SetActive(true);
+        //textDisplay.gameObject.SetActive(true);
         collider.enabled = true;
         //InvokeRepeating(nameof(RandomizeMessage), 0f, 5f);
     }
@@ -153,8 +161,10 @@ public class Collectable : MonoBehaviour, ICollectable
         }
     }
 
+    /*
     private void UpdateMessage()
     {
         textDisplay.text = "Collect Me!";
     }
+    */
 }
