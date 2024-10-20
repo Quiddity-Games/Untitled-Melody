@@ -1,5 +1,8 @@
+EXTERNAL setVariable(varName, varState)
+EXTERNAL getVariable(varName)
+
 VAR player_said_they_were_tired = false
-VAR player_still_into_vocaloid = true
+VAR player_still_into_vocaloid = false
 VAR player_opened_up_about_directing = false
 VAR player_said_song_gets_them = false
 
@@ -7,6 +10,10 @@ VAR player_said_song_gets_them = false
 -> Texting_Sequence_2
 
 === Texting_Sequence_2 ===
+~ getVariable("player_said_they_were_tired")
+~ getVariable("player_still_into_vocaloid")
+~ getVariable("player_opened_up_about_directing")
+
 hey Emerald, I looked up nostraightanswer’s song last night! #Speaker: Amika
 hey! you mean wishing well?? #Speaker: Emerald
 yeah! listening to it while falling asleep was REALLY trippy #Speaker: Amika
@@ -29,7 +36,7 @@ yeah! listening to it while falling asleep was REALLY trippy #Speaker: Amika
         
 *   oh I LOVED it!! #Speaker: Amika
         
-        ~player_said_song_gets_them = true
+        ~ setVariable("player_said_song_gets_them", true)
 
         it was honestly super-cool. I feel like it’s really my style of music #Speaker: Amika
         it was like, this song gets me, lol [emoji:joy] #Speaker: Amika

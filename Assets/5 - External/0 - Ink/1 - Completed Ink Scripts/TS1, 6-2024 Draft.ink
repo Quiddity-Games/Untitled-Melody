@@ -1,3 +1,10 @@
+EXTERNAL setVariable(varName, varState)
+EXTERNAL getVariable(varName)
+
+VAR player_said_they_were_tired = false
+VAR player_still_into_vocaloid = false
+VAR player_opened_up_about_directing = false
+
 #Conversation: Emerald
 -> Texting_Sequence_1
 
@@ -52,6 +59,7 @@ there’s this track by nostraightanswer that I LOVE. the lyrics really get me #
 - but anyways! hbu? are you still listening to Crusher, Deco*27 and everybody? #Speaker: Emerald
 
 *   I’m less into Vocaloid now #Speaker: Amika
+        ~ setVariable("player_still_into_vocaloid", false)
         I just don’t have time for that kind of stuff anymore #Speaker: Amika
         totally, I'm super busy these days too! but always glad to keep you in the loop lol #Speaker: Emerald
         I appreciate it :) I'm pretty far out of the loop at this point though. like deep space #Speaker: Amika
@@ -59,6 +67,7 @@ there’s this track by nostraightanswer that I LOVE. the lyrics really get me #
         haha good to know you'll always catch me up #Speaker: Amika
 
 *   I still love Vocaloid! #Speaker: Amika
+        ~ setVariable("player_still_into_vocaloid", true)
         I wish I could keep up with it more. I wouldn’t know any new songs unless you posted them haha #Speaker: Amika
         yeah I bet you’re busy living it up in Cali! #Speaker: Emerald
         hardly lol more like busy trying to stay afloat #Speaker: Amika
@@ -129,6 +138,7 @@ directing might not be my dream anymore actually #Speaker: Amika
 oh! did something happen? #Speaker: Emerald
 
 *   no, just being realistic #Speaker: Amika
+        ~ setVariable("player_opened_up_about_directing", true)
         it's harder to be disappointed if you reset your expectations #Speaker: Amika
         hmm. does giving up actually save you the disappointment or just front load it? #Speaker: Emerald
         what do you mean? #Speaker: Amika
@@ -139,6 +149,7 @@ you’re an amazing artist, Amika! you have so much to be proud of already. if i
         oh wow that means the world to me!! I appreciate you saying that Emerald, you always know how to cheer me up :) #Speaker: Amika
 
 *   I’m not good enough #Speaker: Amika
+        ~ setVariable("player_opened_up_about_directing", true)
         I'm nothing like the directors at my studio #Speaker: Amika
         what do you mean? #Speaker: Emerald
         I know I'm only starting out but I just feel invisible sometimes. I don't know why anyone would care what I have to say #Speaker: Amika
@@ -149,6 +160,7 @@ you’re an amazing artist, Amika! you have so much to be proud of already. if i
         oh wow that means the world to me!! I appreciate you saying that Emerald, you always know how to cheer me up :) #Speaker: Amika
 
 *   Nvm! Don't worry about it #Speaker: Amika
+        ~ setVariable("player_opened_up_about_directing", false)
         I'm fine, everything's good #Speaker: Amika
 
 - sorry for bringing things down #Speaker: Amika
@@ -177,11 +189,13 @@ all of them? that sucks. #Speaker: Amika
 yeah but I really do have to go now, you should look up the song! #Speaker: Emerald
 
 *   sure, I'd love to! :D #Speaker: Amika
+        ~ setVariable("player_said_they_were_tired", false)
         I'll give it a listen tonight #Speaker: Amika
         oh awesome!! lmk what you think! #Speaker: Emerald
 
 
 *   if I’m not too tired  #Speaker: Amika
+        ~ setVariable("player_said_they_were_tired", true)
         it’s been a pretty busy day [emoji:fearful] #Speaker: Amika
 	no worries, I understand! #Speaker: Emerald
 
