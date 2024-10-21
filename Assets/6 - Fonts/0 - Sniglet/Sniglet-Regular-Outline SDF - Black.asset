@@ -59,9 +59,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: Sniglet-Regular-Outline SDF - Black
   m_EditorClassIdentifier: 
-  hashCode: 1201882085
+  hashCode: -1092886033
   material: {fileID: 1402589956106185427}
-  materialHashCode: -567735003
+  materialHashCode: -757225745
   m_Version: 1.1.0
   m_SourceFontFileGUID: 1c1339dad16d7f84692b74be63885a57
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 1c1339dad16d7f84692b74be63885a57, type: 3}
@@ -1519,10 +1519,10 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.4
+    - _OutlineWidth: 0.493
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.9
+    - _ScaleRatioA: 0.83294773
     - _ScaleRatioB: 0.37125
     - _ScaleRatioC: 0.37125
     - _ScaleX: 1
@@ -1551,7 +1551,7 @@ Material:
     - _FaceColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0, g: 1, b: 0, a: 0.5}
     - _MaskCoord: {r: 0, g: 0, b: 32767, a: 32767}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
