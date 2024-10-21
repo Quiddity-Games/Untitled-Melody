@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// Causes a piece of UI text to fade away after spawning. Attached to the Fading Message Text prefab.
+/// Causes a piece of UI text to fade away after spawning.
 /// </summary>
 public class TextUIFade : MonoBehaviour
 {
