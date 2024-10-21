@@ -1369,7 +1369,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Options
+  m_text: Settings & Accesibility
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1396,8 +1396,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1517254982}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.53571427
+  m_Size: 0.18359065
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2640,7 +2640,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -16.309}
+  m_AnchoredPosition: {x: 500.00003, y: -70}
   m_SizeDelta: {x: 1000, y: 5.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1435948159
@@ -2663,96 +2663,27 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Leads
-
-    Pat Dimaandal
-
-    Nick Carbonara
-
-    Maddy Cherrier
-
-    Hal
-    Clark
-
-    Jacob Brosler
-
-    Chris Lautenbacher
-
-
-
-    Art
-
-    Nedward
-
-    Masha
-    Zhdanova
-
-    Mac
-
-    Marina Whitney
-
-    Shirley Liu
-
-    Link Simon
-
-    Arka
-
-    Kamika
-
-    Koin
-
-    Lance
-
-    Maya
-
-    Charlotte
-
-    Christiana
-
-    Kayla
-    Deer
-
-
-
-    Programming
-
-    Cavan Vince
-
-    Matthew Sze-Tu
-
-    Will Kracke
-
-    Jared
-
-    Kevin
-    Ray
-
-    Stella Liu
-
-
-
-    Narrative
-
-    Mercedes Hesselroth
-
-    Wendy Ninomiya
-
-    Chris
-    Fleming
-
-
-
-    Sound design
-
-    Vince
-
-    Michael
-
-
-
-    Special Thanks
-
-'
+  m_text: "Music\r\n\nnostraightanswer\r\n\r\n\n\nProject Direction\r\n\nChris Lautenbacher\r\nJacob
+    Brosler\r\nNick Carbonara\r\nMaddy Cherrier\r\nHal Clark\r\nPat Dimaandal\r\nChris
+    Fleming\r\nLance Hengya\r\n\r\n\n\nArt Leads\r\n\nHal Clark\r\nLance Hengya\r\n\r\n\n\nArtists\r\n\nKayla
+    Deer\r\nFinal\r\nMac Li\r\nShirley Liu\r\nMikaMagica\r\nNedward\r\nCharlotte
+    Pang \r\nLink Simon (@cawinkylink)\r\nArka Tu\r\nMaya \"kemple T\" Williamson\r\nMasha
+    Zhdanova\r\n\r\n\n\nDevelopment Leads\r\n\nJacob Brosler\r\nNick Carbonara\r\n\r\n\n\nDevelopers\r\n\nJustin
+    Almendral\r\nWhitney Kluttz\r\nWill Kracke\r\nStella Liu\r\nlukinator1\r\nSeamus
+    Ly\r\nKevin Ray\r\nMatthew Sze-Tu\r\nCavan Vince\r\n\r\n\n\nNarrative Leads\r\n\nNick
+    Carbonara\r\nChris Fleming\r\n\r\n\n\nNarrative Designers\r\n\nMercedes Hesselroth\r\nWendy
+    Ninomiya\r\n\r\n\n\nExternal Narrative Research Advisors\r\n\nChristina Kelly
+    (@paper_artichoke)\r\nErika Ramsey (Kinjo)\r\nCal Ramsey\r\nSunny Schofield\r\n\r\n\n\nAccessibility
+    Consultants and Testers\r\n\nJordan Bach - Consultant and Tester\r\nTay C. (meowzerswowzers)
+    - Consultant and Tester\r\nIan Hamilton - Accessibility Specialist\r\nJeppe \"Serth\"
+    Nymand - Consultant and Tester\r\nJulie Oliveira - Consultant and Tester\r\nAudrey
+    Spencer - Consultant and Tester \r\nMembers of r/DisabledGamers\nThe IGDA Game
+    Accessibility Special Interest Group\r\n\r\n\n\nPlaytesters\r\n\nAndrea Chen\r\nSnow
+    Dong\r\nJonah Gaynor\r\nDevon George\r\nEthan Gill\r\nGary Goldberger\r\nOwen
+    Hey\r\nSteph Hoechst\r\nJustin Huang\r\nMaham Ismail\r\nDan Jang\r\nNadya Karpova\r\nChristina
+    Kelly (@paper_artichoke)\r\nMicah Lind\r\nKaz Long\r\nMonckat\r\nPeter Stidwill\r\nEsther
+    Tzau\r\nSammy Walkey\r\nNathan Wentworth\r\nEm Wider\r\nMichael Yung\r\nDaniel
+    Zona\r\nAttendees of FableVision Creative Juices 2023 and 2024\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2815,7 +2746,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -1208.4896}
+  m_margin: {x: 0, y: 0, z: 0, w: -3758.434}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2899,7 +2830,7 @@ RectTransform:
   m_Father: {fileID: 1754698384}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.46428573}
+  m_AnchorMin: {x: 0, y: 0.81640935}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
@@ -3380,7 +3311,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 1400}
+  m_SizeDelta: {x: 1000, y: 4085.175}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &2043221949
 GameObject:

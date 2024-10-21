@@ -1,3 +1,5 @@
+EXTERNAL setVariable(varName, varState)
+EXTERNAL getVariable(varName)
 #Conversation: Emerald
 -> Texting_Sequence_1
 
@@ -10,11 +12,13 @@ I think I still have the notebook we drew him in! or maybe I left it at my paren
 yeah I remember your car was packed to the brim! it's a miracle all your art supplies made it to California in one piece haha #Speaker: Emerald
 btw what's your apartment like? I never got the pics #Speaker: Emerald
 oh gosh I didn't mean to ghost! #Speaker: Amika
-
+VAR player_said_they_were_busy = false
 *   I've been busy with work! #Speaker: Amika
+        ~ setVariable("player_said_they_were_busy", true)
         I know you're having lots of new adventures! #Speaker: Emerald
 
 *   work sucks up all my time #Speaker: Amika
+        ~ setVariable("player_said_they_were_busy", false)
         aw well I appreciate you taking the time to talk now! #Speaker: Emerald
         
 - it's okay lol I forgive you ;)  #Speaker: Emerald
@@ -26,8 +30,9 @@ but anyway that can’t really be Memi right? #Speaker: Emerald
 it looks just like him but it's street art! who would have found our vocaloid mascot from high school? XD #Speaker: Amika
 I mean I haven’t posted about him in a minute unless you have? #Speaker: Emerald
 oh yeah I saw that you’ve kept up your vocaloid blog! I actually let mine drop off oops 😫 #Speaker: Amika
-
+VAR player_still_into_vocaloid = false
 *   I’m less into vocaloid now. #Speaker: Amika
+        ~ setVariable("player_still_into_vocaloid", false)
         I just don’t have time for that kind of stuff anymore #Speaker: Amika
         totally, I'm super busy these days too! but always glad to keep you in the loop lol #Speaker: Emerald
         I appreciate it :) I'm pretty far out of the loop at this point though. like deep space #Speaker: Amika
@@ -36,6 +41,7 @@ oh yeah I saw that you’ve kept up your vocaloid blog! I actually let mine drop
         the mentor has become the student . . . how the turntables #Speaker: Emerald
 
 *   I still love vocaloid! #Speaker: Amika
+        ~ setVariable("player_still_into_vocaloid", true)
         I wish I could keep up with it more. I wouldn’t know any new songs unless you posted them haha #Speaker: Amika
         yeah I bet you’re busy living it up in LA! #Speaker: Emerald
         hardly lol more like busy trying to stay afloat #Speaker: Amika
@@ -45,6 +51,7 @@ oh yeah I saw that you’ve kept up your vocaloid blog! I actually let mine drop
         I promise I am a total west coast fraud lol. can't relax #Speaker: Amika
 
 *   Hbu? Is yours still up? #Speaker: Amika
+        ~ setVariable("player_still_into_vocaloid", false)
         oh yeah, I keep it updated! there's still a good community going #Speaker: Emerald
         Nice! #Speaker: Amika
         last time I logged on even more people had deactivated #Speaker: Amika
@@ -53,8 +60,9 @@ oh yeah I saw that you’ve kept up your vocaloid blog! I actually let mine drop
 - I'm really sorry I haven’t messaged more often. #Speaker: Amika
 no worries haha #Speaker: Emerald
 how’s California so far? don't tell me you say "stoked" and "beggle" now :O #Speaker: Emerald
-
+VAR player_opened_up_about_directing = false
 *   it's great! and I don't lol #Speaker: Amika
+        ~ setVariable("player_opened_up_about_directing", false)
         so great you’ll never come back haha #Speaker: Emerald
         sorry, I wanted to make it over the summer! but I didn’t have enough days off as a new hire #Speaker: Amika
         I’m just giving you a hard time! maybe we can meet up over Thanksgiving? #Speaker: Emerald
@@ -63,6 +71,7 @@ how’s California so far? don't tell me you say "stoked" and "beggle" now :O #S
         absolutely! #Speaker: Amika
 
 *   it’s been hard honestly. #Speaker: Amika
+        ~ setVariable("player_opened_up_about_directing", true)
         everything's crazy. I haven’t been able to think straight or take a breath #Speaker: Amika
         aw man! hope you’re doing okay #Speaker: Emerald
         I’m alright, it’s just that work takes up so much mental space. I feel like I’m playing catch up with everyone else and just trying to make it till the next deadline #Speaker: Amika
@@ -74,6 +83,7 @@ how’s California so far? don't tell me you say "stoked" and "beggle" now :O #S
         oh my gosh! remember that blizzard on the way to sectionals?? #Speaker: Emerald
 
 *   decent overall #Speaker: Amika
+        ~ setVariable("player_opened_up_about_directing", false)
         I’m still getting in the groove #Speaker: Amika
         getting in those California vibes 😎 #Speaker: Emerald
         oh my gosh no I have no chill lately #Speaker: Amika
@@ -88,7 +98,6 @@ break? #Speaker: Emerald
 you guys had fall break already right? #Speaker: Amika
 oh yeah I didn’t do anything though lol #Speaker: Emerald
 really? #Speaker: Amika
-
 *   well rest is important! #Speaker: Amika
         LOL as if! sleep is for the weak #Speaker: Emerald
 
@@ -107,8 +116,8 @@ no no it’s not like that! I’m just a prop artist, I don’t get to meet the 
 you're closer to your dream than a lot of people get! you’re totally on your way to being a great director #Speaker: Emerald
 directing might not be my dream anymore actually #Speaker: Amika
 oh! did something happen? #Speaker: Emerald
-
 *   no, just being realistic #Speaker: Amika
+        ~ setVariable("player_opened_up_about_directing", true)
         it's harder to be disappointed if you reset your expectations #Speaker: Amika
         hmm. does giving up actually save yourself the disappointment or just front load it? #Speaker: Emerald
         what do you mean? #Speaker: Amika
@@ -117,6 +126,7 @@ oh! did something happen? #Speaker: Emerald
         oh wow that means the world to me!! I appreciate you saying that Emerald, you always know how to cheer me up :) #Speaker: Amika
 
 *   I’m not good enough #Speaker: Amika
+        ~ setVariable("player_opened_up_about_directing", true)
         I'm nothing like the directors at my studio #Speaker: Amika
         what do you mean? #Speaker: Emerald
         I know I'm only starting out but I just feel invisible sometimes. I don't know why anyone would care what I have to say #Speaker: Amika
@@ -143,7 +153,6 @@ bummer . . . maybe they’re hiring somewhere else on campus? #Speaker: Amika
 I checked but all the on campus jobs are taken actually #Speaker: Emerald
 all of them? that sucks. #Speaker: Amika
 but I really do have to go now, you should look up the song! #Speaker: Emerald
-
 *   sure, I'd love to! :D #Speaker: Amika
         I'll give it a listen tonight #Speaker: Amika
         oh awesome!! lmk what you think! #Speaker: Emerald
@@ -151,6 +160,7 @@ but I really do have to go now, you should look up the song! #Speaker: Emerald
         ->END
 
 *   I’ll see if I have time #Speaker: Amika
+        ~ setVariable("player_said_they_were_busy", true)
         hope you do :) #Speaker: Emerald
         #end
         ->END

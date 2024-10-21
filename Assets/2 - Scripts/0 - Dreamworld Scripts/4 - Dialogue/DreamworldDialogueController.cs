@@ -43,7 +43,7 @@ public class DreamworldDialogueController : DialogueController
             OnLineShown += ShowLine;
         }
 
-        DreamworldEventManager.OnDialogueContinue += StartDialogue;
+        StartDialogue();
     }
 
     private void OnDestroy()

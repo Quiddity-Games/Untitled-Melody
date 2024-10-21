@@ -140,6 +140,22 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1463009933516272652}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnContinue
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 384b85f8-a65b-46d5-af12-4ba84b8a58f4
+    m_ActionName: Texting/Continue[/Mouse/leftButton,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1463009933516272652}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
         m_MethodName: OnPause
         m_Mode: 0
         m_Arguments:
@@ -150,7 +166,23 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 47f577fa-6cdd-4a91-9f06-08ca5019ea4b
+    m_ActionId: c1737a55-a5ae-4ee3-90b0-fcdbee2cff29
+    m_ActionName: Universal/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1463009933516272652}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: OnPause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f8b6ff4f-b4d0-4a27-a80c-a91c00c0315d
     m_ActionName: Dreamworld/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
@@ -166,27 +198,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: d5de52ff-350e-442a-8ff2-8b639c74591a
+    m_ActionId: 815f1faa-4628-42b1-96d4-7f6ee5ad4fe0
     m_ActionName: Texting/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1463009933516272652}
-        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
-        m_MethodName: OnContinue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 384b85f8-a65b-46d5-af12-4ba84b8a58f4
-    m_ActionName: Texting/Continue[/Mouse/leftButton,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Dreamworld
+  m_DefaultActionMap: Universal
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1463009933516272652
