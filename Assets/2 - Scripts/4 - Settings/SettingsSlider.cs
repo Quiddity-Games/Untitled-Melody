@@ -8,7 +8,13 @@ public class SettingsSlider : MonoBehaviour
 {
 
     private Slider m_slider;
-    FloatSetting m_setting; 
+    FloatSetting m_setting;
+
+    float startVal;
+
+    [SerializeField] AudioSource menuSFXSource;
+    [SerializeField] AudioClip sliderAudioClip;
+
     public void Setup(FloatSetting setting)
     {
         m_setting = setting;
@@ -37,4 +43,19 @@ public class SettingsSlider : MonoBehaviour
     {
         m_setting.Value = value;
     }
+
+    public void OnStartSettingHandleDrag()
+    {
+        startVal = m_slider.value;
+    }
+
+    public void DuringHandleDrag()
+    {
+        if (m_slider.value >= startVal + 0.1f || m_slider.value <= startVal - 0.1f)
+        {
+            menuSFXSource.PlayOneShot(sliderAudioClip);
+            startVal = m_slider.value;
+        }
+    }
+
 }
