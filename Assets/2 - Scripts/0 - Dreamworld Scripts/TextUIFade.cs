@@ -16,7 +16,7 @@ public class TextUIFade : MonoBehaviour
     void Start()
     {
         _txt = GetComponent<TMP_Text>();
-        StartCoroutine(FadeAndDestroy());
+        StartCoroutine(FadeAndVanish());
     }
 
     void Update()
@@ -26,10 +26,10 @@ public class TextUIFade : MonoBehaviour
     }
 
     /// <summary>
-    /// Causes the text to gradually fade away, then destroy itself.
+    /// Causes the text to gradually fade away.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator FadeAndDestroy()
+    private IEnumerator FadeAndVanish()
     {
         float alpha = _txt.color.a;
 

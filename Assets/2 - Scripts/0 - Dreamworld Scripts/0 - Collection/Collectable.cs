@@ -17,7 +17,6 @@ public class Collectable : MonoBehaviour, ICollectable
 
     private bool initialize = false;
 
-    [SerializeField] private GameObject lyricDrop;
     [SerializeField] private String lyricDropText;
     private Vector3 collectablePos;
 
@@ -39,8 +38,10 @@ public class Collectable : MonoBehaviour, ICollectable
 
     public void Collect()
     {
-        GameObject drop = Instantiate(lyricDrop, collectablePos, Quaternion.identity);
+        GameObject drop = LyricObjectPool.SharedInstance.GetPooledLyricTextObject();
+        drop.GetComponent<Transform>().position = collectablePos;
         drop.GetComponent<TextMeshPro>().text = lyricDropText;
+        drop.SetActive(true);
 
         DreamworldEventManager.OnCollect?.Invoke(this);
         display.SetActive(false);
