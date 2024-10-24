@@ -36,7 +36,7 @@ public class LyricObjectPool : MonoBehaviour
         {
             if(!pooledLyricTextObjects[i].activeInHierarchy)
             {
-                return pooledLyricTextObjects[I];
+                return pooledLyricTextObjects[i];
             }
         }
         return null;
