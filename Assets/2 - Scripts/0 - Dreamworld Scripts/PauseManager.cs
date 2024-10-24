@@ -10,6 +10,22 @@ public class PauseManager : MonoBehaviour
 
     public bool IsPaused;
 
+    void OnApplicationFocus(bool hasFocus)
+    {
+        if(!hasFocus)
+        {
+            OnPaused?.Invoke(true);
+        }
+
+    }
+
+    void OnApplicationPause(bool pauseStatus)
+    {
+        if(pauseStatus)
+        {   
+            OnPaused?.Invoke(pauseStatus);
+        }
+    }
 
     public static Action<bool> OnPaused;
 
