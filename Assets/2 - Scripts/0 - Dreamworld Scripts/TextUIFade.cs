@@ -5,17 +5,18 @@ using UnityEngine.UI;
 using TMPro;
 
 /// <summary>
-/// Causes a piece of UI text to fade away after spawning. Attached to the Fading Message Text prefab.
+/// Causes a piece of UI text to fade away after spawning.
 /// </summary>
 public class TextUIFade : MonoBehaviour
 {
     private TMP_Text _txt;
+    [SerializeField] private float decayRate;
 
     // Start is called before the first frame update
     void Start()
     {
         _txt = GetComponent<TMP_Text>();
-        StartCoroutine(FadeAndDestroy());
+        StartCoroutine(FadeAndVanish());
     }
 
     void Update()
@@ -25,17 +26,17 @@ public class TextUIFade : MonoBehaviour
     }
 
     /// <summary>
-    /// Causes the text to gradually fade away, then destroy itself.
+    /// Causes the text to gradually fade away.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator FadeAndDestroy()
+    private IEnumerator FadeAndVanish()
     {
         float alpha = _txt.color.a;
 
         while(alpha >= 0)
         {
             _txt.color = new Color(_txt.color.r, _txt.color.g, _txt.color.b, alpha);
-            alpha -= 0.01f;
+            alpha -= decayRate;
 
             yield return 0;
         }
