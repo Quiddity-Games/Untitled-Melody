@@ -12,8 +12,16 @@ public class TextUIFade : MonoBehaviour
     private TMP_Text _txt;
     [SerializeField] private float decayRate;
 
+    /*
     // Start is called before the first frame update
     void Start()
+    {
+        _txt = GetComponent<TMP_Text>();
+        StartCoroutine(FadeAndVanish());
+    }
+    */
+
+    void OnEnable()
     {
         _txt = GetComponent<TMP_Text>();
         StartCoroutine(FadeAndVanish());
@@ -41,6 +49,7 @@ public class TextUIFade : MonoBehaviour
             yield return 0;
         }
 
+        _txt.color = new Color(_txt.color.r, _txt.color.g, _txt.color.b, 1f);
         gameObject.SetActive(false);
     }
 }
