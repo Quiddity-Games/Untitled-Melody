@@ -98,6 +98,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            Instance.pauseButton.gameObject.SetActive(true);
             m_navigator.Reset();
             Instance.m_navigator.onExitMenu = null;
             Instance.pauseButton.gameObject.SetActive(true);
