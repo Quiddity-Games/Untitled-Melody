@@ -6757,7 +6757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2414404713516117974, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 420
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2414404713516117974, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -6895,6 +6895,22 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 3321225817467820206, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321225817467820206, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321225817467820206, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321225817467820206, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3954869458303198646, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -6965,7 +6981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8992993302949035851, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 420
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8992993302949035851, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -7197,12 +7213,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1369963775}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
+      propertyPath: debugPlatform
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ea939b9c88ada84ab5a2261a8434733, type: 2}
+    - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.size
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[0].m_text
-      value: Tap here to the beat!
+      value: Click here to the beat!
       objectReference: {fileID: 0}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[1].m_text
@@ -7255,6 +7275,10 @@ PrefabInstance:
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[6].m_location
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
+      propertyPath: pulseLocations.Array.data[0].m_textMobile
+      value: Tap here to the beat!
       objectReference: {fileID: 0}
     - target: {fileID: 121393436222675776, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: m_LocalPosition.x

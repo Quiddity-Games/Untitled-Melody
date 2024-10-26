@@ -9,10 +9,14 @@ public class TutorialPulseHandler : MonoBehaviour
 
     [SerializeField] private TutorialPulse pulsePrefab;
 
+    [SerializeField] DebugPlatformObj debugPlatform;
+
     [Serializable] struct TutorialPulsePlacements
     {
         public Transform m_location;
         public string m_text;
+        public string m_textMobile;
+        
     }
 
     private TutorialPulse tutorialPulse;
@@ -53,7 +57,23 @@ public class TutorialPulseHandler : MonoBehaviour
         if(index < pulseLocations.Length)
         {
             tutorialPulse.transform.position = pulseLocations[index].m_location.position;
-            tutorialPulse.text.text = pulseLocations[index].m_text;
+
+            bool isMobile = false;
+            #if UNITY_EDITOR
+                isMobile = debugPlatform.simulateMobile;
+            #elif UNITY_STANDALONE
+                isMobile = false;
+            #elif UNITY_ANDROID || UNITY_IOS
+                isMobile = true;
+            #endif
+            if(isMobile && pulseLocations[index].m_textMobile != "")
+            {
+                tutorialPulse.text.text =  pulseLocations[index].m_textMobile;    
+            }
+            else
+            {
+                tutorialPulse.text.text =  pulseLocations[index].m_text;
+            }
             index++;
         }
         else
