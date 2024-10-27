@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.97, y: 0.16}
+  m_AnchoredPosition: {x: -1.12, y: 0.16}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1486805416063663172
@@ -172,7 +172,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 092365dd3f8b2ed4fa8d1a0e0d63963d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca522dc9a4f63694e9e747ae3e88084d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5224013006852190124}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.400003, y: -2.4, z: 0}
+  m_LocalPosition: {x: 4.400003, y: -2.4, z: 2}
   m_LocalScale: {x: 0.65, y: 0.65, z: 0.65}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -247,10 +247,10 @@ MonoBehaviour:
   display: {fileID: 4815849445409681828}
   ellipsis: {fileID: 7831808106130215334}
   ellipsesPositionList:
-  - {x: -0.12, y: -0.74, z: 0}
+  - {x: -0.12, y: 0.74, z: 0}
   - {x: -0.55, y: -1.09, z: 0}
   - {x: -0.52, y: 2.19, z: 0}
-  - {x: -0.13, y: -0.08, z: 0}
+  - {x: -0.13, y: -0.39, z: 0}
   collider: {fileID: 8486638284745595820}
   lyricDropText: Lyrics
 --- !u!61 &8486638284745595820
@@ -314,7 +314,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 2.309998, y: 0.1600008}
+  m_AnchoredPosition: {x: 2.42, y: 0.1600008}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3553616277629590057
@@ -412,7 +412,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.6699991, y: 0.1600008}
+  m_AnchoredPosition: {x: 0.65, y: 0.1600008}
   m_SizeDelta: {x: 25, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6870783809282222135
@@ -500,7 +500,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7831808106130215334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 0.74, z: -1}
+  m_LocalPosition: {x: -0.12, y: -0.39, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
