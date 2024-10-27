@@ -15,6 +15,12 @@ public class SettingsToggle : MonoBehaviour
     public void Setup(BoolSetting setting)
     {
         m_setting = setting;
+        m_toggle.isOn = m_setting.Value;
+        m_setting.OnValueChanged.AddListener(OnSettingChange);
+    }
+
+    private void OnEnable()
+    {
         m_toggle = GetComponent<Toggle>();
         m_toggle.onValueChanged.AddListener(OnUIUpdate);
         OnSettingChange(m_setting.Value);
@@ -32,11 +38,18 @@ public class SettingsToggle : MonoBehaviour
 
     public void OnSettingChange(bool value)
     {
+        if(m_toggle == null)
+        {
+            m_toggle = GetComponent<Toggle>();
+        }
         m_toggle.SetIsOnWithoutNotify(value);
     }
 
     public void OnUIUpdate(bool value)
     {
-        m_setting.Value = value;
+        if(m_setting != null)
+        {
+            m_setting.Value = value;
+        }
     }
 }

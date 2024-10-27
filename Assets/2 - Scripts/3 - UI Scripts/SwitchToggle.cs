@@ -15,7 +15,11 @@ public class SwitchToggle : MonoBehaviour {
 
    Vector2 handlePosition ;
 
-   void Awake ( ) {
+    [SerializeField] AudioSource menuSFXSource;
+    [SerializeField] AudioClip toggleOnAudioClip;
+    [SerializeField] AudioClip toggleOffAudioClip;
+
+    void Awake ( ) {
       toggle = GetComponent <Toggle> ( ) ;
 
       handlePosition = uiHandleRectTransform.anchoredPosition ;
@@ -50,6 +54,15 @@ public class SwitchToggle : MonoBehaviour {
 
       //handleImage.color = on ? handleActiveColor : handleDefaultColor ; // no anim
       handleImage.DOColor (on ? handleActiveColor : handleDefaultColor, .4f).SetUpdate(true) ;
+
+        if (on)
+        {
+            menuSFXSource.PlayOneShot(toggleOnAudioClip);
+        }
+        else
+        {
+            menuSFXSource.PlayOneShot(toggleOffAudioClip);
+        }
    }
 
    void OnDestroy ( ) {

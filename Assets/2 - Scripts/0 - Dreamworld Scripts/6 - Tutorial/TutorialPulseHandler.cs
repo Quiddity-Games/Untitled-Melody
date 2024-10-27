@@ -52,6 +52,8 @@ public class TutorialPulseHandler : MonoBehaviour
         }
     }
 
+    
+
     public void AdvanceLocation()
     {
         if(index < pulseLocations.Length)
