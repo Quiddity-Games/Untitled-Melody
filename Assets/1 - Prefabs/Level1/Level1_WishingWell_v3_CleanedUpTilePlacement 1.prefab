@@ -279831,6 +279831,10 @@ PrefabInstance:
       value: hoping someone
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: hoping someone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280739,6 +280743,10 @@ PrefabInstance:
       value: long nights I'm
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: long nights I'm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280997,6 +281005,10 @@ PrefabInstance:
       value: Just have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Just have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 0
       objectReference: {fileID: 0}
@@ -281092,6 +281104,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: would be so kind...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: would be so kind...
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -281374,6 +281390,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: will have me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: will have me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -282023,6 +282043,10 @@ PrefabInstance:
       value: I'm tired of
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I'm tired of
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -282220,6 +282244,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: my mind
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: my mind
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -282592,6 +282620,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: relations
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: relations
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -284051,6 +284083,10 @@ PrefabInstance:
       value: nobody else
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: nobody else
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -284247,6 +284283,10 @@ PrefabInstance:
       value: where she goes
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: where she goes
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -284342,6 +284382,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: Cuz I've been
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: Cuz I've been
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -284767,6 +284811,10 @@ PrefabInstance:
 '
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: then I'll
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -284949,6 +284997,10 @@ PrefabInstance:
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
       value: ' I''m still,'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I'm still,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
@@ -285144,6 +285196,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: days and the
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: days and the
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -285597,6 +285653,10 @@ PrefabInstance:
       value: Ooh,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Ooh,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -285990,6 +286050,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: Of your
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: Of your
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -287098,6 +287162,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: Stuck in
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: Stuck in
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -289695,6 +289763,10 @@ PrefabInstance:
       value: right, bring me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: right, bring me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -289855,6 +289927,10 @@ PrefabInstance:
       value: walking sometimes
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: walking sometimes
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -289953,6 +290029,10 @@ PrefabInstance:
       value: conversations
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: conversations
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -290048,6 +290128,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: Following
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: Following
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -290533,6 +290617,10 @@ PrefabInstance:
       value: But if nobody
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: But if nobody
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -290866,6 +290954,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: life, walk with
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: life, walk with
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -292065,6 +292157,10 @@ PrefabInstance:
       value: With the long
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: With the long
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -292163,6 +292259,10 @@ PrefabInstance:
       value: mystified
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: mystified
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -292258,6 +292358,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: the moonlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: the moonlight
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -293288,6 +293392,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: To tell me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: To tell me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
@@ -294985,6 +295093,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295972,6 +296084,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3105946914309835787, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_text
+      value: Don't need
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
       value: Don't need
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
