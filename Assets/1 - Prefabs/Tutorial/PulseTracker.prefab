@@ -116,11 +116,15 @@ MonoBehaviour:
   pulseLocations:
   - m_location: {fileID: 0}
     m_text: 
+    m_textMobile: 
   - m_location: {fileID: 0}
     m_text: 
+    m_textMobile: 
   - m_location: {fileID: 0}
     m_text: 
+    m_textMobile: 
   pulsePrefab: {fileID: 5892818787046318198, guid: 428e71d0d063c9741b63cf4edc55ac11, type: 3}
+  debugPlatform: {fileID: 11400000, guid: 2ea939b9c88ada84ab5a2261a8434733, type: 2}
   _tracker: {fileID: 0}
 --- !u!1 &121393436222675779
 GameObject:

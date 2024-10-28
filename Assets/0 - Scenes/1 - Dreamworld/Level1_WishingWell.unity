@@ -6325,8 +6325,8 @@ Transform:
   m_LocalScale: {x: 1.4641702, y: 1.4641701, z: 1.4641701}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6362674440640635698}
-  m_RootOrder: 26
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860749974
 GameObject:
@@ -6409,8 +6409,8 @@ Transform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6362674440640635698}
-  m_RootOrder: 16
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &970851303
 GameObject:
@@ -6945,10 +6945,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2414404713516117974, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2414404713516117974, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
@@ -7170,10 +7166,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8992993302949035851, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8992993302949035851, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
-      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8992993302949035851, guid: f7c50686c3a731e478381bd54ad71150, type: 3}
@@ -7425,12 +7417,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1369963775}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
+      propertyPath: debugPlatform
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ea939b9c88ada84ab5a2261a8434733, type: 2}
+    - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.size
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[0].m_text
-      value: Tap here to the beat!
+      value: Click here to the beat!
       objectReference: {fileID: 0}
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[1].m_text
@@ -7483,6 +7479,10 @@ PrefabInstance:
     - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: pulseLocations.Array.data[6].m_location
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 121393435148157910, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
+      propertyPath: pulseLocations.Array.data[0].m_textMobile
+      value: Tap here to the beat!
       objectReference: {fileID: 0}
     - target: {fileID: 121393436222675776, guid: 4e646ec9adf42a243ab7fee90582bcf4, type: 3}
       propertyPath: m_LocalPosition.x
