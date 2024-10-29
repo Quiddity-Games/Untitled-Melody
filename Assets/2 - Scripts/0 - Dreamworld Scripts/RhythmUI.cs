@@ -131,7 +131,11 @@ public class RhythmUI : MonoBehaviour
                 });
                 (countdownFinishedText.gameObject.transform as RectTransform).localPosition =
                     new Vector3(0, 250, 0);
-                countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click / Tap to the Beat!";
+                #if UNITY_STANDALONE || UNITY_EDITOR
+                countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click to the Beat!";
+                #elif UNITY_ANDROID || UNITY_IOS
+                countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Tap to the Beat!";
+                #endif
                 _NoteTracker.onTimeUpdate -= HandleCountdown;
                 DreamworldEventManager.OnCountdownFinish?.Invoke();
                 //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COUNTDOWN_FINISH);
