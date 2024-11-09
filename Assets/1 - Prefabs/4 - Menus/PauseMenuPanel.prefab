@@ -719,7 +719,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 344.08447, y: -515.39276}
+  m_AnchoredPosition: {x: -64.91553, y: -680.304}
   m_SizeDelta: {x: 608.725, y: 453.536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4431224494901884197
@@ -3570,6 +3570,9 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 7331368840044789909}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  menuSFXSource: {fileID: 0}
+  toggleOnAudioClip: {fileID: 0}
+  toggleOffAudioClip: {fileID: 0}
 --- !u!1 &7331368838749780004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3959,6 +3962,9 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 7331368838749780005}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 1}
+  menuSFXSource: {fileID: 0}
+  toggleOnAudioClip: {fileID: 0}
+  toggleOffAudioClip: {fileID: 0}
 --- !u!1 &7331368838853624831
 GameObject:
   m_ObjectHideFlags: 0
@@ -8705,6 +8711,9 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 7331368840249214932}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0, g: 0, b: 0, a: 1}
+  menuSFXSource: {fileID: 0}
+  toggleOnAudioClip: {fileID: 0}
+  toggleOffAudioClip: {fileID: 0}
 --- !u!1 &7331368840018141371
 GameObject:
   m_ObjectHideFlags: 0
@@ -9154,6 +9163,9 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 7331368839779845907}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0, g: 0, b: 0, a: 1}
+  menuSFXSource: {fileID: 0}
+  toggleOnAudioClip: {fileID: 0}
+  toggleOffAudioClip: {fileID: 0}
 --- !u!1 &7331368840076097943
 GameObject:
   m_ObjectHideFlags: 0
@@ -9325,7 +9337,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 344.08447, y: -1133.8401}
+  m_AnchoredPosition: {x: -64.91553, y: -1133.8401}
   m_SizeDelta: {x: 608.725, y: 453.536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7331368840086696896
@@ -10639,7 +10651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -183.91553, y: -226.768}
+  m_AnchoredPosition: {x: -64.91553, y: -226.768}
   m_SizeDelta: {x: 608.725, y: 453.536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7331368840382534187
@@ -11112,3 +11124,6 @@ MonoBehaviour:
   uiHandleRectTransform: {fileID: 7331368839338776190}
   backgroundActiveColor: {r: 0.5283019, g: 0.5253115, b: 0.5253115, a: 1}
   handleActiveColor: {r: 0, g: 0, b: 0, a: 1}
+  menuSFXSource: {fileID: 0}
+  toggleOnAudioClip: {fileID: 0}
+  toggleOffAudioClip: {fileID: 0}
