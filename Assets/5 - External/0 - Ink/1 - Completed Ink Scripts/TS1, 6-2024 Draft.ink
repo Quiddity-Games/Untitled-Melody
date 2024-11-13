@@ -21,7 +21,7 @@ the one where we uploaded our song “Memories”! #Speaker: Emerald
 * I worked SO hard on that #Speaker: Amika
 I was up every night animating the video. I barely slept that month [emoji:joy] #Speaker: Amika
 it shows! #Speaker: Emerald
-that I worked super-hard, or that I barely slept? [emoji:fearful] #Speaker: Amika
+that I worked super-hard, or that I barely slept? [emoji:sweat] #Speaker: Amika
 the first one lmao!! #Speaker: Emerald
 
 * it was *your* great song! #Speaker: Amika
@@ -29,7 +29,7 @@ I wish I could say I had your epic composition skills [emoji:smile] #Speaker: Am
 hey you were up every night after school animating the lyric video for a MONTH. that means it’s your song too! #Speaker: Emerald
 
 
-- you were a great artist even back in high school. no wonder you got that awesome job in Burbank right out of college [emoji:heart] #Speaker: Emerald
+- you were a great artist even back in high school. no wonder you got that awesome job in Burbank right out of college [emoji:sunglasses] #Speaker: Emerald
 
 * aww man thanks!! #Speaker: Amika
 you totally deserve it! #Speaker: Emerald
@@ -40,12 +40,12 @@ I knew you would!! #Speaker: Emerald
 
 * sometimes you get lucky! #Speaker: Amika
 stop, don’t sell yourself short! #Speaker: Emerald
-seriously, don’t make me come all the way over there [emoji:mad] #Speaker: Emerald
+seriously, don’t make me come all the way over there [emoji:anguish] #Speaker: Emerald
 ok ok, I’m super great and I deserve this extremely cool job, please don’t hurt me haha #Speaker: Amika
 that’s better [emoji:joy] #Speaker: Emerald
 
 - it’s really nice of you to text. I had no idea you were still thinking about all those old lyric videos we made #Speaker: Emerald
-Memi was adorable. I couldn’t have asked you to draw me a better mascot [emoji:heart] #Speaker: Emerald
+Memi was adorable. I couldn’t have asked you to draw me a better mascot [emoji:hearteyes] #Speaker: Emerald
 tbh I actually haven’t made a new Vocaloid song in forever lol #Speaker: Emerald
 how come? you always loved playing around with Miku, GUMI, and all their voicebanks #Speaker: Amika
 I guess I haven’t really used voice synthesizers for anything since I started music school #Speaker: Emerald
@@ -82,7 +82,7 @@ and how’s California so far? don't tell me you say "stoked" and "beggle" now :
 *   it's great! and I don't lol #Speaker: Amika
         so great you’ll never come back haha #Speaker: Emerald
         sorry, I wanted to make it over the summer! #Speaker: Amika
-	everyone’s putting in extra time to push out the new season of Blue Star: Alcyone. I couldn’t get free [emoji:fearful] #Speaker: Amika
+	everyone’s putting in extra time to push out the new season of Blue Star: Alcyone. I couldn’t get free [emoji:anguish] #Speaker: Amika
         I’m just giving you a hard time! maybe we can meet up over Thanksgiving? #Speaker: Emerald
         my folks are going to visit me out here actually… they want to escape the Illinois cold for a bit #Speaker: Amika
         oh that sounds fun. but I’m coming after you for that raincheck! #Speaker: Emerald
@@ -196,7 +196,7 @@ yeah but I really do have to go now, you should look up the song! #Speaker: Emer
 
 *   if I’m not too tired  #Speaker: Amika
         ~ setVariable("player_said_they_were_tired", true)
-        it’s been a pretty busy day [emoji:fearful] #Speaker: Amika
+        it’s been a pretty busy day [emoji:anguish] #Speaker: Amika
 	no worries, I understand! #Speaker: Emerald
 
 
@@ -206,7 +206,7 @@ definitely! I should probably get some sleep #Speaker: Amika
 maybe I’ll listen to nostraightanswer’s song while I crawl into bed #Speaker: Amika
 a soothing Vocaloid lullaby [emoji:smile] #Speaker: Emerald
 I guess so, lol! #Speaker: Amika
-sweet dreams, and let me know if you find any more sketches of Memi! [emoji:heart] #Speaker: Emerald
+sweet dreams, and let me know if you find any more sketches of Memi! [emoji:hearteyes] #Speaker: Emerald
 
 
 #end

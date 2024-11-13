@@ -116,9 +116,9 @@ I would tell them if we can endure the hard moments we can come out even better 
         aw how come? #Speaker: Emerald
         
         **  I'm anxious about work #Speaker: Amika
-                I've got a performance review coming up [emoji:grimace] #Speaker: Amika
+                I've got a performance review coming up [emoji:anguish] #Speaker: Amika
                 no, don’t be anxious!! #Speaker: Emerald
-                you’re amazing, I know you’ll do great [emoji:heart] #Speaker: Emerald
+                you’re amazing, I know you’ll do great [emoji:hearteyes] #Speaker: Emerald
                 just think about that big fat raise you’ll have in your pocket when you’re done ;) #Speaker: Emerald
                 aw, thanks!! here’s hoping lol #Speaker: Amika
                 
