@@ -19,7 +19,7 @@ he’s still the mascot of my Vocaloid acct on YouTube #Speaker: Emerald
 the one where we uploaded our song “Memories”! #Speaker: Emerald
 
 * I worked SO hard on that #Speaker: Amika
-I was up every night animating the video. I barely slept that month [emoji:joy] #Speaker: Amika
+I was up every night animating the video. I barely slept that month #Speaker: Amika
 it shows! #Speaker: Emerald
 that I worked super-hard, or that I barely slept? [emoji:sweat] #Speaker: Amika
 the first one lmao!! #Speaker: Emerald
@@ -40,9 +40,9 @@ I knew you would!! #Speaker: Emerald
 
 * sometimes you get lucky! #Speaker: Amika
 stop, don’t sell yourself short! #Speaker: Emerald
-seriously, don’t make me come all the way over there [emoji:anguish] #Speaker: Emerald
+seriously, don’t make me come all the way over there *shakes fist* #Speaker: Emerald
 ok ok, I’m super great and I deserve this extremely cool job, please don’t hurt me haha #Speaker: Amika
-that’s better [emoji:joy] #Speaker: Emerald
+that’s better [emoji:rofl] #Speaker: Emerald
 
 - it’s really nice of you to text. I had no idea you were still thinking about all those old lyric videos we made #Speaker: Emerald
 Memi was adorable. I couldn’t have asked you to draw me a better mascot [emoji:hearteyes] #Speaker: Emerald

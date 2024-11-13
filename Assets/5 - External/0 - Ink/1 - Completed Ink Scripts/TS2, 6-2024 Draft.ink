@@ -42,7 +42,7 @@ yeah! listening to it while falling asleep was REALLY trippy #Speaker: Amika
         ~ setVariable("player_said_song_gets_them", true)
 
         it was honestly super-cool. I feel like it’s really my style of music #Speaker: Amika
-        it was like, this song gets me, lol [emoji:joy] #Speaker: Amika
+        it was like, this song gets me, lol [emoji:sweat] #Speaker: Amika
         yeah, me too!!! I love nostraightanswer’s music #Speaker: Emerald
         
 *   it was OK #Speaker: Amika
@@ -112,7 +112,7 @@ I would tell them if we can endure the hard moments we can come out even better 
 *   “following the moonlight where she goes” #Speaker: Amika
         ha! figures you’d pick the line about the moon XD #Speaker: Emerald
         omg called out #Speaker: Amika
-        I’m literally wearing my moon hoodie right now [emoji:joy] needed to feel some comfort #Speaker: Amika
+        I’m literally wearing my moon hoodie right now [emoji:rofl] needed to feel some comfort #Speaker: Amika
         aw how come? #Speaker: Emerald
         
         **  I'm anxious about work #Speaker: Amika
