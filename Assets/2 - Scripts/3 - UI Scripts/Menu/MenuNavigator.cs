@@ -28,12 +28,14 @@ public class MenuNavigator : MonoBehaviour
     }
 
     public void Reset()
-    {
+    {   
         if(this._currSubMenu != (UnityEngine.Object)null)
         {
             this._currSubMenu.gameObject.SetActive(false);
         }
-    
+
+        Time.timeScale = 1; //Undoes the 0 timeScale that gets triggered when the player opens the pause menu in the first place
+
         this._currSubMenu = null;
         onExitMenu = null;
 
