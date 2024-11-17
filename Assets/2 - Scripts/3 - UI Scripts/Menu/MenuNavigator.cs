@@ -34,7 +34,9 @@ public class MenuNavigator : MonoBehaviour
             this._currSubMenu.gameObject.SetActive(false);
         }
 
-        Time.timeScale = 1; //Undoes the 0 timeScale that gets triggered when the player opens the pause menu in the first place
+        //Undoes the 0 timeScale and IsPaused bool that gets triggered when the player opens the pause menu in the first place
+        Time.timeScale = 1;
+        PauseManager.Instance.IsPaused = false;
 
         this._currSubMenu = null;
         onExitMenu = null;
