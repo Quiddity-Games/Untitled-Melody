@@ -53,6 +53,15 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Direction"",
+                    ""type"": ""Value"",
+                    ""id"": ""454adb26-e991-4beb-bb36-6b5896996022"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,50 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11a95480-3831-436e-859f-8d3b0fd83e89"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53f97161-67b8-41f6-955e-2a1a3d9dddb1"",
+                    ""path"": ""<Touchscreen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""051910bc-d375-4ab1-9e23-a98f11b96b09"",
+                    ""path"": ""<Pen>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fdbbfa7-f88d-4ea5-9e83-4775ba97e574"",
+                    ""path"": ""<Pointer>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Direction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -741,6 +794,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         m_Dreamworld_Dash = m_Dreamworld.FindAction("Dash", throwIfNotFound: true);
         m_Dreamworld_Reload = m_Dreamworld.FindAction("Reload", throwIfNotFound: true);
         m_Dreamworld_Pause = m_Dreamworld.FindAction("Pause", throwIfNotFound: true);
+        m_Dreamworld_Direction = m_Dreamworld.FindAction("Direction", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -822,6 +876,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
     private readonly InputAction m_Dreamworld_Dash;
     private readonly InputAction m_Dreamworld_Reload;
     private readonly InputAction m_Dreamworld_Pause;
+    private readonly InputAction m_Dreamworld_Direction;
     public struct DreamworldActions
     {
         private @PlayerControl m_Wrapper;
@@ -829,6 +884,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Dreamworld_Dash;
         public InputAction @Reload => m_Wrapper.m_Dreamworld_Reload;
         public InputAction @Pause => m_Wrapper.m_Dreamworld_Pause;
+        public InputAction @Direction => m_Wrapper.m_Dreamworld_Direction;
         public InputActionMap Get() { return m_Wrapper.m_Dreamworld; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -847,6 +903,9 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnPause;
+                @Direction.started -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnDirection;
+                @Direction.performed -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnDirection;
+                @Direction.canceled -= m_Wrapper.m_DreamworldActionsCallbackInterface.OnDirection;
             }
             m_Wrapper.m_DreamworldActionsCallbackInterface = instance;
             if (instance != null)
@@ -860,6 +919,9 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Direction.started += instance.OnDirection;
+                @Direction.performed += instance.OnDirection;
+                @Direction.canceled += instance.OnDirection;
             }
         }
     }
@@ -1057,6 +1119,7 @@ public partial class @PlayerControl : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnDirection(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

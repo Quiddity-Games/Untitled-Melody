@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -110,6 +111,11 @@ public class InputManager : MonoBehaviour
             DisableInput();
         else
             EnableInput();
+    }
+
+    public UnityEngine.Vector2 GetDirection()
+    {
+        return control.Dreamworld.Direction.ReadValue<UnityEngine.Vector2>();
     }
 
 }
