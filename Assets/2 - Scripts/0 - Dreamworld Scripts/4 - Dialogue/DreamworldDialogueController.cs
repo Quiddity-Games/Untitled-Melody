@@ -65,7 +65,7 @@ public class DreamworldDialogueController : DialogueController
         if (PlayDialogueOnStart.Value)
         {
             InputManager.Instance.ToggleDashAction(false);
-            InputManager.Instance.SwitchToUI();
+            InputManager.Instance.DisableInput();
             CurrentLineIndex = -1;
             MostRecentLineIndex = -1;
 
@@ -97,7 +97,6 @@ public class DreamworldDialogueController : DialogueController
     private void StartDialogue()
     {
         //DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
-        DreamworldEventManager.OnDialogueContinue -= StartDialogue;
 
         if (PlayDialogueOnStart.Value)
         {

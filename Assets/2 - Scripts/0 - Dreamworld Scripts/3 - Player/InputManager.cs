@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -8,14 +9,16 @@ using UnityEngine.SceneManagement;
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
-    private PlayerInput _playerInput;
+    private PlayerControl control;
 
     InputActionMap m_pausedActionMap;
 
     private void Awake()
     {
         Instance = this;
-        _playerInput = GetComponent<PlayerInput>();
+        control = new PlayerControl();
+        control.Dreamworld.Dash.performed += OnDash;
+        control.Dreamworld.Reload.performed += OnReload;
     }
 
     private void OnEnable()
@@ -42,53 +45,35 @@ public class InputManager : MonoBehaviour
 
     public void ToggleDashAction(bool on)
     {
-        if (_playerInput.currentActionMap.name != "Dreamworld")
-            _playerInput.SwitchCurrentActionMap("Dreamworld");
+        control.Dreamworld.Enable();
 
         if (on)
-            _playerInput.currentActionMap.FindAction("Dash").Enable();
+            control.Dreamworld.Dash.Enable();
         else
-            _playerInput.currentActionMap.FindAction("Dash").Disable();
+            control.Dreamworld.Dash.Disable();
     }
 
     private void Start()
     {
         EnableInput();
 
-        if (SceneManager.GetActiveScene().buildIndex < 1 && _playerInput.currentActionMap.name == "Dreamworld")
-            DisableInput();
+        if (SceneManager.GetActiveScene().buildIndex < 1)
+            control.Dreamworld.Disable();
+
     }
 
     public void EnableInput()
     {
-        _playerInput.currentActionMap.Enable();
+        control.Dreamworld.Enable();
     }
 
-    public void ReenableInput()
-    {
-        _playerInput.SwitchCurrentActionMap(m_pausedActionMap.name);
-    }
+  
 
     public void DisableInput()
     {
-        m_pausedActionMap = _playerInput.currentActionMap;
-        SwitchToUniversal();
+        control.Dreamworld.Disable();
     }
 
-    public void SwitchToGameplay()
-    {
-        _playerInput.SwitchCurrentActionMap("Dreamworld");
-    }
-
-    public void SwitchToUniversal()
-    {
-        _playerInput.SwitchCurrentActionMap("Universal");
-    }
-
-    public void SwitchToUI()
-    {
-        _playerInput.SwitchCurrentActionMap("Texting");
-        }
 
     public void OnDash(InputAction.CallbackContext obj)
     {
@@ -120,18 +105,17 @@ public class InputManager : MonoBehaviour
         PauseManager.OnPaused?.Invoke(!PauseManager.Instance.IsPaused);
     }
 
-    public void OnContinue(InputAction.CallbackContext obj)
-    {
-        if (DreamworldEventManager.Instance)
-            DreamworldEventManager.OnDialogueContinue?.Invoke();
-    }
-
     private void ToggleInputOnPause(bool paused)
     {
         if (paused)
             DisableInput();
         else
-            ReenableInput();
+            EnableInput();
+    }
+
+    public UnityEngine.Vector2 GetDirection()
+    {
+        return control.Dreamworld.Direction.ReadValue<UnityEngine.Vector2>();
     }
 
 }
