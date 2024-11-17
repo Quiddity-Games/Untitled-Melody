@@ -34,7 +34,7 @@ public class ContrastLayer : MonoBehaviour
 
     public void ToggleContrast(bool enabled)
     {   
-        layerRenderer.gameObject.SetActive(enabled);
+        layerRenderer.enabled = enabled;
     }
 
     public void UpdateContrast(float newOpacity)
