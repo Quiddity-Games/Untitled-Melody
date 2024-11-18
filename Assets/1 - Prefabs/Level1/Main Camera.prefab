@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8788719fa29b74ca753cf39780461a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 2, z: -1}
+  _offset: {x: 0, y: 2, z: -4}
 --- !u!114 &8627593686680969488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,3 +189,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canvasType: 0
   CanvasInformation: {fileID: 0}
+  previewAspectRatio: 0
+  aspectRatio: {x: 0, y: 0}

@@ -12,6 +12,8 @@ public class Collectable : MonoBehaviour, ICollectable
 {
     private Vector3 startingLocation;
     [SerializeField] private GameObject display;
+    [SerializeField] private GameObject ellipsis;
+    [SerializeField] private Vector3[] ellipsesPositionList;
     [SerializeField] private Collider2D collider;
     private SpriteRenderer displayRenderer;
 
@@ -19,6 +21,7 @@ public class Collectable : MonoBehaviour, ICollectable
 
     [SerializeField] private String lyricDropText;
     private Vector3 collectablePos;
+
 
     private void Start()
     {
@@ -34,6 +37,7 @@ public class Collectable : MonoBehaviour, ICollectable
         Sprite[] spritesList = CollectionScoreController.Instance.CollectableSprites;
         int randomIndex = UnityEngine.Random.Range(0, spritesList.Length);
         displayRenderer.sprite = spritesList[randomIndex];
+        ellipsis.GetComponent<Transform>().localPosition = ellipsesPositionList[randomIndex];
     }
 
     public void Collect()
