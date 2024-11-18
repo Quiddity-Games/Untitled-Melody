@@ -183,12 +183,8 @@ public class DreamworldDialogueController : DialogueController
             ToggleAutoplay(false);
         }
 
-        while (CurrentLineIndex < LastLineIndex)
-        {
-            PlayDialogue(true);
-            yield return new WaitForSeconds(0.1f);
-            yield return null;
-        }
+        CurrentLineIndex = LastLineIndex -1;
+        PlayDialogue(true);
 
         DreamworldDialogueCanvas.Instance.SetButtonsInteractable(CanPrintDialogue);
         yield break;
