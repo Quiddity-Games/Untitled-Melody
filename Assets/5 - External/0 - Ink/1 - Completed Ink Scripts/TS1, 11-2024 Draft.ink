@@ -47,7 +47,7 @@ that’s better [emoji:rofl] #Speaker: Emerald
 - it’s really nice of you to text. I had no idea you were still thinking about all those old lyric videos we made #Speaker: Emerald
 Memi was adorable. I couldn’t have asked you to draw me a better mascot [emoji:hearteyes] #Speaker: Emerald
 tbh I actually haven’t made a new Vocaloid song in forever lol #Speaker: Emerald
-how come? you always loved playing around with Miku, GUMI, and all their voicebanks #Speaker: Amika
+how come? you always loved playing around with Miku, GUMI, and the others #Speaker: Amika
 I guess I haven’t really used voice synthesizers for anything since I started music school #Speaker: Emerald
 
 
