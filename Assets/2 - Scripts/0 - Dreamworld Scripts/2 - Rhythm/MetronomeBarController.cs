@@ -20,7 +20,7 @@ public class MetronomeBarController : MonoBehaviour
     public AnimationCurve linearCurve;  //Used for lerp calculations
 
     private bool spawnNewMetronomeBars;   //Determines when the rhythm indicator should spawn a new set of (initially unmoving) metronome bars
-    private bool startMovingMetronomeBars;    //Determines when those metronome bars should start moving towards e/
+    private bool startMovingMetronomeBars;    //Determines when those metronome bars should start moving towards e/o
 
     private float rhythmIndicatorTimer; //Timer specifically dedicated to the rhythm indicator, aka the "metronome bars" above the player's head
 
@@ -37,8 +37,8 @@ public class MetronomeBarController : MonoBehaviour
     private Coroutine Right;
 
     private Coroutine spawner;
+
     // Start is called before the first frame update
- 
     void Start()
     {
         _NoteTracker.Load();
@@ -121,7 +121,7 @@ public class MetronomeBarController : MonoBehaviour
     /// <returns></returns>
     IEnumerator MoveRhythmIndicatorBarVisual(GameObject bar)
      {
-        Vector3 startPos = bar.GetComponent<Transform>().localPosition;
+        Vector3 startPos = bar.GetComponent<RectTransform>().anchoredPosition;
         Vector3 endPos = new Vector3(0, startPos.y, 0);
 
         bool instaDestroyBar = true;   //Used to determine whether/not a bar should be instantly destroyed (if the bar completed its movement without the player clicking/tapping in time), or freeze and fade away in place (if the player clicked/tapped before the bar disappeared)
@@ -132,7 +132,7 @@ public class MetronomeBarController : MonoBehaviour
         {
             bar.GetComponent<RectTransform>().anchoredPosition = Vector3.LerpUnclamped(startPos, endPos, linearCurve.Evaluate(t));
             
-            t = 1-((_NoteTracker.GetNextBeatTime() - _NoteTracker.timeTracker)) / (twoBeatsLength);
+            t = 1-((_NoteTracker.GetNextBeatTime() - _NoteTracker.timeTracker)) / (twoBeatsLength/2);
 
             //Changes bar color _before_ player clicks -- to give away if it will be a hit/not -- but only if debug mode is on
             if(metronomeBarDebugMode == true)
@@ -167,12 +167,12 @@ public class MetronomeBarController : MonoBehaviour
         yield return 0;
     }
 
-
      void HandleBars()
      {
 
          spawner = StartCoroutine(SpawnNewMetronomeBars());
      }
+
      private IEnumerator SpawnNewMetronomeBars()
      {
          yield return new WaitForSeconds(twoBeatsLength/2);

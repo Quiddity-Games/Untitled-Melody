@@ -279729,6 +279729,10 @@ PrefabInstance:
       value: my mind
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: my mind
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -279758,7 +279762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -279864,7 +279868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280011,6 +280015,10 @@ PrefabInstance:
       value: compromise,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: compromise,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280040,7 +280048,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280109,6 +280117,10 @@ PrefabInstance:
       value: waiting for you... ooh...
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: waiting for you... ooh...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280138,7 +280150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280207,6 +280219,10 @@ PrefabInstance:
       value: nobody else
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: nobody else
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280236,7 +280252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280305,6 +280321,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280334,7 +280354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280403,6 +280423,10 @@ PrefabInstance:
       value: Then what am
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Then what am
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280432,7 +280456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280583,6 +280607,10 @@ PrefabInstance:
       value: nobody else
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: nobody else
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280612,7 +280640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280776,7 +280804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -280907,6 +280935,10 @@ PrefabInstance:
       value: me through hell
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: me through hell
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -280936,7 +280968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281038,7 +281070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281140,7 +281172,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281295,6 +281327,10 @@ PrefabInstance:
       value: long time
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -281324,7 +281360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281426,7 +281462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281495,6 +281531,10 @@ PrefabInstance:
       value: Yeah I can love
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Yeah I can love
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -281524,7 +281564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281753,6 +281793,10 @@ PrefabInstance:
       value: Don't have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -281782,7 +281826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281847,6 +281891,10 @@ PrefabInstance:
       value: compromise with
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: compromise with
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -281876,7 +281924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -281945,6 +281993,10 @@ PrefabInstance:
       value: Don't need
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't need
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -281974,7 +282026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282076,7 +282128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282145,6 +282197,10 @@ PrefabInstance:
       value: Don't need
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't need
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -282174,7 +282230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282280,7 +282336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282349,6 +282405,10 @@ PrefabInstance:
       value: Just have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Just have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -282378,7 +282438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282525,6 +282585,10 @@ PrefabInstance:
       value: making
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: compromise
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -282554,7 +282618,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282656,7 +282720,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282725,6 +282789,10 @@ PrefabInstance:
       value: I'm wishing,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I'm wishing,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -282754,7 +282822,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282823,6 +282891,10 @@ PrefabInstance:
       value: Just have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Just have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -282852,7 +282924,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -282987,6 +283059,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: been
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -283016,7 +283092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -283085,6 +283161,10 @@ PrefabInstance:
       value: 'been '
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: waiting
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -283114,7 +283194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -283183,6 +283263,10 @@ PrefabInstance:
       value: so I'll
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: so I'll
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -283212,7 +283296,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -283347,6 +283431,10 @@ PrefabInstance:
       value: play pretend
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: play pretend
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -283376,7 +283464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -283445,6 +283533,10 @@ PrefabInstance:
       value: Just have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Just have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -283474,7 +283566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -283621,6 +283713,10 @@ PrefabInstance:
       value: oh,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: oh,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -283650,7 +283746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -283719,6 +283815,10 @@ PrefabInstance:
       value: for
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: for
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -283748,7 +283848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -283899,6 +283999,10 @@ PrefabInstance:
       value: To tell me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: To tell me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -283928,7 +284032,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -284116,7 +284220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -284185,6 +284289,10 @@ PrefabInstance:
       value: To tell me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: To tell me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -284214,7 +284322,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -284316,7 +284424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -284418,7 +284526,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -284705,6 +284813,10 @@ PrefabInstance:
       value: Cuz I
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Cuz I
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -284734,7 +284846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -284844,7 +284956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285032,7 +285144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285101,6 +285213,10 @@ PrefabInstance:
       value: Spend my time
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Spend my time
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -285130,7 +285246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285232,7 +285348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285301,6 +285417,10 @@ PrefabInstance:
       value: If what I'm
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: If what I'm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -285330,7 +285450,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285555,6 +285675,10 @@ PrefabInstance:
       value: Don't have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -285584,7 +285708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285686,7 +285810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285755,6 +285879,10 @@ PrefabInstance:
       value: faking is
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: wishing well
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -285784,7 +285912,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285853,6 +285981,10 @@ PrefabInstance:
       value: To tell
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: To tell
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -285882,7 +286014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -285951,6 +286083,10 @@ PrefabInstance:
       value: I'll take my
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I'll take my
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -285980,7 +286116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286086,7 +286222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286233,6 +286369,10 @@ PrefabInstance:
       value: right, bring me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: right, bring me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -286262,7 +286402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286331,6 +286471,10 @@ PrefabInstance:
       value: lies,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: lies,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -286360,7 +286504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286429,6 +286573,10 @@ PrefabInstance:
       value: But nobody
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: But nobody
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -286458,7 +286606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286527,6 +286675,10 @@ PrefabInstance:
       value: time, toss a
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: time, toss a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -286556,7 +286708,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286629,6 +286781,10 @@ PrefabInstance:
       value: Don't need
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't need
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -286658,7 +286814,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286727,6 +286883,10 @@ PrefabInstance:
       value: i'm tired of
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I'm tired of
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -286756,7 +286916,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -286907,6 +287067,10 @@ PrefabInstance:
       value: a wishing well
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: a wishing well
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -286936,7 +287100,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -287005,6 +287169,10 @@ PrefabInstance:
       value: wishing well
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: wishing well
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -287034,7 +287202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -287198,7 +287366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -287345,6 +287513,10 @@ PrefabInstance:
       value: the lies,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: the lies,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -287374,7 +287546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -287443,6 +287615,10 @@ PrefabInstance:
       value: all the faces
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: all the faces
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -287472,7 +287648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -287603,6 +287779,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -287632,7 +287812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -287701,6 +287881,10 @@ PrefabInstance:
       value: life, walk with
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: life, walk with
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -287730,7 +287914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -287861,6 +288045,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -287890,7 +288078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288107,6 +288295,10 @@ PrefabInstance:
       value: bitter blue
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: bitter blue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288136,7 +288328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288205,6 +288397,10 @@ PrefabInstance:
       value: me lies,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: me lies,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288234,7 +288430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288303,6 +288499,10 @@ PrefabInstance:
       value: nobody else
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: nobody else
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288332,7 +288532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288401,6 +288601,10 @@ PrefabInstance:
       value: a wishing well
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: a wishing well
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288430,7 +288634,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288499,6 +288703,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288528,7 +288736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288597,6 +288805,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288626,7 +288838,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288695,6 +288907,10 @@ PrefabInstance:
       value: Don't need
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't need
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288724,7 +288940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288793,6 +289009,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288822,7 +289042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -288891,6 +289111,10 @@ PrefabInstance:
       value: right, bring me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: right, bring me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -288920,7 +289144,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -289079,6 +289303,10 @@ PrefabInstance:
       value: compromise with
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: compromise with
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -289108,7 +289336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -289371,6 +289599,10 @@ PrefabInstance:
       value: nobody else
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: nobody else
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -289400,7 +289632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -289469,6 +289701,10 @@ PrefabInstance:
       value: To tell
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: To tell
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -289498,7 +289734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -289567,6 +289803,10 @@ PrefabInstance:
       value: nobody else
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: nobody else
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -289596,7 +289836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -289665,6 +289905,10 @@ PrefabInstance:
       value: life, walk with
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: life, walk with
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -289694,7 +289938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -289796,7 +290040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -289960,7 +290204,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290062,7 +290306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290164,7 +290408,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290233,6 +290477,10 @@ PrefabInstance:
       value: Ooh,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Ooh,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -290262,7 +290510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290331,6 +290579,10 @@ PrefabInstance:
       value: but I'll
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: but I'll
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -290360,7 +290612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290515,6 +290767,10 @@ PrefabInstance:
 '
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: nobody else
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -290544,7 +290800,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290650,7 +290906,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290719,6 +290975,10 @@ PrefabInstance:
       value: I'll tell
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I'll tell
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -290748,7 +291008,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -290990,7 +291250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -291199,6 +291459,10 @@ PrefabInstance:
       value: Stuck in
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Cuz I've
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -291228,7 +291492,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -291297,6 +291561,10 @@ PrefabInstance:
       value: Don't compromise,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't compromise,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -291326,7 +291594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -291457,6 +291725,10 @@ PrefabInstance:
       value: with a
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: what I'm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -291486,7 +291758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -291555,6 +291827,10 @@ PrefabInstance:
       value: me through hell
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: me through hell
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -291584,7 +291860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -291653,6 +291929,10 @@ PrefabInstance:
       value: a page for
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: a page for
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -291682,7 +291962,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -291751,6 +292031,10 @@ PrefabInstance:
       value: myself, but I'm
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: myself, but I'm
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -291780,7 +292064,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -291981,6 +292265,10 @@ PrefabInstance:
       value: wishing well
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: faking is
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -292010,7 +292298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -292190,7 +292478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -292292,7 +292580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -292394,7 +292682,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -292463,6 +292751,10 @@ PrefabInstance:
       value: To tell me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: To tell me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -292492,7 +292784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -292561,6 +292853,10 @@ PrefabInstance:
       value: me lies,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: me lies,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -292590,7 +292886,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -292659,6 +292955,10 @@ PrefabInstance:
       value: Just have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Just have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -292688,7 +292988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -292757,6 +293057,10 @@ PrefabInstance:
       value: but I
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: but I
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -292786,7 +293090,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -292933,6 +293237,10 @@ PrefabInstance:
       value: Just have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Just have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -292962,7 +293270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293101,6 +293409,10 @@ PrefabInstance:
       value: within a dream
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: within a dream
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -293130,7 +293442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293199,6 +293511,10 @@ PrefabInstance:
       value: Hey, ooh...
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: "Hey, ooh\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -293228,7 +293544,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293297,6 +293613,10 @@ PrefabInstance:
       value: And all the
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: And all the
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -293326,7 +293646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293428,7 +293748,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293575,6 +293895,10 @@ PrefabInstance:
       value: will have me
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: will have me
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -293604,7 +293928,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293755,6 +294079,10 @@ PrefabInstance:
       value: me through hell
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: me through hell
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -293784,7 +294112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -293853,6 +294181,10 @@ PrefabInstance:
       value: Don't need
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't need
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -293882,7 +294214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -294169,6 +294501,10 @@ PrefabInstance:
       value: I waiting for?
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I waiting for?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -294198,7 +294534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -294267,6 +294603,10 @@ PrefabInstance:
       value: I'll write
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I'll write
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -294296,7 +294636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -294517,6 +294857,10 @@ PrefabInstance:
       value: dime in the
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: dime in the
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -294546,7 +294890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -294615,6 +294959,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -294644,7 +294992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -294713,6 +295061,10 @@ PrefabInstance:
       value: Just have to
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Just have to
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -294742,7 +295094,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -294897,6 +295249,10 @@ PrefabInstance:
       value: traces of
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: traces of
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -294926,7 +295282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -294995,6 +295351,10 @@ PrefabInstance:
       value: what I'm
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: with a
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295024,7 +295384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -295126,7 +295486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -295195,6 +295555,10 @@ PrefabInstance:
       value: Don't need
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Don't need
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295224,7 +295588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -295293,6 +295657,10 @@ PrefabInstance:
       value: love myself
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: love myself
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295322,7 +295690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -295391,6 +295759,10 @@ PrefabInstance:
       value: every scene
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: every scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295420,7 +295792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -295469,6 +295841,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 7250688728825539787}
     m_Modifications:
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: making
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295498,7 +295874,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -295567,6 +295943,10 @@ PrefabInstance:
       value: Cuz I've
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: Stuck in
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295596,7 +295976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -295665,6 +296045,10 @@ PrefabInstance:
       value: a
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: long time
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295694,7 +296078,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -295763,6 +296147,10 @@ PrefabInstance:
       value: I might cry,
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
+      propertyPath: lyricDropText
+      value: I might cry,
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224013006852190118, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: isTutorialCollectable
       value: 1
       objectReference: {fileID: 0}
@@ -295792,7 +296180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w
@@ -296120,7 +296508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5224013006852190119, guid: 266b9d19f21da524abdf4ffeab52f7ec, type: 3}
       propertyPath: m_LocalRotation.w

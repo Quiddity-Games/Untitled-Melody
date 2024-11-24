@@ -6,15 +6,24 @@ using UnityEngine.UI;
 public class VisualSettingsMenu : BaseSubMenu
 {
 
-    public SettingsToggle WindowedToggle;
-    public SettingsToggle ContrastToggle;
-    public SettingsSlider ContrastSlider;
+    public List<SettingsToggle> WindowedToggle;
+    public List<SettingsToggle> ContrastToggle;
+    public List<SettingsSlider> ContrastSlider;
     // Start is called before the first frame update
      public void Start()
     {
-        WindowedToggle.Setup(Settings.Windowed);
-        ContrastToggle.Setup(Settings.ContrastEnabled);
-        ContrastSlider.Setup(Settings.Contrast);
+        foreach(SettingsToggle toggle in  WindowedToggle)
+        {
+            toggle.Setup(Settings.Windowed);
+        }
+        foreach(SettingsToggle toggle in ContrastToggle)
+        {
+            toggle.Setup(Settings.ContrastEnabled);
+        }
+        foreach(SettingsSlider toggle in ContrastSlider)
+        {
+            toggle.Setup(Settings.Contrast);
+        }
     }
     
 }

@@ -82,14 +82,14 @@ MonoBehaviour:
     m_Unicode: 128522
     m_GlyphIndex: 0
     m_Scale: 1
-    m_Name: Smiling face with smiling eyes
-    m_HashCode: -1318250903
+    m_Name: blush
+    m_HashCode: 117918528
   - m_ElementType: 2
     m_Unicode: 128523
     m_GlyphIndex: 1
     m_Scale: 1
-    m_Name: 1f60b
-    m_HashCode: 57188339
+    m_Name: yum
+    m_HashCode: 134401
   - m_ElementType: 2
     m_Unicode: 128525
     m_GlyphIndex: 2
@@ -100,56 +100,56 @@ MonoBehaviour:
     m_Unicode: 128526
     m_GlyphIndex: 3
     m_Scale: 1
-    m_Name: 1f60e
-    m_HashCode: 57188340
+    m_Name: sunglasses
+    m_HashCode: 797811316
   - m_ElementType: 2
     m_Unicode: 128512
     m_GlyphIndex: 4
     m_Scale: 1
-    m_Name: Grinning face
-    m_HashCode: -95541379
+    m_Name: smile3
+    m_HashCode: 176893805
   - m_ElementType: 2
     m_Unicode: 128513
     m_GlyphIndex: 5
     m_Scale: 1
-    m_Name: smiling
-    m_HashCode: 1542514011
+    m_Name: smile
+    m_HashCode: 135510942
   - m_ElementType: 2
     m_Unicode: 128514
     m_GlyphIndex: 6
     m_Scale: 1
-    m_Name: Face with tears of joy
-    m_HashCode: 239522663
+    m_Name: joy
+    m_HashCode: 116252
   - m_ElementType: 2
     m_Unicode: 128515
     m_GlyphIndex: 7
     m_Scale: 1
-    m_Name: 1f603
-    m_HashCode: 57188258
+    m_Name: smile4
+    m_HashCode: 176893802
   - m_ElementType: 2
     m_Unicode: 128516
     m_GlyphIndex: 8
     m_Scale: 1
-    m_Name: 1f604
-    m_HashCode: 57188261
+    m_Name: smile2
+    m_HashCode: 176893804
   - m_ElementType: 2
     m_Unicode: 128517
     m_GlyphIndex: 9
     m_Scale: 1
-    m_Name: 1f605
-    m_HashCode: 57188260
+    m_Name: sweat
+    m_HashCode: 134720372
   - m_ElementType: 2
     m_Unicode: 128518
     m_GlyphIndex: 10
     m_Scale: 1
-    m_Name: 1f606
-    m_HashCode: 57188263
+    m_Name: anguish
+    m_HashCode: 683809455
   - m_ElementType: 2
     m_Unicode: 128521
     m_GlyphIndex: 11
     m_Scale: 1
-    m_Name: 1f609
-    m_HashCode: 57188264
+    m_Name: tongue
+    m_HashCode: 135560098
   - m_ElementType: 2
     m_Unicode: 0
     m_GlyphIndex: 12
@@ -160,20 +160,26 @@ MonoBehaviour:
     m_Unicode: 129315
     m_GlyphIndex: 13
     m_Scale: 1
-    m_Name: 1f923
-    m_HashCode: 57200239
+    m_Name: rofl
+    m_HashCode: 4140311
   - m_ElementType: 2
     m_Unicode: 9786
     m_GlyphIndex: 14
     m_Scale: 1
-    m_Name: 263a
-    m_HashCode: 1748406
+    m_Name: smile5
+    m_HashCode: 176893803
   - m_ElementType: 2
     m_Unicode: 9785
     m_GlyphIndex: 15
     m_Scale: 1
-    m_Name: 2639
-    m_HashCode: 1748462
+    m_Name: frown
+    m_HashCode: 122592386
+  - m_ElementType: 2
+    m_Unicode: 128512
+    m_GlyphIndex: 4
+    m_Scale: 1
+    m_Name: smile3
+    m_HashCode: 176893805
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:

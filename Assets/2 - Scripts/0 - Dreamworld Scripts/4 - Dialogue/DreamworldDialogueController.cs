@@ -65,7 +65,7 @@ public class DreamworldDialogueController : DialogueController
         if (PlayDialogueOnStart.Value)
         {
             InputManager.Instance.ToggleDashAction(false);
-            InputManager.Instance.SwitchToUI();
+            InputManager.Instance.DisableInput();
             CurrentLineIndex = -1;
             MostRecentLineIndex = -1;
 
@@ -97,7 +97,6 @@ public class DreamworldDialogueController : DialogueController
     private void StartDialogue()
     {
         //DreamworldEventManager.Instance.DeregisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartDialogue);
-        DreamworldEventManager.OnDialogueContinue -= StartDialogue;
 
         if (PlayDialogueOnStart.Value)
         {
@@ -184,12 +183,8 @@ public class DreamworldDialogueController : DialogueController
             ToggleAutoplay(false);
         }
 
-        while (CurrentLineIndex < LastLineIndex)
-        {
-            PlayDialogue(true);
-            yield return new WaitForSeconds(0.1f);
-            yield return null;
-        }
+        CurrentLineIndex = LastLineIndex -1;
+        PlayDialogue(true);
 
         DreamworldDialogueCanvas.Instance.SetButtonsInteractable(CanPrintDialogue);
         yield break;

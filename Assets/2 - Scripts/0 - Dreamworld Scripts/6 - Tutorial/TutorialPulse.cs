@@ -20,6 +20,7 @@ public class TutorialPulse : MonoBehaviour
     {
         controller._NoteTracker = tracker;
         blinkController._NoteTracker = tracker;
+        controller.enabled = true;
     }
 
     public void RegisterOnCollide(Action callback)

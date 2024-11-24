@@ -66,6 +66,7 @@ public class MetronomePulseController : MonoBehaviour
         {
             SetState(PulseState.DISABLE);
             Settings.MetronomeRings.OnValueChanged.AddListener(TogglePulse);
+            TogglePulse(Settings.MetronomeRings.Value);
         }
     }
 
@@ -77,6 +78,13 @@ public class MetronomePulseController : MonoBehaviour
         {
             Settings.MetronomeRings.OnValueChanged.RemoveListener(TogglePulse);
         }
+        _NoteTracker.onBeatTrigger -= HandlePulse;
+    }
+
+
+    void OnEnable()
+    {
+        TogglePulse(Settings.MetronomeRings.Value);
     }
 
     private void TogglePulse(bool enabled)
@@ -91,10 +99,7 @@ public class MetronomePulseController : MonoBehaviour
         }
     }
 
-    void OnDisable()
-    {
-        _NoteTracker.onBeatTrigger -= HandlePulse;
-    }
+
 
     // Start is called before the first frame update
     void HandlePulse()

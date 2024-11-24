@@ -18,7 +18,7 @@ public class ClickManager : MonoBehaviour
         {
             get
             {
-                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - _rigidbody2D.position;
+                Vector2 dashDirection = (Vector2)Camera.main.ScreenToWorldPoint(InputManager.Instance.GetDirection()) - _rigidbody2D.position;
                 dashDirection.Normalize();
                 return dashDirection;
             }
@@ -169,7 +169,7 @@ public class ClickManager : MonoBehaviour
 
         _cameraFollow.UpdateSpeed(CameraFollow.SmoothSpeedType.Dashing);
 
-        Vector2 mousePos = Mouse.current.position.ReadValue();
+        Vector2 mousePos = InputManager.Instance.GetDirection();
         Vector2 dashLocation = Camera.main.ScreenToWorldPoint(new Vector2(mousePos.x, mousePos.y));
 
         float dashDistance = Mathf.Min(_dash.MaxDashDistance, dashScale * Vector2.Distance(dashLocation, _rigidbody2D.position));

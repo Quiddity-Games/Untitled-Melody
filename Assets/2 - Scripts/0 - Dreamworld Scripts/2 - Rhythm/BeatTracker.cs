@@ -64,7 +64,7 @@ public class BeatTracker : MonoBehaviour
 
     public void SetGameReady()
     {
-        InputManager.Instance.SwitchToGameplay();
+        InputManager.Instance.EnableInput();
         DreamworldEventManager.OnDash += StartGame;
         //DreamworldEventManager.Instance.RegisterVoidEventResponse(DreamworldVoidEventEnum.INPUT_DASH, StartGame);
     }
