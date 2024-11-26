@@ -691,6 +691,7 @@ MonoBehaviour:
   dashForceMultiplier: 6
   maxDashDistanceMultiplier: 6
   _playerAnim: {fileID: 0}
+  _playerTransform: {fileID: 0}
   ps: {fileID: 0}
   CursorTransform: {fileID: 1803232124106454530}
   _NoteTracker: {fileID: 0}
@@ -1178,7 +1179,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f744ce05799379043823bdd0130c707a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1476,8 +1477,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _NoteTracker: {fileID: 0}
+  keepOn: 0
   metronomePulse: {fileID: 5953961413062375547, guid: 2aa374fab40f986478277ccde61cdc4f, type: 3}
   maxRadius: 20
+  minRadius: 0
   defaultState: 2
 --- !u!1 &8013030689996303830
 GameObject:
