@@ -422,25 +422,17 @@ PrefabInstance:
       propertyPath: menuSFXSource
       value: 
       objectReference: {fileID: 8748913078388862910}
-    - target: {fileID: 1160011688626701445, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
-      propertyPath: m_text
-      value: "Rhythm Gameplay \nBackground Filter"
-      objectReference: {fileID: 0}
-    - target: {fileID: 1160011688626701445, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
-      propertyPath: m_margin.y
-      value: 0.02127076
-      objectReference: {fileID: 0}
     - target: {fileID: 1345205292195543254, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1345205292195543254, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1771594196149313650, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1944329058015126295, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -465,16 +457,6 @@ PrefabInstance:
     - target: {fileID: 2910186945146362366, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013992256796086179, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
-      propertyPath: m_text
-      value: 'Enable Background
-
-        Contrast Filter'
-      objectReference: {fileID: 0}
-    - target: {fileID: 3013992256796086179, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 3256913144641314156, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_IsActive
@@ -858,15 +840,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395082294828, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395092811893, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395092811893, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395111673009, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1106,15 +1088,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395416044298, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395416044298, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395416044298, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -226.768
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395416044299, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_IsActive
@@ -1123,16 +1105,6 @@ PrefabInstance:
     - target: {fileID: 6395285395417648034, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6395285395427983862, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
-      propertyPath: m_text
-      value: 'Rhythm Gameplay
-
-        Background Filter'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6395285395427983862, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
-      propertyPath: m_margin.y
-      value: 0.02127076
       objectReference: {fileID: 0}
     - target: {fileID: 6395285395427983863, guid: 71ddc07aef7b6274ca393d035170baed, type: 3}
       propertyPath: m_AnchoredPosition.x
