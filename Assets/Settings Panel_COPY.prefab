@@ -1281,9 +1281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'None
-
-    (Default)'
+  m_text: Transparent
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
   m_sharedMaterial: {fileID: 1402589956106185427, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
@@ -5714,9 +5712,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'None
-
-    (Default)'
+  m_text: Transparent
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
   m_sharedMaterial: {fileID: 1402589956106185427, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
@@ -8382,7 +8378,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Enable Background
+  m_text: 'Background
 
     Contrast Filter'
   m_isRightToLeft: 0
@@ -9942,9 +9938,12 @@ MonoBehaviour:
   aboveMenu: {fileID: 0}
   firstButton: {fileID: 6395285395283103418}
   aboveButton: {fileID: 0}
-  WindowedToggle: {fileID: 1441194724055589574}
-  ContrastToggle: {fileID: 8398226256120752966}
-  ContrastSlider: {fileID: 404706868429738731}
+  WindowedToggle:
+  - {fileID: 0}
+  ContrastToggle:
+  - {fileID: 0}
+  ContrastSlider:
+  - {fileID: 0}
 --- !u!114 &7180469018093015759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10105,7 +10104,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rhythm Gameplay Background Filter
+  m_text: 'Background Contrast
+
+    Filter Color'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
   m_sharedMaterial: {fileID: 1402589956106185427, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
@@ -10168,7 +10169,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 29.835052, z: 0.18032835, w: 0}
+  m_margin: {x: 0, y: 0.02127076, z: 0.18032835, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10782,7 +10783,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Enable Background Contrast Filter
+  m_text: 'Background
+
+    Contrast Filter'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
   m_sharedMaterial: {fileID: 1402589956106185427, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
@@ -10817,7 +10820,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: -1.32
   m_wordSpacing: 0
@@ -10917,7 +10920,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rhythm Gameplay Background Filter
+  m_text: 'Background Contrast
+
+    Filter Color'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
   m_sharedMaterial: {fileID: 1402589956106185427, guid: 079758ce87332a94ebc640a18f4a0751, type: 2}
@@ -10980,7 +10985,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 29.835052, z: -0.22494513, w: 0}
+  m_margin: {x: 0, y: 0.02127076, z: -0.22494513, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
