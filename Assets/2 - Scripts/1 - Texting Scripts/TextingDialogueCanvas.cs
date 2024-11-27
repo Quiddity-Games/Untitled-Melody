@@ -81,6 +81,8 @@ public class TextingDialogueCanvas : MonoBehaviour
     public static event AudioTrigger EmeraldMessageSound;
     public static event AudioTrigger AmikaTypingSound;
     public static event AudioTrigger StopSounds;
+    
+    private Sequence EndDialogueSequence;
 
     private void Awake()
     {
@@ -181,7 +183,10 @@ public class TextingDialogueCanvas : MonoBehaviour
 
     private void EndDialogue()
     {
-        DOTween.Sequence().Insert(0.5f, fadeCanvasGroup.DOFade(1, 1)).AppendCallback(() => TextingLevelLoader.Instance._sceneManagerUtils.AdvanceLevel());
+        if(EndDialogueSequence == null)
+        {
+            EndDialogueSequence = DOTween.Sequence().Insert(0.5f, fadeCanvasGroup.DOFade(1, 1)).AppendCallback(() => TextingLevelLoader.Instance._sceneManagerUtils.AdvanceLevel());
+        }
     }
 
     /// <summary>
