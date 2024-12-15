@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 /// <summary>
 /// The script responsible for handling pause logic.
 /// </summary>
@@ -12,7 +12,7 @@ public class PauseManager : MonoBehaviour
 
     void OnApplicationFocus(bool hasFocus)
     {
-        if(!hasFocus)
+        if(!hasFocus && SceneManager.GetActiveScene().buildIndex > 1)
         {
             OnPaused?.Invoke(true);
         }
@@ -21,7 +21,7 @@ public class PauseManager : MonoBehaviour
 
     void OnApplicationPause(bool pauseStatus)
     {
-        if(pauseStatus)
+        if(pauseStatus && SceneManager.GetActiveScene().buildIndex > 1)
         {   
             OnPaused?.Invoke(pauseStatus);
         }
