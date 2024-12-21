@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        SceneManager.activeSceneChanged += (Scene a, Scene b)=>{SetButtonPosition();};
         pauseButton.onClick.AddListener(()=> {
             PauseManager.OnPaused?.Invoke(true);
         });
