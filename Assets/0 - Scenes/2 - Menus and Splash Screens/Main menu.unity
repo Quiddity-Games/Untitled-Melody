@@ -558,6 +558,8 @@ MonoBehaviour:
   m_hideOnMobile:
   - {fileID: 1434976258}
   m_hideOnDesktop: []
+  m_hideOnWebGL:
+  - {fileID: 1434976258}
   debugPlatform: {fileID: 11400000, guid: 2ea939b9c88ada84ab5a2261a8434733, type: 2}
 --- !u!1 &252997626
 GameObject:

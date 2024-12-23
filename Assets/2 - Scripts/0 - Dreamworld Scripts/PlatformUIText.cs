@@ -16,16 +16,15 @@ public class PlatformUIText : MonoBehaviour
 
     void Start()
     {
-        bool isMobile = false;
+        PlatformEnum platform;
         #if UNITY_EDITOR
-            isMobile = debugPlatform.simulateMobile;
-        #elif UNITY_STANDALONE
-            isMobile = false;
-        #elif UNITY_ANDROID || UNITY_IOS
-            isMobile = true;
+            platform = debugPlatform.simulatePlatform;
+        #else
+            platform = PlatformHelper.GetPlatform();
         #endif
 
-        if(isMobile)
+
+        if(platform == PlatformEnum.MOBILE)
         {
             m_welcomeText.text = m_mobileText;
         }

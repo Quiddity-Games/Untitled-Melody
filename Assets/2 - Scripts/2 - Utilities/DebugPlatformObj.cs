@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Debug/Platform Setup")]
 public class DebugPlatformObj : ScriptableObject
 {
-    public bool simulateMobile;
+    public PlatformEnum simulatePlatform;
 }

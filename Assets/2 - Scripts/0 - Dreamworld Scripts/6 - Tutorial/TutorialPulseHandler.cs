@@ -60,15 +60,8 @@ public class TutorialPulseHandler : MonoBehaviour
         {
             tutorialPulse.transform.position = pulseLocations[index].m_location.position;
 
-            bool isMobile = false;
-            #if UNITY_EDITOR
-                isMobile = debugPlatform.simulateMobile;
-            #elif UNITY_STANDALONE
-                isMobile = false;
-            #elif UNITY_ANDROID || UNITY_IOS
-                isMobile = true;
-            #endif
-            if(isMobile && pulseLocations[index].m_textMobile != "")
+            PlatformEnum platform = debugPlatform.simulatePlatform;
+            if(platform == PlatformEnum.MOBILE && pulseLocations[index].m_textMobile != "")
             {
                 tutorialPulse.text.text =  pulseLocations[index].m_textMobile;    
             }
