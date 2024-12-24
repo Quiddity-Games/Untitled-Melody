@@ -11,6 +11,8 @@ public class RhythmUI : MonoBehaviour
     [SerializeField]private float countdownTextTriggerTime1;
     [SerializeField]private float countdownFinishTime;
 
+    [SerializeField] DebugPlatformObj debugPlatform;
+
     //Bools noting if a particular part of the "countdown to start" has already been shown or not
     bool _countdownTextDisplayed3;
     bool _countdownTextDisplayed2;
@@ -131,11 +133,25 @@ public class RhythmUI : MonoBehaviour
                 });
                 (countdownFinishedText.gameObject.transform as RectTransform).localPosition =
                     new Vector3(0, 250, 0);
-                #if UNITY_STANDALONE || UNITY_EDITOR
-                countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click to the Beat!";
-                #elif UNITY_ANDROID || UNITY_IOS
-                countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Tap to the Beat!";
+
+
+                PlatformEnum platform;
+                #if UNITY_EDITOR
+                    platform = debugPlatform.simulatePlatform;
+                #else
+                    platform = PlatformHelper.GetPlatform();
                 #endif
+
+
+                if(platform == PlatformEnum.MOBILE)
+                {
+                    countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Tap to the Beat!";
+                }
+                else
+                {
+                    countdownFinishedText.gameObject.GetComponent<TMP_Text>().text = "Click to the Beat!";
+                }
+
                 _NoteTracker.onTimeUpdate -= HandleCountdown;
                 DreamworldEventManager.OnCountdownFinish?.Invoke();
                 //DreamworldEventManager.Instance.CallVoidEvent(DreamworldVoidEventEnum.COUNTDOWN_FINISH);

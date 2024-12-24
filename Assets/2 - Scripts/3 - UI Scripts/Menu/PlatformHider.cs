@@ -7,34 +7,49 @@ public class PlatformHider : MonoBehaviour
 {
     [SerializeField] List<GameObject> m_hideOnMobile;
     [SerializeField] List<GameObject> m_hideOnDesktop;
+    [SerializeField] List<GameObject> m_hideOnWebGL;
 
     [SerializeField] DebugPlatformObj debugPlatform;
 
+
     private bool m_isMobile = false;
+
 
     public void Start()
     {
 
+        PlatformEnum platform;
         #if UNITY_EDITOR
-            m_isMobile = debugPlatform.simulateMobile;
-        #elif UNITY_STANDALONE || UNITY_EDITOR
-            m_isMobile = false;
-        #elif UNITY_ANDROID || UNITY_IOS
-            m_isMobile = true;
+            platform = debugPlatform.simulatePlatform;
+        #else
+            platform = PlatformHelper.GetPlatform();
         #endif
 
-        if(!m_isMobile)
+        switch(platform)
         {
-            foreach(GameObject obj in m_hideOnDesktop)
+            case PlatformEnum.MOBILE:
             {
-                obj.SetActive(false);
+                foreach(GameObject obj in m_hideOnMobile)
+                {
+                    obj.SetActive(false);
+                }
+                break;
             }
-        }
-        if(m_isMobile)
-        {
-            foreach(GameObject obj in m_hideOnMobile)
+            case PlatformEnum.WEBGL:
             {
-                obj.SetActive(false);
+                foreach(GameObject obj in m_hideOnWebGL)
+                {
+                    obj.SetActive(false);
+                }
+                break;
+            }
+            case PlatformEnum.DESKTOP:
+            {
+                foreach(GameObject obj in m_hideOnDesktop)
+                {
+                    obj.SetActive(false);
+                }
+                break;
             }
         }
     }

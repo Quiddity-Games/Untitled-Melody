@@ -5011,7 +5011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5312751187719643665, guid: 1c34bd9fa315d024980af6751cf60e8b, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5312751187719643665, guid: 1c34bd9fa315d024980af6751cf60e8b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7534,6 +7534,10 @@ PrefabInstance:
       propertyPath: _NoteTracker
       value: 
       objectReference: {fileID: 1369963775}
+    - target: {fileID: 1511328370157309614, guid: 61163b962390de94aa1cfe4b07277ee9, type: 3}
+      propertyPath: debugPlatform
+      value: 
+      objectReference: {fileID: 11400000, guid: 2ea939b9c88ada84ab5a2261a8434733, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61163b962390de94aa1cfe4b07277ee9, type: 3}
 --- !u!1001 &2551276249761637279
