@@ -7,6 +7,8 @@ public class AudioPlayerController : MonoBehaviour
 
     [SerializeField] private AudioSource songPlayer;
 
+    private float m_time;
+
     private void OnEnable()
     {
         DreamworldEventManager.OnGameStart += songPlayer.Play;
@@ -28,10 +30,12 @@ public class AudioPlayerController : MonoBehaviour
         if (isPaused)
         {
             songPlayer.Pause();
+            m_time = songPlayer.time;
         }
         else
         {
-            songPlayer.UnPause();
+            songPlayer.Play();
+            songPlayer.time = m_time;
         }
     }
 }
