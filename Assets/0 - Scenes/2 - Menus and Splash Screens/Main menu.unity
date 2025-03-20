@@ -3118,16 +3118,18 @@ MonoBehaviour:
   m_text: "Music\r\n\n\"wishing well\" by nostraightanswer\r\n\r\n\n\nProject Direction\r\n\nChris
     Lautenbacher\r\nJacob Brosler\r\nNick Carbonara\r\nMaddy Cherrier\r\nHal Clark\r\nPat
     Dimaandal\r\nChris Fleming\r\nLance Hengya\r\n\r\n\n\nArt Leads\r\n\nHal Clark\r\nLance
-    Hengya\r\n\r\n\n\nArtists\r\n\nKayla Deer\r\nFinal\r\nhatsukoin\nMac Li\r\nShirley
-    Liu\r\nMikaMagica\r\r\nCharlotte Pang\nNedward Rehanek (@wakayrd) \r\nLink Simon
-    (@cawinkylink)\r\nArka Tu\r\nMaya \"kemple T\" Williamson\r\nMasha Zhdanova\r\n\r\n\n\nDevelopment
-    Leads\r\n\nJacob Brosler\r\nNick Carbonara\r\n\r\n\n\nDevelopers\r\n\nJustin
-    Almendral\r\nWhitney Kluttz\r\nWill Kracke\r\nStella Liu\r\nlukinator1\r\nSeamus
-    Ly\r\nKevin Ray\r\nMatthew Sze-Tu\r\nCavan Vince\r\n\r\n\n\nNarrative Leads\r\n\nNick
-    Carbonara\r\nChris Fleming\r\n\r\n\n\nNarrative Designers\r\n\nMercedes Hesselroth\r\nWendy
-    Ninomiya\r\n\r\n\n\nExternal Narrative Research Advisors\r\n\nChristina Kelly
-    (@paper_artichoke)\r\nErika Ramsey (Kinjo)\r\nCal Ramsey\r\nSunny Schofield\r\n\r\n\n\nAccessibility
-    Consultants and Testers\r\n\nJordan Bach - Consultant and Tester\r\nTay C. (meowzerswowzers)
+    Hengya\r\n\r\n\n\nCharacter and Asset Designers\r\n\nHal Clark\r\nKayla Deer\r\nFinal\r\nhatsukoin\r\nMac
+    Li\r\nShirley Liu\r\nMikaMagica\r\nCharlotte Pang \r\nNedward Rehanek (@wakayrd)
+    \r\nLink Simon (@cawinkylink)\r\nArka Tu\r\nMaya \"kemple T\" Williamson\r\nMasha
+    Zhdanova\r\n\n\n\nUI Asset Designers\r\n\nHal Clark\r\nFinal\r\n\r\n\n\nAnimators\r\n\nFinal
+    - Animator\r\nMac Li - Animation Consultant\r\n\n\n\nDevelopment Leads\r\n\nJacob
+    Brosler\r\nNick Carbonara\r\n\r\n\n\nDevelopers\r\n\nJustin Almendral\r\nWhitney
+    Kluttz\r\nWill Kracke\r\nStella Liu\r\nlukinator1\r\nSeamus Ly\r\nKevin Ray\r\nMatthew
+    Sze-Tu\r\nCavan Vince\r\n\r\n\n\nNarrative Leads\r\n\nNick Carbonara\r\nChris
+    Fleming\r\n\r\n\n\nNarrative Designers\r\n\nMercedes Hesselroth\r\nWendy Ninomiya\r\n\r\n\n\nExternal
+    Narrative Research Advisors\r\n\nChristina Kelly (@paper_artichoke)\r\nErika
+    Ramsey (Kinjo)\r\nCal Ramsey\r\nSunny Schofield\r\n\r\n\n\nAccessibility Consultants
+    and Testers\r\n\nJordan Bach - Consultant and Tester\r\nTay C. (meowzerswowzers)
     - Consultant and Tester\r\nIan Hamilton - Accessibility Specialist\r\nJeppe \"Serth\"
     Nymand - Consultant and Tester\r\nJulie Oliveira - Consultant and Tester\r\nAudrey
     Spencer - Consultant and Tester \r\nMembers of r/DisabledGamers\nThe IGDA Game
@@ -3799,7 +3801,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: -0}
-  m_SizeDelta: {x: 886.24, y: 4931.99}
+  m_SizeDelta: {x: 886.24, y: 5667.457}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1957764186
 GameObject:
